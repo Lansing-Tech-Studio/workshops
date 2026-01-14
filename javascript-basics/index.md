@@ -36,7 +36,7 @@ By the end of this workshop, every student should be able to:
 
 This workshop is about building your first real programs and seeing your creativity come to life in code.
 
-## 2. Success Definition (Student-Facing)
+## 2. Success Definition
 
 A student is successful if they can say:
 
