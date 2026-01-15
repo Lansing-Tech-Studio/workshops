@@ -25,7 +25,7 @@ navigation:
   - title: Workshops Home
     url: /
   - title: Setup Guide
-    url: /SETUP
+    url: /setup
   - title: Tech Fundamentals
     url: /tech-fundamentals/
     subnav:

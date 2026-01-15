@@ -1,5 +1,6 @@
 ---
 layout: default
+permalink: /setup
 title: Environment Setup Guide
 ---
 
