@@ -24,18 +24,18 @@ print_friendly: true
 
 ## Fill In the Blanks
 
-1) __________________ is a programming language that runs on many different devices.
+1) __________________ is a programming language that runs on many different devices. \
 2) __________________ lets us run JavaScript outside of a web browser, like in the
-   terminal.
-3) A __________________ is like a labeled box where you store information.
+   terminal. \
+3) A __________________ is like a labeled box where you store information. \
 4) Use __________________ when a variable might change; use __________________
-   when it stays the same.
-5) A __________________ is text wrapped in quotes, like "Hello".
-6) A __________________ is a numeric value without quotes, like 42.
-7) A __________________ is either true or false.
+   when it stays the same. \
+5) A __________________ is text wrapped in quotes, like "Hello". \
+6) A __________________ is a numeric value without quotes, like 42. \
+7) A __________________ is either true or false. \
 8) __________________ displays information in the terminal so you can see what
-   your program is doing.
-9) __________________ is joining strings together using the + symbol.
+   your program is doing. \
+9) __________________ is joining strings together using the + symbol. \
 10) An __________________ is a symbol that performs an action, like + or -.
 
 ## Quick Checks
