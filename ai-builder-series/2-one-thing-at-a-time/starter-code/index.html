@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Trivia Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2563eb;
+        }
+        .question {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .answers button {
+            padding: 14px 20px;
+            font-size: 1.1em;
+            border: 2px solid #2563eb;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            cursor: pointer;
+        }
+        .answers button:hover {
+            background: #dbeafe;
+        }
+        .answers button.correct {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+        .answers button.wrong {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+        .score {
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #666;
+        }
+        .result {
+            text-align: center;
+            font-size: 1.4em;
+            margin-top: 30px;
+        }
+        .restart {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .restart:hover {
+            background: #1d4ed8;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animal Trivia Quiz</h1>
+    <div id="quiz">
+        <p class="question" id="question"></p>
+        <div class="answers" id="answers"></div>
+        <p class="score" id="score"></p>
+    </div>
+    <div id="result" class="hidden">
+        <p class="result" id="finalScore"></p>
+        <button class="restart" id="restartBtn">Play Again</button>
+    </div>
+
+    <script>
+        var questions = [
+            {
+                question: "What is the fastest land animal?",
+                answers: ["Cheetah", "Lion", "Horse", "Eagle"],
+                correct: 0
+            },
+            {
+                question: "How many legs does an octopus have?",
+                answers: ["6", "8", "10", "12"],
+                correct: 1
+            },
+            {
+                question: "What is the largest mammal on Earth?",
+                answers: ["Elephant", "Giraffe", "Blue Whale", "Polar Bear"],
+                correct: 2
+            },
+            {
+                question: "Which animal is known for changing its skin color?",
+                answers: ["Frog", "Snake", "Chameleon", "Parrot"],
+                correct: 2
+            },
+            {
+                question: "What do you call a group of wolves?",
+                answers: ["Herd", "Flock", "Pack", "School"],
+                correct: 2
+            }
+        ];
+
+        var currentQuestion = 0;
+        var score = 0;
+
+        var questionEl = document.querySelector("#question");
+        var answersEl = document.querySelector("#answers");
+        var scoreEl = document.querySelector("#score");
+        var quizEl = document.querySelector("#quiz");
+        var resultEl = document.querySelector("#result");
+        var finalScoreEl = document.querySelector("#finalScore");
+        var restartBtn = document.querySelector("#restartBtn");
+
+        function showQuestion() {
+            var q = questions[currentQuestion];
+            questionEl.textContent = "Question " + (currentQuestion + 1) + ": " + q.question;
+            scoreEl.textContent = "Score: " + score + " / " + questions.length;
+            answersEl.innerHTML = "";
+
+            for (var i = 0; i < q.answers.length; i++) {
+                var btn = document.createElement("button");
+                btn.textContent = q.answers[i];
+                btn.addEventListener("click", checkAnswer);
+                answersEl.appendChild(btn);
+            }
+        }
+
+        function checkAnswer(event) {
+            var q = questions[currentQuestion];
+            var buttons = answersEl.querySelectorAll("button");
+            var selectedIndex = Array.from(buttons).indexOf(event.target);
+
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                if (i === q.correct) {
+                    buttons[i].classList.add("correct");
+                }
+            }
+
+            if (selectedIndex === q.correct) {
+                score++;
+            } else {
+                event.target.classList.add("wrong");
+            }
+
+            scoreEl.textContent = "Score: " + score + " / " + questions.length;
+
+            setTimeout(function () {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            }, 1200);
+        }
+
+        function showResult() {
+            quizEl.classList.add("hidden");
+            resultEl.classList.remove("hidden");
+            finalScoreEl.textContent = "You scored " + score + " out of " + questions.length + "!";
+        }
+
+        restartBtn.addEventListener("click", function () {
+            currentQuestion = 0;
+            score = 0;
+            quizEl.classList.remove("hidden");
+            resultEl.classList.add("hidden");
+            showQuestion();
+        });
+
+        showQuestion();
+    </script>
+</body>
+</html>

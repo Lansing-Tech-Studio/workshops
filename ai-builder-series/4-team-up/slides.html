@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Team Up — AI Builder Series #4</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.team-role {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Team Up</h2>
+				<p class="outlined">AI Builder Series — Workshop 4</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">by Brendon Thiede</p>
+			</section>
+
+			<section>
+				<h2>The Full Journey</h2>
+				<ol>
+					<li>Prompt Power-Ups &#10003;</li>
+					<li>One Thing at a Time &#10003;</li>
+					<li>Save Points &#10003;</li>
+					<li><strong>Team Up</strong> (today!)</li>
+				</ol>
+			</section>
+
+			<section>
+				<h2>Student Goals</h2>
+				<ul>
+					<li>Create branches for feature work</li>
+					<li>Open pull requests on GitHub</li>
+					<li>Review a teammate's code</li>
+					<li>Merge and resolve conflicts</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h2>Why Teams Need Rules</h2>
+					<p>What happens when two people change the same file?</p>
+				</section>
+				<section>
+					<h3>Live Demo</h3>
+					<p>Watch: two developers edit the same code at the same time...</p>
+				</section>
+				<section>
+					<h3>This Is Why We Learned</h3>
+					<ul>
+						<li><strong>Prompt skills</strong> — communicate what you're building</li>
+						<li><strong>Separation of concerns</strong> — work on different files</li>
+						<li><strong>Save points + tests</strong> — verify combined code works</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Git Branches</h2>
+					<p>Your own workspace inside the project.</p>
+				</section>
+				<section>
+					<h3>Parallel Universes</h3>
+					<ul>
+						<li>Each branch is a separate version of the project</li>
+						<li>You can make changes without affecting anyone else</li>
+						<li>When you're done, you merge your universe back in</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Commands</h3>
+					<pre><code data-trim class="language-bash">
+# Create a new branch and switch to it
+git checkout -b add-new-questions
+
+# See all branches
+git branch
+
+# Switch between branches
+git checkout main
+git checkout add-new-questions
+					</code></pre>
+				</section>
+				<section>
+					<h3>Try It!</h3>
+					<p>Create a branch for your feature:</p>
+					<pre><code data-trim class="language-bash">
+git checkout -b my-feature-name
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Form Teams</h2>
+					<p>Teams of 2-3. Each person owns one area.</p>
+				</section>
+				<section>
+					<h3>Divide by Concern</h3>
+					<ul>
+						<li class="team-role">Person A: New questions (questions.js)</li>
+						<li class="team-role">Person B: Visual redesign (styles.css, index.html)</li>
+						<li class="team-role">Person C: New feature (script.js)</li>
+					</ul>
+					<p>Each person works on <em>different files</em>.</p>
+				</section>
+				<section>
+					<h3>Clone the Shared Repo</h3>
+					<pre><code data-trim class="language-bash">
+git clone [your-team-repo-url]
+cd [repo-name]
+git checkout -b my-feature
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Break</h2>
+					<p>Stretch, grab water, and plan your feature with your team.</p>
+				</section>
+				<section>
+					<h2>Think About...</h2>
+					<p>What's the hardest part about working on a team project?</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Build on Your Branch</h2>
+					<p>Use everything you've learned:</p>
+					<ol>
+						<li>Good prompts (Workshop 1)</li>
+						<li>Change only your concern (Workshop 2)</li>
+						<li>Save points and test cases (Workshop 3)</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Pull Requests</h2>
+					<p>Propose your changes to the team.</p>
+				</section>
+				<section>
+					<h3>Push Your Branch</h3>
+					<pre><code data-trim class="language-bash">
+git push -u origin my-feature
+					</code></pre>
+					<p>Then open a Pull Request on GitHub.</p>
+				</section>
+				<section>
+					<h3>Write a Good PR Description</h3>
+					<ul>
+						<li>What did you change?</li>
+						<li>Why?</li>
+						<li>How can your teammate test it?</li>
+					</ul>
+					<p>Ask Copilot to help write the description!</p>
+				</section>
+				<section>
+					<h3>Review a Teammate's PR</h3>
+					<ul>
+						<li>Read the code changes</li>
+						<li>Leave a constructive comment</li>
+						<li>"This works! One suggestion: ..."</li>
+						<li>Approve when you're satisfied</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Merge and Resolve</h2>
+					<p>Combine everyone's work.</p>
+				</section>
+				<section>
+					<h3>Merge One PR at a Time</h3>
+					<ol>
+						<li>Merge the first PR into main</li>
+						<li>Pull the latest: <code>git pull</code></li>
+						<li>Merge the next PR</li>
+						<li>If there's a conflict — we'll resolve it together</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Merge Conflicts</h3>
+					<ul>
+						<li>Conflicts happen when two people changed the same lines</li>
+						<li>Git marks exactly what's different</li>
+						<li>You decide which version to keep (or combine both)</li>
+						<li>Then commit the resolution</li>
+					</ul>
+				</section>
+				<section>
+					<h3>After All Merges</h3>
+					<ol>
+						<li>Pull the latest main</li>
+						<li>Run your test cases</li>
+						<li>Use Playwright to verify it all works</li>
+						<li>Celebrate!</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Series Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>Your Journey</h3>
+					<ol>
+						<li>Learned to talk to AI clearly</li>
+						<li>Organized code so each part has one job</li>
+						<li>Saved progress and tested before changing</li>
+						<li>Built as a team without breaking each other's work</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Your Toolkit</h3>
+					<ul>
+						<li>Prompt Evaluation Checklist</li>
+						<li>Change One Thing reference</li>
+						<li>Save Point Loop</li>
+						<li>Branch → PR → Review → Merge workflow</li>
+					</ul>
+					<p>Apply these to <em>any</em> project.</p>
+				</section>
+				<section>
+					<h3>Keep Exploring</h3>
+					<ul>
+						<li>Build your own project from scratch</li>
+						<li>Try <strong>Claude Code</strong> as another AI tool</li>
+						<li>Explore <strong>Godot MCP</strong> for game development</li>
+						<li>Contribute to each other's projects</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Thank you!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

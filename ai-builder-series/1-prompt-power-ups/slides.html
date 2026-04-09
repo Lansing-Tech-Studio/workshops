@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Prompt Power-Ups — AI Builder Series #1</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.prompt-bad {
+			color: #ff6b6b;
+		}
+
+		.prompt-good {
+			color: #51cf66;
+		}
+
+		.prompt-part {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Prompt Power-Ups</h2>
+				<p class="outlined">AI Builder Series — Workshop 1</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">by Brendon Thiede</p>
+			</section>
+
+			<section>
+				<h2>Series Overview</h2>
+				<ol>
+					<li><strong>Prompt Power-Ups</strong> (today!)</li>
+					<li>One Thing at a Time</li>
+					<li>Save Points</li>
+					<li>Team Up</li>
+				</ol>
+				<p>We're building a quiz app across all 4 workshops.</p>
+			</section>
+
+			<section>
+				<h2>Student Goals</h2>
+				<ul>
+					<li>Write clear prompts for AI</li>
+					<li>Check AI output against what you wanted</li>
+					<li>Improve prompts through iteration</li>
+					<li>Use Playwright MCP for visual AI feedback</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Tool Check</h2>
+				<ul>
+					<li>VS Code — open?</li>
+					<li>GitHub Copilot — signed in?</li>
+					<li>Git — configured?</li>
+					<li>Playwright MCP — we'll set this up together</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h2>What Makes a Good Prompt?</h2>
+				</section>
+				<section>
+					<h3>A Bad Prompt</h3>
+					<p class="prompt-bad">"make me a quiz"</p>
+					<p>What do you think AI will do with this?</p>
+				</section>
+				<section>
+					<h3>A Better Prompt</h3>
+					<p class="prompt-good">"Create an HTML page with a trivia quiz about animals
+						for kids. Show one question at a time with 4 multiple choice buttons.
+						Track the score and show it at the end."</p>
+				</section>
+				<section>
+					<h3>What Changed?</h3>
+					<ul>
+						<li>We said <em>what kind</em> of quiz</li>
+						<li>We said <em>who it's for</em></li>
+						<li>We said <em>how it should work</em></li>
+						<li>We said <em>what technology</em> to use</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>The 5 Parts of a Prompt</h2>
+				</section>
+				<section>
+					<h3>1. Role</h3>
+					<p class="prompt-part">Who should AI pretend to be?</p>
+					<p>"You are a web developer building a kids' trivia app."</p>
+				</section>
+				<section>
+					<h3>2. Context</h3>
+					<p class="prompt-part">What's the background?</p>
+					<p>"This is a simple quiz about animals for students ages 10-14."</p>
+				</section>
+				<section>
+					<h3>3. Task</h3>
+					<p class="prompt-part">What should AI do?</p>
+					<p>"Create an HTML page with a multiple choice quiz."</p>
+				</section>
+				<section>
+					<h3>4. Constraints</h3>
+					<p class="prompt-part">What are the rules?</p>
+					<p>"Use only HTML, CSS, and JavaScript. Show one question at a time."</p>
+				</section>
+				<section>
+					<h3>5. Examples</h3>
+					<p class="prompt-part">What should it look like?</p>
+					<p>"Questions look like: What is the fastest land animal?<br>
+						A) Cheetah &nbsp; B) Lion &nbsp; C) Horse &nbsp; D) Eagle"</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Prompt Builder Challenge</h2>
+					<p>Let's build our quiz app step by step.</p>
+				</section>
+				<section>
+					<h3>Round 1: Start Vague</h3>
+					<p>Type this into Copilot Chat:</p>
+					<p class="prompt-bad">"make me a quiz"</p>
+					<p>Run the code. What happened?</p>
+				</section>
+				<section>
+					<h3>Round 2: Add Context</h3>
+					<p>Now try adding context and constraints:</p>
+					<p class="prompt-good">"Create a trivia quiz about animals for kids using HTML,
+						CSS, and JavaScript in a single page"</p>
+				</section>
+				<section>
+					<h3>Round 3: Add Examples</h3>
+					<p>Give AI a specific example of what you want:</p>
+					<p class="prompt-good">"Questions should look like:<br>
+						What is the fastest land animal?<br>
+						A) Cheetah B) Lion C) Horse D) Eagle"</p>
+				</section>
+				<section>
+					<h3>Each Round</h3>
+					<ol>
+						<li>Write the prompt</li>
+						<li>Run the code</li>
+						<li>Check: did I get what I wanted?</li>
+						<li>Improve the prompt</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Break</h2>
+					<p>Stretch, grab water, and come back ready to build.</p>
+				</section>
+				<section>
+					<h2>Think About...</h2>
+					<p>Write down one thing that surprised you about AI's output.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Playwright MCP</h2>
+					<p>AI can see your app!</p>
+				</section>
+				<section>
+					<h3>What Is Playwright MCP?</h3>
+					<ul>
+						<li>AI by itself can only read and write text</li>
+						<li>Playwright MCP lets AI open a real browser</li>
+						<li>AI can <em>see</em> your page and suggest changes</li>
+						<li>Think of it as giving AI eyes</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Try It!</h3>
+					<p>Ask Copilot:</p>
+					<p class="prompt-good">"Open my quiz app in the browser, take a look at it,
+						and suggest 3 ways to improve the design."</p>
+				</section>
+				<section>
+					<h3>Refine the UI</h3>
+					<p>Now try prompts like:</p>
+					<ul>
+						<li>"The buttons are too small to tap easily"</li>
+						<li>"The colors are hard to read"</li>
+						<li>"Make it look more fun for kids"</li>
+					</ul>
+					<p>AI sees the actual page and makes targeted fixes.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Your Prompt Checklist</h2>
+					<p>Create your own tool for writing better prompts.</p>
+				</section>
+				<section>
+					<h3>Checklist Questions</h3>
+					<ul>
+						<li>Did I say what role AI should play?</li>
+						<li>Did I give enough context?</li>
+						<li>Did I describe the task clearly?</li>
+						<li>Did I set constraints?</li>
+						<li>Did I give examples?</li>
+						<li>Did I check the output?</li>
+						<li>What would I change next time?</li>
+					</ul>
+				</section>
+				<section>
+					<h3>System Prompts</h3>
+					<ul>
+						<li>A system prompt sets the "default personality" for AI</li>
+						<li>It runs before every conversation</li>
+						<li>Save one for your quiz app project</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Save Your Work</h2>
+					<pre><code data-trim>
+git add .
+git commit -m "Initial quiz app from Workshop 1"
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>Good prompts have 5 parts</li>
+						<li>Always check AI output</li>
+						<li>Iteration is normal and expected</li>
+						<li>Playwright MCP lets AI see your app</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>One Thing at a Time</strong></p>
+					<p>Your quiz works, but the code is a mess.<br>
+						Next time, we'll organize it so we can safely grow it.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Thank you!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

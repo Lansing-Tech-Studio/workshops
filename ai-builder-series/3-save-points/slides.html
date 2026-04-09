@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Save Points — AI Builder Series #3</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.loop-step {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Save Points</h2>
+				<p class="outlined">AI Builder Series — Workshop 3</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">by Brendon Thiede</p>
+			</section>
+
+			<section>
+				<h2>Where We Are</h2>
+				<ol>
+					<li>Prompt Power-Ups &#10003;</li>
+					<li>One Thing at a Time &#10003;</li>
+					<li><strong>Save Points</strong> (today!)</li>
+					<li>Team Up</li>
+				</ol>
+			</section>
+
+			<section>
+				<h2>Student Goals</h2>
+				<ul>
+					<li>Create save points with git</li>
+					<li>Write test cases in plain English</li>
+					<li>Follow the save-change-test loop</li>
+					<li>Roll back when something breaks</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h2>The "Oh No" Moment</h2>
+					<p>Watch what happens when there's no save point...</p>
+				</section>
+				<section>
+					<h3>Live Demo</h3>
+					<p>I'll break the quiz app. Then try to undo it.</p>
+					<p>Spoiler: it doesn't go well.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Git: Your Save Point System</h2>
+				</section>
+				<section>
+					<h3>Video Game Save Files</h3>
+					<ul>
+						<li>You save before the boss fight</li>
+						<li>If you lose, you reload your save</li>
+						<li>You don't start the whole game over</li>
+						<li>Git works the same way for code</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Key Commands</h3>
+					<pre><code data-trim class="language-bash">
+# Select what to save
+git add .
+
+# Create a save point
+git commit -m "Working quiz with 5 questions"
+
+# See all your save points
+git log
+
+# Go back to the last save point
+git checkout .
+					</code></pre>
+				</section>
+				<section>
+					<h3>Let's Make Our First Commit</h3>
+					<pre><code data-trim class="language-bash">
+git add .
+git commit -m "Clean quiz app from Workshop 2"
+git log
+					</code></pre>
+					<p>You now have a save point!</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Writing Test Cases</h2>
+					<p>How do you know if your app still works?</p>
+				</section>
+				<section>
+					<h3>What Is a Test Case?</h3>
+					<p>A plain-English description of what should happen.</p>
+					<p><em>"When I [do this], [this should happen]."</em></p>
+				</section>
+				<section>
+					<h3>Our Quiz App Test Cases</h3>
+					<ul>
+						<li>When I open the page, the first question appears</li>
+						<li>When I pick the right answer, my score goes up</li>
+						<li>When I pick wrong, the correct answer shows green</li>
+						<li>After the last question, I see my final score</li>
+						<li>When I click Play Again, the quiz restarts at 0</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Write Your Own</h3>
+					<p>Write 3-5 test cases for your quiz app on your worksheet.</p>
+					<p>Then run through them manually to make sure they all pass.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Break</h2>
+					<p>Stretch, grab water, and think about what feature you want to add.</p>
+				</section>
+				<section>
+					<h2>Think About...</h2>
+					<p>What feature would you add if you knew you could undo it?</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>The Development Loop</h2>
+				</section>
+				<section>
+					<h3>4 Steps</h3>
+					<ol>
+						<li class="loop-step">Save</li>
+						<li class="loop-step">Change</li>
+						<li class="loop-step">Test</li>
+						<li class="loop-step">Keep or Rollback</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Step 1: Save</h3>
+					<pre><code data-trim class="language-bash">
+git add .
+git commit -m "Before adding question counter"
+					</code></pre>
+					<p>Now you have a safe point to return to.</p>
+				</section>
+				<section>
+					<h3>Step 2: Change</h3>
+					<p>Ask Copilot to add your feature.</p>
+					<p>Use your prompt skills from Workshop 1!</p>
+				</section>
+				<section>
+					<h3>Step 3: Test</h3>
+					<p>Run through your test cases. Does everything still work?</p>
+					<ul>
+						<li>First question appears? &#10003; / &#10007;</li>
+						<li>Score goes up on correct answer? &#10003; / &#10007;</li>
+						<li>Final score shows? &#10003; / &#10007;</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Step 4: Keep or Rollback</h3>
+					<p>If all tests pass:</p>
+					<pre><code data-trim class="language-bash">
+git add .
+git commit -m "Added question counter"
+					</code></pre>
+					<p>If something broke:</p>
+					<pre><code data-trim class="language-bash">
+git checkout .
+					</code></pre>
+					<p>You're back at your last save point. Try again!</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Feature 1: Practice the Loop</h2>
+					<p>Pick a feature and follow all 4 steps.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Feature 2: The Intentional Rollback</h2>
+					<p>This time, the feature might break something...</p>
+					<p>Your test cases will catch it.</p>
+					<p>Your save point will rescue you.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Feature 3: On Your Own</h2>
+					<p>Add something you want. Follow the loop.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Review Your Git Log</h2>
+					<pre><code data-trim class="language-bash">
+git log --oneline
+					</code></pre>
+					<p>Each line is a save point. This is the story of your project.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>Git saves versions of your project</li>
+						<li>Test cases describe expected behavior</li>
+						<li>The loop: save, change, test, keep or rollback</li>
+						<li>Rolling back is a safety net, not a failure</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>Team Up</strong></p>
+					<p>You know how to build carefully on your own.<br>
+						Next time, you'll build with a team — and everything<br>
+						you learned becomes even more important.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Thank you!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>One Thing at a Time — AI Builder Series #2</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.concern-data { color: #74c0fc; }
+		.concern-display { color: #69db7c; }
+		.concern-logic { color: #ffa94d; }
+		.concern-style { color: #f783ac; }
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">One Thing at a Time</h2>
+				<p class="outlined">AI Builder Series — Workshop 2</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">by Brendon Thiede</p>
+			</section>
+
+			<section>
+				<h2>Where We Are</h2>
+				<ol>
+					<li>Prompt Power-Ups &#10003;</li>
+					<li><strong>One Thing at a Time</strong> (today!)</li>
+					<li>Save Points</li>
+					<li>Team Up</li>
+				</ol>
+			</section>
+
+			<section>
+				<h2>Student Goals</h2>
+				<ul>
+					<li>Understand separation of concerns</li>
+					<li>Identify the parts of a project</li>
+					<li>Change one thing at a time</li>
+					<li>Test after every change</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h2>The Spaghetti Problem</h2>
+					<p>What happens when everything is tangled together?</p>
+				</section>
+				<section>
+					<h3>Live Demo</h3>
+					<p>Watch: I'll try to add a feature to our messy quiz code...</p>
+				</section>
+				<section>
+					<h3>What Went Wrong?</h3>
+					<ul>
+						<li>Changing one thing broke something else</li>
+						<li>Hard to find where the problem is</li>
+						<li>Everything depends on everything</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Separation of Concerns</h2>
+					<p>Each part of your code should have <em>one job</em>.</p>
+				</section>
+				<section>
+					<h3>The LEGO Analogy</h3>
+					<ul>
+						<li>Each LEGO brick does one thing</li>
+						<li>You can swap a brick without rebuilding everything</li>
+						<li>You can find the brick you need quickly</li>
+						<li>Your code should work the same way</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Our 4 Concerns</h3>
+					<ul>
+						<li class="concern-data">Data — the questions and answers</li>
+						<li class="concern-display">Display — the HTML structure</li>
+						<li class="concern-logic">Logic — scoring and answer checking</li>
+						<li class="concern-style">Styling — colors, fonts, and layout</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Color-Code Your Code</h2>
+					<p>Let's find the 4 concerns in our quiz app.</p>
+				</section>
+				<section>
+					<h3>Which Lines Are Which?</h3>
+					<ul>
+						<li class="concern-data">Blue = Data (questions, answers)</li>
+						<li class="concern-display">Green = Display (HTML, DOM updates)</li>
+						<li class="concern-logic">Orange = Logic (scoring, checking)</li>
+						<li class="concern-style">Pink = Styling (CSS, visual changes)</li>
+					</ul>
+					<p>Mark each line in your code with a color.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Break</h2>
+					<p>Stretch, grab water, and come back ready to refactor.</p>
+				</section>
+				<section>
+					<h2>Think About...</h2>
+					<p>If you could only change one part of your quiz, what would it be?</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Refactor Round 1</h2>
+					<p>Extract the question data.</p>
+				</section>
+				<section>
+					<h3>The Prompt</h3>
+					<p>"Move the questions array into a separate file called questions.js.
+						Don't change anything else."</p>
+				</section>
+				<section>
+					<h3>The Process</h3>
+					<ol>
+						<li>Ask AI to make <em>one change</em></li>
+						<li>Run the code</li>
+						<li>Test with Playwright: does it still work?</li>
+						<li>If yes: move on. If no: fix only the broken connection.</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Refactor Round 2</h2>
+					<p>Separate logic and styling.</p>
+				</section>
+				<section>
+					<h3>Step 1: Extract Logic</h3>
+					<p>"Extract the score tracking and answer checking into their own
+						functions. Don't change the questions or the HTML."</p>
+					<p>Test with Playwright after.</p>
+				</section>
+				<section>
+					<h3>Step 2: Extract CSS</h3>
+					<p>"Move all the CSS from the style tag into a separate styles.css file.
+						Don't change any functionality."</p>
+					<p>Test with Playwright after.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>The Contrast</h2>
+					<p>What happens if you ask AI to "refactor everything at once"?</p>
+				</section>
+				<section>
+					<h3>One at a Time vs. All at Once</h3>
+					<ul>
+						<li>One at a time: you know what changed and can test it</li>
+						<li>All at once: if something breaks, where do you even look?</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Our New File Structure</h2>
+					<pre><code data-trim>
+quiz-app/
+  index.html      ← display
+  styles.css      ← styling
+  questions.js    ← data
+  script.js       ← logic
+					</code></pre>
+					<p>Each file has one job.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>Separation of concerns = each part has one job</li>
+						<li>Change one thing, test one thing</li>
+						<li>Refactoring changes structure, not behavior</li>
+						<li>Playwright verifies nothing broke</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>Save Points</strong></p>
+					<p>Now that your code is organized, we'll learn to save our progress
+						before experimenting — so we can always go back.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Thank you!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
