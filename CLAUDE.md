@@ -55,7 +55,11 @@ workshop-name/
     └── timing-guide.md
 ```
 
-Navigation for all workshops is defined in `_config.yml` under the `navigation` key.
+**Multi-workshop series** (e.g. `ai-builder-series/`) use a parent folder with its own `index.md` and `plan.md`, containing numbered sub-workshops (`1-prompt-power-ups/`, `2-one-thing-at-a-time/`, etc.) that each follow the standard layout above.
+
+**Other top-level content:** `learning-checks/` contains quiz/review material that spans multiple workshops.
+
+Navigation for all workshops is defined in `_config.yml` under the `navigation` key. New workshops also need a `defaults` entry in `_config.yml` to set the `workshop` front-matter value.
 
 ## Content Guidelines (from README.md)
 
@@ -70,5 +74,6 @@ Navigation for all workshops is defined in `_config.yml` under the `navigation` 
 `scripts/` contains admin/helper scripts:
 - `student-account-creator.sh` / `student-account-destroyer.sh` — bulk GitHub account management
 - `create-godot-shortcut.sh` — Linux desktop launcher for Godot
-- `arduino-build.sh` / `arduino-upload.sh` — Arduino helpers (untracked, new)
+- `make-thumbnail.sh` — captures workshop opening slide as a YouTube thumbnail
+- `arduino-build.sh` / `arduino-upload.sh` — Arduino CLI build and upload helpers (untracked)
 - `accounts.json` and `eff_large_wordlist.txt` are gitignored

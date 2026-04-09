@@ -198,6 +198,19 @@ navigation:
             url: /game-mechanics-and-logic/instructor-notes/common-questions
           - title: Timing Guide
             url: /game-mechanics-and-logic/instructor-notes/timing-guide
+  - title: Project Sprint
+    url: /project-sprint/
+  - title: "AI Builder Series"
+    url: /ai-builder-series/
+    subnav:
+      - title: "Workshop 1: Prompt Power-Ups"
+        url: /ai-builder-series/1-prompt-power-ups/
+      - title: "Workshop 2: One Thing at a Time"
+        url: /ai-builder-series/2-one-thing-at-a-time/
+      - title: "Workshop 3: Save Points"
+        url: /ai-builder-series/3-save-points/
+      - title: "Workshop 4: Team Up"
+        url: /ai-builder-series/4-team-up/
   - title: Learning Checks
     url: /learning-checks
 
@@ -232,3 +245,11 @@ defaults:
       path: "game-mechanics-and-logic"
     values:
       workshop: "Video Game Design - Mechanics and Logic"
+  - scope:
+      path: "project-sprint"
+    values:
+      workshop: "Project Sprint"
+  - scope:
+      path: "ai-builder-series"
+    values:
+      workshop: "AI Builder Series"
