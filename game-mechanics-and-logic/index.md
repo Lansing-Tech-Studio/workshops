@@ -10,6 +10,7 @@ comments: true
 **Audience:** Students ages 12-14 \
 **Theme:** _"How games teach you to play without boring you to death"_
 
+- <a href="https://youtu.be/nzU_IdcQ3xc"><img src="{{ site.baseurl }}/assets/icons/youtube.svg" alt="" style="height:1em;vertical-align:middle;margin-right:4px">Recording</a>
 - [Slides]({{ site.baseurl }}/game-mechanics-and-logic/slides.html)
 - [Mechanics Demo Game]({{ site.baseurl }}/game-mechanics-and-logic/example-game/)
 - Resources:

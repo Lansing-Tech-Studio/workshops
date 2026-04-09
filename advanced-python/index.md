@@ -10,6 +10,7 @@ comments: true
 **Audience:** Students who have completed Python Coding Introduction or have basic Python experience \
 **Theme:** _"Upgrading the Robot — from scripts to systems"_
 
+- <a href="https://youtu.be/CLT4PE9133U"><img src="{{ site.baseurl }}/assets/icons/youtube.svg" alt="" style="height:1em;vertical-align:middle;margin-right:4px">Recording</a>
 - [Slides]({{ site.baseurl }}/advanced-python/slides.html)
 - Resources:
   - [Glossary]({{ site.baseurl }}/advanced-python/resources/glossary)
