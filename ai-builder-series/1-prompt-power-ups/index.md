@@ -7,8 +7,8 @@ comments: true
 
 # Prompt Power-Ups - 2 Hour Workshop
 
-**Audience:** Students ages 10-16 with basic computer familiarity
-**Theme:** _"Say what you mean, check what you get"_
+**Audience:** Students ages 10-16 with basic computer familiarity \
+**Theme:** _"Say what you mean, check what you get"_ \
 **Series:** AI Builder Series (Workshop 1 of 4)
 
 * [Slides]({{ site.baseurl }}/ai-builder-series/1-prompt-power-ups/slides.html)

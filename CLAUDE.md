@@ -61,6 +61,10 @@ workshop-name/
 
 Navigation for all workshops is defined in `_config.yml` under the `navigation` key. New workshops also need a `defaults` entry in `_config.yml` to set the `workshop` front-matter value.
 
+## Markdown Formatting
+
+When consecutive lines should each render on their own line (not merge into one paragraph), use a trailing backslash (`\`) at the end of each line (except the last). This is common for metadata blocks at the top of workshop pages (Audience, Format, Theme, etc.) and fill-in-the-blank items. Kramdown converts `\` into `<br>` tags.
+
 ## Content Guidelines (from README.md)
 
 - Workshops must work independently — students can join mid-series

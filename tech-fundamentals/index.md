@@ -7,7 +7,7 @@ comments: true
 
 # Tech Fundamentals - 2 hour Workshop
 
-**Audience:** Beginners with little to no programming experience \\
+**Audience:** Beginners with little to no programming experience \
 **Theme:** _"How computers actually work, and how you control them"_
 
 - <a href="https://youtu.be/D_QRIGQ-vqo"><img src="{{ site.baseurl }}/assets/icons/youtube.svg" alt="" style="height:1em;vertical-align:middle;margin-right:4px">Recording</a>

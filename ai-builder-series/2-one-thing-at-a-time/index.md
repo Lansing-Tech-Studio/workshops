@@ -7,8 +7,8 @@ comments: true
 
 # One Thing at a Time - 2 Hour Workshop
 
-**Audience:** Students ages 10-16 who completed Workshop 1 (Prompt Power-Ups)
-**Theme:** _"Change one piece, test one piece"_
+**Audience:** Students ages 10-16 who completed Workshop 1 (Prompt Power-Ups) \
+**Theme:** _"Change one piece, test one piece"_ \
 **Series:** AI Builder Series (Workshop 2 of 4)
 
 * [Slides]({{ site.baseurl }}/ai-builder-series/2-one-thing-at-a-time/slides.html)

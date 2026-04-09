@@ -7,8 +7,8 @@ comments: true
 
 # Save Points - 2 Hour Workshop
 
-**Audience:** Students ages 10-16 who completed Workshops 1-2
-**Theme:** _"Save before you experiment"_
+**Audience:** Students ages 10-16 who completed Workshops 1-2 \
+**Theme:** _"Save before you experiment"_ \
 **Series:** AI Builder Series (Workshop 3 of 4)
 
 * [Slides]({{ site.baseurl }}/ai-builder-series/3-save-points/slides.html)

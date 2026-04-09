@@ -4,3 +4,5 @@ scripts/eff_large_wordlist.txt
 scripts/accounts.json
 __pycache__/
 .claude/
+.screenshots/
+.playwright-mcp/

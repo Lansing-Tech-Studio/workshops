@@ -7,7 +7,7 @@ comments: true
 
 # JavaScript Basics - 2 Hour Workshop
 
-**Audience:** Beginners with little to no programming experience \\
+**Audience:** Beginners with little to no programming experience \
 **Theme:** _"Making computers respond to YOU - your first real programs"_
 
 - <a href="https://youtu.be/yKh397kxe5I"><img src="{{ site.baseurl }}/assets/icons/youtube.svg" alt="" style="height:1em;vertical-align:middle;margin-right:4px">Recording</a>

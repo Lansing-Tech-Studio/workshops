@@ -7,8 +7,8 @@ comments: true
 
 # Team Up - 2 Hour Workshop
 
-**Audience:** Students ages 10-16 who completed Workshops 1-3
-**Theme:** _"Build together without breaking each other's work"_
+**Audience:** Students ages 10-16 who completed Workshops 1-3 \
+**Theme:** _"Build together without breaking each other's work"_ \
 **Series:** AI Builder Series (Workshop 4 of 4)
 
 * [Slides]({{ site.baseurl }}/ai-builder-series/4-team-up/slides.html)

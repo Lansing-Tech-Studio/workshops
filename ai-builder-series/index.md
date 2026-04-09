@@ -7,9 +7,9 @@ comments: true
 
 # AI Builder Series
 
-**Audience:** Students ages 10-16 with basic computer familiarity
-**Format:** 4 sequential workshops, 2 hours each
-**Theme:** _"Build real projects with AI — from first prompt to team collaboration"_
+**Audience:** Students ages 10-16 with basic computer familiarity \
+**Format:** 4 sequential workshops, 2 hours each \
+**Theme:** _"Build real projects with AI — from first prompt to team collaboration"_ \
 **Recommended prerequisite:** [AI Playground for Kids]({{ site.baseurl }}/ai-playground-for-kids/)
 
 ## Series Overview
