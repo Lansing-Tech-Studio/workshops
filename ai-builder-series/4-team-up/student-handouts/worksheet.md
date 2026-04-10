@@ -47,7 +47,7 @@ What I changed: <span class="blank-line-long"></span>
 
 How to test it: <span class="blank-line-long"></span>
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## 4) Code Review
 

@@ -17,18 +17,18 @@ print_friendly: true
 
 ## Fill In the Blanks
 
-1) A <span class="blank-line-short"></span> stores an ordered collection of items in `[ ]`. \
-2) A <span class="blank-line-short"></span> stores labeled data in `{ }` using key-value pairs. \
-3) A <span class="blank-line-short"></span> is a reusable block of code defined with `def`. \
-4) A <span class="blank-line-short"></span> is a blueprint for creating objects. \
-5) An <span class="blank-line-short"></span> is one specific instance created from a class. \
-6) A variable that belongs to an object (like `player.name`) is called an <span class="blank-line-short"></span>. \
-7) A function that belongs to a class (like `player.take_damage()`) is called a <span class="blank-line-short"></span>. \
-8) The <span class="blank-line-short"></span> keyword loads code from another file. \
-9) <span class="blank-line-short"></span> is a text format Python uses to read and write data to files. \
-10) The value a function sends back is returned with the <span class="blank-line-short"></span> keyword.
+1. A <span class="blank-line-short"></span> stores an ordered collection of items in `[ ]`.
+2. A <span class="blank-line-short"></span> stores labeled data in `{ }` using key-value pairs.
+3. A <span class="blank-line-short"></span> is a reusable block of code defined with `def`.
+4. A <span class="blank-line-short"></span> is a blueprint for creating objects.
+5. An <span class="blank-line-short"></span> is one specific instance created from a class.
+6. A variable that belongs to an object (like `player.name`) is called an <span class="blank-line-short"></span>.
+7. A function that belongs to a class (like `player.take_damage()`) is called a <span class="blank-line-short"></span>.
+8. The <span class="blank-line-short"></span> keyword loads code from another file.
+9. <span class="blank-line-short"></span> is a text format Python uses to read and write data to files.
+10. The value a function sends back is returned with the <span class="blank-line-short"></span> keyword.
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## Quick Checks
 

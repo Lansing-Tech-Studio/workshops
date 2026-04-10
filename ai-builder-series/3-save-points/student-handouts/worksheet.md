@@ -44,7 +44,7 @@ Do all test cases pass right now? Yes / No
 | Test | Test cases passed? <span class="blank-line-short"></span> | |
 | Keep/Rollback | I chose to: <span class="blank-line-short"></span> | |
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## 4) Feature 2: The Intentional Rollback
 

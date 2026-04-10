@@ -7,7 +7,7 @@ section: Instructor Notes
 
 # Team Up Timing Guide (2 Hours)
 
-**Audience**: Ages 10-16, completed Workshops 1-3.
+**Audience**: Ages 10-16, completed Workshops 1-3. \
 **Goal**: Collaborate using branches, pull requests, code review, and merging.
 
 ## Pre-Workshop Setup (Critical!)

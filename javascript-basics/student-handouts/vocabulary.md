@@ -18,18 +18,18 @@ print_friendly: true
 
 ## Fill In the Blanks
 
-1) <span class="blank-line"></span> is a programming language that runs on many different devices. \
-2) <span class="blank-line"></span> lets us run JavaScript outside of a web browser, like in the terminal. \
-3) A <span class="blank-line"></span> is like a labeled box where you store information. \
-4) Use <span class="blank-line"></span> when a variable might change; use <span class="blank-line"></span> when it stays the same. \
-5) A <span class="blank-line"></span> is text wrapped in quotes, like "Hello". \
-6) A <span class="blank-line"></span> is a numeric value without quotes, like 42. \
-7) A <span class="blank-line"></span> is either true or false. \
-8) <span class="blank-line"></span> displays information in the terminal so you can see what your program is doing. \
-9) <span class="blank-line"></span> is joining strings together using the + symbol. \
-10) An <span class="blank-line"></span> is a symbol that performs an action, like + or -.
+1. <span class="blank-line"></span> is a programming language that runs on many different devices.
+2. <span class="blank-line"></span> lets us run JavaScript outside of a web browser, like in the terminal.
+3. A <span class="blank-line"></span> is like a labeled box where you store information.
+4. Use <span class="blank-line"></span> when a variable might change; use <span class="blank-line"></span> when it stays the same.
+5. A <span class="blank-line"></span> is text wrapped in quotes, like "Hello".
+6. A <span class="blank-line"></span> is a numeric value without quotes, like 42.
+7. A <span class="blank-line"></span> is either true or false.
+8. <span class="blank-line"></span> displays information in the terminal so you can see what your program is doing.
+9. <span class="blank-line"></span> is joining strings together using the + symbol.
+10. An <span class="blank-line"></span> is a symbol that performs an action, like + or -.
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## Quick Checks
 

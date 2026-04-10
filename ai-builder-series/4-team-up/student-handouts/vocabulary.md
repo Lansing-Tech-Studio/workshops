@@ -18,18 +18,18 @@ print_friendly: true
 
 ## Fill In the Blanks
 
-1) A <span class="blank-line-short"></span> is a parallel version of your project. \
-2) The <span class="blank-line-short"></span> is the primary shared version. \
-3) To <span class="blank-line-short"></span> means to switch between branches. \
-4) To <span class="blank-line-short"></span> means to download a repository to your computer. \
-5) To <span class="blank-line-short"></span> means to send your commits to GitHub. \
-6) To <span class="blank-line-short"></span> means to download the latest changes from GitHub. \
-7) A <span class="blank-line-short"></span> is a proposal to merge your branch into main. \
-8) A <span class="blank-line-short"></span> is when you read and comment on someone else's code. \
-9) To <span class="blank-line-short"></span> means to combine changes from one branch into another. \
-10) A <span class="blank-line-short"></span> happens when two people changed the same lines.
+1. A <span class="blank-line-short"></span> is a parallel version of your project.
+2. The <span class="blank-line-short"></span> is the primary shared version.
+3. To <span class="blank-line-short"></span> means to switch between branches.
+4. To <span class="blank-line-short"></span> means to download a repository to your computer.
+5. To <span class="blank-line-short"></span> means to send your commits to GitHub.
+6. To <span class="blank-line-short"></span> means to download the latest changes from GitHub.
+7. A <span class="blank-line-short"></span> is a proposal to merge your branch into main.
+8. A <span class="blank-line-short"></span> is when you read and comment on someone else's code.
+9. To <span class="blank-line-short"></span> means to combine changes from one branch into another.
+10. A <span class="blank-line-short"></span> happens when two people changed the same lines.
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## Quick Checks
 

@@ -45,7 +45,7 @@ Did the quiz still work after? Yes / No
 
 If no, what broke? <span class="blank-line-long"></span>
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## 5) Refactor Round 3: Extract Styling
 

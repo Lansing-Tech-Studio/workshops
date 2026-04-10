@@ -18,18 +18,18 @@ print_friendly: true
 
 ## Fill In the Blanks
 
-1) <span class="blank-line-short"></span> means each part of your code has one job. \
-2) To <span class="blank-line-short"></span> means to reorganize code without changing what it does. \
-3) The questions and answers in our quiz are the <span class="blank-line-short"></span>. \
-4) The HTML structure and what the user sees is the <span class="blank-line-short"></span>. \
-5) Scoring and answer checking are part of the <span class="blank-line-short"></span>. \
-6) Colors, fonts, and layout are the <span class="blank-line-short"></span>. \
-7) To <span class="blank-line-short"></span> means to pull code out into its own file or function. \
-8) A <span class="blank-line-short"></span> is a self-contained piece of code that does one thing. \
-9) How files and folders are organized is called the <span class="blank-line-short"></span>. \
-10) A <span class="blank-line-short"></span> is when changing one part accidentally changes something else.
+1. <span class="blank-line-short"></span> means each part of your code has one job.
+2. To <span class="blank-line-short"></span> means to reorganize code without changing what it does.
+3. The questions and answers in our quiz are the <span class="blank-line-short"></span>.
+4. The HTML structure and what the user sees is the <span class="blank-line-short"></span>.
+5. Scoring and answer checking are part of the <span class="blank-line-short"></span>.
+6. Colors, fonts, and layout are the <span class="blank-line-short"></span>.
+7. To <span class="blank-line-short"></span> means to pull code out into its own file or function.
+8. A <span class="blank-line-short"></span> is a self-contained piece of code that does one thing.
+9. How files and folders are organized is called the <span class="blank-line-short"></span>.
+10. A <span class="blank-line-short"></span> is when changing one part accidentally changes something else.
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## Quick Checks
 

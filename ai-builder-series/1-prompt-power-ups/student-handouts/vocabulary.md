@@ -18,18 +18,18 @@ print_friendly: true
 
 ## Fill In the Blanks
 
-1) A <span class="blank-line-short"></span> is the text you type to tell AI what to do. \
-2) The <span class="blank-line-short"></span> tells AI who to pretend to be. \
-3) <span class="blank-line-short"></span> is background information about your project. \
-4) The <span class="blank-line-short"></span> is the specific thing you want AI to do. \
-5) A <span class="blank-line-short"></span> is a rule or limit you set for AI. \
-6) An <span class="blank-line-short"></span> shows AI what the output should look like. \
-7) To <span class="blank-line-short"></span> means to repeat and improve each time. \
-8) A <span class="blank-line-short"></span> is a saved prompt that runs before every conversation. \
-9) To <span class="blank-line-short"></span> means to check if AI's output matches what you wanted. \
-10) <span class="blank-line-short"></span> stands for Model Context Protocol.
+1. A <span class="blank-line-short"></span> is the text you type to tell AI what to do.
+2. The <span class="blank-line-short"></span> tells AI who to pretend to be.
+3. <span class="blank-line-short"></span> is background information about your project.
+4. The <span class="blank-line-short"></span> is the specific thing you want AI to do.
+5. A <span class="blank-line-short"></span> is a rule or limit you set for AI.
+6. An <span class="blank-line-short"></span> shows AI what the output should look like.
+7. To <span class="blank-line-short"></span> means to repeat and improve each time.
+8. A <span class="blank-line-short"></span> is a saved prompt that runs before every conversation.
+9. To <span class="blank-line-short"></span> means to check if AI's output matches what you wanted.
+10. <span class="blank-line-short"></span> stands for Model Context Protocol.
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## Quick Checks
 

@@ -7,7 +7,7 @@ section: Instructor Notes
 
 # Save Points Timing Guide (2 Hours)
 
-**Audience**: Ages 10-16, completed Workshops 1-2.
+**Audience**: Ages 10-16, completed Workshops 1-2. \
 **Goal**: Use git commits, write test cases, and follow the save-change-test loop.
 
 ## 0:00-0:10 — The "Oh No" Moment

@@ -83,7 +83,7 @@ Sketch out the rooms in your RPG. Draw a box for each room and arrows for exits.
 | | | |
 | | | |
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## 6) Class Anatomy
 

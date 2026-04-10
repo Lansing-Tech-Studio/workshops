@@ -7,7 +7,7 @@ section: Instructor Notes
 
 # Prompt Power-Ups Timing Guide (2 Hours)
 
-**Audience**: Ages 10-16, basic computer familiarity.
+**Audience**: Ages 10-16, basic computer familiarity. \
 **Goal**: Write clear prompts, evaluate AI output, iterate, and use Playwright MCP.
 
 ## 0:00-0:15 — Welcome and Tool Setup

@@ -7,7 +7,7 @@ section: Instructor Notes
 
 # One Thing at a Time Timing Guide (2 Hours)
 
-**Audience**: Ages 10-16, completed Workshop 1 (Prompt Power-Ups).
+**Audience**: Ages 10-16, completed Workshop 1 (Prompt Power-Ups). \
 **Goal**: Separate concerns in the quiz app, one piece at a time, verifying after each.
 
 ## 0:00-0:10 — Review and Reconnect

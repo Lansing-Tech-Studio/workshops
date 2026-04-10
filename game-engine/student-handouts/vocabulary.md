@@ -28,7 +28,7 @@ print_friendly: true
 7. <span class="blank-line-short"></span> is Godot's scripting language.
 8. <span class="blank-line-short"></span> simulates gravity and movement rules.
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## Quick Checks
 

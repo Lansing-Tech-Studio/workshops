@@ -45,7 +45,7 @@ What changed: <span class="blank-line-long"></span>
 
 What changed: <span class="blank-line-long"></span>
 
-<div style="page-break-after: always;"></div>
+<div class="page-break-after"></div>
 
 ## 4) Playwright MCP Notes
 
