@@ -200,6 +200,11 @@ navigation:
             url: /game-mechanics-and-logic/instructor-notes/timing-guide
   - title: Project Sprint
     url: /project-sprint/
+    subnav:
+      - title: Week 1
+        url: /project-sprint/
+      - title: Week 2
+        url: /project-sprint/week-2/
   - title: "AI Builder Series"
     url: /ai-builder-series/
     subnav:
