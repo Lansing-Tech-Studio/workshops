@@ -40,7 +40,6 @@ print_friendly: true
 
 - Draw a line matching each concept to its description:
 
-  | | |
   |---|---|
   | `def greet(name):` | Creates an object from a class |
   | `player = Player("Alex")` | Defines a function with a parameter |

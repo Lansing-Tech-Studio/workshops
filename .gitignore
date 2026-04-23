@@ -6,3 +6,11 @@ __pycache__/
 .claude/
 .screenshots/
 .playwright-mcp/
+
+# PlatformIO
+.pio/
+.ccls
+.ccls-cache/
+compile_commands.json
+.clang_complete
+.gcc-flags.json
