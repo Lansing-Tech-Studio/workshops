@@ -64,3 +64,9 @@ You'll have **5 minutes to present** on the big screen, followed by **2 minutes 
 ### What to Wear
 
 Business casual — think polo with dark jeans/khakis, or wear something that fits the theme of your project (e.g. a Minecraft shirt if your project is Minecraft-related).
+
+\
+![Student wearing business casual polo shirt]({{ site.baseurl }}/assets/images/presenter-polo.png){:style="max-width: 100%;"}
+
+\
+![Student wearing themed T-shirt]({{ site.baseurl }}/assets/images/presenter-themed.png){:style="max-width: 100%;"}
