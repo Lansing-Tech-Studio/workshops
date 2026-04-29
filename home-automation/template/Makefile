@@ -2,21 +2,29 @@
 #SHELL := /bin/bash
 #PATH := /usr/local/bin:$(PATH)
 
+.PHONY: all upload monitor clean program uploadfs update test
+
 all:
-	pio -f -c vim run
+	pio run -e esp32dev
 
 upload:
-	pio -f -c vim run --target upload
+	pio run -e esp32dev --target upload
+
+monitor:
+	pio run -e esp32dev --target upload --target monitor
 
 clean:
-	pio -f -c vim run --target clean
+	pio run -e esp32dev --target clean
 
 program:
-	pio -f -c vim run --target program
+	pio run -e esp32dev --target program
 
 uploadfs:
-	pio -f -c vim run --target uploadfs
+	pio run -e esp32dev --target uploadfs
 
 update:
-	pio -f -c vim update
+	pio run -e esp32dev --target update
 
+test:
+	pio run -e native --target clean
+	pio test -e native
