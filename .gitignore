@@ -14,3 +14,6 @@ __pycache__/
 compile_commands.json
 .clang_complete
 .gcc-flags.json
+
+# Local WiFi credentials for ESP32 sketches
+**/include/secrets.h
