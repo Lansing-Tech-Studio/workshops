@@ -1,0 +1,301 @@
+---
+layout: default
+title: Hardware Cost Calculator
+workshop: Home Automation with ESP32
+permalink: /home-automation/cost-calculator/
+---
+
+<style>
+  .calc-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .calc-controls {
+    background: #f4f6f8;
+    border: 1px solid #d8dde3;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .calc-controls label {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .calc-controls input[type="number"] {
+    font-size: 1.25rem;
+    padding: 0.4rem 0.6rem;
+    width: 6rem;
+    border: 1px solid #b6bcc4;
+    border-radius: 6px;
+  }
+
+  .calc-controls .hint {
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  table.calc {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+
+  table.calc th,
+  table.calc td {
+    border: 1px solid #d8dde3;
+    padding: 0.55rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    color: #1a1a1a;
+    background: #ffffff;
+  }
+
+  table.calc thead th {
+    background: #eef1f4;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  table.calc td.num,
+  table.calc th.num {
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  table.calc tfoot td {
+    font-weight: 700;
+    background: #f8f9fb;
+    color: #1a1a1a;
+  }
+
+  table.calc input.price {
+    width: 5.5rem;
+    padding: 0.25rem 0.4rem;
+    border: 1px solid #c6ccd3;
+    border-radius: 4px;
+    text-align: right;
+    font: inherit;
+  }
+
+  table.calc a {
+    text-decoration: none;
+  }
+
+  table.calc a:hover {
+    text-decoration: underline;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .summary .stat {
+    background: #1a1a1a;
+    color: #f0f0f0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .summary .stat .label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .summary .stat .value {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-top: 0.25rem;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: #555;
+    border-left: 3px solid #c6ccd3;
+    padding: 0.5rem 0.85rem;
+    background: #fafbfc;
+  }
+</style>
+
+<div class="calc-wrap">
+
+  <h1>Hardware Cost Calculator</h1>
+
+  <p>Enter the number of students and the calculator figures out how many of each
+    pack to buy, total cost, and cost per student. Prices as of 4/30/2026 are pre-filled from the
+    Amazon links in <a href="{{ site.baseurl }}/home-automation/hardware/">hardware.md</a>
+    and can be updated inline if they change.</p>
+
+  <div class="calc-controls">
+    <label for="students">Number of students:</label>
+    <input type="number" id="students" min="1" value="40" step="1">
+    <label for="spare">Spare buffer *:</label>
+    <input type="number" id="spare" min="0" value="5" step="1">
+    <span class="hint">* % extra units to cover misfires, breakage, late sign-ups</span>
+  </div>
+
+  <table class="calc" id="bom">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th class="num">Per student</th>
+        <th class="num">Pack size</th>
+        <th class="num">Price / pack</th>
+        <th class="num">Units needed</th>
+        <th class="num">Packs to buy</th>
+        <th class="num">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody><!-- populated by JS --></tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6" class="num">Total</td>
+        <td class="num" id="grandTotal">$0.00</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="summary">
+    <div class="stat">
+      <div class="label">Students</div>
+      <div class="value" id="sumStudents">20</div>
+    </div>
+    <div class="stat">
+      <div class="label">Total cost</div>
+      <div class="value" id="sumTotal">$0.00</div>
+    </div>
+    <div class="stat">
+      <div class="label">Cost / student</div>
+      <div class="value" id="sumPerStudent">$0.00</div>
+    </div>
+  </div>
+
+  <p class="note">
+    USB-C cables are not included — students bring their own laptop and cable, or
+    share from a classroom set. Tax and shipping are not included; Amazon Prime
+    shipping was assumed for the per-pack prices shown.
+  </p>
+
+</div>
+
+<script>
+  // Per-student requirements + Amazon pack info.
+  // Prices captured 2026-04-30 from the Amazon links in hardware.md.
+  const items = [
+    {
+      name: "ESP32 DevKit V1 (USB-C)",
+      perStudent: 1,
+      packSize: 3,
+      price: 19.99,
+      url: "https://www.amazon.com/dp/B0D8T53CQ5"
+    },
+    {
+      name: "DHT22 / AM2302 sensor",
+      perStudent: 1,
+      packSize: 5,
+      price: 9.95,
+      url: "https://www.amazon.com/dp/B0DQ8L629K"
+    },
+    {
+      name: "RGB LED, common cathode",
+      perStudent: 1,
+      packSize: 100,
+      price: 8.99,
+      url: "https://www.amazon.com/dp/B077XGF3YR"
+    },
+    {
+      name: "220 \u03A9 resistor",
+      perStudent: 3,
+      packSize: 100,
+      price: 4.99,
+      url: "https://www.amazon.com/dp/B0BDKQSZHM"
+    },
+    {
+      name: "10 k\u03A9 resistor",
+      perStudent: 1,
+      packSize: 100,
+      price: 4.97,
+      url: "https://www.amazon.com/dp/B0B4JFPHTW"
+    },
+    {
+      name: "400-point breadboard",
+      perStudent: 1,
+      packSize: 6,
+      price: 8.99,
+      url: "https://www.amazon.com/dp/B0CYPVMK9J"
+    },
+    {
+      name: "Male-to-male jumper wires",
+      perStudent: 7,
+      packSize: 40,
+      price: 3.99,
+      url: "https://www.amazon.com/dp/B0BRTJQZRD"
+    }
+  ];
+
+  const fmt = n => "$" + n.toFixed(2);
+  const tbody = document.querySelector("#bom tbody");
+  const studentsEl = document.getElementById("students");
+  const spareEl = document.getElementById("spare");
+
+  // Build rows once, then recompute on input.
+  items.forEach((item, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><a href="${item.url}" target="_blank" rel="noopener">${item.name}</a></td>
+      <td class="num">${item.perStudent}</td>
+      <td class="num">${item.packSize}</td>
+      <td class="num">$<input class="price" type="number" min="0" step="0.01"
+            value="${item.price.toFixed(2)}" data-i="${i}"></td>
+      <td class="num" data-cell="units">0</td>
+      <td class="num" data-cell="packs">0</td>
+      <td class="num" data-cell="subtotal">$0.00</td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  function recompute() {
+    const students = Math.max(0, parseInt(studentsEl.value, 10) || 0);
+    const spare = Math.max(0, parseFloat(spareEl.value) || 0) / 100;
+    let grand = 0;
+
+    tbody.querySelectorAll("tr").forEach((tr, i) => {
+      const item = items[i];
+      const priceInput = tr.querySelector("input.price");
+      const price = Math.max(0, parseFloat(priceInput.value) || 0);
+      item.price = price;
+
+      const needed = Math.ceil(students * item.perStudent * (1 + spare));
+      const packs = needed === 0 ? 0 : Math.ceil(needed / item.packSize);
+      const subtotal = packs * price;
+      grand += subtotal;
+
+      tr.querySelector('[data-cell="units"]').textContent = needed;
+      tr.querySelector('[data-cell="packs"]').textContent = packs;
+      tr.querySelector('[data-cell="subtotal"]').textContent = fmt(subtotal);
+    });
+
+    document.getElementById("grandTotal").textContent = fmt(grand);
+    document.getElementById("sumStudents").textContent = students;
+    document.getElementById("sumTotal").textContent = fmt(grand);
+    document.getElementById("sumPerStudent").textContent =
+      fmt(students > 0 ? grand / students : 0);
+  }
+
+  document.querySelector(".calc-wrap").addEventListener("input", recompute);
+  recompute();
+</script>
