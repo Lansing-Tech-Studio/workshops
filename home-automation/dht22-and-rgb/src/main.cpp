@@ -1,5 +1,10 @@
 #include <Arduino.h>
 #include <DHT.h>
+#include <WiFi.h>
+#include <WebServer.h>
+#include <ArduinoJson.h>
+
+#include "secrets.h" // defines WIFI_SSID and WIFI_PASSWORD
 
 // ---- DHT22 ----
 #define DHTPIN 4
@@ -41,6 +46,43 @@ DHT dht(DHTPIN, DHTTYPE);
 // ---- Read interval ----
 const unsigned long READ_INTERVAL_MS = 2500;
 unsigned long lastReadMs = 0;
+
+// ---- Web server ----
+WebServer server(80);
+float cachedTempC = NAN;
+float cachedHumidity = NAN;
+unsigned long lastSuccessMs = 0;
+const char *cachedColorLabel = "UNKNOWN";
+
+void handleSensor()
+{
+  JsonDocument doc;
+  if (isnan(cachedTempC) || isnan(cachedHumidity))
+  {
+    doc["status"] = "error";
+    doc["message"] = "no valid reading yet";
+  }
+  else
+  {
+    doc["status"] = "ok";
+    doc["temp_c"] = cachedTempC;
+    doc["temp_f"] = cachedTempC * 9.0 / 5.0 + 32.0;
+    doc["humidity"] = cachedHumidity;
+    doc["color"] = cachedColorLabel;
+    doc["age_ms"] = millis() - lastSuccessMs;
+  }
+  String response;
+  serializeJson(doc, response);
+  server.sendHeader("Access-Control-Allow-Origin", "*");
+  server.sendHeader("Access-Control-Allow-Methods", "GET");
+  server.send(200, "application/json", response);
+}
+
+void handleNotFound()
+{
+  server.sendHeader("Access-Control-Allow-Origin", "*");
+  server.send(404, "application/json", "{\"error\":\"not found\"}");
+}
 
 void setColor(uint8_t r, uint8_t g, uint8_t b)
 {
@@ -138,11 +180,43 @@ void setup()
   setColor(0, 0, 0);
   delay(200);
 
+  // Connect to WiFi
+  Serial.printf("Connecting to WiFi: %s\n", WIFI_SSID);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+
+  unsigned long wifiStart = millis();
+  while (WiFi.status() != WL_CONNECTED)
+  {
+    delay(500);
+    Serial.print(".");
+    if (millis() - wifiStart > 30000)
+    {
+      Serial.println("\nWiFi connect timeout. Restarting.");
+      ESP.restart();
+    }
+  }
+  Serial.println();
+  Serial.print("Connected. IP address: ");
+  Serial.println(WiFi.localIP());
+  Serial.print("MAC address: ");
+  Serial.println(WiFi.macAddress());
+
+  server.on("/api/sensor", HTTP_GET, handleSensor);
+  server.onNotFound(handleNotFound);
+  server.begin();
+  Serial.println("HTTP server started on port 80");
+  Serial.print("Try: http://");
+  Serial.print(WiFi.localIP());
+  Serial.println("/api/sensor");
+
   delay(1000);
 }
 
 void loop()
 {
+  server.handleClient();
+
   if (millis() - lastReadMs >= READ_INTERVAL_MS)
   {
     lastReadMs = millis();
@@ -155,12 +229,18 @@ void loop()
       return;
     }
 
+    cachedTempC = t;
+    cachedHumidity = h;
+    lastSuccessMs = millis();
+
     Serial.printf("T: %.1f C  H: %.1f%%  ->  ", t, h);
 #if COLOR_SOURCE == SOURCE_TEMPERATURE
-    Serial.println(labelForTemp(t));
+    cachedColorLabel = labelForTemp(t);
+    Serial.println(cachedColorLabel);
     updateColorFromTemp(t);
 #else
-    Serial.println(labelForHumidity(h));
+    cachedColorLabel = labelForHumidity(h);
+    Serial.println(cachedColorLabel);
     updateColorFromHumidity(h);
 #endif
   }

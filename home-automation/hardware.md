@@ -16,6 +16,10 @@ Technical details for the ESP32 temperature-to-color project.
 
 A reference schematic is published on Cirkit Designer: <https://app.cirkitdesigner.com/project/03023476-8be4-4019-81a9-b4774ba130f9>. The schematic shows extension wires on the LED and DHT22 to keep the diagram readable; the physical build seats both components directly in the breadboard.
 
+> **Need to buy parts for a class?** Use the
+> [Hardware Cost Calculator]({{ site.baseurl }}/home-automation/cost-calculator/)
+> to convert a student count into pack quantities, total cost, and cost per student.
+
 ## Bill of Materials
 
 | Component       | Part                               | Notes                                                         |
@@ -115,7 +119,11 @@ RGB LED PWM uses the built-in ESP32 `LEDC` peripheral (no extra library needed).
 - Reference schematic (Cirkit Designer): <https://app.cirkitdesigner.com/project/03023476-8be4-4019-81a9-b4774ba130f9>
 - ESP32 DevKit V1 pinout: search "ESP32 DevKit V1 DOIT pinout" (Elegoo uses this standard layout)
 - DHT22 / AM2302 datasheet: Aosong AM2302
-- Elegoo product page: <https://www.amazon.com/dp/B0D8T53CQ5>
-- RGB LED product page: <https://www.amazon.com/dp/B077XGF3YR>
-- DHT22 product page: <https://www.amazon.com/dp/B0DQ8L629K>
 - Amazon list with all components: <https://www.amazon.com/hz/wishlist/ls/HMU4FBJGQS83>
+  - Elegoo product page (3 pack): <https://www.amazon.com/dp/B0D8T53CQ5>
+  - RGB LED product page (100 pack): <https://www.amazon.com/dp/B077XGF3YR>
+  - DHT22 product page (5 pack): <https://www.amazon.com/dp/B0DQ8L629K>
+  - 220 Ω resistors (100 pack): <https://www.amazon.com/dp/B0BDKQSZHM>
+  - 10k Ω resistors (100 pack): <https://www.amazon.com/dp/B0B4JFPHTW>
+  - 400 point breadboard (6 pack): <https://www.amazon.com/dp/B0CYPVMK9J>
+  - Male-to-male jumper wires (40 pack): <https://www.amazon.com/dp/B0BRTJQZRD>
