@@ -31,6 +31,7 @@ preview: |
 - Starter Code:
   - [LED Blink]({{ site.baseurl }}/home-automation/onboard-LED-blink/)
   - [Random Blink]({{ site.baseurl }}/home-automation/random-blink/)
+  - [DHT22 + RGB (full project)]({{ site.baseurl }}/home-automation/dht22-and-rgb/)
 
 ## 1. Workshop Goals
 
@@ -46,9 +47,20 @@ By the end of this camp, every student should be able to:
 
 ## 2. The Project
 
-Students build a **temperature-to-color display**: a DHT22 sensor reads the room temperature and an RGB LED changes color to match — cool blue for cold, green for comfortable, warm red for hot. The finished circuit fits on a breadboard and runs off a USB power bank, so students can take it home.
+Students build a **temperature/humidity-to-color display**: a DHT22 reads the room temperature and humidity, and an RGB LED changes color based on the reading. The default firmware drives the color from **humidity** (because students can change it instantly by breathing on the sensor), with a one-line switch to drive the color from **temperature** instead. The finished circuit fits on a single half-size breadboard and runs off a USB power bank, so students can take it home.
 
-### Color mapping (starting point — students can customize)
+### Color mapping (starting points — students can customize)
+
+**Humidity-driven (default in [`dht22-and-rgb/`]({{ site.baseurl }}/home-automation/dht22-and-rgb/)):**
+
+| Humidity (% RH) | LED color | Vibe        |
+| --------------- | --------- | ----------- |
+| Below 30 %      | Red       | Very dry    |
+| 30–50 %         | Yellow    | Dry side    |
+| 50–70 %         | Green     | Comfortable |
+| Above 70 %      | Blue      | Very humid  |
+
+**Temperature-driven (alternate mode):**
 
 | Temperature         | LED color |
 | ------------------- | --------- |
@@ -72,12 +84,13 @@ See [hardware.md]({{ site.baseurl }}/home-automation/hardware) for full details,
 **Each student station needs:**
 
 - 1 × Elegoo ESP32 DevKit V1 (Type-C)
-- 1 × DHT22 module (3-pin, with built-in pull-up)
-- 1 × 5 mm RGB LED, common cathode
-- 3 × 220 Ω resistors
-- 1 × half-size breadboard
-- Jumper wires (assorted)
-- 1 × USB-C cable
+- 1 × DHT22 / AM2302 **bare 4-pin** sensor
+- 1 × 5 mm RGB LED, common cathode (4-pin)
+- 3 × 220 Ω resistors (one per LED color channel)
+- 1 × 10 kΩ resistor (DHT22 DATA pull-up)
+- 1 × 400-hole half-size breadboard
+- 7 × male-to-male Dupont jumper wires
+- 1 × USB-C cable (data + power for programming; just power if using a USB power bank at home)
 - Laptop with PlatformIO + VS Code installed
 
 **Per-room supplies:**
@@ -158,7 +171,7 @@ Students wire the onboard LED blink circuit from the printed diagram and upload 
 
 Add the DHT22 to the existing circuit (it can share the breadboard). No RGB LED yet.
 
-- Wire: VCC → 3V3, GND → GND, DATA → GPIO 4
+- Wire: VCC → 3V3, GND → GND, DATA → GPIO 4, plus a **10 kΩ pull-up between DATA and 3V3** (the bare 4-pin sensor has no built-in pull-up). Leave the NC pin unconnected.
 - Walk through the library setup in `platformio.ini`
 - Live-code reading temperature + humidity in the Serial Monitor
 - **Milestone check**: every student sees real temperature/humidity numbers printing
@@ -168,12 +181,12 @@ Add the DHT22 to the existing circuit (it can share the breadboard). No RGB LED 
 
 Add the RGB LED circuit (three resistors, three GPIO pins). Write the color-mapping function together.
 
-- Wire: R → 220 Ω → GPIO 25, G → 220 Ω → GPIO 26, B → 220 Ω → GPIO 27, cathode → GND
-- Introduce `ledcSetup` / `ledcWrite` (LEDC PWM) or `analogWrite` for color mixing
-- Test each channel individually first (red only, green only, blue only)
-- Introduce the temperature ranges and color mapping
+- Wire: R → 220 Ω → GPIO 18, G → 220 Ω → GPIO 19, B → 220 Ω → GPIO 23, cathode (longest leg) → GND
+- Introduce `ledcSetup` / `ledcAttachPin` / `ledcWrite` (LEDC PWM) for color mixing
+- Test each channel individually first (red only, green only, blue only) — the firmware's startup self-test cycles R → G → B for exactly this reason
+- Introduce the humidity (default) and temperature thresholds and color mapping
 - Write `setColor(r, g, b)` helper together
-- **Milestone check**: LED changes color when you warm the sensor with your hand
+- **Milestone check**: LED changes color when you breathe on the sensor (humidity mode) or warm it with your hand (temperature mode; less sensitive)
 
 ### 3:05–3:30 — Integration + Debugging
 

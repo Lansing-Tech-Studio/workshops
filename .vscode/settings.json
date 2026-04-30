@@ -8,5 +8,18 @@
   "editor.minimap.enabled": false,
   "terminal.integrated.fontSize": 14,
   "code-runner.runInTerminal": true,
-  "code-runner.saveFileBeforeRun": true
+  "code-runner.saveFileBeforeRun": true,
+  "cSpell.words": [
+    "adafruit",
+    "Aosong",
+    "Cirkit",
+    "datasheet",
+    "Datasheets",
+    "Elegoo",
+    "espressif",
+    "LEDC",
+    "microcontroller",
+    "pinout",
+    "WROOM"
+  ]
 }

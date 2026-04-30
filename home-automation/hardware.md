@@ -4,13 +4,17 @@ Technical details for the ESP32 temperature-to-color project.
 
 **Project goal:** A DHT22 reads temperature and humidity; an RGB LED displays a color coded by the current temperature.
 
-## Assumptions (adjust if wrong)
+## Built circuit (source of truth: [`dht22-and-rgb/`]({{ site.baseurl }}/home-automation/dht22-and-rgb/))
 
-- 1 × RGB LED, 1 × DHT22 in the circuit
-- DHT22 is the **bare 4-pin AM2302** variant (no built-in pull-up; requires an external 10 kΩ pull-up on the data line)
+- 1 × RGB LED, 1 × DHT22 share a single **400-hole half-size breadboard**
+- DHT22 is the **bare 4-pin AM2302** variant (no built-in pull-up; an external 10 kΩ pull-up on the DATA line is required)
+- LED and DHT22 are pushed directly into the breadboard (no extension wires)
 - All three LED channels use **220 Ω** resistors (safe for every channel; green/blue run a bit dim — see _LED brightness trade-off_ below)
-- PWM used on all three LED channels so color mixing / fades are possible
-- USB Type-C from the dev machine provides power
+- **7 male-to-male Dupont jumpers** connect the ESP32 to the breadboard rails and signals
+- PWM (ESP32 LEDC peripheral) drives all three LED channels so color mixing and fades are possible
+- USB-C from the dev machine provides power
+
+A reference schematic is published on Cirkit Designer: <https://app.cirkitdesigner.com/project/03023476-8be4-4019-81a9-b4774ba130f9>. The schematic shows extension wires on the LED and DHT22 to keep the diagram readable; the physical build seats both components directly in the breadboard.
 
 ## Bill of Materials
 
@@ -20,31 +24,36 @@ Technical details for the ESP32 temperature-to-color project.
 | Sensor          | DHT22 / AM2302 bare sensor (4-pin) | 3.3 V or 5 V tolerant; **no** built-in pull-up                |
 | Indicator       | 5 mm RGB LED, **common cathode**   | 4 leads: R, GND (longest), G, B                               |
 | Resistors       | 3 × 220 Ω (¼ W)                    | One per LED color channel                                     |
-| Pull-up         | 1 × 10 kΩ (¼ W)                    | Between DHT22 DATA and VCC                                    |
-| Wiring          | Breadboard + jumper wires          |                                                               |
+| Pull-up         | 1 × 10 kΩ (¼ W)                    | Between DHT22 DATA and 3V3                                    |
+| Breadboard      | 1 × 400-hole half-size             | Holds both the DHT22 and the RGB LED                          |
+| Jumpers         | 7 × male-to-male Dupont wires      | ESP32 → breadboard for power, ground, and 4 signals           |
 | Power           | USB-C cable to laptop              | ESP32 USB typically supplies up to 500 mA                     |
 
 ## Pin Assignments
 
-| Signal      | ESP32 GPIO  | Why this pin                                 |
-| ----------- | ----------- | -------------------------------------------- |
-| DHT22 DATA  | **GPIO 4**  | General-purpose, no boot/strapping conflicts |
-| RGB Red     | **GPIO 25** | PWM-capable (LEDC), no strapping conflicts   |
-| RGB Green   | **GPIO 26** | PWM-capable (LEDC), no strapping conflicts   |
-| RGB Blue    | **GPIO 27** | PWM-capable (LEDC), no strapping conflicts   |
-| DHT22 VCC   | **3V3 pin** | DHT22 module works fine at 3.3 V             |
-| DHT22 GND   | **GND**     |                                              |
-| RGB cathode | **GND**     | Common cathode = tie to ground               |
+These match the firmware in [`dht22-and-rgb/src/main.cpp`]({{ site.baseurl }}/home-automation/dht22-and-rgb/src/main.cpp). They were chosen because they sit physically next to each other on the Elegoo DevKit V1 board, none are strapping or input-only pins, and none collide with UART0 (used for upload / Serial Monitor).
+
+| Signal      | ESP32 GPIO  | Why this pin                                                           |
+| ----------- | ----------- | ---------------------------------------------------------------------- |
+| DHT22 DATA  | **GPIO 4**  | General-purpose, no boot/strapping conflicts                           |
+| RGB Red     | **GPIO 18** | PWM-capable (LEDC), no strapping conflicts; physically adjacent to G/B |
+| RGB Green   | **GPIO 19** | PWM-capable (LEDC), no strapping conflicts                             |
+| RGB Blue    | **GPIO 23** | PWM-capable (LEDC), no strapping conflicts                             |
+| DHT22 VCC   | **3V3 pin** | DHT22 works fine at 3.3 V                                              |
+| DHT22 GND   | **GND**     |                                                                        |
+| RGB cathode | **GND**     | Common cathode = tie to ground                                         |
+
+GPIO 25, 26, and 27 are also safe and PWM-capable (and 25/26 add DAC); they're a fine alternate layout if a future build prefers them.
 
 ## Wiring
 
 **RGB LED (common cathode, 4 leads left-to-right on most 5 mm packages: R, GND, G, B — the longest lead is the cathode/GND):**
 
 ```text
-GPIO 25 ── [220 Ω] ── Red leg
+GPIO 18 ── [220 Ω] ── Red leg
 GND       ───────── Common cathode (longest leg)
-GPIO 26 ── [220 Ω] ── Green leg
-GPIO 27 ── [220 Ω] ── Blue leg
+GPIO 19 ── [220 Ω] ── Green leg
+GPIO 23 ── [220 Ω] ── Blue leg
 ```
 
 _Always put the resistor in series with each color leg — never between the cathode and GND, or the channels will fight each other._
@@ -94,16 +103,19 @@ If the green and blue channels look too faint once we test, swap their resistors
 
 ## Libraries (PlatformIO / Arduino)
 
+From [`dht22-and-rgb/platformio.ini`]({{ site.baseurl }}/home-automation/dht22-and-rgb/platformio.ini):
+
 - **`adafruit/DHT sensor library`** (plus its dependency `Adafruit Unified Sensor`) — simple, works everywhere.
 - Alternative: **`beegee-tokyo/DHT sensor library for ESPx`** (a.k.a. `DHTesp`) — ESP32-optimized, non-blocking reads.
 
-RGB LED PWM uses the built-in ESP32 `LEDC` peripheral (no library needed) — or `analogWrite()` in recent Arduino-ESP32 cores, which wraps LEDC.
+RGB LED PWM uses the built-in ESP32 `LEDC` peripheral (no extra library needed). The current firmware uses the **Arduino-ESP32 v2.x LEDC API** (`ledcSetup` + `ledcAttachPin` + `ledcWrite(channel, value)`) because that is what the pinned `espressif32` platform ships. The newer v3.x API (`ledcAttach(pin, freq, resolution)` + `ledcWrite(pin, value)`) is functionally equivalent and a drop-in replacement when the framework version is bumped.
 
 ## Datasheets & References
 
+- Reference schematic (Cirkit Designer): <https://app.cirkitdesigner.com/project/03023476-8be4-4019-81a9-b4774ba130f9>
 - ESP32 DevKit V1 pinout: search "ESP32 DevKit V1 DOIT pinout" (Elegoo uses this standard layout)
 - DHT22 / AM2302 datasheet: Aosong AM2302
 - Elegoo product page: <https://www.amazon.com/dp/B0D8T53CQ5>
 - RGB LED product page: <https://www.amazon.com/dp/B077XGF3YR>
-- DHT22 module product page: <https://www.amazon.com/dp/B0DQ8L629K>
+- DHT22 product page: <https://www.amazon.com/dp/B0DQ8L629K>
 - Amazon list with all components: <https://www.amazon.com/hz/wishlist/ls/HMU4FBJGQS83>
