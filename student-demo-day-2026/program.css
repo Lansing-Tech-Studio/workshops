@@ -805,16 +805,22 @@
   .ask-theme { grid-template-columns: 1fr; }
   .theme-side { border-right: 0; border-bottom: 2px dotted var(--p-gray-2); padding: 0 0 1rem; }
   .theme-questions { grid-template-columns: 1fr; }
+  .journey-road { display: none; }
   .journey-list { grid-template-columns: 1fr; }
-  .journey-list::before, .journey-list::after { display: none; }
-  .step:nth-child(odd), .step:nth-child(even) {
+  /* On mobile, every step uses the same left-aligned layout:
+     icon | number | text.  No alternating sides. */
+  .step:nth-of-type(odd),
+  .step:nth-of-type(even) {
     grid-column: 1;
-    justify-content: flex-start;
+    grid-template-columns: 44px 1.8em 1fr;
     text-align: left;
   }
-  .step:nth-child(odd) .step-text { order: 2; }
-  .step:nth-child(odd) .step-icon { order: 1; }
-  .step:nth-child(odd) .step-num { order: 0; }
+  .step:nth-of-type(odd) .step-icon,
+  .step:nth-of-type(even) .step-icon { grid-column: 1; }
+  .step:nth-of-type(odd) .step-num,
+  .step:nth-of-type(even) .step-num { grid-column: 2; }
+  .step:nth-of-type(odd) .step-text,
+  .step:nth-of-type(even) .step-text { grid-column: 3; }
   .lineup-table { font-size: 0.85rem; }
   .lineup-table thead { display: none; }
   .lineup-table tr { display: block; padding: 0.5rem 0; border-bottom: 2px solid var(--p-navy); }
