@@ -243,6 +243,8 @@ navigation:
             url: /home-automation/instructor-notes/timing-guide
   - title: Learning Checks
     url: /learning-checks
+  - title: Student Demo Day 2026
+    url: /student-demo-day-2026/
 
 # Defaults for all pages
 defaults:
