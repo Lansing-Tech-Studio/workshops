@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Student Demo Day 2026 Intro</title>
+
+  <link rel="stylesheet" href="../assets/revealjs/reset.css">
+  <link rel="stylesheet" href="../assets/revealjs/reveal.css">
+  <link rel="stylesheet" href="../assets/revealjs/theme/black.css">
+  <link rel="stylesheet" href="../assets/revealjs/plugin/highlight/monokai.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@500;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --lts-navy: #0f2f57;
+      --lts-blue: #22b5f0;
+      --lts-green: #7ddf49;
+      --lts-slate: #e9f0ff;
+      --lts-gold: #ffd166;
+    }
+
+    .reveal {
+      font-family: "Nunito", sans-serif;
+      color: #f8fbff;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .reveal h1 {
+      font-size: 2.35em;
+    }
+
+    .reveal h2 {
+      font-size: 1.75em;
+      margin-bottom: 0.2em;
+    }
+
+    .reveal p,
+    .reveal li {
+      font-size: 0.86em;
+      line-height: 1.35;
+    }
+
+    .reveal strong {
+      color: var(--lts-green);
+    }
+
+    .slide-shell {
+      background: radial-gradient(circle at 12% 8%, rgba(125, 223, 73, 0.2), rgba(125, 223, 73, 0) 30%),
+        radial-gradient(circle at 85% 18%, rgba(34, 181, 240, 0.26), rgba(34, 181, 240, 0) 38%),
+        linear-gradient(130deg, #122a4f 0%, #091529 55%, #060d19 100%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      padding: 34px 42px;
+    }
+
+    .hero-title {
+      font-size: 2.8em;
+      line-height: 0.9;
+      margin-bottom: 0.2em;
+    }
+
+    .hero-subtitle {
+      color: var(--lts-slate);
+      margin-bottom: 0.8em;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.8em 0 1.2em;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.47em;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: rgba(10, 18, 34, 0.36);
+    }
+
+    .accent {
+      color: var(--lts-blue);
+    }
+
+    .mini {
+      font-size: 0.53em;
+      color: #d7e8ff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      text-align: left;
+      margin-top: 0.55em;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(7, 17, 35, 0.48);
+      padding: 16px 18px;
+    }
+
+    .r-stack .card {
+      background: #0b1929;
+      width: 100%;
+    }
+
+    .card h3 {
+      font-size: 1.06em;
+      margin: 0 0 8px;
+      color: var(--lts-gold);
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 1em;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      text-align: left;
+      margin-top: 0.35em;
+    }
+
+    .timeline .card li {
+      margin-bottom: 6px;
+    }
+
+    .date {
+      color: var(--lts-blue);
+      font-weight: 800;
+      margin-right: 6px;
+    }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 0.6em;
+      text-align: left;
+    }
+
+    .big-num {
+      display: block;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.2em;
+      color: var(--lts-green);
+      line-height: 0.8;
+      margin-bottom: 0.06em;
+    }
+
+    .prompt-list {
+      text-align: left;
+      margin: 0.4em 0 0;
+      padding-left: 1em;
+    }
+
+    .prompt-list li {
+      margin-bottom: 0.3em;
+    }
+
+    .qr-wrap {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 22px;
+      align-items: center;
+      text-align: left;
+      margin-top: 0.55em;
+    }
+
+    .qr-wrap img {
+      width: 200px;
+      height: 200px;
+      border-radius: 14px;
+      border: 3px solid rgba(255, 255, 255, 0.75);
+      background: #ffffff;
+      justify-self: center;
+    }
+
+    .thank-list {
+      columns: 2;
+      column-gap: 22px;
+      text-align: left;
+      margin-top: 0.4em;
+    }
+
+    .thank-list li {
+      break-inside: avoid;
+      margin-bottom: 0.45em;
+    }
+
+    .thank-name {
+      display: block;
+    }
+
+    .thank-role {
+      display: block;
+      font-size: 0.72em;
+      margin-left: 1.1em;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 900px) {
+
+      .two-col,
+      .timeline,
+      .format-grid,
+      .qr-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .thank-list {
+        columns: 1;
+      }
+
+      .slide-shell {
+        padding: 26px;
+      }
+    }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card 1 fades in automatically when the slide becomes active */
+    .reveal .slides section.present .card-auto {
+      animation: cardFadeIn 0.55s ease 0.2s both;
+    }
+
+    /* Card 1 fades out when any fragment on this slide becomes visible */
+    .reveal .slides section.present.has-visible-fragment .card-auto {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      animation: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div class="slide-shell">
+          <h1 class="hero-title">Student Demo Day</h1>
+          <p class="hero-subtitle">Welcome to the first Lansing Tech Studio Student Demo Day.</p>
+          <div class="pill-row">
+            <span class="pill">Code</span>
+            <span class="pill">Create</span>
+            <span class="pill">Collaborate</span>
+            <span class="pill">Impact</span>
+          </div>
+          <p>We are excited to share what our students have built and learned this spring.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>About Lansing Tech Studio</h2>
+          <p><em>The Lansing Tech Studio empowers the next generation by igniting passion for technology, innovation,
+              leadership, and service.</em></p>
+          <div class="r-stack" style="margin-top: 0.55em;">
+            <div class="card card-auto">
+              <h3>Program Highlights</h3>
+              <ul>
+                <li>🍁 Fall - Competitive Robotics</li>
+                <li>🌱 Spring - Workshops and Demo Day</li>
+                <li>☀️ Summer - Robotics Camp</li>
+                <li>📅 Community service and engagement</li>
+              </ul>
+            </div>
+            <div class="card fragment fade-up">
+              <h3>Why It Matters</h3>
+              <ul>
+                <li>💪 Students build confidence through real projects</li>
+                <li>🎨 Creativity and critical thinking grow together</li>
+                <li>🤝 Teamwork and communication every week</li>
+                <li>🌍 Technology as a tool for community impact</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Workshops Journey road-map slide (custom fragment handling) -->
+      <section id="road-slide" data-road-step="0">
+        <style>
+          #road-canvas-wrap {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+          }
+
+          #road-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          .road-stop {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.6);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+            width: 80px;
+          }
+
+          .road-stop.visible {
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          .road-stop img {
+            width: 64px;
+            height: 64px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            display: block;
+          }
+
+          .road-stop .stop-label {
+            font-size: 0.28em;
+            font-weight: 800;
+            color: #f8fbff;
+            text-align: center;
+            margin-top: 4px;
+            line-height: 1.2;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+            max-width: 80px;
+          }
+
+          .road-stop .stop-date {
+            font-size: 0.24em;
+            color: var(--lts-blue);
+            font-weight: 800;
+          }
+
+          #road-slide h2 {
+            margin-bottom: 0.2em;
+          }
+
+          #road-hint {
+            font-size: 0.38em;
+            color: #8ab0d8;
+            margin-top: 0.3em;
+          }
+        </style>
+
+        <div class="slide-shell" style="padding-bottom: 18px;">
+          <h2>Workshops Journey</h2>
+          <div id="road-canvas-wrap">
+            <svg id="road-svg" viewBox="0 0 900 480" preserveAspectRatio="none"></svg>
+            <!-- stops injected by JS -->
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            const WORKSHOPS = [
+              { date: "1/15", label: "Tech\nFundamentals", img: "../assets/images/workshops-thumbnails/tech-fundamentals.png" },
+              { date: "1/22", label: "JavaScript\nBasics", img: "../assets/images/workshops-thumbnails/javascript-basics.png" },
+              { date: "1/29", label: "Draw\nIt First", img: "../assets/images/workshops-thumbnails/draw-it-first.png" },
+              { date: "2/5", label: "Interactive\nHTML & JS", img: "../assets/images/workshops-thumbnails/interactive-html-and-javascript.png" },
+              { date: "2/12", label: "Game\nEngine Tools", img: "../assets/images/workshops-thumbnails/game-engine-tools.png" },
+              { date: "2/19", label: "Python\nIntro", img: "../assets/images/workshops-thumbnails/python-introduction.png" },
+              { date: "2/26", label: "Digital\nAnimation", img: "../assets/images/workshops-thumbnails/digital-animation.png" },
+              { date: "3/5", label: "AI Playground\nfor Kids", img: "../assets/images/workshops-thumbnails/ai-layground-for-kids.png" },
+              { date: "3/12", label: "Sound\nDesign", img: "../assets/images/workshops-thumbnails/sound-design.png" },
+              { date: "3/19", label: "Advanced\nPython", img: "../assets/images/workshops-thumbnails/advanced-python.png" },
+              { date: "3/19", label: "Market\nResearch", img: "../assets/images/workshops-thumbnails/market-research-and-business-plan.png" },
+              { date: "3/26", label: "Game Design:\nMechanics", img: "../assets/images/workshops-thumbnails/game-design-mechanics-and-logic.png" },
+              { date: "4/2", label: "Video\nProduction", img: "../assets/images/workshops-thumbnails/video-production.png" },
+            ];
+
+            // Layout: serpentine rows, 7 stops per row
+            // Row 0: left→right at y≈30%,  Row 1: right→left at y≈70%
+            const COLS = 7;
+            const ROW_Y = [110, 310]; // px in a 480-tall canvas
+            const MARGIN_X = 60;
+            const CANVAS_W = 900;
+
+            function stopPos(i) {
+              const row = Math.floor(i / COLS);
+              const col = i % COLS;
+              const slots = (i < COLS) ? COLS : (WORKSHOPS.length - COLS);
+              const stepW = (CANVAS_W - MARGIN_X * 2) / (slots - 1 || 1);
+              const x = (row % 2 === 0)
+                ? MARGIN_X + col * stepW
+                : CANVAS_W - MARGIN_X - col * stepW;
+              return { x, y: ROW_Y[row] };
+            }
+
+            // Path for a single segment connecting stop[from] to stop[to]
+            function segmentPath(from, to) {
+              const p = stopPos(from);
+              const q = stopPos(to);
+              const fromRow = Math.floor(from / COLS);
+              const toRow = Math.floor(to / COLS);
+              if (fromRow !== toRow) {
+                return `M ${p.x} ${p.y} Q ${p.x} ${(p.y + q.y) / 2} ${q.x} ${q.y}`;
+              }
+              return `M ${p.x} ${p.y} L ${q.x} ${q.y}`;
+            }
+
+            const NS = 'http://www.w3.org/2000/svg';
+
+            function makePath(attrs) {
+              const el = document.createElementNS(NS, 'path');
+              for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+              return el;
+            }
+
+            let initialized = false;
+            let currentStep = -1;
+            let stopEls = [];
+            // segments[i] = { casing, surface, dash } for the road from stop i → stop i+1
+            let segments = [];
+
+            function init() {
+              if (initialized) return;
+              initialized = true;
+
+              const wrap = document.getElementById('road-canvas-wrap');
+              const svg = document.getElementById('road-svg');
+
+              svg.innerHTML = `
+              <defs>
+                <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#22b5f0"/>
+                  <stop offset="100%" stop-color="#7ddf49"/>
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+            `;
+
+              // Pre-create one set of path elements per segment, all hidden
+              for (let i = 0; i < WORKSHOPS.length - 1; i++) {
+                const d = segmentPath(i, i + 1);
+
+                const casing = makePath({ fill: 'none', stroke: 'rgba(0,0,0,0.45)', 'stroke-width': '18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', d });
+                const surface = makePath({ fill: 'none', stroke: 'url(#roadGrad)', 'stroke-width': '10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', filter: 'url(#glow)', d });
+                const dash = makePath({ fill: 'none', stroke: 'rgba(255,255,255,0.35)', 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-dasharray': '14 10', d });
+
+                casing.style.opacity = '0';
+                surface.style.opacity = '0';
+                dash.style.opacity = '0';
+
+                svg.appendChild(casing);
+                svg.appendChild(surface);
+                svg.appendChild(dash);
+
+                segments.push({ casing, surface, dash });
+              }
+
+              // Create stop DOM elements
+              WORKSHOPS.forEach((w, i) => {
+                const pos = stopPos(i);
+                const pct_x = (pos.x / CANVAS_W) * 100;
+                const pct_y = (pos.y / 480) * 100;
+
+                const el = document.createElement('div');
+                el.className = 'road-stop';
+                el.style.left = `calc(${pct_x}% - 40px)`;
+                el.style.top = `calc(${pct_y}% - 50px)`;
+
+                const lines = w.label.split('\n');
+                el.innerHTML = `
+                <img src="${w.img}" alt="${lines.join(' ')}">
+                <span class="stop-date">${w.date}</span>
+                <span class="stop-label">${lines.join('<br>')}</span>
+              `;
+                wrap.appendChild(el);
+                stopEls.push(el);
+              });
+            }
+
+            // Draw segment i in with an animation (road grows from start to end)
+            function showSegment(i) {
+              const seg = segments[i];
+              const len = (seg.surface.getTotalLength ? seg.surface.getTotalLength() : 500) + 5;
+
+              [seg.casing, seg.surface].forEach(el => {
+                el.style.opacity = '1';
+                el.style.transition = 'none';
+                el.style.strokeDasharray = len;
+                el.style.strokeDashoffset = len;
+                void el.getBoundingClientRect();
+                el.style.transition = 'stroke-dashoffset 0.5s ease';
+                el.style.strokeDashoffset = '0';
+                // Clear the draw-on dasharray once done so the segment is a clean solid stroke
+                setTimeout(() => {
+                  el.style.strokeDasharray = 'none';
+                  el.style.strokeDashoffset = '';
+                  el.style.transition = '';
+                }, 510);
+              });
+
+              // Dash fades in after the road has mostly drawn
+              setTimeout(() => {
+                seg.dash.style.transition = 'opacity 0.3s ease';
+                seg.dash.style.opacity = '1';
+              }, 300);
+            }
+
+            // Instantly hide segment i (used when going backward)
+            function hideSegment(i) {
+              const seg = segments[i];
+              [seg.casing, seg.surface, seg.dash].forEach(el => {
+                el.style.transition = 'none';
+                el.style.opacity = '0';
+                el.style.strokeDasharray = '';
+                el.style.strokeDashoffset = '';
+              });
+            }
+
+            function renderStep(step) {
+              init();
+
+              if (step === -1) {
+                // Full reset when entering the slide fresh
+                stopEls.forEach(el => el.classList.remove('visible'));
+                segments.forEach((_, i) => hideSegment(i));
+                currentStep = -1;
+                const hint = document.getElementById('road-hint');
+                if (hint) hint.style.opacity = '1';
+                return;
+              }
+
+              if (step > currentStep) {
+                // Going forward: reveal new stops and animate new segments
+                for (let i = currentStep + 1; i <= step; i++) {
+                  stopEls[i].classList.add('visible');
+                  if (i > 0) showSegment(i - 1);
+                }
+              } else {
+                // Going backward: hide stops and segments beyond step
+                for (let i = step + 1; i <= currentStep; i++) {
+                  stopEls[i].classList.remove('visible');
+                  if (i > 0) hideSegment(i - 1);
+                }
+              }
+
+              currentStep = step;
+
+              const hint = document.getElementById('road-hint');
+              if (hint) hint.style.opacity = step >= WORKSHOPS.length - 1 ? '0' : '1';
+            }
+
+            // Hook into Reveal.js fragment system
+            document.addEventListener('DOMContentLoaded', function () {
+              if (typeof Reveal === 'undefined') return;
+
+              Reveal.on('slidechanged', function (e) {
+                if (e.currentSlide && e.currentSlide.id === 'road-slide') {
+                  renderStep(-1);
+                }
+              });
+
+              Reveal.on('fragmentshown', function (e) {
+                const slide = e.fragment && e.fragment.closest('section');
+                if (slide && slide.id === 'road-slide') {
+                  const idx = parseInt(e.fragment.dataset.roadIdx);
+                  if (!isNaN(idx)) renderStep(idx);
+                }
+              });
+
+              Reveal.on('fragmenthidden', function (e) {
+                const slide = e.fragment && e.fragment.closest('section');
+                if (slide && slide.id === 'road-slide') {
+                  const idx = parseInt(e.fragment.dataset.roadIdx);
+                  if (!isNaN(idx)) renderStep(idx - 1);
+                }
+              });
+            });
+          })();
+        </script>
+
+        <!-- One invisible fragment per workshop stop so Reveal tracks them -->
+        <div style="display:none">
+          <span class="fragment" data-road-idx="0"></span>
+          <span class="fragment" data-road-idx="1"></span>
+          <span class="fragment" data-road-idx="2"></span>
+          <span class="fragment" data-road-idx="3"></span>
+          <span class="fragment" data-road-idx="4"></span>
+          <span class="fragment" data-road-idx="5"></span>
+          <span class="fragment" data-road-idx="6"></span>
+          <span class="fragment" data-road-idx="7"></span>
+          <span class="fragment" data-road-idx="8"></span>
+          <span class="fragment" data-road-idx="9"></span>
+          <span class="fragment" data-road-idx="10"></span>
+          <span class="fragment" data-road-idx="11"></span>
+          <span class="fragment" data-road-idx="12"></span>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>What Students Practiced</h2>
+          <div class="card">
+            <h3>Real-World Skills</h3>
+            <ul>
+              <li>Industry standard tools and practices</li>
+              <li>Planning and scope decisions</li>
+              <li>Market research and audience thinking</li>
+              <li>Debugging, iteration, and resilience</li>
+              <li>Presentation and question handling</li>
+            </ul>
+          </div>
+          <p class="mini">Tonight is a celebration of growth.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Tonight's Format</h2>
+          <div class="format-grid">
+            <div class="card">
+              <span class="big-num">5 Minutes</span>
+              <p>Each student shares their project vision, demo reel, and key decisions and learnings.</p>
+            </div>
+            <div class="card">
+              <span class="big-num">2 Minutes</span>
+              <p>Audience questions, letting students reflect, explain, and level up their ideas.</p>
+            </div>
+          </div>
+          <p class="mini">Short transitions between presenters to keep momentum.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Audience Question Prompts</h2>
+          <ul class="prompt-list">
+            <li>What was the best part of your journey?</li>
+            <li>What was your biggest obstacle?</li>
+            <li>Who did you create this project for?</li>
+            <li>What would version 2.0 look like?</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Digital Program</h2>
+          <div class="qr-wrap">
+            <img src="../assets/images/demo_day_2026_qr.png" alt="QR code to the Student Demo Day digital program">
+            <div>
+              <p>Scan to open the full program, lineup, and student question prompts.</p>
+              <p><strong>lansingtechstudio.org/demo-day/</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Thank You</h2>
+          <p>Without you, this wouldn't be possible:</p>
+          <ul class="thank-list">
+            <li><span class="thank-name">Joe Dearman</span><span class="thank-role">for co-leading workshops</span></li>
+            <li><span class="thank-name">Aiden Kalisz</span><span class="thank-role">for teaching sound design</span>
+            </li>
+            <li><span class="thank-name">Adam Kryzminski</span><span class="thank-role">for teaching business
+                planning</span></li>
+            <li><span class="thank-name">RMC</span><span class="thank-role">for sponsoring food</span></li>
+            <li><span class="thank-name">TechSmith</span><span class="thank-role">for hosting us tonight</span></li>
+            <li><span class="thank-name">Parents and families</span><span class="thank-role">for supporting students all
+                season</span></li>
+          </ul>
+          <p class="accent">Let's celebrate our students.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Let's Begin The Demos</h2>
+          <p>Students, you are up. This is your time to shine.</p>
+          <p><strong>Audience, let's show our support and make sure we let them know how awesome they are.</strong></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="../assets/revealjs/reveal.js"></script>
+  <script src="../assets/revealjs/plugin/notes/notes.js"></script>
+  <script src="../assets/revealjs/plugin/markdown/markdown.js"></script>
+  <script src="../assets/revealjs/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: "slide",
+      backgroundTransition: "fade",
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
