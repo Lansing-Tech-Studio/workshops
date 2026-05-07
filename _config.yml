@@ -220,6 +220,9 @@ navigation:
         url: /ai-builder-series/4-team-up/
   - title: Student Demo Day
     url: /demo-day/
+    subnav:
+      - title: Slides
+        url: /demo-day/slides.html
   - title: Home Automation with ESP32
     url: /home-automation/
     subnav:
