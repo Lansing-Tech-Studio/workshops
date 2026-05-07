@@ -431,6 +431,89 @@ permalink: /demo-day/slides.html
             overflow: hidden;
           }
 
+          #road-featured {
+            position: absolute;
+            z-index: 6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(16px) scale(0.96);
+            transition:
+              left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease,
+              transform 0.42s ease;
+          }
+
+          #road-featured.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+
+          #road-featured.hiding {
+            opacity: 0;
+            transform: none;
+          }
+
+          #road-featured.settling {
+            gap: 0;
+            transform: none;
+          }
+
+          #road-featured img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.82);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+            background: rgba(8, 17, 29, 0.95);
+            transition:
+              height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              border-radius 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+          }
+
+          #road-featured .road-feature-meta {
+            text-align: center;
+            transition: opacity 0.18s ease;
+          }
+
+          #road-featured .stop-date {
+            display: block;
+            font-size: 0.4em;
+            color: var(--lts-blue);
+            font-weight: 800;
+            margin-bottom: 4px;
+          }
+
+          #road-featured .stop-label {
+            display: block;
+            font-size: 0.4em;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #f8fbff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+            max-width: 14ch;
+          }
+
+          #road-featured.settling .road-feature-meta {
+            opacity: 0;
+          }
+
+          #road-featured.settling img {
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32);
+          }
+
           #road-svg {
             position: absolute;
             top: 0;
@@ -453,6 +536,10 @@ permalink: /demo-day/slides.html
           .road-stop.visible {
             opacity: 1;
             transform: scale(1);
+          }
+
+          .road-stop.settled {
+            transition: none;
           }
 
           .road-stop img {
@@ -496,6 +583,13 @@ permalink: /demo-day/slides.html
           <h2>Workshops Journey</h2>
           <div id="road-canvas-wrap">
             <svg id="road-svg" viewBox="0 0 900 480" preserveAspectRatio="none"></svg>
+            <div id="road-featured" aria-hidden="true">
+              <img src="" alt="">
+              <div class="road-feature-meta">
+                <span class="stop-date"></span>
+                <span class="stop-label"></span>
+              </div>
+            </div>
             <!-- stops injected by JS -->
           </div>
         </div>
@@ -524,6 +618,13 @@ permalink: /demo-day/slides.html
             const ROW_Y = [110, 310]; // px in a 480-tall canvas
             const MARGIN_X = 60;
             const CANVAS_W = 900;
+            const CANVAS_H = 480;
+            const FEATURED_CARD_W = 248;
+            const FEATURED_CARD_H = 282;
+            const FEATURED_IMAGE_W = 64;
+            const FEATURED_IMAGE_H = 64;
+            const FEATURED_DELAY_MS = 180;
+            const FEATURED_SETTLE_MS = 700;
 
             function stopPos(i) {
               const row = Math.floor(i / COLS);
@@ -561,6 +662,11 @@ permalink: /demo-day/slides.html
             let stopEls = [];
             // segments[i] = { casing, surface, dash } for the road from stop i → stop i+1
             let segments = [];
+            let wrapEl = null;
+            let featuredEl = null;
+            let featuredTimer = null;
+            let settleTimer = null;
+            let featuredIndex = -1;
 
             function init() {
               if (initialized) return;
@@ -568,6 +674,8 @@ permalink: /demo-day/slides.html
 
               const wrap = document.getElementById('road-canvas-wrap');
               const svg = document.getElementById('road-svg');
+              featuredEl = document.getElementById('road-featured');
+              wrapEl = wrap;
 
               svg.innerHTML = `
               <defs>
@@ -623,9 +731,89 @@ permalink: /demo-day/slides.html
               });
             }
 
-            // Draw segment i in with an animation (road grows from start to end)
-            function showSegment(i) {
+            function clearFeaturedTimer() {
+              if (featuredTimer) {
+                clearTimeout(featuredTimer);
+                featuredTimer = null;
+              }
+            }
+
+            function clearSettleTimer() {
+              if (settleTimer) {
+                clearTimeout(settleTimer);
+                settleTimer = null;
+              }
+            }
+
+            function setFeaturedContent(index) {
+              const workshop = WORKSHOPS[index];
+              const lines = workshop.label.split('\n');
+              const img = featuredEl.querySelector('img');
+              img.src = workshop.img;
+              img.alt = `${lines.join(' ')} workshop thumbnail`;
+              featuredEl.querySelector('.stop-date').textContent = workshop.date;
+              featuredEl.querySelector('.stop-label').innerHTML = lines.join('<br>');
+              featuredIndex = index;
+            }
+
+            function centerFeaturedCard() {
+              const left = (wrapEl.clientWidth - FEATURED_CARD_W) / 2;
+              const top = (wrapEl.clientHeight - FEATURED_CARD_H) / 2 - 10;
+
+              featuredEl.style.left = `${Math.max(0, left)}px`;
+              featuredEl.style.top = `${Math.max(8, top)}px`;
+              featuredEl.style.width = `${FEATURED_CARD_W}px`;
+              featuredEl.style.height = `${FEATURED_CARD_H}px`;
+            }
+
+            function hideFeatured() {
+              clearFeaturedTimer();
+              featuredEl.classList.remove('visible');
+              featuredEl.classList.add('hiding');
+              featuredIndex = -1;
+            }
+
+            function showFeatured(index, delay) {
+              clearFeaturedTimer();
+
+              if (index < 0 || index >= WORKSHOPS.length) {
+                hideFeatured();
+                return;
+              }
+
+              const reveal = () => {
+                setFeaturedContent(index);
+                featuredEl.classList.remove('visible', 'settling', 'hiding');
+                featuredEl.style.transition = 'none';
+                centerFeaturedCard();
+                void featuredEl.getBoundingClientRect();
+                featuredEl.style.transition = '';
+                featuredEl.classList.add('visible');
+              };
+
+              if (delay) {
+                hideFeatured();
+                featuredTimer = setTimeout(reveal, delay);
+                return;
+              }
+
+              reveal();
+            }
+
+            function setSegmentVisible(i, animate) {
               const seg = segments[i];
+              if (!seg) return;
+
+              if (!animate) {
+                [seg.casing, seg.surface, seg.dash].forEach(el => {
+                  el.style.transition = 'none';
+                  el.style.opacity = '1';
+                  el.style.strokeDasharray = 'none';
+                  el.style.strokeDashoffset = '';
+                });
+                return;
+              }
+
               const len = (seg.surface.getTotalLength ? seg.surface.getTotalLength() : 500) + 5;
 
               [seg.casing, seg.surface].forEach(el => {
@@ -636,7 +824,6 @@ permalink: /demo-day/slides.html
                 void el.getBoundingClientRect();
                 el.style.transition = 'stroke-dashoffset 0.5s ease';
                 el.style.strokeDashoffset = '0';
-                // Clear the draw-on dasharray once done so the segment is a clean solid stroke
                 setTimeout(() => {
                   el.style.strokeDasharray = 'none';
                   el.style.strokeDashoffset = '';
@@ -644,11 +831,14 @@ permalink: /demo-day/slides.html
                 }, 510);
               });
 
-              // Dash fades in after the road has mostly drawn
               setTimeout(() => {
                 seg.dash.style.transition = 'opacity 0.3s ease';
                 seg.dash.style.opacity = '1';
               }, 300);
+            }
+
+            function showSegment(i) {
+              setSegmentVisible(i, true);
             }
 
             // Instantly hide segment i (used when going backward)
@@ -662,37 +852,104 @@ permalink: /demo-day/slides.html
               });
             }
 
+            function featuredTargetRect(index) {
+              const pos = stopPos(index);
+              return {
+                left: (pos.x / CANVAS_W) * wrapEl.clientWidth - (FEATURED_IMAGE_W / 2),
+                top: (pos.y / CANVAS_H) * wrapEl.clientHeight - 50,
+                width: FEATURED_IMAGE_W,
+                height: FEATURED_IMAGE_H,
+              };
+            }
+
+            function updateHint(step) {
+              const hint = document.getElementById('road-hint');
+              if (hint) hint.style.opacity = step >= WORKSHOPS.length - 1 ? '0' : '1';
+            }
+
+            function syncStaticState(step) {
+              init();
+              clearFeaturedTimer();
+              clearSettleTimer();
+              stopEls.forEach((el, i) => {
+                el.classList.remove('settled');
+                el.classList.toggle('visible', i <= step);
+              });
+
+              segments.forEach((_, i) => {
+                if (i < step) {
+                  setSegmentVisible(i, false);
+                } else {
+                  hideSegment(i);
+                }
+              });
+
+              currentStep = step;
+              updateHint(step);
+
+              if (step + 1 < WORKSHOPS.length) {
+                showFeatured(step + 1, 0);
+              } else {
+                hideFeatured();
+              }
+            }
+
+            function animateStepForward(step) {
+              init();
+              clearFeaturedTimer();
+              clearSettleTimer();
+
+              if (step !== currentStep + 1) {
+                syncStaticState(step - 1);
+              }
+
+              if (featuredIndex !== step) {
+                showFeatured(step, 0);
+              }
+
+              const target = featuredTargetRect(step);
+              featuredEl.classList.add('visible', 'settling');
+              featuredEl.style.left = `${target.left}px`;
+              featuredEl.style.top = `${target.top}px`;
+              featuredEl.style.width = `${target.width}px`;
+              featuredEl.style.height = `${target.height}px`;
+
+              settleTimer = window.setTimeout(() => {
+                settleTimer = null;
+                stopEls[step].classList.add('settled');
+                stopEls[step].classList.add('visible');
+                hideFeatured();
+                if (step > 0) {
+                  showSegment(step - 1);
+                }
+
+                currentStep = step;
+                updateHint(step);
+
+                if (step + 1 < WORKSHOPS.length) {
+                  showFeatured(step + 1, FEATURED_DELAY_MS);
+                }
+              }, FEATURED_SETTLE_MS);
+            }
+
             function renderStep(step) {
+              if (step < -1) {
+                return;
+              }
+
               init();
 
               if (step === -1) {
-                // Full reset when entering the slide fresh
-                stopEls.forEach(el => el.classList.remove('visible'));
-                segments.forEach((_, i) => hideSegment(i));
-                currentStep = -1;
-                const hint = document.getElementById('road-hint');
-                if (hint) hint.style.opacity = '1';
+                syncStaticState(-1);
                 return;
               }
 
               if (step > currentStep) {
-                // Going forward: reveal new stops and animate new segments
-                for (let i = currentStep + 1; i <= step; i++) {
-                  stopEls[i].classList.add('visible');
-                  if (i > 0) showSegment(i - 1);
-                }
-              } else {
-                // Going backward: hide stops and segments beyond step
-                for (let i = step + 1; i <= currentStep; i++) {
-                  stopEls[i].classList.remove('visible');
-                  if (i > 0) hideSegment(i - 1);
-                }
+                animateStepForward(step);
+                return;
               }
 
-              currentStep = step;
-
-              const hint = document.getElementById('road-hint');
-              if (hint) hint.style.opacity = step >= WORKSHOPS.length - 1 ? '0' : '1';
+              syncStaticState(step);
             }
 
             // Hook into Reveal.js fragment system
