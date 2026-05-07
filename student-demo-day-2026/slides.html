@@ -864,20 +864,22 @@ permalink: /demo-day/slides.html
 
             function updateHint(step) {
               const hint = document.getElementById('road-hint');
-              if (hint) hint.style.opacity = step >= WORKSHOPS.length - 1 ? '0' : '1';
+              if (hint) hint.style.opacity = step >= WORKSHOPS.length ? '0' : '1';
             }
 
             function syncStaticState(step) {
               init();
               clearFeaturedTimer();
               clearSettleTimer();
+              // stops 0..step-1 are settled in the roadmap; stop `step` is the featured preview
               stopEls.forEach((el, i) => {
                 el.classList.remove('settled');
-                el.classList.toggle('visible', i <= step);
+                el.classList.toggle('visible', i < step);
               });
 
+              // segments connect consecutive settled stops: show segments 0..step-2
               segments.forEach((_, i) => {
-                if (i < step) {
+                if (i < step - 1) {
                   setSegmentVisible(i, false);
                 } else {
                   hideSegment(i);
@@ -887,8 +889,9 @@ permalink: /demo-day/slides.html
               currentStep = step;
               updateHint(step);
 
-              if (step + 1 < WORKSHOPS.length) {
-                showFeatured(step + 1, 0);
+              // step N shows workshop N featured; step 13 (all settled) hides featured
+              if (step >= 0 && step < WORKSHOPS.length) {
+                showFeatured(step, 0);
               } else {
                 hideFeatured();
               }
@@ -903,11 +906,21 @@ permalink: /demo-day/slides.html
                 syncStaticState(step - 1);
               }
 
-              if (featuredIndex !== step) {
-                showFeatured(step, 0);
+              // step 0: first click — just show workshop 0 featured, no settling yet
+              if (step === 0) {
+                if (featuredIndex !== 0) showFeatured(0, 0);
+                currentStep = 0;
+                updateHint(0);
+                return;
               }
 
-              const target = featuredTargetRect(step);
+              // step >= 1: settle workshop (step-1), then preview workshop step
+              const workshopToSettle = step - 1;
+              if (featuredIndex !== workshopToSettle) {
+                showFeatured(workshopToSettle, 0);
+              }
+
+              const target = featuredTargetRect(workshopToSettle);
               featuredEl.classList.add('visible', 'settling');
               featuredEl.style.left = `${target.left}px`;
               featuredEl.style.top = `${target.top}px`;
@@ -916,18 +929,18 @@ permalink: /demo-day/slides.html
 
               settleTimer = window.setTimeout(() => {
                 settleTimer = null;
-                stopEls[step].classList.add('settled');
-                stopEls[step].classList.add('visible');
+                stopEls[workshopToSettle].classList.add('settled');
+                stopEls[workshopToSettle].classList.add('visible');
                 hideFeatured();
-                if (step > 0) {
-                  showSegment(step - 1);
+                if (workshopToSettle > 0) {
+                  showSegment(workshopToSettle - 1);
                 }
 
                 currentStep = step;
                 updateHint(step);
 
-                if (step + 1 < WORKSHOPS.length) {
-                  showFeatured(step + 1, FEATURED_DELAY_MS);
+                if (step < WORKSHOPS.length) {
+                  showFeatured(step, FEATURED_DELAY_MS);
                 }
               }, FEATURED_SETTLE_MS);
             }
@@ -996,6 +1009,7 @@ permalink: /demo-day/slides.html
           <span class="fragment" data-road-idx="10"></span>
           <span class="fragment" data-road-idx="11"></span>
           <span class="fragment" data-road-idx="12"></span>
+          <span class="fragment" data-road-idx="13"></span>
         </div>
       </section>
 
