@@ -10,19 +10,32 @@ section: Instructor Notes
 **Audience**: Ages 10-16, basic computer familiarity. \
 **Goal**: Write clear prompts, evaluate AI output, iterate, and use Playwright MCP.
 
-## 0:00-0:15 — Welcome and Tool Setup
+## 0:00-0:15 — Welcome, Fork, Codespace, Pages
 
-- **Objective**: get everyone ready to work with Copilot and Playwright MCP.
+- **Objective**: get everyone forked, in a Codespace with Copilot + Playwright
+  MCP running, and publishing to GitHub Pages.
 - **Flow**:
   1. Quick introductions and series overview (what are we building over 4 workshops?)
-  2. Verify VS Code, Copilot, and Git are working
-  3. Walk through Playwright MCP setup step by step
-  4. Test: everyone asks Copilot a simple question to confirm it works
+  2. Each student forks
+     `Lansing-Tech-Studio/quiz-game` to their own account
+  3. On their fork, **Code** → **Codespaces** → **Create codespace on main**
+     (starts the ~2 min container build in the background)
+  4. In a *second* browser tab on the same fork: **Settings** → **Pages** →
+     Source = `main` / root → **Save**. The live URL appears within a minute
+  5. When the Codespace opens, verify Copilot Chat is signed in (Copilot icon
+     in the sidebar) and the Playwright MCP server is listed in its tools
+  6. Test: everyone asks Copilot Chat a simple question to confirm it works
 - **Watch for**:
-  - Students who didn't complete the pre-workshop setup guide
-  - Copilot sign-in issues (have backup accounts ready if possible)
-  - Playwright MCP configuration errors (test on lab machines beforehand)
-- **Tip**: have early finishers help neighbors. This is a good bonding moment.
+  - Students whose GitHub account doesn't have Copilot access — pair them up or
+    have a backup account ready
+  - Students who skip the Pages step — without it, they won't see their app
+    live on the web at the end of the workshop
+  - First-time Codespace creation can take longer than rebuilds; the Pages
+    wait runs in parallel — use the time to introduce the series
+  - The Playwright MCP server takes ~10–20 seconds to register after the
+    Codespace finishes — refresh Copilot Chat if it doesn't appear
+- **Tip**: have early finishers help neighbors. Pairing the slowest student
+  with the fastest is a great bonding moment.
 
 ## 0:15-0:30 — What Makes a Good Prompt?
 
@@ -73,17 +86,25 @@ section: Instructor Notes
 ## 1:05-1:25 — Playwright MCP: AI Sees Your App
 
 - **Objective**: show students that AI can see and interact with their web page.
+- **Setup** (students):
+  1. Right-click the quiz HTML file → **Show Preview** (Live Preview extension
+     is pre-installed); note the forwarded URL shown in the **Ports** panel
+  2. Confirm the page loads in a side-by-side preview pane
 - **Demo**:
-  1. Ask Copilot to open the quiz in a browser using Playwright
+  1. Ask Copilot Chat to open the forwarded URL using Playwright
   2. AI takes a screenshot and describes what it sees
   3. Ask AI to suggest improvements based on what it sees
-  4. Apply one improvement, then have AI check again
+  4. Apply one improvement, save, then have AI check again
 - **Flow**:
   1. Instructor demos the full cycle: prompt → Playwright → screenshot → fix
   2. Students try it on their own quiz apps
   3. Encourage specific prompts: "The buttons are too small" not "make it better"
 - **Watch for**:
-  - Playwright not connecting (check MCP config)
+  - Playwright MCP not in the tool list — refresh Copilot Chat or check that
+    the Codespace finished its postCreateCommand
+  - Students using the public Codespaces preview URL (works, but slower) vs.
+    `http://localhost:<port>` inside the container (faster — Playwright runs
+    inside the same container as the live preview)
   - Students asking for too many changes at once (remind: one thing at a time)
   - The "wow moment" when AI describes their actual page — let it land
 - **Tip**: this section is the highlight. Give students time to experiment. If they're
@@ -103,17 +124,27 @@ section: Instructor Notes
 - **Tip**: the checklist is more valuable if students own the language. "Did I give
   examples?" in their own words is better than a pre-printed checklist.
 
-## 1:45-1:55 — Save Work
+## 1:45-1:55 — Save Work and Publish
 
-- **Objective**: introduce the git save workflow they'll use throughout the series.
+- **Objective**: introduce the git save workflow they'll use throughout the
+  series, and show them their app live on the web.
 - **Git flow**:
+
   ```bash
   git add .
   git commit -m "Initial quiz app from Workshop 1"
+  git push
   ```
+
+- **After push**: open each student's `https://<username>.github.io/quiz-game/`
+  URL — the live quiz should appear within ~1 minute. This is a strong end-of-
+  workshop moment ("your app is on the internet, anyone can play it").
 - **Watch for**:
   - Students who haven't used git before (pair with someone experienced)
-  - Merge conflicts from forking (shouldn't happen in Workshop 1, but check)
+  - Students who didn't enable Pages in 0:00–0:15 — fix it now so they don't
+    miss the live-site reveal
+  - Pages cache (~1 min after push); if it doesn't update, refresh after a
+    short wait
 - **Tip**: keep this brief. Git basics are covered in depth in Workshop 3.
 
 ## 1:55-2:00 — Wrap-Up and Preview

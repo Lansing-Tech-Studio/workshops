@@ -28,7 +28,7 @@ Lint Markdown with `markdownlint` (config in `.markdownlint.json`).
 **Key configs:**
 - `_config.yml` — site URL, navigation structure, plugins (jekyll-relative-links)
 - `Gemfile` — depends on `github-pages` gem for compatibility
-- `.github/codespaces/devcontainer/devcontainer.json` — Codespaces dev environment (Node 24 + Python + Copilot + Playwright MCP + Live Preview)
+- `.devcontainer/devcontainer.json` — Codespaces dev environment (Node 24 + Python + Copilot + Playwright MCP + Live Preview). Must live at this standard path — Codespaces does not scan `.github/codespaces/`.
 - `.vscode/mcp.json` — workspace MCP servers (Playwright MCP for the AI Builder series)
 
 **Presentations:** Reveal.js slide decks are static HTML files (`slides.html`) stored per workshop. The framework lives in `assets/revealjs/`; update it via `assets/update-revealjs.sh`.
@@ -57,6 +57,13 @@ workshop-name/
 ```
 
 **Multi-workshop series** (e.g. `ai-builder-series/`) use a parent folder with its own `index.md` and `plan.md`, containing numbered sub-workshops (`1-prompt-power-ups/`, `2-one-thing-at-a-time/`, etc.) that each follow the standard layout above.
+
+The AI Builder series also uses a **separate starter repository** on GitHub
+(`Lansing-Tech-Studio/quiz-game`) that students fork in Workshop 1 and grow
+across all four sessions. That repo is the canonical source for the dev
+container, MCP config, and placeholder `index.html` — edit it there directly,
+not in this repo. Setup and update instructions for the instructor are in
+`ai-builder-series/instructor-notes/starter-repo-setup.md`.
 
 **Other top-level content:** `learning-checks/` contains quiz/review material that spans multiple workshops.
 

@@ -77,13 +77,47 @@
 			</section>
 
 			<section>
-				<h2>Tool Check</h2>
-				<ul>
-					<li>VS Code — open?</li>
-					<li>GitHub Copilot — signed in?</li>
-					<li>Git — configured?</li>
-					<li>Playwright MCP — we'll set this up together</li>
-				</ul>
+				<section>
+					<h2>Get Set Up</h2>
+					<ol>
+						<li><strong>Fork</strong> the starter repo</li>
+						<li><strong>Open</strong> a Codespace on your fork</li>
+						<li><strong>Enable</strong> GitHub Pages</li>
+					</ol>
+					<p><small>Codespace builds while Pages turns on — they run in parallel.</small></p>
+				</section>
+				<section>
+					<h3>1. Fork the Starter</h3>
+					<p>Go to:</p>
+					<p><code>github.com/Lansing-Tech-Studio/quiz-game</code></p>
+					<p>Click <strong>Fork</strong> → <strong>Create fork</strong></p>
+				</section>
+				<section>
+					<h3>2. Open a Codespace</h3>
+					<p>On your fork:</p>
+					<p><strong>Code</strong> → <strong>Codespaces</strong> → <strong>Create codespace on main</strong></p>
+					<p><small>Wait ~2 min for the dev container to build.</small></p>
+				</section>
+				<section>
+					<h3>3. Enable GitHub Pages</h3>
+					<p>On your fork (in a separate tab):</p>
+					<p><strong>Settings</strong> → <strong>Pages</strong></p>
+					<ul>
+						<li>Source: Deploy from a branch</li>
+						<li>Branch: <code>main</code> &nbsp; Folder: <code>/ (root)</code></li>
+					</ul>
+					<p>Click <strong>Save</strong> → your live URL appears within a minute.</p>
+				</section>
+				<section>
+					<h3>Tool Check</h3>
+					<ul>
+						<li>Codespace — created and loaded?</li>
+						<li>GitHub Copilot — signed in?</li>
+						<li>Copilot Chat — answers a test question?</li>
+						<li>Playwright MCP — listed in Copilot Chat's tools?</li>
+						<li>Pages URL — shows the placeholder page?</li>
+					</ul>
+				</section>
 			</section>
 
 			<section>
@@ -255,7 +289,15 @@
 					<pre><code data-trim>
 git add .
 git commit -m "Initial quiz app from Workshop 1"
+git push
 					</code></pre>
+					<p><small>The push updates your live GitHub Pages site within a minute.</small></p>
+				</section>
+				<section>
+					<h3>See It Live!</h3>
+					<p>Open:</p>
+					<p><code>https://&lt;your-username&gt;.github.io/<br>quiz-game/</code></p>
+					<p>Your quiz is on the internet. Anyone can play it.</p>
 				</section>
 			</section>
 

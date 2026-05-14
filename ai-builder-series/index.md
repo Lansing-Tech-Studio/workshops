@@ -16,12 +16,35 @@ comments: true
 
 Students build a quiz/trivia web app across all 4 workshops. Each session adds new
 skills and new features to the same project. By the end, students have a polished,
-team-built app and a toolkit of practices they can apply to any future project.
+team-built app published live on the web — and a toolkit of practices they can
+apply to any future project.
+
+## Starter Repository
+
+The series uses a dedicated starter repo separate from this workshops site.
+Students fork it once at the start of Workshop 1 and grow the same quiz app
+across all four sessions.
+
+* **Starter repo:**
+  [Lansing-Tech-Studio/quiz-game](https://github.com/Lansing-Tech-Studio/quiz-game)
+* **What's inside:** dev container (Copilot + Playwright MCP), placeholder
+  `index.html`, and a README guiding students through fork → Codespace → Pages
+* **Live publishing:** every student's fork auto-deploys to
+  `https://<their-username>.github.io/quiz-game/` via GitHub
+  Pages
+
+> Instructors: see [Starter Repo Setup]({{ site.baseurl }}/ai-builder-series/instructor-notes/starter-repo-setup)
+> for the one-time repo creation and the `main` / `current` branch convention.
 
 ## Tools
 
-* **GitHub Copilot** in VS Code (primary AI tool)
-* **Playwright MCP** for AI-powered browser interaction
+* **GitHub Codespaces** — recommended environment; nothing to install locally.
+  The dev container pre-installs Copilot, Copilot Chat, the Playwright MCP
+  server, and a Chromium browser
+* **GitHub Copilot** in VS Code (primary AI tool — free for verified students
+  via GitHub Education)
+* **Playwright MCP** for AI-powered browser interaction (pre-configured in
+  `.vscode/mcp.json`)
 * **Git + GitHub** for version control and collaboration
 
 ## Workshops

@@ -69,6 +69,20 @@
 
 			<section>
 				<section>
+					<h2>Get Set Up</h2>
+					<ol>
+						<li>Open your fork of <code>quiz-game</code> on GitHub</li>
+						<li><strong>Code</strong> → <strong>Codespaces</strong> → click your existing
+							Codespace (or <strong>Create codespace on main</strong>)</li>
+						<li>Confirm Copilot Chat and the Playwright MCP server are ready</li>
+					</ol>
+					<p><small>If your Codespace was deleted, your work is safe — it's pushed
+						to your fork on GitHub.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
 					<h2>The Spaghetti Problem</h2>
 					<p>What happens when everything is tangled together?</p>
 				</section>
@@ -197,13 +211,23 @@
 				<section>
 					<h2>Our New File Structure</h2>
 					<pre><code data-trim>
-quiz-app/
+quiz-game/
   index.html      ← display
   styles.css      ← styling
   questions.js    ← data
   script.js       ← logic
 					</code></pre>
 					<p>Each file has one job.</p>
+				</section>
+				<section>
+					<h3>Save and Publish</h3>
+					<pre><code data-trim class="language-bash">
+git add .
+git commit -m "Refactored quiz into separate concerns"
+git push
+					</code></pre>
+					<p><small>Your live site at <code>github.io/quiz-game/</code> updates
+						within a minute.</small></p>
 				</section>
 			</section>
 

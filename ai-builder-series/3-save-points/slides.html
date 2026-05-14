@@ -69,6 +69,18 @@
 
 			<section>
 				<section>
+					<h2>Get Set Up</h2>
+					<ol>
+						<li>Open your fork of <code>quiz-game</code> on GitHub</li>
+						<li><strong>Code</strong> → <strong>Codespaces</strong> → resume your
+							existing Codespace (or create a new one)</li>
+						<li>Open a terminal in the Codespace — we'll use git all session</li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
 					<h2>The "Oh No" Moment</h2>
 					<p>Watch what happens when there's no save point...</p>
 				</section>
@@ -98,13 +110,16 @@
 # Select what to save
 git add .
 
-# Create a save point
+# Create a save point (local)
 git commit -m "Working quiz with 5 questions"
+
+# Push the save point to GitHub (updates your live site)
+git push
 
 # See all your save points
 git log
 
-# Go back to the last save point
+# Throw away uncommitted changes
 git checkout .
 					</code></pre>
 				</section>
@@ -113,9 +128,10 @@ git checkout .
 					<pre><code data-trim class="language-bash">
 git add .
 git commit -m "Clean quiz app from Workshop 2"
+git push
 git log
 					</code></pre>
-					<p>You now have a save point!</p>
+					<p>You now have a save point — and your live site is up to date.</p>
 				</section>
 			</section>
 
@@ -198,6 +214,7 @@ git commit -m "Before adding question counter"
 					<pre><code data-trim class="language-bash">
 git add .
 git commit -m "Added question counter"
+git push
 					</code></pre>
 					<p>If something broke:</p>
 					<pre><code data-trim class="language-bash">

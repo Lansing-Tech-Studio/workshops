@@ -69,6 +69,20 @@
 
 			<section>
 				<section>
+					<h2>Get Set Up</h2>
+					<ol>
+						<li>Your instructor has shared a <strong>team repo</strong> — open
+							it on GitHub</li>
+						<li>Confirm you're listed as a collaborator (Settings → Collaborators)</li>
+						<li>Don't open a Codespace yet — we'll do that after we form teams</li>
+					</ol>
+					<p><small>Your old <code>quiz-game</code> fork is still yours — today
+						we work on the team's copy.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
 					<h2>Why Teams Need Rules</h2>
 					<p>What happens when two people change the same file?</p>
 				</section>
@@ -137,12 +151,18 @@ git checkout -b my-feature-name
 					<p>Each person works on <em>different files</em>.</p>
 				</section>
 				<section>
-					<h3>Clone the Shared Repo</h3>
+					<h3>Open the Team Repo in a Codespace</h3>
+					<ol>
+						<li>Each teammate opens the team's shared repo on GitHub
+							(you've been added as a collaborator)</li>
+						<li><strong>Code</strong> → <strong>Codespaces</strong> →
+							<strong>Create codespace on main</strong></li>
+						<li>In the Codespace terminal, create your feature branch:</li>
+					</ol>
 					<pre><code data-trim class="language-bash">
-git clone [your-team-repo-url]
-cd [repo-name]
 git checkout -b my-feature
 					</code></pre>
+					<p><small>You'll each have your own Codespace on the same shared repo.</small></p>
 				</section>
 			</section>
 
@@ -227,9 +247,10 @@ git push -u origin my-feature
 				<section>
 					<h3>After All Merges</h3>
 					<ol>
-						<li>Pull the latest main</li>
+						<li>Pull the latest <code>main</code></li>
 						<li>Run your test cases</li>
 						<li>Use Playwright to verify it all works</li>
+						<li>Open the team's live Pages site — your combined work is on the web!</li>
 						<li>Celebrate!</li>
 					</ol>
 				</section>

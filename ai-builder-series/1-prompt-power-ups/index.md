@@ -45,42 +45,66 @@ A student is successful if they can say:
 
 ## 3. Environment & Prerequisites
 
-### Required Software
+### Required Before the Workshop
 
-Before the workshop, students should have:
+* **GitHub account** created (and signed in)
+* **GitHub Copilot access** enabled (free for verified students via GitHub
+  Education — apply at [education.github.com](https://education.github.com/))
 
-* **VS Code** installed
-* **Git** installed and configured
-* **GitHub account** created
-* **GitHub Copilot** extension installed and signed in
-* **Workshop repository forked** (or sync a previous fork)
+That's it — no local installs required. VS Code, Node.js, Git, Playwright, and
+the Playwright MCP server are all pre-installed in the Codespace you'll open.
 
-See the complete [Setup Guide]({{ site.baseurl }}/SETUP) for step-by-step
-instructions.
+### The AI Builder Starter Repo
 
-### Workshop-Specific Setup
+Across all four workshops, you'll grow a single quiz app. We use a dedicated
+starter repo for this — fork it once, and use the same fork for every workshop
+in the series.
 
-* **Playwright MCP** configured in VS Code (walked through during the workshop)
+**Starter repo:** `https://github.com/Lansing-Tech-Studio/quiz-game`
 
-### Primary Path
+### Primary Path: GitHub Codespaces + GitHub Pages
 
-* Local development using VS Code with GitHub Copilot Chat
-* Playwright MCP for browser-based AI feedback
+In the first 15 minutes of Workshop 1 you will:
 
-### Fallback Path (If Needed)
+1. **Fork** the starter repo above into your own GitHub account
+2. **Open a Codespace** on your fork (**Code** → **Codespaces** → **Create
+   codespace on main**) — the dev container auto-installs Copilot, Copilot
+   Chat, Live Preview, and the Playwright MCP server
+3. **Enable GitHub Pages** on your fork: **Settings** → **Pages** →
+   Source = "Deploy from a branch", Branch = `main`, Folder = `/ (root)` →
+   **Save**. Your published site will appear at
+   `https://<your-username>.github.io/quiz-game/`
 
-* GitHub Codespaces (browser-based; be mindful of free quota)
+After this, you'll work entirely in the Codespace. Pushes to `main` will
+auto-publish to your Pages site within a minute or two.
+
+Be mindful of the [Codespaces free quota](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces#free-quota)
+(~120 core-hours/month — plenty for the series).
+
+### Fallback Path: Local VS Code
+
+* Follow the full [Setup Guide]({{ site.baseurl }}/SETUP) before the workshop
+* Install Copilot + Copilot Chat extensions and sign in
+* Clone your fork of the starter repo locally
+* The Playwright MCP server is pre-configured in `.vscode/mcp.json`; install the
+  Playwright browser binaries locally with `npx playwright install chromium`
 
 ## 4. 2-Hour Agenda (Minute-by-Minute)
 
-### 0:00-0:15 — Welcome and Tool Setup
+### 0:00-0:15 — Welcome, Fork, Codespace, Pages
 
-> Get everyone ready to work
+> Get everyone forked, building a Codespace, and publishing to the web
 
 * Quick introductions and series overview
-* Verify VS Code, Copilot, and Git are working
-* Walk through Playwright MCP setup together
-* Test: ask Copilot a simple question to confirm it works
+* **Fork** the starter repo
+  `Lansing-Tech-Studio/quiz-game` → **Create fork**
+* In the new fork: **Code** → **Codespaces** → **Create codespace on main**
+  (this runs in the background for ~2 min)
+* In a separate browser tab on the same fork: **Settings** → **Pages** →
+  Source = `main` / root → **Save**. Your live URL appears within a minute
+* When the Codespace opens, confirm Copilot Chat is signed in (Copilot icon in
+  the sidebar) and the Playwright MCP server appears in its tools list
+* Test: ask Copilot Chat "What can you do?" — confirm it responds
 
 ### 0:15-0:30 — What Makes a Good Prompt?
 
@@ -113,7 +137,10 @@ instructions.
 
 > Let AI look at what it built and make it better
 
-* Demo: use Playwright MCP to have Copilot open the quiz in a browser
+* Start the Live Preview server on the quiz HTML file (right-click → **Show
+  Preview**); note the forwarded URL
+* Demo: in Copilot Chat, prompt "Open the quiz at the forwarded preview URL with
+  Playwright and tell me what you see"
 * AI takes a screenshot, sees the layout, and suggests improvements
 * Students use Playwright to refine their quiz's appearance
   * Try: "The buttons are too small" or "The colors are hard to read"
@@ -134,13 +161,14 @@ instructions.
   * What would I change next time?
 * Save a system prompt for "quiz app developer" in Copilot Chat
 
-### 1:45-1:55 — Save Work
+### 1:45-1:55 — Save Work and Publish
 
-> Commit the quiz app to Git
+> Commit the quiz app to Git, then push to update the live Pages site
 
 * `git add` the quiz app files
 * `git commit -m "Initial quiz app from Workshop 1"`
-* Verify the commit with `git log`
+* `git push` — within a minute, your Pages site updates with the new quiz
+* Verify the commit with `git log` and open your live URL to confirm it works
 
 ### 1:55-2:00 — Wrap-Up and Preview
 

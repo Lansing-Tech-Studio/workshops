@@ -58,13 +58,22 @@ you know and what you can test.
 
 ## "How do I set up the Playwright MCP?"
 
-Walk through the setup steps in VS Code settings. The key steps are:
-1. Open VS Code Settings (Ctrl+Comma)
-2. Search for "MCP" in the settings search bar
-3. Add the Playwright MCP server configuration
-4. Restart VS Code if prompted
+In the workshop Codespace, you don't — it's already set up. The repo's
+`.vscode/mcp.json` declares the Playwright MCP server, and the dev container
+pre-installs the Chromium browser and `@playwright/mcp` package. When the
+Codespace finishes starting, the server should appear in Copilot Chat's tools
+list within ~20 seconds.
 
-If students have trouble, check that their VS Code and Copilot are up to date.
+If it doesn't show up:
+
+1. Open the **Copilot Chat** view and click the tools/wrench icon
+2. If Playwright isn't listed, re-open the chat panel (or run **Developer:
+   Reload Window**) to re-discover MCP servers
+3. Confirm the Codespace finished its `postCreateCommand` — check the
+   **Codespaces** output panel for the "Codespace ready" message
+
+For local-VS-Code students, the same `.vscode/mcp.json` applies — they just
+need to run `npx playwright install chromium` once.
 
 ## "What's a system prompt?"
 
