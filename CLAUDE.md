@@ -28,7 +28,8 @@ Lint Markdown with `markdownlint` (config in `.markdownlint.json`).
 **Key configs:**
 - `_config.yml` — site URL, navigation structure, plugins (jekyll-relative-links)
 - `Gemfile` — depends on `github-pages` gem for compatibility
-- `.github/codespaces/devcontainer/devcontainer.json` — Codespaces dev environment (Node 24 + Python)
+- `.github/codespaces/devcontainer/devcontainer.json` — Codespaces dev environment (Node 24 + Python + Copilot + Playwright MCP + Live Preview)
+- `.vscode/mcp.json` — workspace MCP servers (Playwright MCP for the AI Builder series)
 
 **Presentations:** Reveal.js slide decks are static HTML files (`slides.html`) stored per workshop. The framework lives in `assets/revealjs/`; update it via `assets/update-revealjs.sh`.
 
