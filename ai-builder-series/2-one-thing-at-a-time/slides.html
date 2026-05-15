@@ -25,10 +25,21 @@
 			background-image: url("../../assets/images/logo-transparent.png");
 		}
 
-		.concern-data { color: #74c0fc; }
-		.concern-display { color: #69db7c; }
-		.concern-logic { color: #ffa94d; }
-		.concern-style { color: #f783ac; }
+		.concern-data {
+			color: #74c0fc;
+		}
+
+		.concern-display {
+			color: #69db7c;
+		}
+
+		.concern-logic {
+			color: #ffa94d;
+		}
+
+		.concern-style {
+			color: #f783ac;
+		}
 	</style>
 </head>
 
@@ -36,8 +47,7 @@
 	<div class="reveal">
 		<div class="slides">
 			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
-				data-background-opacity="0.7" data-background-repeat="no-repeat"
-				data-background-position="center center">
+				data-background-opacity="0.7" data-background-repeat="no-repeat" data-background-position="center center">
 				<h2 class="outlined">One Thing at a Time</h2>
 				<p class="outlined">AI Builder Series — Workshop 2</p>
 				<p>&nbsp;</p>
@@ -77,7 +87,7 @@
 						<li>Confirm Copilot Chat and the Playwright MCP server are ready</li>
 					</ol>
 					<p><small>If your Codespace was deleted, your work is safe — it's pushed
-						to your fork on GitHub.</small></p>
+							to your fork on GitHub.</small></p>
 				</section>
 			</section>
 
@@ -87,13 +97,23 @@
 					<p>What happens when everything is tangled together?</p>
 				</section>
 				<section>
-					<h3>Live Demo</h3>
-					<p>Watch: I'll try to add a feature to our messy quiz code...</p>
+					<h3>Imagine This...</h3>
+					<p>Your entire quiz is one giant file — questions, scoring, colors, and HTML all mixed together.</p>
+					<p><strong>Your task:</strong> Make wrong answers show up in red.</p>
 				</section>
 				<section>
-					<h3>What Went Wrong?</h3>
+					<h3>Think It Through</h3>
 					<ul>
-						<li>Changing one thing broke something else</li>
+						<li>Where do you even start looking?</li>
+						<li>What if "red" is set in three different places?</li>
+						<li>What if the color code is inside the scoring function?</li>
+						<li>How do you know your change didn't break the score?</li>
+					</ul>
+				</section>
+				<section>
+					<h3>What Goes Wrong</h3>
+					<ul>
+						<li>Changing one thing breaks something else</li>
 						<li>Hard to find where the problem is</li>
 						<li>Everything depends on everything</li>
 					</ul>
@@ -122,23 +142,7 @@
 						<li class="concern-logic">Logic — scoring and answer checking</li>
 						<li class="concern-style">Styling — colors, fonts, and layout</li>
 					</ul>
-				</section>
-			</section>
-
-			<section>
-				<section>
-					<h2>Color-Code Your Code</h2>
-					<p>Let's find the 4 concerns in our quiz app.</p>
-				</section>
-				<section>
-					<h3>Which Lines Are Which?</h3>
-					<ul>
-						<li class="concern-data">Blue = Data (questions, answers)</li>
-						<li class="concern-display">Green = Display (HTML, DOM updates)</li>
-						<li class="concern-logic">Orange = Logic (scoring, checking)</li>
-						<li class="concern-style">Pink = Styling (CSS, visual changes)</li>
-					</ul>
-					<p>Mark each line in your code with a color.</p>
+					<p>Identify each concern in your code.</p>
 				</section>
 			</section>
 
@@ -227,7 +231,7 @@ git commit -m "Refactored quiz into separate concerns"
 git push
 					</code></pre>
 					<p><small>Your live site at <code>github.io/quiz-game/</code> updates
-						within a minute.</small></p>
+							within a minute.</small></p>
 				</section>
 			</section>
 
