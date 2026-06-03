@@ -90,6 +90,7 @@ Topics:
 * Key commands:
   * `git add .` — select what to save
   * `git commit -m "message"` — create the save point
+  * `git push` — publish the save point to GitHub (updates the live site)
   * `git log` — see all your save points
   * `git checkout` — go back to a previous save point
 * Students make their first commit of the Workshop 2 quiz app
@@ -126,7 +127,7 @@ Topics:
   1. **Save**: `git commit -m "Before adding [feature]"`
   2. **Change**: prompt Copilot to add the feature
   3. **Test**: run through the test cases — does everything still work?
-  4. **Keep or rollback**: if tests pass, commit. If not, `git checkout .` to undo
+  4. **Keep or rollback**: if tests pass, commit and `git push`. If not, `git checkout .` to undo
 * Walk through the full loop together as a group first
 * Students practice independently
 
@@ -176,7 +177,7 @@ Topics:
 
 ## 6. Instructor Guardrails
 
-* Git can be intimidating. Keep it to the minimum commands: add, commit, log,
+* Git can be intimidating. Keep it to the minimum commands: add, commit, push, log,
   checkout. Do NOT introduce branches yet — that's Workshop 4.
 * The intentional rollback in Feature 2 is critical. If students never need to
   roll back, they won't understand why save points matter. Engineer a failure.

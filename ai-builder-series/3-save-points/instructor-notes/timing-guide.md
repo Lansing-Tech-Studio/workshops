@@ -36,14 +36,16 @@ section: Instructor Notes
 - **Key commands** (keep it to these only):
   - `git add .` — select what to save
   - `git commit -m "message"` — create save point
+  - `git push` — publish the save point to GitHub (updates the live site)
   - `git log` (or `git log --oneline`) — see history
   - `git checkout .` — undo everything since last commit
 - **Watch for**:
   - Students typing the commands wrong (quotes, spaces, dots)
   - `git commit` without `-m` opening an editor — show them how to exit (`:q!`)
   - Students who already know git — have them help neighbors
-- **Tip**: do NOT teach branches, push, pull, or any other commands. Minimum viable
-  git is the goal. Branches come in Workshop 4.
+- **Tip**: do NOT teach branches, pull, merge, or any other commands. The save-point
+  workflow is add → commit → push, with checkout for rollback. Branches come in
+  Workshop 4.
 
 ## 0:30-0:50 — Writing Test Cases
 
