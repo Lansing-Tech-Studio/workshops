@@ -45,26 +45,29 @@ A student is successful if they can say:
 
 ## 3. Environment & Prerequisites
 
-### Required Software
+### Required Before the Workshop
 
-Before the workshop, students should have:
+* **GitHub account** signed in, with **GitHub Copilot access** enabled
+* Your **fork of the `quiz-game` starter repo** from Workshop 1, containing your
+  **cleanly separated quiz app from Workshop 2** (or use this workshop's fallback
+  starter code)
 
-* **VS Code** installed with **GitHub Copilot**
-* **Playwright MCP** configured
-* **Git** installed and configured
-* Their **quiz app from Workshop 2** (cleanly separated version)
+No local installs required — VS Code, Node.js, Git, Playwright, and the Playwright
+MCP server are all pre-installed in the Codespace you'll open.
 
-See the complete [Setup Guide]({{ site.baseurl }}/SETUP) for step-by-step
-instructions.
+### Primary Path: GitHub Codespaces
 
-### Primary Path
-
-* Local development using VS Code with GitHub Copilot Chat
-* Git for version control (commits and reverts)
+* Open your fork on GitHub → **Code** → **Codespaces** → resume your existing
+  Codespace (or **Create codespace on main**)
+* GitHub Copilot Chat for building
+* Git for version control (commits, pushes, and reverts)
 * Playwright MCP for testing
+* Pushes to `main` auto-publish to your GitHub Pages site
 
 ### Fallback Path (If Needed)
 
+* Prefer a local setup? Follow the [Setup Guide]({{ site.baseurl }}/SETUP) — Copilot
+  Chat and the Playwright MCP server are pre-configured in the repo
 * Students who missed Workshops 1-2 can use the starter-code from this workshop's
   `starter-code/` folder
 
