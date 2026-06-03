@@ -25,6 +25,10 @@ later.
 **git add:** The command that selects which files to include in your next commit.
 Think of it as putting files in a box before sealing it.
 
+**git push:** The command that sends your commits up to GitHub. Until you push, your
+save points only live on your computer (or Codespace). Pushing also updates your live
+site.
+
 **git log:** The command that shows all your save points in order. Each entry shows
 the commit message and when it was made.
 

@@ -45,26 +45,29 @@ A student is successful if they can say:
 
 ## 3. Environment & Prerequisites
 
-### Required Software
+### Required Before the Workshop
 
-Before the workshop, students should have:
+* **GitHub account** signed in, with **GitHub Copilot access** enabled
+* Your **fork of the `quiz-game` starter repo** from Workshop 1, containing your
+  **cleanly separated quiz app from Workshop 2** (or use this workshop's fallback
+  starter code)
 
-* **VS Code** installed with **GitHub Copilot**
-* **Playwright MCP** configured
-* **Git** installed and configured
-* Their **quiz app from Workshop 2** (cleanly separated version)
+No local installs required — VS Code, Node.js, Git, Playwright, and the Playwright
+MCP server are all pre-installed in the Codespace you'll open.
 
-See the complete [Setup Guide]({{ site.baseurl }}/SETUP) for step-by-step
-instructions.
+### Primary Path: GitHub Codespaces
 
-### Primary Path
-
-* Local development using VS Code with GitHub Copilot Chat
-* Git for version control (commits and reverts)
+* Open your fork on GitHub → **Code** → **Codespaces** → resume your existing
+  Codespace (or **Create codespace on main**)
+* GitHub Copilot Chat for building
+* Git for version control (commits, pushes, and reverts)
 * Playwright MCP for testing
+* Pushes to `main` auto-publish to your GitHub Pages site
 
 ### Fallback Path (If Needed)
 
+* Prefer a local setup? Follow the [Setup Guide]({{ site.baseurl }}/SETUP) — Copilot
+  Chat and the Playwright MCP server are pre-configured in the repo
 * Students who missed Workshops 1-2 can use the starter-code from this workshop's
   `starter-code/` folder
 
@@ -90,6 +93,7 @@ Topics:
 * Key commands:
   * `git add .` — select what to save
   * `git commit -m "message"` — create the save point
+  * `git push` — publish the save point to GitHub (updates the live site)
   * `git log` — see all your save points
   * `git checkout` — go back to a previous save point
 * Students make their first commit of the Workshop 2 quiz app
@@ -126,7 +130,7 @@ Topics:
   1. **Save**: `git commit -m "Before adding [feature]"`
   2. **Change**: prompt Copilot to add the feature
   3. **Test**: run through the test cases — does everything still work?
-  4. **Keep or rollback**: if tests pass, commit. If not, `git checkout .` to undo
+  4. **Keep or rollback**: if tests pass, commit and `git push`. If not, `git checkout .` to undo
 * Walk through the full loop together as a group first
 * Students practice independently
 
@@ -176,7 +180,7 @@ Topics:
 
 ## 6. Instructor Guardrails
 
-* Git can be intimidating. Keep it to the minimum commands: add, commit, log,
+* Git can be intimidating. Keep it to the minimum commands: add, commit, push, log,
   checkout. Do NOT introduce branches yet — that's Workshop 4.
 * The intentional rollback in Feature 2 is critical. If students never need to
   roll back, they won't understand why save points matter. Engineer a failure.
