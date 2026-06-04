@@ -117,7 +117,7 @@ RGB LED PWM uses the built-in ESP32 `LEDC` peripheral (no extra library needed).
 ## Datasheets & References
 
 - Reference schematic (Cirkit Designer): <https://app.cirkitdesigner.com/project/03023476-8be4-4019-81a9-b4774ba130f9>
-- ESP32 DevKit V1 pinout: search "ESP32 DevKit V1 DOIT pinout" (Elegoo uses this standard layout)
+- ESP32 DevKit V1 pinout: search "ESP32 DevKit V1 DOIT pinout" - [look at 4. Important pin functions here](https://wiki.elegoo.com/oshw-getting-started-kits/first-look-esp32)
 - DHT22 / AM2302 datasheet: Aosong AM2302
 - Amazon list with all components: <https://www.amazon.com/hz/wishlist/ls/HMU4FBJGQS83>
   - Elegoo product page (3 pack): <https://www.amazon.com/dp/B0D8T53CQ5>
