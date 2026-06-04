@@ -1,4 +1,4 @@
-// Unit tests for the temperature-to-color mapping logic.
+// Unit tests for the humidity-to-color (default) and temperature-to-color mapping logic.
 // Run these on your computer (no hardware needed!) with:
 //   pio test -e native
 

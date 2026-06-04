@@ -1,9 +1,9 @@
 ---
 layout: coming-soon
 title: Home Automation with ESP32
-tagline: Build a temperature-to-color LED display with a real ESP32 microcontroller — no experience needed.
+tagline: Build a humidity-to-color LED display with a real ESP32 microcontroller — no experience needed.
 preview: |
-  **What you'll build:** Wire a DHT22 sensor and RGB LED on a breadboard, write C++ firmware, and watch your LED change color with the room temperature.
+  **What you'll build:** Wire a DHT22 sensor and RGB LED on a breadboard, write C++ firmware, and watch your LED change color with the room's humidity — breathe on the sensor and watch the color shift instantly.
 
   **You'll walk away knowing how to:**
   - Wire a circuit on a breadboard
@@ -18,6 +18,7 @@ preview: |
 **Group size:** 20 students per session \
 **Theme:** _"Your first real hardware project — code something you can feel, see, and take home"_
 
+- [Slides]({{ site.baseurl }}/home-automation/slides.html)
 - Resources:
   - [Glossary]({{ site.baseurl }}/home-automation/resources/glossary)
   - [Next Steps]({{ site.baseurl }}/home-automation/resources/next-steps)
@@ -40,14 +41,14 @@ By the end of this camp, every student should be able to:
 - Explain what a microcontroller is and how it differs from a regular computer
 - Wire a simple circuit on a breadboard without help
 - Upload code to an ESP32 using PlatformIO
-- Read a temperature/humidity value from a DHT22 sensor in code
+- Read a humidity (and temperature) value from a DHT22 sensor in code
 - Drive an RGB LED with PWM to mix colors
 - Describe what "home automation" means and give real-world examples
-- Take home a working temperature-to-color display they built themselves
+- Take home a working humidity-to-color display they built themselves
 
 ## 2. The Project
 
-Students build a **temperature/humidity-to-color display**: a DHT22 reads the room temperature and humidity, and an RGB LED changes color based on the reading. The default firmware drives the color from **humidity** (because students can change it instantly by breathing on the sensor), with a one-line switch to drive the color from **temperature** instead. The finished circuit fits on a single half-size breadboard and runs off a USB power bank, so students can take it home.
+Students build a **humidity-to-color display**: a DHT22 reads the room's humidity (and temperature), and an RGB LED changes color based on the reading. The firmware drives the color from **humidity by default** — because students can change it instantly by breathing on the sensor, which makes the cause-and-effect obvious and keeps the room engaged. A one-line switch drives the color from **temperature** instead for anyone who wants to try it. The finished circuit fits on a single half-size breadboard and runs off a USB power bank, so students can take it home.
 
 ### Color mapping (starting points — students can customize)
 
@@ -200,9 +201,9 @@ Combine the DHT22 read with the color logic in one `loop()`.
 
 Students customize something about their project:
 
-- Adjust temperature thresholds to match their preference
+- Adjust the humidity (or temperature) thresholds to match their preference
 - Add a slow color fade instead of instant switch
-- Print a custom status message to Serial (e.g., "Brendon's room: WARM")
+- Print a custom status message to Serial (e.g., "Brendon's room: HUMID")
 - Experiment with mixed colors (orange, purple, teal)
 
 ### 3:55–4:00 — Wrap-Up
@@ -239,8 +240,8 @@ Students customize something about their project:
 **Students who finish early:**
 
 - Add smooth color fading (interpolate between colors using PWM values)
-- Add a WiFi connection and POST temperature data to a free webhook (e.g., webhook.site)
-- Display temperature on the Serial plotter instead of monitor
+- Add a WiFi connection and POST humidity data to a free webhook (e.g., webhook.site)
+- Display humidity on the Serial plotter instead of monitor
 
 **Students who struggle:**
 

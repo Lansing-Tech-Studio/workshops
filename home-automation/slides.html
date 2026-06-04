@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Home Automation with ESP32 — 4-Hour Camp</title>
+
+	<link rel="stylesheet" href="../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../assets/images/logo-transparent.png");
+		}
+
+		/* ---- diagram placeholders ----------------------------------------
+		   Each .placeholder is a slot for an image you will drop in later.
+		   The intended file path is shown in the box. To use the real image,
+		   uncomment the <img> line right below the placeholder and delete the
+		   <div class="placeholder">…</div>.
+		   ------------------------------------------------------------------ */
+		.placeholder {
+			border: 3px dashed #ffd43b;
+			border-radius: 14px;
+			padding: 36px 24px;
+			margin: 12px auto;
+			max-width: 80%;
+			color: #ffd43b;
+			background: rgba(255, 212, 59, 0.06);
+			font-size: 0.8em;
+			line-height: 1.4;
+		}
+
+		.placeholder .file {
+			display: block;
+			margin-top: 14px;
+			font-family: monospace;
+			color: #adb5bd;
+			font-size: 0.7em;
+		}
+
+		.build {
+			color: #51cf66;
+			font-weight: bold;
+		}
+
+		.warn {
+			color: #ff6b6b;
+		}
+
+		.pin {
+			color: #ffd43b;
+			font-family: monospace;
+			font-weight: bold;
+		}
+
+		.milestone {
+			color: #51cf66;
+			font-weight: bold;
+		}
+
+		.reveal table {
+			font-size: 0.7em;
+		}
+
+		.reveal section img.diagram {
+			max-height: 480px;
+			background: #fff;
+			border-radius: 8px;
+			padding: 8px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<!-- ============================================================ -->
+			<!-- TITLE                                                        -->
+			<!-- ============================================================ -->
+			<section data-background-image="../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Home Automation with ESP32</h2>
+				<p class="outlined">Build a Humidity-to-Color Display</p>
+				<p class="outlined"><small>4-Hour Hardware Camp</small></p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">by Brendon Thiede</p>
+				<aside class="notes">
+					This is a 4-hour camp. Roughly the first 70 minutes is concepts + handling the
+					hardware; the rest is building and experimenting. Keep energy high — show the
+					finished thing first so they know what they're working toward.
+				</aside>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 0:00–0:20  WELCOME & GOAL DEMO                               -->
+			<!-- ============================================================ -->
+			<section>
+				<section>
+					<h2>Welcome!</h2>
+					<p>Today you build a <strong>real circuit</strong> with a <strong>real
+							microcontroller</strong>…</p>
+					<p>…and you take it home.</p>
+					<aside class="notes">0:00–0:20. Don't explain anything yet — show, then ask.</aside>
+				</section>
+				<section>
+					<h3>Here's the Goal</h3>
+					<div class="placeholder">
+						📷 / 🎥 Finished project running — RGB LED changing color as you breathe on
+						the sensor (the humidity in your breath shifts the color instantly). A short
+						looping clip works great here.
+						<span class="file">images/finished-demo.gif</span>
+					</div>
+					<!-- <img class="diagram" src="images/finished-demo.gif" alt="Finished project demo"> -->
+					<p><small>By the end of camp, <em>this is yours.</em></small></p>
+				</section>
+				<section>
+					<h3>Icebreaker</h3>
+					<p>Name one thing in your home you wish was <strong>smarter</strong> or did
+						something <strong>automatically</strong>.</p>
+					<aside class="notes">Go around quickly. Tie a couple answers back to sensor →
+						brain → output later.</aside>
+				</section>
+				<section>
+					<h3>Meet Lansing Techster</h3>
+					<p>Your curious co-builder for the day. 🤖</p>
+					<p><small>Techster doesn't know everything either — we figure it out together.
+							Momentum over perfection.</small></p>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- ROADMAP                                                      -->
+			<!-- ============================================================ -->
+			<section>
+				<h2>Today's Roadmap</h2>
+				<table>
+					<tr>
+						<td>0:00–0:45</td>
+						<td>Welcome + what is home automation?</td>
+					</tr>
+					<tr>
+						<td>0:45–1:10</td>
+						<td>Meet the hardware</td>
+					</tr>
+					<tr class="build">
+						<td>1:10–1:45</td>
+						<td>🔧 Build &amp; upload your first code</td>
+					</tr>
+					<tr>
+						<td>1:45–2:00</td>
+						<td>☕ Break</td>
+					</tr>
+					<tr class="build">
+						<td>2:00–3:30</td>
+						<td>🔧 Sensor → LED → full project</td>
+					</tr>
+					<tr>
+						<td>3:30–3:40</td>
+						<td>🍎 Break</td>
+					</tr>
+					<tr class="build">
+						<td>3:40–4:00</td>
+						<td>🔧 Make it yours + show &amp; tell</td>
+					</tr>
+				</table>
+				<p><small>Most of today is <span class="build">hands-on building</span>.</small></p>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 0:20–0:45  WHAT IS HOME AUTOMATION                           -->
+			<!-- ============================================================ -->
+			<section>
+				<section>
+					<h2>What Is Home Automation?</h2>
+					<p>Making things in your home <strong>sense</strong>, <strong>decide</strong>,
+						and <strong>act</strong> — without you doing it by hand.</p>
+					<aside class="notes">0:20–0:45. Keep this interactive — ask before telling.</aside>
+				</section>
+				<section>
+					<h3>Real Examples</h3>
+					<ul>
+						<li>Smart thermostat (Nest)</li>
+						<li>Color-changing lights (Philips Hue)</li>
+						<li>Motion-sensor porch lights</li>
+						<li>Smart door locks</li>
+					</ul>
+					<p>What do these all have in common?</p>
+				</section>
+				<section>
+					<h3>What Makes Something "Smart"?</h3>
+					<p style="font-size:1.4em;">
+						<span class="pin">Sensor</span> &nbsp;→&nbsp;
+						<span class="pin">Logic</span> &nbsp;→&nbsp;
+						<span class="pin">Output</span>
+					</p>
+					<p><small>Something it can <em>feel</em> → a <em>rule</em> → something it
+							<em>does</em>.</small></p>
+				</section>
+				<section>
+					<h3>Today's Three Pieces</h3>
+					<p style="font-size:1.2em;">
+						💧 <strong>DHT22</strong> sensor (humidity)<br>
+						&nbsp;&nbsp;&nbsp;↓<br>
+						🧠 <strong>ESP32</strong> brain<br>
+						&nbsp;&nbsp;&nbsp;↓<br>
+						🔴🟢🔵 <strong>RGB LED</strong> output
+					</p>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 0:45–1:10  MEET THE HARDWARE                                 -->
+			<!-- ============================================================ -->
+			<section>
+				<section>
+					<h2>Meet the Hardware</h2>
+					<p>Pick up each part as we talk about it — but <span class="warn">don't wire
+							anything yet.</span></p>
+					<aside class="notes">0:45–1:10. Hands-on but guided. Everyone holds the parts.</aside>
+				</section>
+				<section>
+					<h3>Your Kit</h3>
+					<div class="placeholder">
+						📷 Flat-lay photo of one full student kit, labeled: ESP32, breadboard, DHT22,
+						RGB LED, 3× 220Ω + 1× 10kΩ resistors, jumper wires, USB-C cable.
+						<span class="file">images/kit-flatlay.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/kit-flatlay.png" alt="Student kit, labeled"> -->
+				</section>
+				<section>
+					<h3>The Breadboard</h3>
+					<div class="placeholder">
+						📷 Breadboard anatomy: + and − power rails on the sides, numbered rows, the
+						center gap, and which holes connect to which. Highlight that a row of 5 holes
+						is electrically joined.
+						<span class="file">images/breadboard-anatomy.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/breadboard-anatomy.png" alt="Breadboard anatomy"> -->
+					<p><small>No soldering — parts just push in. The rows secretly connect for you.</small></p>
+				</section>
+				<section>
+					<h3>The ESP32 — Our Brain</h3>
+					<div class="placeholder">
+						📷 Elegoo ESP32 DevKit V1 pinout. Call out: USB-C port, the GPIO pin numbers
+						we use (4, 18, 19, 23), the 3V3 and GND pins, and the onboard LED on GPIO 2.
+						<span class="file">images/esp32-pinout.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/esp32-pinout.png" alt="ESP32 DevKit V1 pinout"> -->
+					<p><small>A tiny, cheap, programmable computer — about $6.</small></p>
+				</section>
+				<section>
+					<h3>The DHT22 — Our Sense of Touch</h3>
+					<div class="placeholder">
+						📷 Bare 4-pin DHT22 / AM2302, vented side facing you, pins labeled left→right:
+						VCC, DATA, NC (skip), GND.
+						<span class="file">images/dht22-pins.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/dht22-pins.png" alt="DHT22 pin labels"> -->
+					<p><small>Reads <em>humidity</em> (and temperature too) — breathe on it and the
+							humidity jumps.</small></p>
+				</section>
+				<section>
+					<h3>The RGB LED — Our Output</h3>
+					<div class="placeholder">
+						📷 5 mm common-cathode RGB LED close-up. Pins left→right: R, GND (longest leg),
+						G, B. Clearly point out the <strong>longest leg</strong>.
+						<span class="file">images/rgb-led-legs.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/rgb-led-legs.png" alt="RGB LED leg identification"> -->
+					<p><small>One LED, three colors inside. Mix them to make <em>any</em> color.</small></p>
+				</section>
+				<section>
+					<h3>Resistors</h3>
+					<ul>
+						<li><strong>3 × 220 Ω</strong> — one for each LED color (protects the LED)</li>
+						<li><strong>1 × 10 kΩ</strong> — helps the DHT22 talk clearly (a "pull-up")</li>
+					</ul>
+					<p><small>Resistors slow electricity down so we don't burn parts out.</small></p>
+				</section>
+				<section>
+					<h3>⚠️ Safety Rules</h3>
+					<ul>
+						<li class="warn">Unplug USB <em>before</em> changing wires</li>
+						<li class="warn">Check your work, <em>then</em> plug in</li>
+						<li>Never feed 5 V into a GPIO pin — we only use 3V3 here</li>
+						<li>Ask before you're unsure. Always.</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 1:10–1:45  BUILD #1: BLINK + UPLOAD  (BUILD STARTS HERE)     -->
+			<!-- ============================================================ -->
+			<section>
+				<section data-background-color="#1a3a1a">
+					<h2 class="build">🔧 Build #1</h2>
+					<h3>Seat the board &amp; upload your first code</h3>
+					<p><small>~70 minutes in — time to build.</small></p>
+					<aside class="notes">1:10–1:45. No external wiring yet — this proves the laptop
+						can upload to the board. Get EVERYONE blinking before moving on.</aside>
+				</section>
+				<section>
+					<h3>Step 1 — Seat the ESP32</h3>
+					<div class="placeholder">
+						📷 ESP32 pressed across the center gap of the breadboard, USB-C facing off the
+						edge so the cable can reach. Show pins straddling both halves.
+						<span class="file">images/build1-seat-esp32.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/build1-seat-esp32.png" alt="ESP32 seated on breadboard"> -->
+				</section>
+				<section>
+					<h3>Step 2 — Plug In</h3>
+					<div class="placeholder">
+						📷 USB-C cable connecting ESP32 to laptop; a small power LED on the board lights up.
+						<span class="file">images/build1-plug-in.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/build1-plug-in.png" alt="ESP32 plugged into laptop"> -->
+					<p><small>No external wires for this step — the LED we blink is <em>already on the
+								board</em> (GPIO 2).</small></p>
+				</section>
+				<section>
+					<h3>Step 3 — Open the Project</h3>
+					<ol>
+						<li>Open <strong>VS Code</strong> → PlatformIO</li>
+						<li>Open the <code>onboard-LED-blink</code> project</li>
+						<li>Peek at <code>platformio.ini</code> and <code>src/main.cpp</code></li>
+					</ol>
+				</section>
+				<section>
+					<h3>The Code</h3>
+					<pre><code data-trim data-line-numbers class="cpp">
+const int LED_PIN = 2;   // the LED already on the board
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  digitalWrite(LED_PIN, HIGH);   // on
+  Serial.println("LED ON");
+  delay(500);
+  digitalWrite(LED_PIN, LOW);    // off
+  Serial.println("LED OFF");
+  delay(500);
+}
+					</code></pre>
+				</section>
+				<section>
+					<h3>Step 4 — Upload!</h3>
+					<div class="placeholder">
+						📷 PlatformIO toolbar with the → (Upload) arrow circled, plus the Serial
+						Monitor showing "LED ON / LED OFF" at 115200 baud.
+						<span class="file">images/build1-upload.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/build1-upload.png" alt="Upload button and serial monitor"> -->
+				</section>
+				<section data-background-color="#1a3a1a">
+					<h3 class="milestone">✅ Milestone Check</h3>
+					<p>Everyone's onboard LED is <strong>blinking</strong> and Serial Monitor scrolls
+						"LED ON / LED OFF".</p>
+					<p><small>Stuck? Wrong COM port, missing CP210x driver, or baud rate not 115200.</small></p>
+					<aside class="notes">Do not move on until every student is blinking. Pair up
+						strugglers. This is the gate.</aside>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 1:45–2:00  BREAK                                             -->
+			<!-- ============================================================ -->
+			<section data-background-color="#222">
+				<h2>☕ Break — 15 min</h2>
+				<p>Stretch, water, walk around.</p>
+				<p><small>Leave your board plugged in and happy.</small></p>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 2:00–2:30  BUILD #2: DHT22 SENSOR                            -->
+			<!-- ============================================================ -->
+			<section>
+				<section data-background-color="#1a3a1a">
+					<h2 class="build">🔧 Build #2</h2>
+					<h3>Wire the DHT22 &amp; read the room</h3>
+					<aside class="notes">2:00–2:30. Add the sensor only — no LED yet. Unplug USB first.</aside>
+				</section>
+				<section>
+					<h3>Pins We'll Use</h3>
+					<table>
+						<tr><th>DHT22 pin</th><th>Connects to</th></tr>
+						<tr><td>VCC</td><td><span class="pin">3V3</span></td></tr>
+						<tr><td>DATA</td><td><span class="pin">GPIO 4</span> + 10 kΩ pull-up to 3V3</td></tr>
+						<tr><td>NC</td><td><em>leave empty</em></td></tr>
+						<tr><td>GND</td><td><span class="pin">GND</span></td></tr>
+					</table>
+				</section>
+				<section>
+					<h3>Wiring Diagram</h3>
+					<div class="placeholder">
+						📷 Breadboard close-up: DHT22 seated, VCC→3V3, GND→GND, DATA→GPIO 4, and the
+						<strong>10 kΩ resistor bridging DATA to 3V3</strong>. Highlight the pull-up.
+						<span class="file">images/build2-dht22-wiring.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/build2-dht22-wiring.png" alt="DHT22 wiring with pull-up"> -->
+				</section>
+				<section>
+					<h3>Why the 10 kΩ Resistor?</h3>
+					<p>Our bare DHT22 has <strong>no built-in pull-up</strong>. Without that 10 kΩ
+						bridge from DATA to 3V3, you'll get <span class="warn">read errors</span>.</p>
+					<p><small>It keeps the data line "held high" so the sensor's signal is clear.</small></p>
+				</section>
+				<section>
+					<h3>The Code</h3>
+					<pre><code data-trim data-line-numbers class="cpp">
+#include &lt;DHT.h&gt;
+
+#define DHTPIN 4
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+}
+
+void loop() {
+  float humidity = dht.readHumidity();
+  float tempC = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(tempC)) {
+    Serial.println("Read failed - check wiring!");
+    return;
+  }
+  Serial.print("Humidity: "); Serial.print(humidity);
+  Serial.print("%  Temp: "); Serial.print(tempC);
+  Serial.println("C");
+  delay(2000);
+}
+					</code></pre>
+				</section>
+				<section data-background-color="#1a3a1a">
+					<h3 class="milestone">✅ Milestone Check</h3>
+					<p>Real humidity &amp; temperature numbers scroll in Serial Monitor.</p>
+					<p><strong>Breathe on the sensor</strong> — watch humidity jump!</p>
+					<aside class="notes">If NaN: 99% of the time it's the missing/loose pull-up or a
+						swapped pin. Ask guiding questions, don't fix it for them.</aside>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 2:30–3:05  BUILD #3: RGB LED + COLOR LOGIC                   -->
+			<!-- ============================================================ -->
+			<section>
+				<section data-background-color="#1a3a1a">
+					<h2 class="build">🔧 Build #3</h2>
+					<h3>Add the RGB LED &amp; make it glow</h3>
+					<aside class="notes">2:30–3:05. Unplug first. Add LED to the same breadboard.</aside>
+				</section>
+				<section>
+					<h3>Pins We'll Use</h3>
+					<table>
+						<tr><th>LED leg</th><th>Connects to</th></tr>
+						<tr><td>Red</td><td>220 Ω → <span class="pin">GPIO 18</span></td></tr>
+						<tr><td>Common cathode (longest)</td><td><span class="pin">GND</span></td></tr>
+						<tr><td>Green</td><td>220 Ω → <span class="pin">GPIO 19</span></td></tr>
+						<tr><td>Blue</td><td>220 Ω → <span class="pin">GPIO 23</span></td></tr>
+					</table>
+					<p><small class="warn">Resistor goes in series with each <em>color</em> leg —
+							never on the cathode/GND leg.</small></p>
+				</section>
+				<section>
+					<h3>Wiring Diagram</h3>
+					<div class="placeholder">
+						📷 Breadboard close-up: RGB LED seated, longest leg → GND rail, each color leg
+						through its own 220 Ω resistor to GPIO 18 / 19 / 23. Keep the DHT22 from Build #2
+						still in place.
+						<span class="file">images/build3-rgb-wiring.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/build3-rgb-wiring.png" alt="RGB LED wiring"> -->
+				</section>
+				<section>
+					<h3>Mixing Color with PWM</h3>
+					<pre><code data-trim data-line-numbers class="cpp">
+const int RED_PIN = 18, GREEN_PIN = 19, BLUE_PIN = 23;
+
+void setColor(int red, int green, int blue) {
+  ledcWrite(0, red);     // 0–255 brightness per channel
+  ledcWrite(1, green);
+  ledcWrite(2, blue);
+}
+
+void setup() {
+  ledcSetup(0, 5000, 8);   ledcAttachPin(RED_PIN, 0);
+  ledcSetup(1, 5000, 8);   ledcAttachPin(GREEN_PIN, 1);
+  ledcSetup(2, 5000, 8);   ledcAttachPin(BLUE_PIN, 2);
+}
+					</code></pre>
+					<p><small>PWM = blinking faster than your eye can see, to fake "half brightness."</small></p>
+				</section>
+				<section>
+					<h3>Test One Color at a Time</h3>
+					<p>Before mixing — prove each channel works:</p>
+					<pre><code data-trim class="cpp">
+setColor(255, 0, 0);  delay(700);   // red only
+setColor(0, 255, 0);  delay(700);   // green only
+setColor(0, 0, 255);  delay(700);   // blue only
+					</code></pre>
+					<p><small>The starter firmware runs this R→G→B self-test on startup for you.</small></p>
+				</section>
+				<section data-background-color="#1a3a1a">
+					<h3 class="milestone">✅ Milestone Check</h3>
+					<p>Red, green, and blue each light up on their own.</p>
+					<p><small>Green/blue look dim? That's expected — we can swap them to 150 Ω later.</small></p>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 3:05–3:30  BUILD #4: INTEGRATION                             -->
+			<!-- ============================================================ -->
+			<section>
+				<section data-background-color="#1a3a1a">
+					<h2 class="build">🔧 Build #4</h2>
+					<h3>Put it all together</h3>
+					<p>Sensor reading → color logic → glowing LED, in one loop.</p>
+					<aside class="notes">3:05–3:30. This is the payoff. Walk the room; ask, don't fix.</aside>
+				</section>
+				<section>
+					<h3>The Full Circuit</h3>
+					<img class="diagram" src="../assets/images/circuit_image.svg"
+						alt="Full ESP32 + DHT22 + RGB LED circuit">
+					<p><small>Reference schematic. Yours can look messier — as long as the
+							connections match!</small></p>
+				</section>
+				<section>
+					<h3>Optional: A Cleaner Photo</h3>
+					<div class="placeholder">
+						📷 Real-world photo of a finished, working student breadboard from a clear angle
+						(easier for kids to copy than the schematic).
+						<span class="file">images/build4-finished-breadboard.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/build4-finished-breadboard.png" alt="Finished breadboard photo"> -->
+				</section>
+				<section>
+					<h3>Color Logic (Humidity Mode)</h3>
+					<pre><code data-trim data-line-numbers class="cpp">
+float humidity = dht.readHumidity();
+
+if (humidity &lt; 30) {
+  setColor(255, 0, 0);      // Red  - very dry
+} else if (humidity &lt; 50) {
+  setColor(255, 255, 0);    // Yellow - dry side
+} else if (humidity &lt; 70) {
+  setColor(0, 255, 0);      // Green - comfortable
+} else {
+  setColor(0, 0, 255);      // Blue - very humid
+}
+					</code></pre>
+					<p><small>Humidity is the default — you can change it instantly by breathing on
+							the sensor.</small></p>
+				</section>
+				<section>
+					<h3>The Color Map</h3>
+					<table>
+						<tr><th>Humidity</th><th>Color</th><th>Vibe</th></tr>
+						<tr><td>Below 30%</td><td>🔴 Red</td><td>Very dry</td></tr>
+						<tr><td>30–50%</td><td>🟡 Yellow</td><td>Dry side</td></tr>
+						<tr><td>50–70%</td><td>🟢 Green</td><td>Comfortable</td></tr>
+						<tr><td>Above 70%</td><td>🔵 Blue</td><td>Very humid</td></tr>
+					</table>
+					<p><small>One line switches it to <em>temperature</em> mode instead.</small></p>
+				</section>
+				<section>
+					<h3>Common Bugs</h3>
+					<ul>
+						<li>Wrong pin numbers (18/19/23 vs the wire)</li>
+						<li>Cathode vs anode mixed up (longest leg → GND)</li>
+						<li>DHT library not installed</li>
+						<li>Read returns <code>NaN</code> → check the 10 kΩ pull-up</li>
+					</ul>
+					<aside class="notes">Encourage debugging out loud. Fast finishers: try orange
+						(between red and yellow).</aside>
+				</section>
+				<section data-background-color="#1a3a1a">
+					<h3 class="milestone">✅ Big Milestone</h3>
+					<p style="font-size:1.2em;">Breathe on the sensor → your LED <strong>changes
+							color.</strong></p>
+					<p>🎉 You built a working sensor-driven device.</p>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 3:30–3:40  BREAK                                             -->
+			<!-- ============================================================ -->
+			<section data-background-color="#222">
+				<h2>🍎 Break — 10 min</h2>
+				<p>Snack and reset. Almost there.</p>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 3:40–3:55  PERSONALIZATION / EXPERIMENT                      -->
+			<!-- ============================================================ -->
+			<section>
+				<section data-background-color="#1a3a1a">
+					<h2 class="build">🔧 Make It Yours</h2>
+					<p>Pick one (or more!) to experiment with.</p>
+					<aside class="notes">3:40–3:55. Now they have a working base, let them play.
+						This is the "experiment" time the build was front-loaded to protect.</aside>
+				</section>
+				<section>
+					<h3>Easy Tweaks</h3>
+					<ul>
+						<li>Change the humidity (or temp) thresholds</li>
+						<li>Pick your own colors for each range</li>
+						<li>Print a custom message: <code>"Maya's room: HUMID"</code></li>
+						<li>Make mixed colors — orange, purple, teal</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Stretch Goals</h3>
+					<ul>
+						<li>Smooth <strong>fade</strong> between colors instead of snapping</li>
+						<li>Switch from humidity mode to <strong>temperature</strong> mode</li>
+						<li>Watch the value on the Serial <strong>Plotter</strong></li>
+						<li>Big one: connect WiFi and POST your reading to a webhook</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Mixing Colors Cheat Sheet</h3>
+					<pre><code data-trim class="cpp">
+setColor(255, 128, 0);   // orange
+setColor(128, 0, 255);   // purple
+setColor(0, 255, 255);   // teal/cyan
+setColor(255, 255, 255); // white-ish
+					</code></pre>
+				</section>
+			</section>
+
+			<!-- ============================================================ -->
+			<!-- 3:55–4:00  WRAP-UP                                           -->
+			<!-- ============================================================ -->
+			<section>
+				<section>
+					<h2>Show &amp; Tell</h2>
+					<p>Who wants to demo their color map?</p>
+					<aside class="notes">3:55–4:00. A few quick demos. Then take-home logistics.</aside>
+				</section>
+				<section>
+					<h3>Taking It Home</h3>
+					<div class="placeholder">
+						📷 The project running off a USB power bank (no laptop). Show it sitting on a
+						desk/shelf glowing.
+						<span class="file">images/take-home-powerbank.png</span>
+					</div>
+					<!-- <img class="diagram" src="images/take-home-powerbank.png" alt="Project on a USB power bank"> -->
+					<p><small>Any USB power bank or phone charger runs it — no laptop needed.</small></p>
+				</section>
+				<section>
+					<h3>What You Did Today</h3>
+					<ul>
+						<li>Wired a real circuit on a breadboard</li>
+						<li>Uploaded your own code to a microcontroller</li>
+						<li>Read a live sensor and drove an LED with PWM</li>
+						<li>Built something you understand — and can keep building</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Keep Going</h3>
+					<p>Check the <strong>Next Steps</strong> page for project ideas, and the
+						<strong>Glossary</strong> if a word was new.</p>
+					<p><img src="../assets/images/workshops-qr.png" alt="Workshops QR code" height="185"></p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+
+			<section data-background-image="../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Thank you!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../assets/revealjs/reveal.js"></script>
+	<script src="../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

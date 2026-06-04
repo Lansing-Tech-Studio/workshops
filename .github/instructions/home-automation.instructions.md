@@ -8,7 +8,7 @@ This file provides context for AI agents working with files inside `home-automat
 
 ## What This Workshop Is
 
-A **4-hour camp** teaching students ages 12–14 to build a **temperature-to-color LED display** using an ESP32 microcontroller. Students wire the circuit themselves on a breadboard and write C++ firmware using the Arduino framework via PlatformIO. The finished project runs off USB power and students take it home.
+A **4-hour camp** teaching students ages 12–14 to build a **humidity-to-color LED display** using an ESP32 microcontroller. The LED color is driven by **humidity by default** — students change it instantly by breathing on the sensor, which is the easiest, most visible cause-and-effect for the room; temperature is a one-line alternate mode. Students wire the circuit themselves on a breadboard and write C++ firmware using the Arduino framework via PlatformIO. The finished project runs off USB power and students take it home.
 
 - 20 students per session; same content runs twice (morning + afternoon)
 - No prior electronics or programming experience required
@@ -44,7 +44,16 @@ A **4-hour camp** teaching students ages 12–14 to build a **temperature-to-col
 - **RGB LED PWM:** ESP32 LEDC peripheral via `ledcSetup()` / `ledcAttachPin()` / `ledcWrite()`, or `analogWrite()` in recent Arduino-ESP32 cores (both acceptable)
 - **Serial baud rate:** 115200
 
-### Project goal: temperature-to-color mapping
+### Project goal: humidity-to-color mapping (default)
+
+```
+Below 30 % RH → Red    (R=255, G=0,   B=0)    very dry
+30–50 % RH    → Yellow (R=255, G=255, B=0)    dry side
+50–70 % RH    → Green  (R=0,   G=255, B=0)    comfortable
+Above 70 % RH → Blue   (R=0,   G=0,   B=255)  very humid
+```
+
+Humidity is the default because students can change it instantly by breathing on the sensor. A one-line switch (`COLOR_SOURCE`) drives the color from **temperature** instead:
 
 ```
 Below 18 °C → Blue   (R=0,   G=0,   B=255)
@@ -100,7 +109,7 @@ A complete code listing for the final project should:
 
 1. Include the DHT22 library and define `DHT dht(4, DHT22)`
 2. Set up three LEDC channels (or use `analogWrite`) for GPIO 25, 26, 27
-3. Read temperature in the `loop()` with appropriate error handling for NaN
+3. Read humidity (and temperature) in the `loop()` with appropriate error handling for NaN
 4. Call a `setColor(r, g, b)` helper that writes PWM values to all three channels
-5. Map temperature ranges to RGB values (students customize the ranges)
-6. Print temperature + color name to Serial at 115200 baud
+5. Map humidity ranges to RGB values by default (students customize the ranges); temperature mapping is the alternate mode
+6. Print humidity + color name to Serial at 115200 baud

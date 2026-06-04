@@ -1,8 +1,8 @@
 # Hardware Reference
 
-Technical details for the ESP32 temperature-to-color project.
+Technical details for the ESP32 humidity-to-color project.
 
-**Project goal:** A DHT22 reads temperature and humidity; an RGB LED displays a color coded by the current temperature.
+**Project goal:** A DHT22 reads humidity and temperature; an RGB LED displays a color coded by the current **humidity** (the default — students change it instantly by breathing on the sensor). A one-line switch drives the color from temperature instead.
 
 ## Built circuit (source of truth: [`dht22-and-rgb/`]({{ site.baseurl }}/home-automation/dht22-and-rgb/))
 
