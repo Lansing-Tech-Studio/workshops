@@ -125,7 +125,7 @@ Total time: **4 hours (240 minutes)**
 | 2:00–2:30     | Wire and read the DHT22 sensor                              | 30 min     |
 | 2:30–3:05     | Add the RGB LED + write the color logic                     | 35 min     |
 | 3:05–3:30     | Integration: combine everything, debug together             | 25 min     |
-| **3:30–3:40** | **Break / snack**                                           | **10 min** |
+| **3:30–3:40** | **Break**                                                   | **10 min** |
 | 3:40–3:55     | Personalization: customize color ranges or add features     | 15 min     |
 | 3:55–4:00     | Show and tell, take-home prep, wrap-up                      | 5 min      |
 
