@@ -8,103 +8,486 @@
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #1a1a1a;
+      background:
+        radial-gradient(circle at top, rgba(91, 140, 255, 0.22), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(54, 211, 153, 0.12), transparent 30%),
+        #111318;
       color: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
+      padding: 2rem;
+      box-sizing: border-box;
     }
 
     .card {
-      text-align: center;
-      padding: 4rem;
+      width: min(1100px, 100%);
+      margin: 0 auto;
     }
 
-    .label {
-      font-size: 1.5rem;
-      opacity: 0.6;
-      margin-bottom: 0.5rem;
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
 
-    .value {
-      font-size: 8rem;
-      font-weight: 200;
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+
+    .status {
+      color: rgba(240, 240, 240, 0.72);
+      font-size: 1rem;
+    }
+
+    .summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .pill {
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      padding: 0.6rem 0.9rem;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.95rem;
+    }
+
+    .filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-left: auto;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .filter input {
+      width: 1rem;
+      height: 1rem;
+      margin: 0;
+      accent-color: #8ef0b9;
+    }
+
+    .devices {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .device {
+      border-radius: 1.25rem;
+      padding: 1rem;
+      background: rgba(16, 20, 30, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .device.active {
+      border-color: rgba(78, 216, 133, 0.4);
+      background: linear-gradient(180deg, rgba(28, 42, 34, 0.92), rgba(16, 20, 30, 0.82));
+    }
+
+    .device.probing {
+      border-color: rgba(120, 174, 255, 0.4);
+    }
+
+    .device.unconfirmed {
+      opacity: 0.78;
+    }
+
+    .device.hidden-by-filter {
+      display: none;
+    }
+
+    .device-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 0.75rem;
+    }
+
+    .ip {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .badge.live {
+      background: rgba(63, 191, 127, 0.18);
+      color: #8ef0b9;
+    }
+
+    .badge.stale {
+      background: rgba(255, 157, 100, 0.14);
+      color: #ffbb8b;
+    }
+
+    .badge.missing {
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: auto;
+    }
+
+    .metric {
+      padding: 0.75rem;
+      border-radius: 0.9rem;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .metric-label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.55;
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-value {
+      font-size: 1.6rem;
+      font-weight: 700;
       line-height: 1;
     }
 
-    .unit {
-      font-size: 3rem;
-      opacity: 0.5;
+    .metric-note {
+      margin-top: 0.35rem;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.58);
     }
 
-    .row {
-      display: flex;
-      gap: 4rem;
-    }
-
-    .stale .value {
-      color: #ff8866;
+    .metric-full {
+      grid-column: 1 / -1;
     }
 
     .footer {
-      margin-top: 3rem;
-      font-size: 1rem;
-      opacity: 0.4;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
     }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <div class="row">
+    <div class="hero">
       <div>
-        <div class="label">Temperature</div>
-        <div class="value"><span id="temp">--</span><span class="unit">&deg;C</span></div>
-      </div>
-      <div>
-        <div class="label">Humidity</div>
-        <div class="value"><span id="humidity">--</span><span class="unit">%</span></div>
+        <h1>Sensor Hub</h1>
+        <div class="status" id="status">Scanning 192.168.5.101 to 192.168.5.130...</div>
       </div>
     </div>
-    <div class="footer" id="status">Connecting...</div>
+    <div class="summary">
+      <div id="summary"></div>
+      <label class="filter" for="hide-unconfirmed">
+        <input type="checkbox" id="hide-unconfirmed">
+        Hide unconfirmed IPs
+      </label>
+    </div>
+    <div class="devices" id="devices"></div>
+    <div class="footer">Confirmed devices refresh every 3 seconds. Unconfirmed IPs retry about every 10 seconds.</div>
   </div>
   <script>
-    // CHANGE THIS to the IP printed by your ESP32 on the Serial Monitor.
-    // You can also override it by appending ?ip=192.168.1.42 to the URL.
-    const DEFAULT_IP = "192.168.1.134";
-    const params = new URLSearchParams(window.location.search);
-    const ip = params.get("ip") || DEFAULT_IP;
-    const ESP32_URL = `http://${ip}/api/sensor`;
+    const START_IP = 101;
+    const END_IP = 130;
+    const CONFIRMED_POLL_MS = 3000;
+    const UNCONFIRMED_POLL_MS = 10000;
+    const REQUEST_TIMEOUT_MS = 2200;
+    const MAX_CONCURRENT_REQUESTS = 4;
+    const API_PATH = "/api/sensor";
+    const THREE_FAILURES = 3;
 
-    const tempEl = document.getElementById("temp");
-    const humEl = document.getElementById("humidity");
+    const devicesEl = document.getElementById("devices");
+    const summaryEl = document.getElementById("summary");
     const statusEl = document.getElementById("status");
+    const hideUnconfirmedEl = document.getElementById("hide-unconfirmed");
 
-    async function update() {
+    const devices = Array.from({ length: END_IP - START_IP + 1 }, (_, index) => {
+      const ip = `192.168.5.${START_IP + index}`;
+      return {
+        ip,
+        state: "pending",
+        temp: null,
+        humidity: null,
+        status: "Waiting to check",
+        lastSeenAt: null,
+        lastAttemptAt: 0,
+        nextPollAt: 0,
+        inFlight: false,
+        consecutiveFailures: 0,
+        element: null,
+        badgeEl: null,
+        tempEl: null,
+        humidityEl: null,
+        noteEl: null,
+      };
+    });
+
+    const stateLabels = {
+      pending: "Unconfirmed",
+      probing: "Checking",
+      live: "Online",
+      stale: "Online",
+      offline: "Unconfirmed",
+    };
+
+    function createDeviceCard(device) {
+      const card = document.createElement("article");
+      card.className = "device unconfirmed";
+
+      card.innerHTML = `
+        <div class="device-header">
+          <div class="ip">${device.ip}</div>
+          <div class="badge missing">${stateLabels.pending}</div>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span class="metric-label">Temperature</span>
+            <div class="metric-value">--</div>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Humidity</span>
+            <div class="metric-value">--</div>
+          </div>
+          <div class="metric metric-full">
+            <span class="metric-label">Status</span>
+            <div class="metric-note">Waiting to check</div>
+          </div>
+        </div>
+      `;
+
+      const badgeEl = card.querySelector(".badge");
+      const metricValues = card.querySelectorAll(".metric-value");
+      const noteEl = card.querySelector(".metric-note");
+
+      device.element = card;
+      device.badgeEl = badgeEl;
+      device.tempEl = metricValues[0];
+      device.humidityEl = metricValues[1];
+      device.noteEl = noteEl;
+
+      return card;
+    }
+
+    function renderDevices() {
+      devicesEl.innerHTML = "";
+      const fragment = document.createDocumentFragment();
+      devices.forEach((device) => {
+        fragment.appendChild(createDeviceCard(device));
+      });
+      devicesEl.appendChild(fragment);
+    }
+
+    function isUnconfirmed(device) {
+      return device.state === "pending" || device.state === "offline";
+    }
+
+    function applyDeviceVisibility(device) {
+      if (!device.element) {
+        return;
+      }
+
+      device.element.classList.toggle("hidden-by-filter", hideUnconfirmedEl.checked && isUnconfirmed(device));
+    }
+
+    function applyVisibilityFilter() {
+      devices.forEach(applyDeviceVisibility);
+    }
+
+    function setDeviceState(device, patch) {
+      Object.assign(device, patch);
+
+      if (!device.element) {
+        return;
+      }
+
+      device.element.classList.toggle("active", device.state === "live" || device.state === "stale");
+      device.element.classList.toggle("probing", device.state === "probing");
+      device.element.classList.toggle("unconfirmed", device.state === "pending" || device.state === "offline");
+      applyDeviceVisibility(device);
+
+      const badgeClasses = ["badge"];
+      let badgeLabel = stateLabels[device.state] || "Unknown";
+
+      if (device.state === "live") {
+        badgeClasses.push("live");
+      } else if (device.state === "stale") {
+        badgeClasses.push("stale");
+      } else {
+        badgeClasses.push("missing");
+      }
+
+      if (device.inFlight) {
+        badgeLabel = "Checking";
+      }
+
+      device.badgeEl.className = badgeClasses.join(" ");
+      device.badgeEl.textContent = badgeLabel;
+      device.tempEl.textContent = device.temp === null ? "--" : `${device.temp.toFixed(1)} °C`;
+      device.humidityEl.textContent = device.humidity === null ? "--" : `${device.humidity.toFixed(1)} %`;
+      device.noteEl.textContent = device.status;
+    }
+
+    function updateSummary() {
+      const confirmed = devices.filter((device) => device.state === "live" || device.state === "stale").length;
+      const checking = devices.filter((device) => device.inFlight).length;
+      const pending = devices.length - confirmed - checking;
+
+      summaryEl.innerHTML = `
+        <div class="pill">${confirmed} confirmed</div>
+        <div class="pill">${checking} checking</div>
+        <div class="pill">${pending} waiting</div>
+      `;
+    }
+
+    function getNextDueDevice(now) {
+      return devices
+        .filter((device) => !device.inFlight && device.nextPollAt <= now)
+        .sort((left, right) => left.nextPollAt - right.nextPollAt)[0] || null;
+    }
+
+    async function fetchWithTimeout(url, timeoutMs) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
       try {
-        const res = await fetch(ESP32_URL, { cache: "no-store" });
-        const data = await res.json();
-        if (data.status === "ok") {
-          tempEl.textContent = data.temp_c.toFixed(1);
-          humEl.textContent = data.humidity.toFixed(1);
-          const stale = data.age_ms > 10000;
-          document.body.classList.toggle("stale", stale);
-          statusEl.textContent = stale
-            ? `Last reading ${Math.round(data.age_ms / 1000)}s ago`
-            : `Live from ${ip}`;
-        } else {
-          statusEl.textContent = data.message || "Sensor not ready";
-        }
-      } catch (e) {
-        statusEl.textContent = `Cannot reach ${ip} — check WiFi and IP`;
-        console.error("Fetch failed:", e);
+        return await fetch(url, {
+          cache: "no-store",
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timeoutId);
       }
     }
 
-    update();
-    setInterval(update, 2000);
+    function markNextPoll(device, delayMs) {
+      device.nextPollAt = Date.now() + delayMs;
+    }
+
+    function handleFailedPoll(device, message, wasConfirmed) {
+      const consecutiveFailures = device.consecutiveFailures + 1;
+      const demoteToUnconfirmed = wasConfirmed && consecutiveFailures >= THREE_FAILURES;
+
+      setDeviceState(device, {
+        state: demoteToUnconfirmed ? "pending" : "offline",
+        temp: demoteToUnconfirmed ? null : device.temp,
+        humidity: demoteToUnconfirmed ? null : device.humidity,
+        status: demoteToUnconfirmed
+          ? "Confirmed device failed 3 checks in a row"
+          : message,
+        consecutiveFailures,
+      });
+
+      markNextPoll(device, demoteToUnconfirmed ? UNCONFIRMED_POLL_MS : UNCONFIRMED_POLL_MS);
+    }
+
+    async function pollDevice(device) {
+      const wasConfirmed = device.state === "live" || device.state === "stale";
+      device.inFlight = true;
+      device.lastAttemptAt = Date.now();
+
+      setDeviceState(device, {
+        state: wasConfirmed ? "probing" : device.state,
+        status: wasConfirmed ? "Refreshing reading..." : "Checking device...",
+      });
+      updateSummary();
+
+      const apiUrl = `http://${device.ip}${API_PATH}`;
+
+      try {
+        const response = await fetchWithTimeout(apiUrl, REQUEST_TIMEOUT_MS);
+        const data = await response.json();
+
+        if (data.status === "ok") {
+          const ageMs = Number.isFinite(data.age_ms) ? data.age_ms : 0;
+          const stale = ageMs > 10000;
+
+          setDeviceState(device, {
+            state: stale ? "stale" : "live",
+            temp: Number(data.temp_c),
+            humidity: Number(data.humidity),
+            status: stale
+              ? `Last reading ${Math.round(ageMs / 1000)}s ago`
+              : `Live reading ${Math.round(ageMs / 1000)}s ago`,
+            lastSeenAt: Date.now(),
+            consecutiveFailures: 0,
+          });
+          markNextPoll(device, CONFIRMED_POLL_MS);
+        } else {
+          handleFailedPoll(device, data.message || "Sensor not ready", wasConfirmed);
+        }
+      } catch (error) {
+        handleFailedPoll(
+          device,
+          error instanceof DOMException && error.name === "AbortError" ? "Timed out" : "No response yet",
+          wasConfirmed
+        );
+      } finally {
+        device.inFlight = false;
+        updateSummary();
+      }
+    }
+
+    function schedulerTick() {
+      const now = Date.now();
+      let slots = MAX_CONCURRENT_REQUESTS - devices.filter((device) => device.inFlight).length;
+
+      while (slots > 0) {
+        const nextDevice = getNextDueDevice(now);
+        if (!nextDevice) {
+          break;
+        }
+
+        nextDevice.nextPollAt = now + 250;
+        pollDevice(nextDevice);
+        slots -= 1;
+      }
+    }
+
+    renderDevices();
+    devices.forEach((device, index) => {
+      device.nextPollAt = Date.now() + index * 150;
+      setDeviceState(device, { state: "pending", status: "Waiting to check" });
+    });
+    hideUnconfirmedEl.addEventListener("change", applyVisibilityFilter);
+    updateSummary();
+    applyVisibilityFilter();
+    schedulerTick();
+    setInterval(schedulerTick, 250);
   </script>
 </body>
 
