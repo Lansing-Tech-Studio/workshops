@@ -109,6 +109,61 @@ Students need the following installed **before camp day** (or arrive 30 min earl
   - Alternatively, can use [PlatformIO Core (CLI)](https://platformio.org/install/cli) if preferred
 - USB driver for CP210x (Windows and some Mac users)
 
+### Linux: install `pio` (PlatformIO Core CLI)
+
+If students are on Linux, this is the quickest reliable setup for the `pio` command:
+
+```bash
+# 1) Install pipx (Ubuntu/Debian)
+sudo apt update
+sudo apt install -y pipx
+python3 -m pipx ensurepath
+
+# 2) Restart terminal, then install PlatformIO Core
+pipx install platformio
+
+# 3) Verify
+pio --version
+```
+
+If `pio` is still not found after reopening the terminal:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+To avoid serial-port permission errors when uploading to ESP32:
+
+```bash
+sudo usermod -aG dialout $USER
+```
+
+Then log out and log back in before testing uploads.
+
+### Linux: find the ESP32 serial port
+
+Most boards appear as `/dev/ttyUSB0` or `/dev/ttyACM0`, but it can vary.
+
+Use this quick before/after check:
+
+```bash
+# 1) With board unplugged
+ls /dev/ttyUSB* /dev/ttyACM* 2>/dev/null
+
+# 2) Plug in ESP32, wait 2 seconds, run again
+ls /dev/ttyUSB* /dev/ttyACM* 2>/dev/null
+```
+
+The new entry is your upload port.
+
+If nothing new appears, watch kernel messages while plugging in:
+
+```bash
+dmesg --follow
+```
+
+Look for lines mentioning `ttyUSB` or `ttyACM`.
+
 Instructors should test uploads on each laptop the day before camp if possible.
 
 ## 6. Camp Agenda
