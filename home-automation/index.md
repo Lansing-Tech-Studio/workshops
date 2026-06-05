@@ -1,5 +1,5 @@
 ---
-layout: coming-soon
+layout: default
 title: Home Automation with ESP32
 tagline: Build a humidity-to-color LED display with a real ESP32 microcontroller — no experience needed.
 preview: |
