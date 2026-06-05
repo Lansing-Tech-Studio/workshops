@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../assets/revealjs/reset.css">
 	<link rel="stylesheet" href="../assets/revealjs/reveal.css">
 	<link rel="stylesheet" href="../assets/revealjs/theme/black.css">
+	<link rel="stylesheet" href="../assets/style/asciinema-player.css">
 
 	<link rel="stylesheet" href="../assets/revealjs/plugin/highlight/monokai.css">
 	<style>
@@ -80,6 +81,16 @@
 			background: #fff;
 			border-radius: 8px;
 			padding: 8px;
+		}
+
+		/* asciinema-player inside reveal: pin width so the recording (136 cols)
+		   gets a stable measurement at init time. */
+		.cast-wrap {
+			width: 100%;
+			max-width: 1100px;
+			margin: 0 auto;
+			font-size: 0;
+			/* kill stray whitespace baseline */
 		}
 	</style>
 </head>
@@ -364,13 +375,10 @@ void loop() {
 					</code></pre>
 				</section>
 				<section>
-					<h3>Step 4 — Upload!</h3>
-					<div class="placeholder">
-						📷 PlatformIO toolbar with the → (Upload) arrow circled, plus the Serial
-						Monitor showing "LED ON / LED OFF" at 115200 baud.
-						<span class="file">images/build1-upload.png</span>
+					<!-- <h3>Step 4 — Upload!</h3> -->
+					<div class="cast-wrap">
+						<div id="flash-cast"></div>
 					</div>
-					<!-- <img class="diagram" src="images/build1-upload.png" alt="Upload button and serial monitor"> -->
 				</section>
 				<section data-background-color="#1a3a1a">
 					<h3 class="milestone">✅ Milestone Check</h3>
@@ -708,10 +716,43 @@ setColor(255, 255, 255); // white-ish
 	<script src="../assets/revealjs/plugin/notes/notes.js"></script>
 	<script src="../assets/revealjs/plugin/markdown/markdown.js"></script>
 	<script src="../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script src="../assets/js/asciinema-player.min.js"></script>
 	<script>
 		Reveal.initialize({
 			hash: true,
 			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+
+		// asciinema-player measures a character cell at create() time. Inside
+		// reveal.js, non-current slides are display:none, so the container has
+		// 0 width and the measurement is wrong — that's what makes the cursor
+		// drift away from the typed letters during playback. Wait for fonts to
+		// load, then create the player the first time its slide is shown.
+		let flashPlayer = null;
+		function createFlashCast() {
+			if (flashPlayer) return;
+			const el = document.getElementById('flash-cast');
+			if (!el || !el.offsetWidth) return;
+			flashPlayer = AsciinemaPlayer.create('./flash.cast', el, {
+				autoplay: false,
+				loop: false,
+				speed: 2,
+				fit: 'width',
+				cols: 136,
+				rows: 39,
+				theme: 'solarized-dark',
+			});
+		}
+		function maybeCreateFlashCast() {
+			const current = Reveal.getCurrentSlide();
+			if (current && current.querySelector('#flash-cast')) {
+				createFlashCast();
+			}
+		}
+		const fontsReady = (document.fonts && document.fonts.ready) || Promise.resolve();
+		fontsReady.then(() => {
+			maybeCreateFlashCast();
+			Reveal.on('slidechanged', maybeCreateFlashCast);
 		});
 	</script>
 </body>
