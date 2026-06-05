@@ -13,7 +13,7 @@ preview: |
 
 # Home Automation with ESP32 - 4 Hour Camp
 
-**Audience:** Students ages 12-14, no prior electronics experience required \
+**Audience:** Students ages 14-18, no prior electronics experience required \
 **Format:** 4-hour camp session (same content runs twice: morning and afternoon) \
 **Group size:** 20 students per session \
 **Theme:** _"Your first real hardware project — code something you can feel, see, and take home"_
