@@ -55,6 +55,17 @@ Either you already committed these changes, or you didn't save your files in VS
 Code. Make sure you press Ctrl+S in all changed files, then try `git add .` and
 `git commit` again.
 
+*Special case*: if you're trying to make a "Before adding [feature]" save point but
+you haven't changed anything since your last commit, there's truly nothing new to
+save. To create the marker anyway, add `--allow-empty`:
+
+```bash
+git commit --allow-empty -m "Before adding question counter"
+```
+
+This makes an empty save point — a labeled spot in your history you can point back
+to before you start experimenting.
+
 ## "What's the difference between git add and git commit?"
 
 `git add` selects which files to include (like putting items in a box). `git

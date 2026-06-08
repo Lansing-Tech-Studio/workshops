@@ -96,6 +96,8 @@ Topics:
   * `git push` — publish the save point to GitHub (updates the live site)
   * `git log` — see all your save points
   * `git checkout` — go back to a previous save point
+* If a "Before adding..." save point has no changes yet, git refuses with "nothing
+  to commit" — use `git commit --allow-empty -m "..."` to drop the marker anyway
 * Students make their first commit of the Workshop 2 quiz app
 * View `git log` together: "Look, you have a save point now"
 
@@ -127,7 +129,9 @@ Topics:
 * Students pick a feature to add: score display improvement, question counter, or
   category label
 * The loop:
-  1. **Save**: `git commit -m "Before adding [feature]"`
+  1. **Save**: `git commit -m "Before adding [feature]"` — if nothing has changed
+     since your last commit, git says "nothing to commit"; add `--allow-empty`
+     (`git commit --allow-empty -m "Before adding [feature]"`) to create the marker anyway
   2. **Change**: prompt Copilot to add the feature
   3. **Test**: run through the test cases — does everything still work?
   4. **Keep or rollback**: if tests pass, commit and `git push`. If not, `git checkout .` to undo

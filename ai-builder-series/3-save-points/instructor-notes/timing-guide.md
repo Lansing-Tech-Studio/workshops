@@ -42,6 +42,9 @@ section: Instructor Notes
 - **Watch for**:
   - Students typing the commands wrong (quotes, spaces, dots)
   - `git commit` without `-m` opening an editor — show them how to exit (`:q!`)
+  - `git commit` saying "nothing to commit" when they want a "before" marker but
+    haven't changed anything yet — have them add `--allow-empty`
+    (`git commit --allow-empty -m "message"`) to create the save point anyway
   - Students who already know git — have them help neighbors
 - **Tip**: do NOT teach branches, pull, merge, or any other commands. The save-point
   workflow is add → commit → push, with checkout for rollback. Branches come in
@@ -78,6 +81,8 @@ section: Instructor Notes
 - **Flow**:
   1. Walk through the loop together as a group:
      - Save: `git add . && git commit -m "Before adding question counter"`
+       (if nothing changed since the last commit, use `git commit --allow-empty -m
+       "Before adding question counter"` so git still makes the marker)
      - Change: ask Copilot to add a question counter
      - Test: run through test cases
      - Keep: `git add . && git commit -m "Added question counter"`

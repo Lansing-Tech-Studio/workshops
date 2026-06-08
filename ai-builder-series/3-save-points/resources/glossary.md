@@ -22,6 +22,11 @@ Each commit has a message describing what changed.
 counter" or "Fixed scoring bug." Good messages help you find specific save points
 later.
 
+**empty commit (`--allow-empty`):** A save point with no file changes. Normally git
+refuses to commit when nothing changed, but `git commit --allow-empty -m "..."` lets
+you drop a labeled marker anyway — handy for a "Before adding [feature]" save point
+when you haven't changed anything yet.
+
 **git add:** The command that selects which files to include in your next commit.
 Think of it as putting files in a box before sealing it.
 
