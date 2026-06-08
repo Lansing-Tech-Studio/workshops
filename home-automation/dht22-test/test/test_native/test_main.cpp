@@ -52,13 +52,13 @@ void test_just_below_23_is_green(void)
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
 
-// --- Yellow zone (23 °C to <28 °C) ---
+// --- Yellow zone (23 °C to <28 °C) — red-biased yellow (255, 200, 0) ---
 
 void test_at_23_is_yellow(void)
 {
   Color c = getColorForTemp(23.0f);
   TEST_ASSERT_EQUAL_INT(255, c.red);
-  TEST_ASSERT_EQUAL_INT(255, c.green);
+  TEST_ASSERT_EQUAL_INT(200, c.green);
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
 
@@ -66,7 +66,7 @@ void test_mid_warm_is_yellow(void)
 {
   Color c = getColorForTemp(25.5f);
   TEST_ASSERT_EQUAL_INT(255, c.red);
-  TEST_ASSERT_EQUAL_INT(255, c.green);
+  TEST_ASSERT_EQUAL_INT(200, c.green);
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
 
@@ -74,7 +74,7 @@ void test_just_below_28_is_yellow(void)
 {
   Color c = getColorForTemp(27.9f);
   TEST_ASSERT_EQUAL_INT(255, c.red);
-  TEST_ASSERT_EQUAL_INT(255, c.green);
+  TEST_ASSERT_EQUAL_INT(200, c.green);
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
 
@@ -118,11 +118,37 @@ void test_just_below_30_is_red(void)
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
 
-// --- Green zone (30 % to <60 %) ---
+// --- Yellow zone (30 % to <50 %) — red-biased yellow (255, 200, 0) ---
 
-void test_at_30_is_green(void)
+void test_at_30_is_yellow(void)
 {
   Color c = getColorForHumidity(30.0f);
+  TEST_ASSERT_EQUAL_INT(255, c.red);
+  TEST_ASSERT_EQUAL_INT(200, c.green);
+  TEST_ASSERT_EQUAL_INT(0, c.blue);
+}
+
+void test_dry_side_humidity_is_yellow(void)
+{
+  Color c = getColorForHumidity(40.0f);
+  TEST_ASSERT_EQUAL_INT(255, c.red);
+  TEST_ASSERT_EQUAL_INT(200, c.green);
+  TEST_ASSERT_EQUAL_INT(0, c.blue);
+}
+
+void test_just_below_50_is_yellow(void)
+{
+  Color c = getColorForHumidity(49.9f);
+  TEST_ASSERT_EQUAL_INT(255, c.red);
+  TEST_ASSERT_EQUAL_INT(200, c.green);
+  TEST_ASSERT_EQUAL_INT(0, c.blue);
+}
+
+// --- Green zone (50 % to <70 %) ---
+
+void test_at_50_is_green(void)
+{
+  Color c = getColorForHumidity(50.0f);
   TEST_ASSERT_EQUAL_INT(0, c.red);
   TEST_ASSERT_EQUAL_INT(255, c.green);
   TEST_ASSERT_EQUAL_INT(0, c.blue);
@@ -130,34 +156,16 @@ void test_at_30_is_green(void)
 
 void test_mid_comfort_humidity_is_green(void)
 {
-  Color c = getColorForHumidity(45.0f);
-  TEST_ASSERT_EQUAL_INT(0, c.red);
-  TEST_ASSERT_EQUAL_INT(255, c.green);
-  TEST_ASSERT_EQUAL_INT(0, c.blue);
-}
-
-void test_just_below_60_is_green(void)
-{
-  Color c = getColorForHumidity(59.9f);
-  TEST_ASSERT_EQUAL_INT(0, c.red);
-  TEST_ASSERT_EQUAL_INT(255, c.green);
-  TEST_ASSERT_EQUAL_INT(0, c.blue);
-}
-
-// --- Yellow zone (60 % to <70 %) ---
-
-void test_at_60_is_yellow(void)
-{
   Color c = getColorForHumidity(60.0f);
-  TEST_ASSERT_EQUAL_INT(255, c.red);
+  TEST_ASSERT_EQUAL_INT(0, c.red);
   TEST_ASSERT_EQUAL_INT(255, c.green);
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
 
-void test_just_below_70_is_yellow(void)
+void test_just_below_70_is_green(void)
 {
   Color c = getColorForHumidity(69.9f);
-  TEST_ASSERT_EQUAL_INT(255, c.red);
+  TEST_ASSERT_EQUAL_INT(0, c.red);
   TEST_ASSERT_EQUAL_INT(255, c.green);
   TEST_ASSERT_EQUAL_INT(0, c.blue);
 }
@@ -184,21 +192,21 @@ int main(void)
 {
   UNITY_BEGIN();
 
-  // Blue zone
+  // Temperature — Blue zone
   RUN_TEST(test_freezing_is_blue);
   RUN_TEST(test_just_below_18_is_blue);
 
-  // Green zone
+  // Temperature — Green zone
   RUN_TEST(test_at_18_is_green);
   RUN_TEST(test_mid_comfort_is_green);
   RUN_TEST(test_just_below_23_is_green);
 
-  // Yellow zone
+  // Temperature — Yellow zone
   RUN_TEST(test_at_23_is_yellow);
   RUN_TEST(test_mid_warm_is_yellow);
   RUN_TEST(test_just_below_28_is_yellow);
 
-  // Red zone
+  // Temperature — Red zone
   RUN_TEST(test_at_28_is_red);
   RUN_TEST(test_very_hot_is_red);
 
@@ -206,14 +214,15 @@ int main(void)
   RUN_TEST(test_very_dry_is_red);
   RUN_TEST(test_just_below_30_is_red);
 
-  // Humidity — Green zone
-  RUN_TEST(test_at_30_is_green);
-  RUN_TEST(test_mid_comfort_humidity_is_green);
-  RUN_TEST(test_just_below_60_is_green);
-
   // Humidity — Yellow zone
-  RUN_TEST(test_at_60_is_yellow);
-  RUN_TEST(test_just_below_70_is_yellow);
+  RUN_TEST(test_at_30_is_yellow);
+  RUN_TEST(test_dry_side_humidity_is_yellow);
+  RUN_TEST(test_just_below_50_is_yellow);
+
+  // Humidity — Green zone
+  RUN_TEST(test_at_50_is_green);
+  RUN_TEST(test_mid_comfort_humidity_is_green);
+  RUN_TEST(test_just_below_70_is_green);
 
   // Humidity — Blue zone
   RUN_TEST(test_at_70_is_blue);

@@ -8,6 +8,12 @@ struct Color
   int blue;
 };
 
+// NOTE: Yellow is red-biased — (255, 200, 0) instead of a pure (255, 255, 0).
+// The RGB LED's green channel runs dim through its resistor, so a pure yellow
+// looks green-ish on the real hardware. This matches the firmware's setColor()
+// calls in dht22-and-rgb/src/main.cpp. See home-automation/hardware.md,
+// "LED Brightness Trade-off." Keep these helpers in sync with that firmware.
+
 // Map a temperature in Celsius to an RGB color.
 //
 // Below 18 °C  → Blue   (cold)
@@ -28,7 +34,7 @@ inline Color getColorForTemp(float tempC)
   }
   else if (tempC < 28.0f)
   {
-    return {255, 255, 0}; // Yellow
+    return {255, 200, 0}; // Yellow
   }
   else
   {
@@ -38,9 +44,9 @@ inline Color getColorForTemp(float tempC)
 
 // Map a relative humidity percentage (0–100) to an RGB color.
 //
-// Below 30 %   → Red    (too dry)
-// 30 – 60 %    → Green  (comfortable)
-// 60 – 70 %    → Yellow (humid)
+// Below 30 %   → Red    (very dry)
+// 30 – 50 %    → Yellow (dry side of comfortable)
+// 50 – 70 %    → Green  (comfortable)
 // 70 % and up  → Blue   (very humid / muggy)
 //
 // Students can change the thresholds and colors to customize their project!
@@ -50,13 +56,13 @@ inline Color getColorForHumidity(float humidity)
   {
     return {255, 0, 0}; // Red
   }
-  else if (humidity < 60.0f)
+  else if (humidity < 50.0f)
   {
-    return {0, 255, 0}; // Green
+    return {255, 200, 0}; // Yellow
   }
   else if (humidity < 70.0f)
   {
-    return {255, 255, 0}; // Yellow
+    return {0, 255, 0}; // Green
   }
   else
   {
