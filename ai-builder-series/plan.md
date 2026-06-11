@@ -239,13 +239,13 @@ A student is successful if they can say:
 
 | Time | Activity | Details |
 |------|----------|---------|
-| 0:00–0:10 | Why Teams Need Rules | Quick demo: two people edit the same file differently. What happens? Introduce the problem that branches and PRs solve. Show how Workshops 1–3 skills (clear prompts, separated concerns, save points, tests) make teamwork possible. |
+| 0:00–0:10 | Get Set Up + Why Teams Need Rules | Students fork the shared team repo and start a Codespace on their fork (builds during the demo). Quick demo: two people edit the same file differently. What happens? Introduce the problem that branches and PRs solve. Show how Workshops 1–3 skills (clear prompts, separated concerns, save points, tests) make teamwork possible. |
 | 0:10–0:25 | Git Branches: Your Own Workspace | Teach branching: create a branch, make changes, switch between branches. Analogy: branches are like parallel universes for your project — you can experiment without affecting the main version. Students create their first branch. |
-| 0:25–0:40 | Form Teams and Assign Work | Students form teams of 2–3. Each team starts from the same quiz app baseline (pushed to a shared GitHub repo). Each team member claims one area to improve: new question categories, UI redesign, scoring improvements, timer feature, etc. Each area maps to a separated concern from Workshop 2. |
+| 0:25–0:40 | Form Teams and Assign Work | Students form teams of 2–3. Everyone has already forked the shared team repo (`Lansing-Tech-Studio/team-quiz-app`) and opened a Codespace on their fork. Each team member claims one area to improve: new question categories, UI redesign, scoring improvements, timer feature, etc. Each area maps to a separated concern from Workshop 2. |
 | 0:40–0:50 | Break | |
 | 0:50–1:20 | Build on Your Branch | Each student works on their assigned feature on their own branch. They use the full workflow: good prompts (W1), change only their concern (W2), commit save points and test (W3). Instructor circulates, helps, and ensures at least one pair will have a merge conflict. |
-| 1:20–1:40 | Pull Requests and Code Review | Students push their branches and open pull requests. Teams review each other's PRs — use Copilot to help write PR descriptions and review comments. At least one PR per team gets reviewed before merging. |
-| 1:40–1:55 | Merge and Resolve | Teams merge their PRs into main. At least one team will hit a merge conflict — walk through resolving it together. After all merges, run test cases and use Playwright to verify the combined app works. Celebrate when it does. Troubleshoot together when it doesn't. |
+| 1:20–1:40 | Pull Requests and Code Review | Students push their branches to their forks and open pull requests to the upstream team repo. Teams review each other's PRs — use Copilot to help write PR descriptions and review comments. At least one PR per team gets reviewed before merging. |
+| 1:40–1:55 | Merge and Resolve | The instructor merges approved PRs into the team repo's main, one at a time, on the projector. Students sync their forks after each merge. At least one PR will hit a merge conflict — the student resolves it with the PR's "Resolve conflicts" button while the class walks through it together. After all merges, run test cases and use Playwright to verify the combined app works. Celebrate when it does. Troubleshoot together when it doesn't. |
 | 1:55–2:00 | Series Wrap-Up | Review the full journey: from a first prompt to a team-built app. Show the git log: every commit, branch, and merge tells the story of what they built. Encourage students to apply these skills to their own projects. Mention Claude Code as an alternate tool to explore. Mention Godot MCP for students interested in game development. |
 
 ### Takeaway Artifacts
@@ -257,8 +257,10 @@ A student is successful if they can say:
 
 ### Instructor Notes
 
-- Pre-create a shared GitHub repo for each team before the workshop. Students should
-  be added as collaborators in advance to avoid burning setup time on permissions.
+- The shared team repo (`Lansing-Tech-Studio/team-quiz-app`) must exist before the
+  workshop with the quiz baseline and GitHub Pages enabled. Students fork it — no
+  collaborator setup needed, since they push only to their own forks and contribute
+  via pull requests. Only the instructor can merge.
 - Engineer at least one merge conflict. The easiest way: have two students both modify
   the CSS or the question data file slightly. This feels organic and is easy to
   resolve.
@@ -306,7 +308,7 @@ A student is successful if they can say:
 - [ ] "Change One Thing" reference card
 - [ ] "Save Point Loop" reference card
 - [ ] Messy quiz app starter code (for Workshop 2 fallback)
-- [ ] Shared GitHub repo template for Workshop 4 teams
+- [x] Shared team repo for Workshop 4 (`Lansing-Tech-Studio/team-quiz-app`)
 - [ ] Intentionally-broken prompt for Workshop 3 Feature 2 exercise
 - [ ] Series overview handout for parents/guardians
 

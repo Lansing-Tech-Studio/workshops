@@ -27,10 +27,12 @@ comments: true
 By the end of this workshop, every student should be able to:
 
 * Explain why branches let multiple people work on the same project safely
+* Fork a shared repository and explain why forks are needed when you don't
+  have push access
 * Create a git branch for their own feature work
-* Push a branch to GitHub and open a pull request
+* Push a branch to their fork and open a pull request to the upstream repo
 * Review another student's pull request and leave constructive feedback
-* Merge pull requests and resolve merge conflicts
+* Watch pull requests get merged and resolve merge conflicts on their own PR
 * Use test cases to verify the combined project still works after merging
 
 This workshop is about building together — using everything from Workshops 1-3
@@ -56,16 +58,20 @@ MCP server are all pre-installed in the Codespace you'll open.
 
 ### Workshop-Specific Setup (Instructor Prep)
 
-* **Shared GitHub repository** created for each team (2-3 students per team)
-* All team members added as **collaborators** on the shared repo
-* Shared repo contains the clean quiz app baseline (Workshop 3 starter code)
+* **Team repository** ready at
+  [`Lansing-Tech-Studio/team-quiz-app`](https://github.com/Lansing-Tech-Studio/team-quiz-app)
+  with the quiz app baseline and GitHub Pages enabled
+* No collaborator/permission setup needed — students **fork** the team repo
+  and contribute through pull requests
+* Running more than one team? Create one copy of the repo per team (see the
+  [Timing Guide]({{ site.baseurl }}/ai-builder-series/4-team-up/instructor-notes/timing-guide))
 
 ### Primary Path: GitHub Codespaces
 
-* Open the shared team repo on GitHub → **Code** → **Codespaces** → **Create
-  codespace on main**
+* Students **fork** the team repo, then on their fork: **Code** →
+  **Codespaces** → **Create codespace on main**
 * GitHub Copilot Chat for building
-* Git branches, GitHub pull requests, and code review
+* Git branches, GitHub pull requests (fork → upstream), and code review
 * Playwright MCP for post-merge verification
 
 ### Fallback Path (If Needed)
@@ -77,10 +83,17 @@ MCP server are all pre-installed in the Codespace you'll open.
 
 ## 4. 2-Hour Agenda (Minute-by-Minute)
 
-### 0:00-0:10 — Why Teams Need Rules
+### 0:00-0:10 — Get Set Up + Why Teams Need Rules
 
-> Experience what happens when two people change the same thing
+> Fork the team repo, then experience what happens when two people change the
+> same thing
 
+* Students open `Lansing-Tech-Studio/team-quiz-app`, **fork it** (just like
+  Workshop 1), and create a Codespace on their fork — it builds in the
+  background during the demo
+* Why fork again? The team repo belongs to everyone, so nobody can push to it
+  directly. Your fork is yours — your work reaches the team through a pull
+  request
 * Quick demo: two "developers" (instructor plays both) edit the same file
   differently at the same time
 * What happens when they try to combine their work? Conflict!
@@ -103,21 +116,20 @@ Topics:
   * `git checkout -b feature-name` — create and switch in one step
 * Demo: create a branch, make a change, switch back — the change is only on the
   branch
-* Students create their first branch
+* Students create a practice branch in their fork's Codespace
 
 ### 0:25-0:40 — Form Teams and Assign Work
 
 > Split the work by concern
 
 * Students form teams of 2-3
-* Each team clones the shared GitHub repo
 * Teams decide who works on what:
   * **Person A**: New question categories (data concern — `questions.js`)
-  * **Person B**: UI redesign or new visual theme (styling concern — `styles.css`,
+  * **Person B**: UI redesign or new visual theme (styling concern — `style.css`,
     `index.html`)
   * **Person C** (if 3-person team): New feature like a timer, difficulty selector,
-    or score animations (logic concern — `script.js`)
-* Each person creates a branch named after their feature
+    or score animations (logic concern — `app.js`)
+* Each person creates a branch on their fork, named after their feature
 * Key rule: each person works on different files (this is why Workshop 2 matters!)
 
 ### 0:40-0:50 — Break
@@ -142,9 +154,11 @@ Topics:
 
 > Propose changes and review each other's work
 
-* Students push their branches to GitHub:
-  * `git push -u origin feature-name`
-* Open a pull request on GitHub
+* Students push their branches to their fork:
+  * `git push -u origin feature-name` (this works because the fork is theirs —
+    no special permissions needed)
+* Open a pull request on GitHub — check the direction: base is
+  `Lansing-Tech-Studio/team-quiz-app` `main`, head is their fork's branch
 * Use Copilot to help write a PR description:
   * What changed?
   * Why?
@@ -159,15 +173,21 @@ Topics:
 
 > Combine everyone's work into one project
 
-* Teams merge their PRs into main, one at a time
-* At least one team will hit a merge conflict:
-  * Walk through resolving it together
+* The instructor merges approved PRs into main, one at a time (students don't
+  have write access to the team repo — show the merges on the projector)
+* After each merge, everyone clicks **Sync fork** on their fork
+* At least one PR will hit a merge conflict:
+  * Walk through resolving it together using the **Resolve conflicts** button
+    on the PR (the student can do this — it commits to their fork's branch)
   * Show that the conflict markers tell you exactly what's different
   * Resolve, test, commit
 * After all merges:
-  * Pull the latest main: `git pull`
+  * **Sync fork**, then pull the latest main in the Codespace: `git checkout
+    main && git pull`
   * Run test cases
   * Use Playwright to verify the combined app works
+  * Open the team's live site:
+    [lansingtechstudio.org/team-quiz-app](https://lansingtechstudio.org/team-quiz-app/)
 * Celebrate when it works! Troubleshoot together when it doesn't
 
 ### 1:55-2:00 — Series Wrap-Up
@@ -190,7 +210,7 @@ Topics:
 ### Handout 1: Vocabulary (Fill-in-the-Blank)
 
 * Branch, pull request, merge, merge conflict, code review
-* Collaborator, main branch, push, clone
+* Fork, upstream, main branch, push
 
 ### Handout 2: Mission Worksheet
 
@@ -202,8 +222,13 @@ Topics:
 
 ## 6. Instructor Guardrails
 
-* **Pre-create shared repos**: this must be done before the workshop. Each team needs
-  a shared GitHub repo with all members as collaborators. Test permissions in advance.
+* **Verify the team repo before the workshop**: `Lansing-Tech-Studio/team-quiz-app`
+  should have the current quiz app baseline and GitHub Pages enabled. Test the
+  full student path in advance: fork → branch → push → PR. No collaborator
+  setup is needed — students never push to the team repo, only to their forks.
+* **Students can't merge**: only the instructor has write access to the team
+  repo, so the instructor clicks the merge button. Do it on the projector so
+  everyone sees each merge land.
 * **Engineer a merge conflict**: the easiest way is to have two students both modify
   a shared file slightly (e.g., both change the `<h1>` text or both add a CSS rule
   to the same selector). This should feel organic.

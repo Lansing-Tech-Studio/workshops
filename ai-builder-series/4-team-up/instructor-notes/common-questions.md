@@ -9,6 +9,23 @@ section: Instructor Notes
 
 Keep answers short and friendly. Add detail only if students ask for more.
 
+## "Why can't I just push to the team repo? Why do I need a fork?"
+
+You don't have permission to push to the team repo — and that's on purpose.
+Nobody's half-finished change should land in the shared app without a review.
+Your fork is your own copy where you can push anything. Your work reaches the
+team through a pull request.
+
+*If they want more*: this is exactly how open-source projects work. Thousands
+of strangers contribute to projects like VS Code without any of them having
+push access — they fork, branch, and open pull requests.
+
+## "How do I get the team's latest changes into my fork?"
+
+Click the **Sync fork** button on your fork's GitHub page, then run `git
+checkout main` and `git pull` in your Codespace. Do this after each PR gets
+merged so you're building on the latest team code.
+
 ## "Why can't I just work on the main branch?"
 
 You can, but then every change you make immediately affects everyone else. If your
@@ -25,8 +42,10 @@ Ask the instructor for help — this is a common mistake and easy to fix.
 
 ## "My push was rejected. What happened?"
 
-Usually this means someone else pushed changes to the same branch before you. Run
-`git pull` first to get their changes, then try pushing again.
+Check which repo you're pushing to. `git push` should go to *your fork* — if
+you see a permissions error, you may have opened a Codespace on the team repo
+instead of your fork. If the error says the remote has changes you don't have,
+run `git pull` first, then push again.
 
 *If they want more*: the `--set-upstream` or `-u` flag only needs to be used the
 first time you push a new branch.
@@ -39,12 +58,21 @@ is normal and not a mistake.
 
 ## "How do I fix a merge conflict?"
 
-Open the conflicting file. Look for the `<<<<<<<`, `=======`, and `>>>>>>>` markers.
-The top section is your changes, the bottom section is the other person's changes.
-Decide what to keep, remove the markers, save, and commit.
+The easiest way: click **Resolve conflicts** on your pull request. GitHub shows
+you the `<<<<<<<`, `=======`, and `>>>>>>>` markers — the top section is one
+person's changes, the bottom is the other's. Decide what to keep, remove the
+markers, and click **Mark as resolved**. The fix is committed to your fork's
+branch, so you're allowed to do it yourself.
 
 *If they want more*: VS Code has built-in merge conflict tools that highlight the
 sections and let you click to accept one side or the other.
+
+## "Why can't I click the merge button?"
+
+Merging changes the team's shared repo, and only people with write access can
+do that — in this workshop, that's the instructor. Your job is the review:
+once you approve, the instructor merges it on the projector so everyone sees
+it land.
 
 ## "What if I don't understand my teammate's code?"
 
@@ -72,8 +100,9 @@ always roll back the merge and try again.
 
 ## Teaching Notes for Instructors
 
-The biggest risk in this workshop is students getting stuck in git. Pre-create the
-shared repos, test permissions, and have a cheat sheet of commands ready. If a
+The biggest risk in this workshop is students getting stuck in git. Test the
+fork → branch → PR path yourself in advance and have a cheat sheet of commands
+ready. If a
 student gets into a bad git state, quietly help them rather than debugging in
 front of the group. The focus should be on collaboration concepts, not git
 troubleshooting.

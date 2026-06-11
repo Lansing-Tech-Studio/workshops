@@ -62,7 +62,11 @@ The AI Builder series also uses a **separate starter repository** on GitHub
 (`Lansing-Tech-Studio/quiz-game`) that students fork in Workshop 1 and grow
 across all four sessions. That repo is the canonical source for the dev
 container, MCP config, and placeholder `index.html` — edit it there directly,
-not in this repo. Setup and update instructions for the instructor are in
+not in this repo. Workshop 4 uses a second repo,
+`Lansing-Tech-Studio/team-quiz-app` — a standalone copy (deliberately not a
+fork, so students can fork it despite already having a `quiz-game` fork) that
+students fork and contribute to via pull requests. Setup and update
+instructions for the instructor are in
 `ai-builder-series/instructor-notes/starter-repo-setup.md`.
 
 **Other top-level content:** `learning-checks/` contains quiz/review material that spans multiple workshops.

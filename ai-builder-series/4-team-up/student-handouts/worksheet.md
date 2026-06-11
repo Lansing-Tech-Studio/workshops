@@ -15,7 +15,9 @@ collaboration.
 
 My team members: <span class="blank-line-long"></span>
 
-Our shared repo URL: <span class="blank-line-long"></span>
+Team repo (upstream): <span class="blank-line-long"></span>
+
+My fork's URL: <span class="blank-line-long"></span>
 
 | Person | Feature | Files They'll Change |
 |--------|---------|---------------------|
@@ -68,6 +70,8 @@ Did we have a merge conflict? Yes / No
 If yes, what caused it? <span class="blank-line-long"></span>
 
 How did we resolve it? <span class="blank-line-long"></span>
+
+Did I sync my fork after the merges? Yes / No
 
 After merging all PRs, do the test cases pass? Yes / No
 

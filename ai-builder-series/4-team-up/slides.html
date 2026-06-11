@@ -60,8 +60,9 @@
 			<section>
 				<h2>Student Goals</h2>
 				<ul>
-					<li>Create branches for feature work</li>
-					<li>Open pull requests on GitHub</li>
+					<li>Fork a shared team repo</li>
+					<li>Create a branch for feature work</li>
+					<li>Open a pull request on GitHub</li>
 					<li>Review a teammate's code</li>
 					<li>Merge and resolve conflicts</li>
 				</ul>
@@ -71,13 +72,26 @@
 				<section>
 					<h2>Get Set Up</h2>
 					<ol>
-						<li>Your instructor has shared a <strong>team repo</strong> — open
-							it on GitHub</li>
-						<li>Confirm you're listed as a collaborator (Settings → Collaborators)</li>
-						<li>Don't open a Codespace yet — we'll do that after we form teams</li>
+						<li>Open the <strong>team repo</strong>:<br>
+							<code>github.com/Lansing-Tech-Studio/team-quiz-app</code></li>
+						<li><strong>Fork</strong> it — just like Workshop 1</li>
+						<li>On <em>your fork</em>: <strong>Code</strong> →
+							<strong>Codespaces</strong> →
+							<strong>Create codespace on main</strong></li>
 					</ol>
 					<p><small>Your old <code>quiz-game</code> fork is still yours — today
-						we work on the team's copy.</small></p>
+						we all build on the <em>team's</em> app.</small></p>
+				</section>
+				<section>
+					<h3>Why Fork Again?</h3>
+					<ul>
+						<li>The team repo belongs to <em>everyone</em> — you can't push
+							to it directly</li>
+						<li>Your fork is <em>yours</em> — you can push anything to it</li>
+						<li>Your work reaches the team through a
+							<strong>pull request</strong></li>
+					</ul>
+					<p><small>This is exactly how open-source teams work.</small></p>
 				</section>
 			</section>
 
@@ -129,10 +143,14 @@ git checkout add-new-questions
 				</section>
 				<section>
 					<h3>Try It!</h3>
-					<p>Create a branch for your feature:</p>
+					<p>In your fork's Codespace terminal:</p>
 					<pre><code data-trim class="language-bash">
-git checkout -b my-feature-name
+git checkout -b test-branch
+git branch
+git checkout main
 					</code></pre>
+					<p><small>We'll create your <em>real</em> feature branch after we
+						form teams.</small></p>
 				</section>
 			</section>
 
@@ -145,24 +163,20 @@ git checkout -b my-feature-name
 					<h3>Divide by Concern</h3>
 					<ul>
 						<li class="team-role">Person A: New questions (questions.js)</li>
-						<li class="team-role">Person B: Visual redesign (styles.css, index.html)</li>
-						<li class="team-role">Person C: New feature (script.js)</li>
+						<li class="team-role">Person B: Visual redesign (style.css, index.html)</li>
+						<li class="team-role">Person C: New feature (app.js)</li>
 					</ul>
 					<p>Each person works on <em>different files</em>.</p>
 				</section>
 				<section>
-					<h3>Open the Team Repo in a Codespace</h3>
-					<ol>
-						<li>Each teammate opens the team's shared repo on GitHub
-							(you've been added as a collaborator)</li>
-						<li><strong>Code</strong> → <strong>Codespaces</strong> →
-							<strong>Create codespace on main</strong></li>
-						<li>In the Codespace terminal, create your feature branch:</li>
-					</ol>
+					<h3>Create Your Feature Branch</h3>
+					<p>In your fork's Codespace terminal:</p>
 					<pre><code data-trim class="language-bash">
-git checkout -b my-feature
+git checkout main
+git checkout -b my-feature-name
 					</code></pre>
-					<p><small>You'll each have your own Codespace on the same shared repo.</small></p>
+					<p><small>Name the branch after your feature, like
+						<code>add-space-questions</code> or <code>dark-theme</code>.</small></p>
 				</section>
 			</section>
 
@@ -197,9 +211,22 @@ git checkout -b my-feature
 				<section>
 					<h3>Push Your Branch</h3>
 					<pre><code data-trim class="language-bash">
-git push -u origin my-feature
+git push -u origin my-feature-name
 					</code></pre>
-					<p>Then open a Pull Request on GitHub.</p>
+					<p><small>This pushes to <em>your fork</em> — that's why it
+						works without special permissions.</small></p>
+				</section>
+				<section>
+					<h3>Open the Pull Request</h3>
+					<ol>
+						<li>GitHub shows a <strong>Compare &amp; pull request</strong>
+							banner on your fork</li>
+						<li>Check the direction:<br>
+							<small>base: <code>Lansing-Tech-Studio/team-quiz-app</code>
+								<code>main</code> &nbsp;←&nbsp; head: your fork, your
+								branch</small></li>
+						<li>Click <strong>Create pull request</strong></li>
+					</ol>
 				</section>
 				<section>
 					<h3>Write a Good PR Description</h3>
@@ -229,8 +256,9 @@ git push -u origin my-feature
 				<section>
 					<h3>Merge One PR at a Time</h3>
 					<ol>
-						<li>Merge the first PR into main</li>
-						<li>Pull the latest: <code>git pull</code></li>
+						<li>Your instructor merges the first approved PR
+							(only they can — it's the team's repo)</li>
+						<li>Everyone clicks <strong>Sync fork</strong> on their fork</li>
 						<li>Merge the next PR</li>
 						<li>If there's a conflict — we'll resolve it together</li>
 					</ol>
@@ -240,6 +268,7 @@ git push -u origin my-feature
 					<ul>
 						<li>Conflicts happen when two people changed the same lines</li>
 						<li>Git marks exactly what's different</li>
+						<li>Click <strong>Resolve conflicts</strong> on your PR</li>
 						<li>You decide which version to keep (or combine both)</li>
 						<li>Then commit the resolution</li>
 					</ul>
@@ -247,10 +276,16 @@ git push -u origin my-feature
 				<section>
 					<h3>After All Merges</h3>
 					<ol>
-						<li>Pull the latest <code>main</code></li>
-						<li>Run your test cases</li>
-						<li>Use Playwright to verify it all works</li>
-						<li>Open the team's live Pages site — your combined work is on the web!</li>
+						<li><strong>Sync fork</strong>, then in your Codespace:
+							<code>git checkout main</code> and <code>git pull</code></li>
+						<li>Verify it all works
+							<ul>
+								<li>Run your test cases</li>
+								<li>Check the automated tests</li>
+							</ul>
+						</li>
+						<li>Open the team's live site — your combined work is on the web!<br>
+							<small><code>lansingtechstudio.org/team-quiz-app</code></small></li>
 						<li>Celebrate!</li>
 					</ol>
 				</section>
@@ -275,7 +310,7 @@ git push -u origin my-feature
 						<li>Prompt Evaluation Checklist</li>
 						<li>Change One Thing reference</li>
 						<li>Save Point Loop</li>
-						<li>Branch → PR → Review → Merge workflow</li>
+						<li>Fork → Branch → PR → Review → Merge workflow</li>
 					</ul>
 					<p>Apply these to <em>any</em> project.</p>
 				</section>

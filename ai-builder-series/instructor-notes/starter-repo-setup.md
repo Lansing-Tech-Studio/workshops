@@ -72,6 +72,25 @@ overlap. By the time both finish (~2 min), each student has:
 - A Codespace with Copilot, Copilot Chat, Live Preview, and Playwright MCP
   already running
 
+## Workshop 4 team repo (`team-quiz-app`)
+
+Workshop 4 uses a second repo:
+[`Lansing-Tech-Studio/team-quiz-app`](https://github.com/Lansing-Tech-Studio/team-quiz-app) \
+**Live site:** [https://lansingtechstudio.org/team-quiz-app/](https://lansingtechstudio.org/team-quiz-app/)
+
+It is a **standalone copy** of a completed quiz app, *not* a fork of
+`quiz-game`. That matters: students already forked `quiz-game` in Workshop 1,
+and GitHub only allows one fork per repo network per account — so the team
+repo must live outside the `quiz-game` fork network for students to fork it.
+
+Students fork `team-quiz-app`, build on a branch in their fork, and open pull
+requests to the upstream. They are never added as collaborators; only the
+instructor can merge.
+
+To reset it for a new cohort, force-push a clean baseline over `main` (e.g.,
+from your own up-to-date quiz app copy) and keep the team-workflow `README.md`
+that lives in that repo.
+
 ## Troubleshooting
 
 **A student's Pages site shows 404 even after a push.**
