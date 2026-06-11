@@ -14,6 +14,7 @@ highlighter: rouge
 # Theme settings - using minimal defaults to allow custom styling
 plugins:
   - jekyll-relative-links
+  - jekyll-redirect-from
 
 # Convert .md links to .html automatically
 relative_links:
@@ -218,6 +219,10 @@ navigation:
         url: /ai-builder-series/3-save-points/
       - title: "Workshop 4: Team Up"
         url: /ai-builder-series/4-team-up/
+      - title: Resources
+        items:
+          - title: Learn More
+            url: /ai-builder-series/resources/learn-more
   - title: Student Demo Day
     url: /demo-day/
     subnav:

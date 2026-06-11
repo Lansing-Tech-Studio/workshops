@@ -15,6 +15,7 @@ comments: true
 * Resources:
   * [Glossary]({{ site.baseurl }}/ai-builder-series/4-team-up/resources/glossary)
   * [Next Steps]({{ site.baseurl }}/ai-builder-series/4-team-up/resources/next-steps)
+  * [Learn More]({{ site.baseurl }}/ai-builder-series/4-team-up/resources/learn-more)
 * Student Handouts:
   * [Vocabulary]({{ site.baseurl }}/ai-builder-series/4-team-up/student-handouts/vocabulary)
   * [Worksheet]({{ site.baseurl }}/ai-builder-series/4-team-up/student-handouts/worksheet)

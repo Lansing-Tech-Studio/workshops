@@ -15,6 +15,7 @@ comments: true
 * Resources:
   * [Glossary]({{ site.baseurl }}/ai-builder-series/1-prompt-power-ups/resources/glossary)
   * [Next Steps]({{ site.baseurl }}/ai-builder-series/1-prompt-power-ups/resources/next-steps)
+  * [Learn More]({{ site.baseurl }}/ai-builder-series/1-prompt-power-ups/resources/learn-more)
 * Student Handouts:
   * [Vocabulary]({{ site.baseurl }}/ai-builder-series/1-prompt-power-ups/student-handouts/vocabulary)
   * [Worksheet]({{ site.baseurl }}/ai-builder-series/1-prompt-power-ups/student-handouts/worksheet)

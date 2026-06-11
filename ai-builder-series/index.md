@@ -56,6 +56,13 @@ across all four sessions.
 | 3 | [Save Points]({{ site.baseurl }}/ai-builder-series/3-save-points/) | Protect your progress | "I can save my work, try something new, and roll back if it breaks." |
 | 4 | [Team Up]({{ site.baseurl }}/ai-builder-series/4-team-up/) | Build together | "I can work on a project with others using branches and pull requests." |
 
+## Keep Learning
+
+Curious to go further after the series? The
+[Learn More]({{ site.baseurl }}/ai-builder-series/resources/learn-more) page
+collects links for git training, other AI coding tools, web development, and the
+rest of the topics covered here.
+
 ## Project Journey
 
 * **After Workshop 1:** Working quiz with a few hardcoded questions and basic styling

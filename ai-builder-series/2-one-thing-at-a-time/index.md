@@ -15,6 +15,7 @@ comments: true
 * Resources:
   * [Glossary]({{ site.baseurl }}/ai-builder-series/2-one-thing-at-a-time/resources/glossary)
   * [Next Steps]({{ site.baseurl }}/ai-builder-series/2-one-thing-at-a-time/resources/next-steps)
+  * [Learn More]({{ site.baseurl }}/ai-builder-series/2-one-thing-at-a-time/resources/learn-more)
 * Student Handouts:
   * [Vocabulary]({{ site.baseurl }}/ai-builder-series/2-one-thing-at-a-time/student-handouts/vocabulary)
   * [Worksheet]({{ site.baseurl }}/ai-builder-series/2-one-thing-at-a-time/student-handouts/worksheet)
