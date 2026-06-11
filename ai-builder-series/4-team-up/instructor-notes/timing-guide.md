@@ -18,7 +18,9 @@ Before this workshop, you MUST:
    [`Lansing-Tech-Studio/team-quiz-app`](https://github.com/Lansing-Tech-Studio/team-quiz-app)
    should contain the current quiz app baseline (`index.html`, `style.css`,
    `questions.js`, `app.js`) plus the devcontainer/MCP config, with GitHub
-   Pages enabled (Settings → Pages → `main` / root)
+   Pages enabled (Settings → Pages → `main` / root). Check the **Actions**
+   tab: the latest **Tests** run on `main` should be green (unit + e2e suites
+   run on every PR and every push to `main`)
 2. **Test the full student path yourself**: fork the team repo (with a test
    account, or delete your old fork first), create a branch, push it, and open
    a PR to the upstream. No collaborator setup is needed — students never push
@@ -150,13 +152,20 @@ you can click **Merge**, so plan to drive the merges on the projector.
      `main`, head = their fork's feature branch (GitHub defaults to this for
      fork PRs, but verify)
   4. Use Copilot to help write the PR description
-  5. Each student reviews at least one teammate's PR — anyone can comment and
-     approve on a public repo, no permissions needed
-  6. Model review language: "This works! One suggestion: ..."
-  7. Approve or request changes
+  5. Approve the test checks: GitHub holds Actions runs from first-time fork
+     contributors, so click **Approve and run** on each student's first PR
+     (needed once per student). The unit and e2e tests then run automatically
+  6. Each student reviews at least one teammate's PR — anyone can comment and
+     approve on a public repo, no permissions needed. Green checks are part
+     of the review: "tests pass" plus a human look at the code
+  7. Model review language: "This works! One suggestion: ..."
+  8. Approve or request changes
 - **Watch for**:
   - PRs opened against the student's own fork (base = their fork) instead of
     the upstream team repo — the changes "merge" but never reach the team
+  - Red checks on a PR — click **Details** together; the unit tests name
+    exactly which question or element id is broken. A failing check is a
+    teaching moment, not a problem
   - Students who don't know how to find the PR page on GitHub — walk through it
   - Reviews that are mean or unhelpful — redirect to constructive language
   - Students who approve without reading — encourage at least one specific comment

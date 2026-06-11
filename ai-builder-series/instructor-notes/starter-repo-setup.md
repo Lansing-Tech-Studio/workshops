@@ -87,9 +87,18 @@ Students fork `team-quiz-app`, build on a branch in their fork, and open pull
 requests to the upstream. They are never added as collaborators; only the
 instructor can merge.
 
+The repo has automated tests (`tests/unit/` via `node --test`, `tests/e2e/`
+via Playwright) and a GitHub Actions workflow (`.github/workflows/tests.yml`)
+that runs both suites on every PR targeting `main` and on every push to
+`main` — a merged PR arrives as a push, so each change runs exactly once.
+Extra team copies (`team-quiz-app-2`, …) inherit the workflow automatically.
+One thing to expect during the workshop: GitHub holds Actions runs from
+**first-time fork contributors** until someone with write access clicks
+**Approve and run** on the PR — that's you, once per student's first PR.
+
 To reset it for a new cohort, force-push a clean baseline over `main` (e.g.,
-from your own up-to-date quiz app copy) and keep the team-workflow `README.md`
-that lives in that repo.
+from your own up-to-date quiz app copy) and keep the team-workflow `README.md`,
+`tests/`, and `.github/workflows/` that live in that repo.
 
 ## Troubleshooting
 
