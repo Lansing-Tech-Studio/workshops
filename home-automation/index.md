@@ -23,6 +23,7 @@ preview: |
   - [Glossary]({{ site.baseurl }}/home-automation/resources/glossary)
   - [Next Steps]({{ site.baseurl }}/home-automation/resources/next-steps)
   - [Hardware Reference]({{ site.baseurl }}/home-automation/hardware)
+  - [Cost Calculator]({{ site.baseurl }}/home-automation/cost-calculator.html)
 - Student Handouts:
   - [Vocabulary Handout]({{ site.baseurl }}/home-automation/student-handouts/vocabulary)
   - [Worksheet]({{ site.baseurl }}/home-automation/student-handouts/worksheet)
