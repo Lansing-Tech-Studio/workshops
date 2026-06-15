@@ -26,32 +26,6 @@
 			background-image: url("../assets/images/logo-transparent.png");
 		}
 
-		/* ---- diagram placeholders ----------------------------------------
-		   Each .placeholder is a slot for an image you will drop in later.
-		   The intended file path is shown in the box. To use the real image,
-		   uncomment the <img> line right below the placeholder and delete the
-		   <div class="placeholder">…</div>.
-		   ------------------------------------------------------------------ */
-		.placeholder {
-			border: 3px dashed #ffd43b;
-			border-radius: 14px;
-			padding: 36px 24px;
-			margin: 12px auto;
-			max-width: 80%;
-			color: #ffd43b;
-			background: rgba(255, 212, 59, 0.06);
-			font-size: 0.8em;
-			line-height: 1.4;
-		}
-
-		.placeholder .file {
-			display: block;
-			margin-top: 14px;
-			font-family: monospace;
-			color: #adb5bd;
-			font-size: 0.7em;
-		}
-
 		.build {
 			color: #51cf66;
 			font-weight: bold;
@@ -131,14 +105,8 @@
 					<aside class="notes">0:00–0:20. Don't explain anything yet — show, then ask.</aside>
 				</section>
 				<section>
-					<h3>Here's the Goal</h3>
-					<div class="placeholder">
-						📷 / 🎥 Finished project running — RGB LED changing color as you breathe on
-						the sensor (the humidity in your breath shifts the color instantly). A short
-						looping clip works great here.
-						<span class="file">images/finished-demo.gif</span>
-					</div>
-					<!-- <img class="diagram" src="images/finished-demo.gif" alt="Finished project demo"> -->
+					<h3>Here's the goal</h3>
+					<img class="diagram" src="../assets/images/home-automation/06-final.jpg" alt="Finished project demo">
 					<p><small>By the end of camp, <em>this is yours.</em></small></p>
 				</section>
 				<section>
@@ -147,12 +115,6 @@
 						something <strong>automatically</strong>.</p>
 					<aside class="notes">Go around quickly. Tie a couple answers back to sensor →
 						brain → output later.</aside>
-				</section>
-				<section>
-					<h3>Meet Lansing Techster</h3>
-					<p>Your curious co-builder for the day. 🤖</p>
-					<p><small>Techster doesn't know everything either — we figure it out together.
-							Momentum over perfection.</small></p>
 				</section>
 			</section>
 
@@ -227,7 +189,7 @@
 				<section>
 					<h3>Today's Three Pieces</h3>
 					<p style="font-size:1.2em;">
-						💧 <strong>DHT22</strong> sensor (humidity)<br>
+						💧 <strong>DHT22</strong> sensor (humidity/temperature)<br>
 						&nbsp;&nbsp;&nbsp;↓<br>
 						🧠 <strong>ESP32</strong> brain<br>
 						&nbsp;&nbsp;&nbsp;↓<br>
@@ -248,70 +210,48 @@
 				</section>
 				<section>
 					<h3>Your Kit</h3>
-					<div class="placeholder">
-						📷 Flat-lay photo of one full student kit, labeled: ESP32, breadboard, DHT22,
-						RGB LED, 3× 220Ω + 1× 10kΩ resistors, jumper wires, USB-C cable.
-						<span class="file">images/kit-flatlay.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/kit-flatlay.png" alt="Student kit, labeled"> -->
+					<img class="diagram" src="../assets/images/home-automation/01-all-parts.jpg" alt="Student kit, labeled">
 				</section>
 				<section>
 					<h3>The Breadboard</h3>
-					<div class="placeholder">
-						📷 Breadboard anatomy: + and − power rails on the sides, numbered rows, the
-						center gap, and which holes connect to which. Highlight that a row of 5 holes
-						is electrically joined.
-						<span class="file">images/breadboard-anatomy.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/breadboard-anatomy.png" alt="Breadboard anatomy"> -->
+					<img class="diagram" src="../assets/images/home-automation/00-breadboard.jpg" alt="Breadboard anatomy">
 					<p><small>No soldering — parts just push in. The rows secretly connect for you.</small></p>
 				</section>
 				<section>
 					<h3>The ESP32 — Our Brain</h3>
-					<div class="placeholder">
-						📷 Elegoo ESP32 DevKit V1 pinout. Call out: USB-C port, the GPIO pin numbers
-						we use (4, 18, 19, 23), the 3V3 and GND pins, and the onboard LED on GPIO 2.
-						<span class="file">images/esp32-pinout.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/esp32-pinout.png" alt="ESP32 DevKit V1 pinout"> -->
+					<img class="diagram" src="../assets/images/home-automation/00-esp32.jpg" alt="ESP32 DevKit V1 pinout">
 					<p><small>A tiny, cheap, programmable computer — about $6.</small></p>
 				</section>
 				<section>
 					<h3>The DHT22 — Our Sense of Touch</h3>
-					<div class="placeholder">
-						📷 Bare 4-pin DHT22 / AM2302, vented side facing you, pins labeled left→right:
-						VCC, DATA, NC (skip), GND.
-						<span class="file">images/dht22-pins.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/dht22-pins.png" alt="DHT22 pin labels"> -->
+					<img class="diagram" src="../assets/images/home-automation/00-dht22.jpg" alt="DHT22 pin labels">
 					<p><small>Reads <em>humidity</em> (and temperature too) — breathe on it and the
 							humidity jumps.</small></p>
 				</section>
 				<section>
 					<h3>The RGB LED — Our Output</h3>
-					<div class="placeholder">
-						📷 5 mm common-cathode RGB LED close-up. Pins left→right: R, GND (longest leg),
-						G, B. Clearly point out the <strong>longest leg</strong>.
-						<span class="file">images/rgb-led-legs.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/rgb-led-legs.png" alt="RGB LED leg identification"> -->
-					<p><small>One LED, three colors inside. Mix them to make <em>any</em> color.</small></p>
+					<img class="diagram" src="../assets/images/home-automation/00-led.jpg" alt="RGB LED leg identification">
+					<p><small>Three colors can be blended. Legs (left to right): Red, GND (longest leg), Green, Blue.</small></p>
+				</section>
+				<section>
+					<h3>Resistors</h3>
+					<img class="diagram" src="../assets/images/home-automation/00-resistors.jpg" alt="Resistors">
+					<p><small>Resistors slow electricity down so we don't burn parts out.</small></p>
 				</section>
 				<section>
 					<h3>Resistors</h3>
 					<ul>
-						<li><strong>3 × 220 Ω</strong> — one for each LED color (protects the LED)</li>
-						<li><strong>1 × 10 kΩ</strong> — helps the DHT22 talk clearly (a "pull-up")</li>
+						<li><strong>3 × 220 Ω</strong> — one for each LED color</li>
+						<li><strong>1 × 10 kΩ</strong> — helps the DHT22 talk clearly</li>
 					</ul>
-					<p><small>Resistors slow electricity down so we don't burn parts out.</small></p>
+					<p><small>Resistors slow electricity down so we don't burn parts out, decreasing current while increasing voltage.</small></p>
 				</section>
 				<section>
 					<h3>⚠️ Safety Rules</h3>
 					<ul>
 						<li class="warn">Unplug USB <em>before</em> changing wires</li>
 						<li class="warn">Check your work, <em>then</em> plug in</li>
-						<li>Never feed 5 V into a GPIO pin — we only use 3V3 here</li>
-						<li>Ask before you're unsure. Always.</li>
+						<li>Ask if you're unsure. Always.</li>
 					</ul>
 				</section>
 			</section>
@@ -323,26 +263,16 @@
 				<section data-background-color="#1a3a1a">
 					<h2 class="build">🔧 Build #1</h2>
 					<h3>Seat the board &amp; upload your first code</h3>
-					<p><small>~70 minutes in — time to build.</small></p>
 					<aside class="notes">1:10–1:45. No external wiring yet — this proves the laptop
 						can upload to the board. Get EVERYONE blinking before moving on.</aside>
 				</section>
 				<section>
 					<h3>Step 1 — Seat the ESP32</h3>
-					<div class="placeholder">
-						📷 ESP32 pressed across the center gap of the breadboard, USB-C facing off the
-						edge so the cable can reach. Show pins straddling both halves.
-						<span class="file">images/build1-seat-esp32.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/build1-seat-esp32.png" alt="ESP32 seated on breadboard"> -->
+					<img class="diagram" src="../assets/images/home-automation/02-esp32.jpg" alt="ESP32 seated on breadboard">
 				</section>
 				<section>
 					<h3>Step 2 — Plug In</h3>
-					<div class="placeholder">
-						📷 USB-C cable connecting ESP32 to laptop; a small power LED on the board lights up.
-						<span class="file">images/build1-plug-in.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/build1-plug-in.png" alt="ESP32 plugged into laptop"> -->
+					<p>In order to send a program to the ESP32, we need to connect it to our computer via USB using a data cable (not a charging-only cable).</p>
 					<p><small>No external wires for this step — the LED we blink is <em>already on the
 								board</em> (GPIO 2).</small></p>
 				</section>
@@ -350,7 +280,7 @@
 					<h3>Step 3 — Open the Project</h3>
 					<ol>
 						<li>Open <strong>VS Code</strong> → PlatformIO</li>
-						<li>Open the <code>onboard-LED-blink</code> project</li>
+						<li>Open the <code>onboard-LED-blink</code> project under <code>home-automation</code></li>
 						<li>Peek at <code>platformio.ini</code> and <code>src/main.cpp</code></li>
 					</ol>
 				</section>
@@ -420,12 +350,11 @@ void loop() {
 				</section>
 				<section>
 					<h3>Wiring Diagram</h3>
-					<div class="placeholder">
-						📷 Breadboard close-up: DHT22 seated, VCC→3V3, GND→GND, DATA→GPIO 4, and the
-						<strong>10 kΩ resistor bridging DATA to 3V3</strong>. Highlight the pull-up.
-						<span class="file">images/build2-dht22-wiring.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/build2-dht22-wiring.png" alt="DHT22 wiring with pull-up"> -->
+					<img class="diagram" src="../assets/images/home-automation/03-dht22.jpg" alt="DHT22 not wired yet">
+				</section>
+				<section>
+					<h3>Wiring Diagram</h3>
+					<img class="diagram" src="../assets/images/home-automation/04-dht22-wired.jpg" alt="DHT22 wiring with pull-up">
 				</section>
 				<section>
 					<h3>Why the 10 kΩ Resistor?</h3>
@@ -494,13 +423,11 @@ void loop() {
 				</section>
 				<section>
 					<h3>Wiring Diagram</h3>
-					<div class="placeholder">
-						📷 Breadboard close-up: RGB LED seated, longest leg → GND rail, each color leg
-						through its own 220 Ω resistor to GPIO 18 / 19 / 23. Keep the DHT22 from Build #2
-						still in place.
-						<span class="file">images/build3-rgb-wiring.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/build3-rgb-wiring.png" alt="RGB LED wiring"> -->
+					<img class="diagram" src="../assets/images/home-automation/05-led.jpg" alt="RGB LED not wired yet">
+				</section>
+				<section>
+					<h3>Wiring Diagram</h3>
+					<img class="diagram" src="../assets/images/home-automation/06-final.jpg" alt="RGB LED wiring">
 				</section>
 				<section>
 					<h3>Mixing Color with PWM</h3>
@@ -550,19 +477,14 @@ setColor(0, 0, 255);  delay(700);   // blue only
 				</section>
 				<section>
 					<h3>The Full Circuit</h3>
-					<img class="diagram" src="../assets/images/circuit_image.svg"
+					<img class="diagram" src="../assets/images/home-automation/circuit_image.svg"
 						alt="Full ESP32 + DHT22 + RGB LED circuit">
-					<p><small>Reference schematic. Yours can look messier — as long as the
+					<p><small>Reference schematic. Yours can look different — as long as the
 							connections match!</small></p>
 				</section>
 				<section>
-					<h3>Optional: A Cleaner Photo</h3>
-					<div class="placeholder">
-						📷 Real-world photo of a finished, working student breadboard from a clear angle
-						(easier for kids to copy than the schematic).
-						<span class="file">images/build4-finished-breadboard.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/build4-finished-breadboard.png" alt="Finished breadboard photo"> -->
+					<h3>The Full Circuit</h3>
+					<img class="diagram" src="../assets/images/home-automation/06-final.jpg" alt="Finished breadboard photo">
 				</section>
 				<section>
 					<h3>Color Logic (Humidity Mode)</h3>
@@ -669,16 +591,6 @@ setColor(255, 255, 255); // white-ish
 					<aside class="notes">3:55–4:00. A few quick demos. Then take-home logistics.</aside>
 				</section>
 				<section>
-					<h3>Taking It Home</h3>
-					<div class="placeholder">
-						📷 The project running off a USB power bank (no laptop). Show it sitting on a
-						desk/shelf glowing.
-						<span class="file">images/take-home-powerbank.png</span>
-					</div>
-					<!-- <img class="diagram" src="images/take-home-powerbank.png" alt="Project on a USB power bank"> -->
-					<p><small>Any USB power bank or phone charger runs it — no laptop needed.</small></p>
-				</section>
-				<section>
 					<h3>What You Did Today</h3>
 					<ul>
 						<li>Wired a real circuit on a breadboard</li>
@@ -691,7 +603,7 @@ setColor(255, 255, 255); // white-ish
 					<h3>Keep Going</h3>
 					<p>Check the <strong>Next Steps</strong> page for project ideas, and the
 						<strong>Glossary</strong> if a word was new.</p>
-					<p><img src="../assets/images/workshops-qr.png" alt="Workshops QR code" height="185"></p>
+					<p><small><a href="https://lansingtechstudio.org/workshops/home-automation/" alt="Workshops URL" height="185">https://lansingtechstudio.org/workshops/home-automation/</a></small></p>
 				</section>
 			</section>
 
