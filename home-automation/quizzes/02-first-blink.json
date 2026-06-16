@@ -1,0 +1,53 @@
+{
+  "title": "Checkpoint 2 — Your First Blink",
+  "workshop": "home-automation",
+  "description": "Quick check after Build #1: blinking the onboard LED.",
+  "defaultTimeLimit": 25,
+  "questions": [
+    {
+      "prompt": "In Arduino-style code, when does the setup() function run?",
+      "choices": [
+        "Once, right when the board starts up",
+        "Over and over, forever",
+        "Only when you press a button",
+        "Never — it's optional"
+      ],
+      "correctIndex": 0,
+      "explanation": "setup() runs once at boot — it's where you get pins and Serial ready."
+    },
+    {
+      "prompt": "And the loop() function?",
+      "choices": [
+        "It repeats over and over, forever",
+        "It runs once at the end",
+        "It only runs if setup() fails",
+        "It pauses the program"
+      ],
+      "correctIndex": 0,
+      "explanation": "loop() runs again and again — that's what makes the LED blink continuously."
+    },
+    {
+      "prompt": "What does digitalWrite(LED_PIN, HIGH) do?",
+      "choices": [
+        "Turns the LED on",
+        "Turns the LED off",
+        "Reads the LED's brightness",
+        "Deletes the LED_PIN"
+      ],
+      "correctIndex": 0,
+      "explanation": "HIGH sends power to the pin (LED on); LOW turns it off."
+    },
+    {
+      "prompt": "How long does delay(500) pause the program?",
+      "choices": ["500 milliseconds (half a second)", "500 seconds", "5 seconds", "500 minutes"],
+      "correctIndex": 0,
+      "explanation": "delay() is in milliseconds, so 500 = half a second."
+    },
+    {
+      "prompt": "To read the messages your board prints, what must the Serial Monitor's baud rate be set to?",
+      "choices": ["115200", "9600", "500", "1000000"],
+      "correctIndex": 0,
+      "explanation": "We call Serial.begin(115200), so the monitor must match 115200 or you'll see gibberish."
+    }
+  ]
+}

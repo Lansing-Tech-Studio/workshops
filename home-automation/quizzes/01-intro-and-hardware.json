@@ -1,0 +1,48 @@
+{
+  "title": "Checkpoint 1 — Intro & Hardware",
+  "workshop": "home-automation",
+  "description": "Quick check after the home automation intro and hardware tour.",
+  "defaultTimeLimit": 25,
+  "questions": [
+    {
+      "prompt": "Almost every home automation gadget follows the same three-step pattern. What is it?",
+      "choices": [
+        "Sensor → Logic → Output",
+        "Battery → Screen → Speaker",
+        "WiFi → Cloud → App",
+        "Input → Print → Delete"
+      ],
+      "correctIndex": 0,
+      "explanation": "Read something (sensor), decide what to do (logic), then make something happen (output)."
+    },
+    {
+      "prompt": "In today's project, which part is the \"brain\" that runs the logic?",
+      "choices": ["The DHT22 sensor", "The ESP32", "The RGB LED", "The breadboard"],
+      "correctIndex": 1,
+      "explanation": "The ESP32 microcontroller runs your code and decides what color to show."
+    },
+    {
+      "prompt": "The DHT22 in our build is an example of a...",
+      "choices": ["sensor (it reads the room)", "output (it lights up)", "power supply", "speaker"],
+      "correctIndex": 0,
+      "explanation": "The DHT22 measures temperature and humidity — it's our sensor."
+    },
+    {
+      "prompt": "How is a microcontroller like the ESP32 different from a laptop?",
+      "choices": [
+        "It runs one program at a time and has no operating system",
+        "It's faster than any laptop",
+        "It needs a monitor and keyboard to work",
+        "It can only run games"
+      ],
+      "correctIndex": 0,
+      "explanation": "A microcontroller is tiny, cheap, and built to read sensors and control pins — no screen or OS needed."
+    },
+    {
+      "prompt": "The little LED already built onto the ESP32 board is wired to which pin?",
+      "choices": ["GPIO 2", "GPIO 13", "GPIO 22", "The USB port"],
+      "correctIndex": 0,
+      "explanation": "The onboard LED is on GPIO 2 — perfect for a first test with no wiring."
+    }
+  ]
+}

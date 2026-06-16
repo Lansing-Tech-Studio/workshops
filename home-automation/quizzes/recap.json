@@ -1,0 +1,113 @@
+{
+  "title": "Home Automation — Final Recap 🏆",
+  "workshop": "home-automation",
+  "description": "An overall review of the whole ESP32 home automation build.",
+  "defaultTimeLimit": 30,
+  "questions": [
+    {
+      "prompt": "The pattern behind every home automation project is:",
+      "choices": [
+        "Sensor → Logic → Output",
+        "Plug → Play → Profit",
+        "Code → Compile → Crash",
+        "WiFi → Battery → Speaker"
+      ],
+      "correctIndex": 0,
+      "explanation": "Read the world, decide, act. The DHT22, ESP32, and RGB LED are those three steps."
+    },
+    {
+      "prompt": "Match the roles: in our build, the sensor / brain / output were...",
+      "choices": [
+        "DHT22 / ESP32 / RGB LED",
+        "ESP32 / RGB LED / DHT22",
+        "RGB LED / DHT22 / ESP32",
+        "Breadboard / USB cable / resistor"
+      ],
+      "correctIndex": 0,
+      "explanation": "DHT22 reads, ESP32 thinks, RGB LED shows the result."
+    },
+    {
+      "prompt": "Which pin controlled which part? Pick the correct set.",
+      "choices": [
+        "DHT22 DATA = GPIO 4; Red/Green/Blue = GPIO 18/19/23",
+        "DHT22 = GPIO 2; LED = USB port",
+        "Everything shared GPIO 0",
+        "DHT22 = GPIO 18; LED = GPIO 4"
+      ],
+      "correctIndex": 0,
+      "explanation": "DATA on GPIO 4, and the RGB channels on 18 (R), 19 (G), 23 (B)."
+    },
+    {
+      "prompt": "Why does the DHT22 need that 10 kΩ pull-up resistor?",
+      "choices": [
+        "The bare sensor has no built-in pull-up, so it keeps the DATA line clean",
+        "To make the LED brighter",
+        "To store the temperature",
+        "To connect to WiFi"
+      ],
+      "correctIndex": 0,
+      "explanation": "No pull-up → garbled reads (NaN). It holds the data line HIGH between pulses."
+    },
+    {
+      "prompt": "On the RGB LED, the longest leg is the common cathode. It connects to...",
+      "choices": ["GND", "3V3", "GPIO 23", "the USB port"],
+      "correctIndex": 0,
+      "explanation": "Common cathode = shared negative leg → straight to GND, no resistor on that leg."
+    },
+    {
+      "prompt": "PWM (Pulse-Width Modulation) lets us control the LED by...",
+      "choices": [
+        "Blinking it faster than the eye can see to fake different brightness",
+        "Changing the battery voltage",
+        "Sending it to the cloud",
+        "Swapping resistors in real time"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fast on/off pulses average out to look like dimmer or brighter light."
+    },
+    {
+      "prompt": "In humidity mode, order the colors from driest to most humid:",
+      "choices": [
+        "Red → Yellow → Green → Blue",
+        "Blue → Green → Yellow → Red",
+        "Green → Red → Blue → Yellow",
+        "Red → Green → Blue → Yellow"
+      ],
+      "correctIndex": 0,
+      "explanation": "<30% Red, 30–50% Yellow, 50–70% Green, >70% Blue."
+    },
+    {
+      "prompt": "setup() vs loop(): which is right?",
+      "choices": [
+        "setup() runs once at startup; loop() runs forever",
+        "setup() runs forever; loop() runs once",
+        "Both run exactly once",
+        "Neither runs unless you press a button"
+      ],
+      "correctIndex": 0,
+      "explanation": "Initialize in setup(), then repeat your main work in loop()."
+    },
+    {
+      "prompt": "If dht.readHumidity() returns NaN, the best first thing to check is:",
+      "choices": [
+        "The wiring and the pull-up resistor",
+        "Whether the room is too quiet",
+        "The color of the LED",
+        "Your WiFi password"
+      ],
+      "correctIndex": 0,
+      "explanation": "NaN almost always means a loose/missing wire, wrong pin, or missing pull-up."
+    },
+    {
+      "prompt": "You're powered up and about to move a wire to a new pin. What should you do first?",
+      "choices": [
+        "Unplug the USB cable so the board isn't powered",
+        "Nothing — rewire while it's on to save time",
+        "Turn the LED blue",
+        "Increase the baud rate"
+      ],
+      "correctIndex": 0,
+      "explanation": "Always unplug before rewiring — never change a circuit while it's powered."
+    }
+  ]
+}

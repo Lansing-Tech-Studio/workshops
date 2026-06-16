@@ -1,0 +1,48 @@
+{
+  "title": "Checkpoint 5 — Putting It All Together",
+  "workshop": "home-automation",
+  "description": "Quick check after Build #4: sensor readings drive the LED color.",
+  "defaultTimeLimit": 30,
+  "questions": [
+    {
+      "prompt": "In the default humidity mode, what color shows when humidity is below 30% (very dry)?",
+      "choices": ["Red", "Blue", "Green", "Yellow"],
+      "correctIndex": 0,
+      "explanation": "Below 30% → Red (very dry). The ranges climb: yellow, green, then blue as it gets more humid."
+    },
+    {
+      "prompt": "Humidity reads 60% — comfortable. What color does the LED show?",
+      "choices": ["Green", "Red", "Blue", "Off"],
+      "correctIndex": 0,
+      "explanation": "50–70% is the comfortable zone → Green."
+    },
+    {
+      "prompt": "It's really humid — above 70%. What color appears?",
+      "choices": ["Blue", "Red", "Green", "White"],
+      "correctIndex": 0,
+      "explanation": "Above 70% → Blue (very humid). 30–50% would be yellow."
+    },
+    {
+      "prompt": "Why is humidity (not temperature) the default thing we react to?",
+      "choices": [
+        "Breathing on the sensor changes humidity instantly, so you see the effect right away",
+        "Temperature can't be measured by the DHT22",
+        "Humidity is the only thing the ESP32 understands",
+        "The RGB LED only reacts to humidity"
+      ],
+      "correctIndex": 0,
+      "explanation": "Instant feedback makes cause-and-effect obvious — temperature changes too slowly to demo."
+    },
+    {
+      "prompt": "What is the if / else-if structure in the loop doing?",
+      "choices": [
+        "Mapping ranges of sensor values to different colors",
+        "Reading the sensor faster",
+        "Turning the ESP32 off",
+        "Printing the code to the screen"
+      ],
+      "correctIndex": 0,
+      "explanation": "Each if/else-if checks a range and picks the matching color — that's the 'logic' step."
+    }
+  ]
+}

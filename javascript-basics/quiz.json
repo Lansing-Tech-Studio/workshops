@@ -1,0 +1,39 @@
+{
+  "title": "JavaScript Basics Learning Check",
+  "workshop": "javascript-basics",
+  "description": "A live check-in after the JavaScript Basics workshop.",
+  "defaultTimeLimit": 30,
+  "questions": [
+    {
+      "prompt": "Which keyword declares a variable you can reassign later?",
+      "choices": ["let", "const", "def", "var let"],
+      "correctIndex": 0,
+      "explanation": "let declares a reassignable, block-scoped variable. const can't be reassigned."
+    },
+    {
+      "prompt": "How do you print a message to the console in JavaScript?",
+      "choices": ["print(\"hi\")", "console.log(\"hi\")", "echo \"hi\"", "System.out(\"hi\")"],
+      "correctIndex": 1,
+      "explanation": "console.log() writes output to the console — handy for checking your work."
+    },
+    {
+      "prompt": "What is the result of \"3\" + 4 in JavaScript?",
+      "choices": ["7", "\"34\"", "Error", "\"7\""],
+      "correctIndex": 1,
+      "explanation": "A string + a number concatenates: \"3\" + 4 becomes the string \"34\"."
+    },
+    {
+      "prompt": "Which of these is a boolean value?",
+      "choices": ["\"true\"", "1", "true", "yes"],
+      "correctIndex": 2,
+      "explanation": "true (without quotes) is a boolean. \"true\" is a string and 1 is a number."
+    },
+    {
+      "prompt": "To run basics-fixme.js with Node.js, which command do you use?",
+      "choices": ["run basics-fixme.js", "node basics-fixme.js", "js basics-fixme.js", "start basics-fixme.js"],
+      "correctIndex": 1,
+      "explanation": "node <filename> runs a JavaScript file with Node.js.",
+      "timeLimit": 20
+    }
+  ]
+}

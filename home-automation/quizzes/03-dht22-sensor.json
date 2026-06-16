@@ -1,0 +1,58 @@
+{
+  "title": "Checkpoint 3 — Reading the Room (DHT22)",
+  "workshop": "home-automation",
+  "description": "Quick check after Build #2: wiring and reading the DHT22 sensor.",
+  "defaultTimeLimit": 30,
+  "questions": [
+    {
+      "prompt": "Which GPIO pin do we connect the DHT22's DATA line to?",
+      "choices": ["GPIO 4", "GPIO 2", "GPIO 18", "The 3V3 pin"],
+      "correctIndex": 0,
+      "explanation": "DATA goes to GPIO 4; VCC goes to 3V3 and GND goes to GND."
+    },
+    {
+      "prompt": "Why does the bare DHT22 need a 10 kΩ pull-up resistor on its DATA line?",
+      "choices": [
+        "The sensor has no built-in pull-up, so it keeps the data signal clean",
+        "To make the sensor brighter",
+        "To slow down the temperature",
+        "It doesn't — the resistor is just decoration"
+      ],
+      "correctIndex": 0,
+      "explanation": "Without the pull-up holding the line HIGH, the readings come back garbled (often NaN)."
+    },
+    {
+      "prompt": "What does dht.readHumidity() give you back?",
+      "choices": [
+        "The humidity as a percentage",
+        "The temperature in Celsius",
+        "The time of day",
+        "The LED color"
+      ],
+      "correctIndex": 0,
+      "explanation": "readHumidity() returns % relative humidity; readTemperature() returns °C."
+    },
+    {
+      "prompt": "Your code prints NaN instead of a number. What does that usually mean?",
+      "choices": [
+        "The sensor read failed — check the wiring and pull-up resistor",
+        "The room is exactly 0% humidity",
+        "The ESP32 is overheating",
+        "The code is finished running"
+      ],
+      "correctIndex": 0,
+      "explanation": "NaN = 'not a number'. 99% of the time it's a loose wire, wrong pin, or missing pull-up."
+    },
+    {
+      "prompt": "What happens to the humidity reading when you breathe on the DHT22?",
+      "choices": [
+        "It jumps up right away",
+        "It drops to zero",
+        "Nothing — it can't sense breath",
+        "It turns the LED off"
+      ],
+      "correctIndex": 0,
+      "explanation": "Your breath is humid, so the number spikes instantly — great for testing it works!"
+    }
+  ]
+}

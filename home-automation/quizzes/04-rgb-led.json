@@ -1,0 +1,48 @@
+{
+  "title": "Checkpoint 4 — Make It Glow (RGB LED)",
+  "workshop": "home-automation",
+  "description": "Quick check after Build #3: wiring the RGB LED and mixing colors.",
+  "defaultTimeLimit": 30,
+  "questions": [
+    {
+      "prompt": "Each color leg of the RGB LED gets its own resistor. What value do we use?",
+      "choices": ["220 Ω", "10 kΩ", "No resistor needed", "1 Ω"],
+      "correctIndex": 0,
+      "explanation": "220 Ω limits the current so the LED is bright but doesn't burn out. (The 10 kΩ was for the DHT22.)"
+    },
+    {
+      "prompt": "The longest leg of our RGB LED is the common cathode. Where does it connect?",
+      "choices": ["GND", "3V3", "GPIO 4", "Through a 220 Ω resistor"],
+      "correctIndex": 0,
+      "explanation": "Common cathode = the shared negative leg, so it goes straight to GND (no resistor on this leg)."
+    },
+    {
+      "prompt": "What does PWM stand for?",
+      "choices": [
+        "Pulse-Width Modulation",
+        "Power-Wise Mode",
+        "Pin Write Memory",
+        "Program Without Master"
+      ],
+      "correctIndex": 0,
+      "explanation": "PWM blinks the LED faster than your eye can see to fake different brightness levels."
+    },
+    {
+      "prompt": "What color does setColor(255, 255, 0) produce? (red, green, blue)",
+      "choices": ["Yellow", "Purple", "White", "Cyan"],
+      "correctIndex": 0,
+      "explanation": "Full red + full green + no blue mixes to yellow. Mixing channels makes new colors!"
+    },
+    {
+      "prompt": "Which pins drive the Red, Green, and Blue channels in our wiring?",
+      "choices": [
+        "GPIO 18, 19, and 23",
+        "GPIO 2, 4, and 5",
+        "GPIO 1, 2, and 3",
+        "Only the USB port"
+      ],
+      "correctIndex": 0,
+      "explanation": "Red = GPIO 18, Green = GPIO 19, Blue = GPIO 23, each through a 220 Ω resistor."
+    }
+  ]
+}
