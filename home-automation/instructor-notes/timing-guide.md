@@ -29,7 +29,7 @@ body.brief .detail { display: none; }
 }
 </style>
 
-**Audience**: students ages 10-18, no prior electronics experience required. \
+**Audience**: students ages 12-18, no prior electronics experience required. \
 **Format**: 4-hour camp session (same content runs morning and afternoon). \
 **Goal**: every student wires, codes, and takes home a working humidity-to-color display. \
 **Two breaks**: 15 min each.
