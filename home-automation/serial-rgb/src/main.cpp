@@ -155,13 +155,41 @@ void setup()
   printMenu();
 }
 
+// Characters you've typed so far, collected until you press Enter.
+String inputBuffer = "";
+
 void loop()
 {
-  // Read one full line at a time from the Serial Monitor (everything you
-  // typed before pressing Enter). readStringUntil waits for the newline.
-  if (Serial.available() > 0)
+  // Read the Serial Monitor one character at a time. We collect characters
+  // into inputBuffer and only act when you press Enter. This (instead of
+  // Serial.readStringUntil) means there's no 1-second timeout rushing you,
+  // and we echo each key back so you can see what you're typing.
+  while (Serial.available() > 0)
   {
-    String line = Serial.readStringUntil('\n');
-    handleCommand(line);
+    char c = (char)Serial.read();
+
+    if (c == '\n' || c == '\r')
+    {
+      // Enter pressed: act on the line we've collected.
+      if (inputBuffer.length() > 0)
+      {
+        Serial.println(); // move to a fresh line after the echoed text
+        handleCommand(inputBuffer);
+        inputBuffer = "";
+      }
+    }
+    else if (c == '\b' || c == 127) // backspace or delete
+    {
+      if (inputBuffer.length() > 0)
+      {
+        inputBuffer.remove(inputBuffer.length() - 1);
+        Serial.print("\b \b"); // erase the last character on screen
+      }
+    }
+    else
+    {
+      inputBuffer += c;
+      Serial.print(c); // echo the key so you can see what you're typing
+    }
   }
 }
