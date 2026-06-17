@@ -61,6 +61,16 @@ Hard to, but two real risks: feeding **5 V into a GPIO pin** (they're 3.3 V only
 and connecting an LED **without a resistor**. Reinforce: don't change wiring
 while it's powered.
 
+## "It just cycles the RGB test and restarts over and over"
+
+That's the WiFi network being off or out of range. The firmware now connects to
+WiFi **in the background**, so this reboot loop shouldn't happen — the LED keeps
+responding to humidity whether or not the network is up. If you're seeing the old
+behavior, re-upload the latest firmware. With no network, expect: one R→G→B
+self-test at power-on, then the LED tracks humidity normally; there's just no web
+page until the router is on. Once the network comes up, the server starts on its
+own (no reboot needed).
+
 ## "Why humidity and not temperature?"
 
 Humidity reacts instantly when you breathe on the sensor, so cause-and-effect is

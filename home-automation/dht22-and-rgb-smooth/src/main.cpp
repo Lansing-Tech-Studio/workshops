@@ -54,6 +54,11 @@ float cachedHumidity = NAN;
 unsigned long lastSuccessMs = 0;
 const char *cachedColorLabel = "UNKNOWN";
 
+// ---- Background WiFi / web server state ----
+bool serverStarted = false;
+unsigned long lastWifiAttemptMs = 0;
+const unsigned long WIFI_RETRY_MS = 10000; // retry WiFi every 10s while disconnected
+
 void handleSensor()
 {
   JsonDocument doc;
@@ -234,68 +239,72 @@ void setup()
   setColor(0, 0, 0);
   delay(200);
 
-  // Connect to WiFi
-  Serial.printf("Connecting to WiFi: %s\n", WIFI_SSID);
+  // Start connecting to WiFi, but DON'T wait for it here. The LED + sensor
+  // must work even with no network, so WiFi connects in the background and
+  // the web server starts later (in loop()) once a connection exists.
+  Serial.printf("Connecting to WiFi in the background: %s\n", WIFI_SSID);
   WiFi.mode(WIFI_STA);
+  WiFi.setAutoReconnect(true);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-
-  unsigned long wifiStart = millis();
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-    if (millis() - wifiStart > 30000)
-    {
-      Serial.println("\nWiFi connect timeout. Restarting.");
-      ESP.restart();
-    }
-  }
-  Serial.println();
-  Serial.print("Connected. IP address: ");
-  Serial.println(WiFi.localIP());
   Serial.print("MAC address: ");
   Serial.println(WiFi.macAddress());
 
+  // Register handlers now; server.begin() happens in loop() when WiFi is up.
   server.on("/api/sensor", HTTP_GET, handleSensor);
   server.onNotFound(handleNotFound);
-  server.begin();
-  Serial.println("HTTP server started on port 80");
-  Serial.print("Try: http://");
-  Serial.print(WiFi.localIP());
-  Serial.println("/api/sensor");
 
   delay(1000);
 }
 
 void loop()
 {
-  server.handleClient();
-
+  // 1. Sensor + LED ALWAYS run, with or without WiFi.
   if (millis() - lastReadMs >= READ_INTERVAL_MS)
   {
     lastReadMs = millis();
     float t = dht.readTemperature();
     float h = dht.readHumidity();
 
-    if (isnan(t) || isnan(h))
+    if (!isnan(t) && !isnan(h))
     {
-      Serial.println("Read failed");
-      return;
-    }
+      cachedTempC = t;
+      cachedHumidity = h;
+      lastSuccessMs = millis();
 
-    cachedTempC = t;
-    cachedHumidity = h;
-    lastSuccessMs = millis();
-
-    Serial.printf("T: %.1f C  H: %.1f%%  ->  ", t, h);
+      Serial.printf("T: %.1f C  H: %.1f%%  ->  ", t, h);
 #if COLOR_SOURCE == SOURCE_TEMPERATURE
-    cachedColorLabel = labelForTemp(t);
-    Serial.println(cachedColorLabel);
-    updateColorFromTemp(t);
+      cachedColorLabel = labelForTemp(t);
+      Serial.println(cachedColorLabel);
+      updateColorFromTemp(t);
 #else
-    cachedColorLabel = labelForHumidity(h);
-    Serial.println(cachedColorLabel);
-    updateColorSmoothFromHumidity(h);
+      cachedColorLabel = labelForHumidity(h);
+      Serial.println(cachedColorLabel);
+      updateColorSmoothFromHumidity(h);
 #endif
+    }
+    else
+    {
+      Serial.println("Read failed"); // keep last good color, don't reboot
+    }
+  }
+
+  // 2. Bring the web server up in the background once WiFi connects.
+  if (WiFi.status() == WL_CONNECTED)
+  {
+    if (!serverStarted)
+    {
+      server.begin();
+      serverStarted = true;
+      Serial.print("WiFi connected. HTTP server: http://");
+      Serial.print(WiFi.localIP());
+      Serial.println("/api/sensor");
+    }
+    server.handleClient();
+  }
+  else if (millis() - lastWifiAttemptMs >= WIFI_RETRY_MS)
+  {
+    // Router may have just been plugged in / come into range — retry.
+    lastWifiAttemptMs = millis();
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   }
 }

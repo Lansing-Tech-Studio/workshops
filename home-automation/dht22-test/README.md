@@ -60,6 +60,13 @@ numbers orange and the footer shows the age.
 - **DHCP can reassign** the ESP32's IP on router reboot. For a stable
   setup, add a DHCP reservation in the router using the MAC printed at
   boot.
+- **No network? It still runs.** WiFi connects in the background, so the
+  ESP32 keeps reading the sensor (and, on the RGB projects, the LED keeps
+  tracking humidity) even with the network off — it never reboots waiting
+  for WiFi. The web server starts on its own once the network is reachable;
+  watch the Serial Monitor for the `WiFi connected. HTTP server: ...` line.
+  The MAC address prints at boot before WiFi connects; the IP prints only
+  after.
 - **`ArduinoJson` v7** is pinned in [`platformio.ini`](platformio.ini).
   v6 used `StaticJsonDocument<N>`; v7 uses `JsonDocument`. The code
   here is v7-only.

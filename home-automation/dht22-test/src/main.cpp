@@ -21,6 +21,11 @@ float cachedHumidity = NAN;
 unsigned long lastReadMs = 0;
 unsigned long lastSuccessMs = 0;
 
+// ---- Background WiFi / web server state ----
+bool serverStarted = false;
+unsigned long lastWifiAttemptMs = 0;
+const unsigned long WIFI_RETRY_MS = 10000; // retry WiFi every 10s while disconnected
+
 void handleSensor()
 {
   // Build JSON response
@@ -64,43 +69,24 @@ void setup()
 
   dht.begin();
 
-  // Connect to WiFi
-  Serial.printf("Connecting to WiFi: %s\n", WIFI_SSID);
+  // Start connecting to WiFi, but DON'T wait for it here. The sensor must
+  // keep working even with no network, so WiFi connects in the background and
+  // the web server starts later (in loop()) once a connection exists.
+  Serial.printf("Connecting to WiFi in the background: %s\n", WIFI_SSID);
   WiFi.mode(WIFI_STA);
+  WiFi.setAutoReconnect(true);
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
-
-  unsigned long wifiStart = millis();
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-    if (millis() - wifiStart > 30000)
-    {
-      Serial.println("\nWiFi connect timeout. Restarting.");
-      ESP.restart();
-    }
-  }
-  Serial.println();
-  Serial.print("Connected. IP address: ");
-  Serial.println(WiFi.localIP());
   Serial.print("MAC address: ");
   Serial.println(WiFi.macAddress());
 
-  // Register HTTP handlers
+  // Register handlers now; server.begin() happens in loop() when WiFi is up.
   server.on("/api/sensor", HTTP_GET, handleSensor);
   server.onNotFound(handleNotFound);
-  server.begin();
-  Serial.println("HTTP server started on port 80");
-  Serial.print("Try: http://");
-  Serial.print(WiFi.localIP());
-  Serial.println("/api/sensor");
 }
 
 void loop()
 {
-  server.handleClient();
-
-  // Read sensor on a timer (don't block the HTTP server)
+  // 1. Read sensor on a timer (don't block), with or without WiFi.
   if (millis() - lastReadMs >= READ_INTERVAL_MS)
   {
     lastReadMs = millis();
@@ -114,5 +100,25 @@ void loop()
       lastSuccessMs = millis();
     }
     // If a read fails, keep serving the last good value rather than NaN
+  }
+
+  // 2. Bring the web server up in the background once WiFi connects.
+  if (WiFi.status() == WL_CONNECTED)
+  {
+    if (!serverStarted)
+    {
+      server.begin();
+      serverStarted = true;
+      Serial.print("WiFi connected. HTTP server: http://");
+      Serial.print(WiFi.localIP());
+      Serial.println("/api/sensor");
+    }
+    server.handleClient();
+  }
+  else if (millis() - lastWifiAttemptMs >= WIFI_RETRY_MS)
+  {
+    // Router may have just been plugged in / come into range — retry.
+    lastWifiAttemptMs = millis();
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   }
 }
