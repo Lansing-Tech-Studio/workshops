@@ -34,6 +34,7 @@ preview: |
   - [LED Blink]({{ site.baseurl }}/home-automation/onboard-LED-blink/)
   - [Random Blink]({{ site.baseurl }}/home-automation/random-blink/)
   - [DHT22 + RGB (full project)]({{ site.baseurl }}/home-automation/dht22-and-rgb/)
+  - [Serial RGB Control]({{ site.baseurl }}/home-automation/serial-rgb/)
 
 ## 1. Workshop Goals
 
