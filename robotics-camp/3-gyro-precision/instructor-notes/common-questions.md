@@ -11,16 +11,16 @@ Keep answers short and friendly. Add detail only if students ask for more.
 
 ## "What does the gyro actually do?"
 
-It senses how the robot is *turning*, so Techster can feel which way it's facing instead
+It senses how the robot is _turning_, so Techster can feel which way it's facing instead
 of just counting wheel-spins. With it on, the same `turn()` and `straight()` hold a
 straighter, more accurate path.
 
-*If they want more*: Counting wheel-spins is fooled by slipping wheels and uneven floors;
+_If they want more_: Counting wheel-spins is fooled by slipping wheels and uneven floors;
 the gyro measures the actual rotation and corrects as it goes.
 
 ## "I turned the gyro on but my 360° still isn't perfect. Did I break it?"
 
-No — that's exactly the point of today. The gyro is *better*, not magic. A true full turn
+No — that's exactly the point of today. The gyro is _better_, not magic. A true full turn
 might need `turn(357)` or `turn(362)` on your hub. Tune the number until the heading lands
 back near 0. That's calibration.
 
@@ -37,10 +37,10 @@ is clockwise. Print it with `print(hub.imu.heading())` and the number shows up i
 
 ## "My heading didn't start at 0."
 
-It resets to 0 when the program starts running. Read it *after* the program is going, and
+It resets to 0 when the program starts running. Read it _after_ the program is going, and
 remember every turn adds to (or subtracts from) it.
 
-## "Do I have to rewrite all the setup from Session 1?"
+## "Do I have to rewrite all the setup from Day 1?"
 
 No — reuse it. Same hub, motors, and DriveBase with your calibrated `wheel_diameter` and
 `axle_track`. The only new line is `robot.use_gyro(True)`.
@@ -62,5 +62,5 @@ The proof of the day is the off-vs-on comparison, so make sure **every** team me
 **both** runs — don't let anyone skip straight to the gyro-on version. Resist handing out
 a "correct" turn-fudge number; the per-hub tuning (expect roughly 355-363) is genuine
 calibration and the whole point. Frame the gyro's imperfection honestly: it's a big
-upgrade, not a magic fix. Reuse the Session 1 setup so the new idea (`use_gyro(True)` and
+upgrade, not a magic fix. Reuse the Day 1 setup so the new idea (`use_gyro(True)` and
 reading the heading) stands out cleanly.

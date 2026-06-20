@@ -24,7 +24,7 @@ from pybricks.tools import wait
 
 hub = PrimeHub()
 
-# Same setup as Session 1 — use YOUR calibrated values and verified ports/Direction.
+# Same setup as Day 1 — use YOUR calibrated values and verified ports/Direction.
 # On this build the left motor was reversed so the robot drives forward.
 left = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 right = Motor(Port.B)

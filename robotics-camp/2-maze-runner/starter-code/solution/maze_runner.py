@@ -4,7 +4,7 @@
 # 250 mm, plus wheel_diameter, axle_track, and the ports/Direction) are EXAMPLE
 # values from one robot and one maze. Every team must set their own — the maze
 # cell size is a calibration step (drive one cell, measure, adjust), exactly like
-# wheel_diameter / axle_track in Session 1. Do not treat these as correct answers.
+# wheel_diameter / axle_track in Day 1. Do not treat these as correct answers.
 
 from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor
@@ -13,7 +13,7 @@ from pybricks.robotics import DriveBase
 
 hub = PrimeHub()
 
-# Same setup as Session 1. Ports and Direction depend on this build — on this
+# Same setup as Day 1. Ports and Direction depend on this build — on this
 # robot the left motor had to be reversed so it drives forward. Verify per robot.
 left = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 right = Motor(Port.B)
@@ -61,5 +61,5 @@ forward_one_cell()
 #       - Overshot      -> lower the mm inside forward_one_cell()
 # 3) Re-run until one call moves the robot exactly one cell.
 #
-# (This assumes wheel_diameter / axle_track were already calibrated in Session 1.
+# (This assumes wheel_diameter / axle_track were already calibrated in Day 1.
 #  If turns are off, re-check axle_track before blaming the maze.)

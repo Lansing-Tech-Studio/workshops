@@ -37,10 +37,10 @@ another team to solve.
 **cell:** One square step of the maze — the distance the robot should move when you call
 `forward_one_cell()`. You **measure and adjust** this for your maze.
 
-**DriveBase:** The Pybricks tool (from Session 1) that controls both drive motors
+**DriveBase:** The Pybricks tool (from Day 1) that controls both drive motors
 together so you can say "drive forward" or "turn" instead of controlling each wheel.
 
-**calibration:** Measuring what the robot *actually* does and adjusting the numbers
+**calibration:** Measuring what the robot _actually_ does and adjusting the numbers
 until the code matches reality. Today you calibrate the **cell size** inside
 `forward_one_cell()`. ("It overshot the cell — lower the mm and try again.")
 

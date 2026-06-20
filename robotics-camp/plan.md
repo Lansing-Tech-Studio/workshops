@@ -18,13 +18,13 @@ the same robot and code grow all week. Because cumulative camps make it easy to
 fall behind, **Days 2–5 open with a short catch-up warm-up** that re-establishes
 the shared robot/code state so a late arrival isn't lost.
 
-| Session | Title | Core Skill | One-Liner |
-|---------|-------|------------|-----------|
-| 1 | First Drive | Driving by distance and angle | "Drive exactly this far, turn exactly this much" |
-| 2 | Maze Runner | Sequencing and functions | "Name your moves, then string them together" |
-| 3 | Gyro Precision | Using the gyroscope | "Give the robot an inner compass" |
-| 4 | Obstacle Avoidance | Sensors and decisions | "React to the world instead of a fixed script" |
-| 5 | Line Following | Proportional control | "Steer in proportion to how far off you are" |
+| Session | Title              | Core Skill                    | One-Liner                                        |
+| ------- | ------------------ | ----------------------------- | ------------------------------------------------ |
+| 1       | First Drive        | Driving by distance and angle | "Drive exactly this far, turn exactly this much" |
+| 2       | Maze Runner        | Sequencing and functions      | "Name your moves, then string them together"     |
+| 3       | Gyro Precision     | Using the gyroscope           | "Give the robot an inner compass"                |
+| 4       | Obstacle Avoidance | Sensors and decisions         | "React to the world instead of a fixed script"   |
+| 5       | Line Following     | Proportional control          | "Steer in proportion to how far off you are"     |
 
 ## The Robot: Techster
 
@@ -43,11 +43,11 @@ ultrasonic (distance) sensor from the base set.
 
 **Robot's evolution across the week:**
 
-- After Session 1: drives a calibrated distance, turns an angle, traces a square
-- After Session 2: solves a maze using named, reusable moves (functions)
-- After Session 3: uses the gyro for straighter, more accurate turns
-- After Session 4: senses obstacles and changes its behavior in response
-- After Session 5: follows a line, demoed at the showcase
+- After Day 1: drives a calibrated distance, turns an angle, traces a square
+- After Day 2: solves a maze using named, reusable moves (functions)
+- After Day 3: uses the gyro for straighter, more accurate turns
+- After Day 4: senses obstacles and changes its behavior in response
+- After Day 5: follows a line, demoed at the showcase
 
 ## Tools and Environment
 
@@ -63,15 +63,15 @@ same concepts either way
 Every session follows the same skeleton. Per-session details are in each
 `instructor-notes/timing-guide.md`.
 
-| Time | Block | Notes |
-|------|-------|-------|
-| 9:00–9:15 | Arrival game | Drop-in; runs until everyone arrives |
-| 9:15–9:25 | Mission huddle | Recap + today's mission; Days 2–5 include a quick catch-up |
-| 9:25–10:25 | Robotics Block 1 | Rotate roles ~halfway |
-| 10:25–10:35 | Energizer | Get up and move |
-| 10:35–10:50 | Snack break | Check allergies; keep food away from kits/laptops |
-| 10:50–11:45 | Robotics Block 2 / challenge | Main build-and-test |
-| 11:45–12:00 | Demo + cleanup | Show-and-tell, label/charge hubs |
+| Time        | Block                        | Notes                                                      |
+| ----------- | ---------------------------- | ---------------------------------------------------------- |
+| 9:00–9:15   | Arrival game                 | Drop-in; runs until everyone arrives                       |
+| 9:15–9:25   | Mission huddle               | Recap + today's mission; Days 2–5 include a quick catch-up |
+| 9:25–10:25  | Robotics Block 1             | Rotate roles ~halfway                                      |
+| 10:25–10:35 | Energizer                    | Get up and move                                            |
+| 10:35–10:50 | Snack break                  | Check allergies; keep food away from kits/laptops          |
+| 10:50–11:45 | Robotics Block 2 / challenge | Main build-and-test                                        |
+| 11:45–12:00 | Demo + cleanup               | Show-and-tell, label/charge hubs                           |
 
 **Arrival-game menu** (each doubles as pre-teaching): _Human Robot_ (give a teammate
 literal step commands to a target), _Robot Says_ (Simon Says with movement
@@ -83,7 +83,7 @@ sequence with a deliberate bug to fix).
 
 ---
 
-## Session 1: First Drive
+## Day 1: First Drive
 
 **Duration:** 3 hours
 **Mission:** Teach Techster to move on command — drive a set distance, turn a set
@@ -103,14 +103,14 @@ angle, and trace a square.
 
 ### Agenda
 
-| Time | Activity | Details |
-|------|----------|---------|
-| 9:00–9:15 | Arrival: _Human Robot_ | Give a teammate literal step commands to reach a target — pre-teaches "exact instructions" |
-| 9:15–9:25 | Mission huddle | Meet Techster; today we make it drive and turn |
-| 9:25–10:25 | Block 1: Connect & first moves | Connect over Bluetooth; run `straight()` and `turn()`; off-robot: sketch and predict the square |
-| 10:25–10:50 | Energizer + snack | |
+| Time        | Activity                            | Details                                                                                               |
+| ----------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| 9:00–9:15   | Arrival: _Human Robot_              | Give a teammate literal step commands to reach a target — pre-teaches "exact instructions"            |
+| 9:15–9:25   | Mission huddle                      | Meet Techster; today we make it drive and turn                                                        |
+| 9:25–10:25  | Block 1: Connect & first moves      | Connect over Bluetooth; run `straight()` and `turn()`; off-robot: sketch and predict the square       |
+| 10:25–10:50 | Energizer + snack                   |                                                                                                       |
 | 10:50–11:45 | Block 2: Calibrate & drive a square | Drive `straight(1000)` and `turn(360)`, measure, adjust `wheel_diameter`/`axle_track`; run the square |
-| 11:45–12:00 | Demo + cleanup | Each team shows a drive-and-turn of their choice; label/charge hubs |
+| 11:45–12:00 | Demo + cleanup                      | Each team shows a drive-and-turn of their choice; label/charge hubs                                   |
 
 ### Takeaway
 
@@ -127,7 +127,7 @@ angle, and trace a square.
 
 ---
 
-## Session 2: Maze Runner
+## Day 2: Maze Runner
 
 **Duration:** 3 hours
 **Mission:** Get Techster through a taped-floor maze without touching the walls.
@@ -139,20 +139,20 @@ angle, and trace a square.
 ### What Students Will Learn
 
 - Sequencing: a program runs top to bottom, one step at a time
-- Reusing `for` loops from Session 1
+- Reusing `for` loops from Day 1
 - **Functions**: give a move a name (`forward_one_cell()`, `turn_right()`) and reuse it
 - How naming moves makes a long path readable
 
 ### Agenda
 
-| Time | Activity | Details |
-|------|----------|---------|
-| 9:00–9:15 | Arrival: _Maze on Paper_ | Plan a path through a paper grid |
-| 9:15–9:25 | Mission huddle + **catch-up** | Recap driving/calibration so late arrivals can connect and drive |
-| 9:25–10:25 | Block 1: Name your moves | Write `forward_one_cell()`, `turn_right()`, `turn_left()`; off-robot: tape a maze for another team |
-| 10:25–10:50 | Energizer + snack | |
-| 10:50–11:45 | Block 2: Solve the maze | Sequence the named moves to clear another team's maze |
-| 11:45–12:00 | Demo + cleanup | Teams watch each other's robots run the mazes |
+| Time        | Activity                      | Details                                                                                            |
+| ----------- | ----------------------------- | -------------------------------------------------------------------------------------------------- |
+| 9:00–9:15   | Arrival: _Maze on Paper_      | Plan a path through a paper grid                                                                   |
+| 9:15–9:25   | Mission huddle + **catch-up** | Recap driving/calibration so late arrivals can connect and drive                                   |
+| 9:25–10:25  | Block 1: Name your moves      | Write `forward_one_cell()`, `turn_right()`, `turn_left()`; off-robot: tape a maze for another team |
+| 10:25–10:50 | Energizer + snack             |                                                                                                    |
+| 10:50–11:45 | Block 2: Solve the maze       | Sequence the named moves to clear another team's maze                                              |
+| 11:45–12:00 | Demo + cleanup                | Teams watch each other's robots run the mazes                                                      |
 
 ### Takeaway
 
@@ -164,11 +164,11 @@ angle, and trace a square.
 - The maze cell size is a calibration value — set `forward_one_cell()` to the
   team's actual cell size and adjust after a test run.
 - Encourage planning on paper (Navigator role) before typing.
-- Reuse the Session 1 hub/motor/DriveBase setup; don't rewrite it from scratch.
+- Reuse the Day 1 hub/motor/DriveBase setup; don't rewrite it from scratch.
 
 ---
 
-## Session 3: Gyro Precision
+## Day 3: Gyro Precision
 
 **Duration:** 3 hours
 **Mission:** Upgrade Techster's "inner compass" so turns and straights stay accurate.
@@ -186,14 +186,14 @@ angle, and trace a square.
 
 ### Agenda
 
-| Time | Activity | Details |
-|------|----------|---------|
-| 9:00–9:15 | Arrival: _Debug the Drawing_ | Spot the bug in a drawn instruction sequence |
-| 9:15–9:25 | Mission huddle + **catch-up** | Recap the maze; make sure every team can drive and turn |
-| 9:25–10:25 | Block 1: Gyro on vs. off | Run the same square/maze with the gyro off, then on; off-robot: chart the error |
-| 10:25–10:50 | Energizer + snack | |
-| 10:50–11:45 | Block 2: Calibrate the turn | Read the heading; tune the turn value for a true 360° |
-| 11:45–12:00 | Demo + cleanup | Teams show the gyro-off vs. gyro-on difference |
+| Time        | Activity                      | Details                                                                         |
+| ----------- | ----------------------------- | ------------------------------------------------------------------------------- |
+| 9:00–9:15   | Arrival: _Debug the Drawing_  | Spot the bug in a drawn instruction sequence                                    |
+| 9:15–9:25   | Mission huddle + **catch-up** | Recap the maze; make sure every team can drive and turn                         |
+| 9:25–10:25  | Block 1: Gyro on vs. off      | Run the same square/maze with the gyro off, then on; off-robot: chart the error |
+| 10:25–10:50 | Energizer + snack             |                                                                                 |
+| 10:50–11:45 | Block 2: Calibrate the turn   | Read the heading; tune the turn value for a true 360°                           |
+| 11:45–12:00 | Demo + cleanup                | Teams show the gyro-off vs. gyro-on difference                                  |
 
 ### Takeaway
 
@@ -208,7 +208,7 @@ angle, and trace a square.
 
 ---
 
-## Session 4: Obstacle Avoidance
+## Day 4: Obstacle Avoidance
 
 **Duration:** 3 hours
 **Mission:** Give Techster eyes — react to the world instead of following a fixed script.
@@ -226,14 +226,14 @@ angle, and trace a square.
 
 ### Agenda
 
-| Time | Activity | Details |
-|------|----------|---------|
-| 9:00–9:15 | Arrival: _Red Light / Green Light_ | Pre-teaches "stop when you sense something" |
-| 9:15–9:25 | Mission huddle + **catch-up** | Recap driving; make sure the distance sensor is mounted and reads values |
-| 9:25–10:25 | Block 1: Read the sensor | Print `distance()`; watch the number change; off-robot: build the cardboard obstacle course |
-| 10:25–10:50 | Energizer + snack | |
-| 10:50–11:45 | Block 2: React with if/else + while | Back up and turn when something is close; challenge: don't fall off the table |
-| 11:45–12:00 | Demo + cleanup | Robots run the obstacle course |
+| Time        | Activity                            | Details                                                                                     |
+| ----------- | ----------------------------------- | ------------------------------------------------------------------------------------------- |
+| 9:00–9:15   | Arrival: _Red Light / Green Light_  | Pre-teaches "stop when you sense something"                                                 |
+| 9:15–9:25   | Mission huddle + **catch-up**       | Recap driving; make sure the distance sensor is mounted and reads values                    |
+| 9:25–10:25  | Block 1: Read the sensor            | Print `distance()`; watch the number change; off-robot: build the cardboard obstacle course |
+| 10:25–10:50 | Energizer + snack                   |                                                                                             |
+| 10:50–11:45 | Block 2: React with if/else + while | Back up and turn when something is close; challenge: don't fall off the table               |
+| 11:45–12:00 | Demo + cleanup                      | Robots run the obstacle course                                                              |
 
 ### Takeaway
 
@@ -249,7 +249,7 @@ angle, and trace a square.
 
 ---
 
-## Session 5: Line Following + Showcase
+## Day 5: Line Following + Showcase
 
 **Duration:** 3 hours
 **Mission:** Teach Techster to follow a line, then demo everything to the group.
@@ -267,14 +267,14 @@ angle, and trace a square.
 
 ### Agenda
 
-| Time | Activity | Details |
-|------|----------|---------|
-| 9:00–9:15 | Arrival: _Debug the Dance_ | Fix a movement sequence with a deliberate bug |
-| 9:15–9:25 | Mission huddle + **catch-up** | Recap sensors and decisions |
-| 9:25–10:25 | Block 1: Calibrate & first follow | Read `reflection()` on the line and the floor; set `BLACK`/`WHITE`/threshold |
-| 10:25–10:50 | Energizer + snack | |
-| 10:50–11:30 | Block 2: Tune the gain | Experiment with `GAIN` until the line-follow is smooth |
-| 11:30–12:00 | **Showcase** + cleanup | Each team demos their best run of the week; charge/pack hubs |
+| Time        | Activity                          | Details                                                                      |
+| ----------- | --------------------------------- | ---------------------------------------------------------------------------- |
+| 9:00–9:15   | Arrival: _Debug the Dance_        | Fix a movement sequence with a deliberate bug                                |
+| 9:15–9:25   | Mission huddle + **catch-up**     | Recap sensors and decisions                                                  |
+| 9:25–10:25  | Block 1: Calibrate & first follow | Read `reflection()` on the line and the floor; set `BLACK`/`WHITE`/threshold |
+| 10:25–10:50 | Energizer + snack                 |                                                                              |
+| 10:50–11:30 | Block 2: Tune the gain            | Experiment with `GAIN` until the line-follow is smooth                       |
+| 11:30–12:00 | **Showcase** + cleanup            | Each team demos their best run of the week; charge/pack hubs                 |
 
 ### Takeaway
 
@@ -309,13 +309,13 @@ angle, and trace a square.
 
 ### Differentiation by Age
 
-| Concept | Ages 9–11 (blocks) | Ages 12–14 (Python) |
-|---------|--------------------|----------------------|
-| Writing code | Drag blocks in Pybricks block mode | Type Python in the editor |
-| Loops | "Repeat" block | `for` / `while` |
-| Functions | "My Blocks" / named stacks | `def name():` |
-| Decisions | "If / else" block | `if` / `else` |
-| Calibration | Same measure-and-adjust activity, fewer values at once | Full set of values, tune more independently |
+| Concept      | Ages 9–11 (blocks)                                     | Ages 12–14 (Python)                         |
+| ------------ | ------------------------------------------------------ | ------------------------------------------- |
+| Writing code | Drag blocks in Pybricks block mode                     | Type Python in the editor                   |
+| Loops        | "Repeat" block                                         | `for` / `while`                             |
+| Functions    | "My Blocks" / named stacks                             | `def name():`                               |
+| Decisions    | "If / else" block                                      | `if` / `else`                               |
+| Calibration  | Same measure-and-adjust activity, fewer values at once | Full set of values, tune more independently |
 
 The `resources/block-coding-guide.md` in each session gives the block-by-block
 equivalent of that day's Python.
@@ -336,6 +336,7 @@ equivalent of that day's Python.
 ### What Comes Next
 
 After camp, students can:
+
 - Add a third motor or an attachment (claw, marker) and program it
 - Combine skills — a maze solver that also avoids obstacles
 - Explore the full [Pybricks documentation](https://docs.pybricks.com) and example

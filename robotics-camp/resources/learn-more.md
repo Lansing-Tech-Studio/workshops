@@ -35,11 +35,11 @@ The exact tools behind this week's missions.
 - [Motors](https://docs.pybricks.com/en/stable/pupdevices/motor.html) — control a
   single motor directly
 - [Ultrasonic (distance) sensor](https://docs.pybricks.com/en/stable/pupdevices/ultrasonicsensor.html) —
-  the "eyes" from Session 4
+  the "eyes" from Day 4
 - [Color sensor](https://docs.pybricks.com/en/stable/pupdevices/colorsensor.html) —
-  reflected light and color for line following (Session 5)
+  reflected light and color for line following (Day 5)
 - [The hub and its gyro (IMU)](https://docs.pybricks.com/en/stable/hubs/primehub.html) —
-  reading a heading (Session 3)
+  reading a heading (Day 3)
 
 ## Programming Ideas
 

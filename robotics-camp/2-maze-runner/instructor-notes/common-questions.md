@@ -15,7 +15,7 @@ It's a named move. You write the steps once under `def name():`, and after that 
 run all of them just by writing `name()`. It saves typing and makes the maze solution
 read like a list of instructions.
 
-*If they want more*: The built-in commands like `robot.straight()` are functions too —
+_If they want more_: The built-in commands like `robot.straight()` are functions too —
 you're just making your own.
 
 ## "I wrote `def forward_one_cell():` but nothing moved. Did I break it?"
@@ -26,7 +26,7 @@ is the recipe; calling is cooking it.
 
 ## "How is this different from the `for` loop we did yesterday?"
 
-A `for` loop repeats the *same* move several times. A function gives a move a *name* so
+A `for` loop repeats the _same_ move several times. A function gives a move a _name_ so
 you can reuse it anywhere. They team up well — you can call your functions inside a loop.
 
 ## "My robot bumped a wall. What went wrong?"
@@ -43,7 +43,7 @@ mm; stopped short → raise it. Run one cell at a time until it lands right.
 
 Small turn errors stack up over a long path — that's real robotics, and it's exactly
 what tomorrow's gyro lesson fixes. For today, re-check the `axle_track` you calibrated in
-Session 1 and aim for "completes the maze," not "perfect."
+Day 1 and aim for "completes the maze," not "perfect."
 
 ## "Do I have to retype the setup from yesterday?"
 

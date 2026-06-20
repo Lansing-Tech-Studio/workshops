@@ -15,7 +15,7 @@ from pybricks.robotics import DriveBase
 
 hub = PrimeHub()
 
-# Same setup as Session 1 — use YOUR calibrated wheel_diameter / axle_track and
+# Same setup as Day 1 — use YOUR calibrated wheel_diameter / axle_track and
 # the ports/Direction verified on this build.
 left = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 right = Motor(Port.B)

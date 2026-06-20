@@ -24,12 +24,12 @@ with a palette of blocks on the side and a live Python preview.
 ## 2. Set up the robot — and turn on the gyro
 
 Use the **setup / configuration** area to tell Pybricks about your robot. This is the
-same setup from Session 1 (`hub`, `Motor`, and `DriveBase`) — reuse **your** calibrated
+same setup from Day 1 (`hub`, `Motor`, and `DriveBase`) — reuse **your** calibrated
 numbers:
 
 1. Add the **hub**.
 2. Add your two **drive motors**, set the **port** for each, and set a motor's
-   **direction** if needed (use the values you verified in Session 1).
+   **direction** if needed (use the values you verified in Day 1).
 3. Turn the two motors into a **robot / drive base** and enter **your** calibrated
    **wheel diameter** and **axle track**.
 4. In the drive base setup, find the **"use gyro"** option and **turn it on**. This is
@@ -46,20 +46,20 @@ robot.use_gyro(True)
 
 From the **movement** blocks:
 
-| What you want | Block | Python it matches |
-|---------------|-------|-------------------|
+| What you want        | Block                   | Python it matches     |
+| -------------------- | ----------------------- | --------------------- |
 | Drive forward 500 mm | "drive straight 500 mm" | `robot.straight(500)` |
-| Turn right 90° | "turn 90 degrees" | `robot.turn(90)` |
+| Turn right 90°       | "turn 90 degrees"       | `robot.turn(90)`      |
 
-With the **"use gyro"** option on, these *exact same* blocks now hold a straighter,
+With the **"use gyro"** option on, these _exact same_ blocks now hold a straighter,
 more accurate path.
 
 ## 4. Read and print the heading
 
 Find the **hub / IMU** blocks for the **heading**, and put it inside a **print** block:
 
-| What you want | Block | Python it matches |
-|---------------|-------|-------------------|
+| What you want    | Block                   | Python it matches          |
+| ---------------- | ----------------------- | -------------------------- |
 | Show the heading | "print" + "hub heading" | `print(hub.imu.heading())` |
 
 The number shows up in the **output console**. Heading starts at **0** and **positive =
@@ -74,7 +74,7 @@ print(hub.imu.heading())
 Both experiments work the same no matter which track you use:
 
 1. **Off vs. on:** Run your square with the **"use gyro"** option **off**, mark where it
-   ends. Turn the option **on** and run the *same* blocks again. Chart the error.
+   ends. Turn the option **on** and run the _same_ blocks again. Chart the error.
 2. **Tune a true 360°:** Make a tiny program with one **turn 360°** block and a
    **print heading** block. Run it; if the heading didn't land back near 0, change the
    turn number (try 355-363) until it does.

@@ -52,7 +52,7 @@ of the list quickly — names + labels prevent a lot of confusion.
 ## Pre-build the robots
 
 Robots are **pre-built before Day 1** using the standard **two-motor driving base**
-so Session 1 can go straight to connecting and driving. Build all three (or build
+so Day 1 can go straight to connecting and driving. Build all three (or build
 them with a helper the night before).
 
 For each robot, **record on a sticky note** taped to the robot:
@@ -71,12 +71,12 @@ will verify/adjust them in code. Recording them up front saves time.
 Several values look like they should be constants but are **measured on the actual
 robot and surface**. Let students measure them — that's the learning:
 
-- `wheel_diameter` / `axle_track` (Session 1) — start near 56 / 112 mm, then drive
+- `wheel_diameter` / `axle_track` (Day 1) — start near 56 / 112 mm, then drive
   `straight(1000)` and `turn(360)` and adjust
-- Maze cell size (Session 2)
-- Gyro turn fudge, e.g. `turn(357)` vs `turn(362)` for a true 360° (Session 3)
-- Obstacle trigger distance (Session 4)
-- Line-following `BLACK` / `WHITE` thresholds and `GAIN` (Session 5)
+- Maze cell size (Day 2)
+- Gyro turn fudge, e.g. `turn(357)` vs `turn(362)` for a true 360° (Day 3)
+- Obstacle trigger distance (Day 4)
+- Line-following `BLACK` / `WHITE` thresholds and `GAIN` (Day 5)
 
 The starter and solution `.py` files use example numbers clearly labeled as
 starting guesses. Don't present them as correct answers.
@@ -115,4 +115,4 @@ tuning, not a hardware fault.
 
 **A `while True:` program won't stop.**
 Click **Stop** in the Pybricks editor, or briefly disconnect. Teach students where
-the stop button is before running loop programs in Session 4.
+the stop button is before running loop programs in Day 4.

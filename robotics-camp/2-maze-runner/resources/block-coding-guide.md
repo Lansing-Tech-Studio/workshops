@@ -21,7 +21,7 @@ In [code.pybricks.com](https://code.pybricks.com), open a **block program** (cho
 blocks instead of Python when you create it). You'll see a blocks canvas with a palette
 of blocks on the side and a live Python preview.
 
-## 2. Set up the robot (same as Session 1)
+## 2. Set up the robot (same as Day 1)
 
 Use the **setup / configuration** area to tell Pybricks about your robot — the block
 version of the `hub`, `Motor`, and `DriveBase` lines:
@@ -30,7 +30,7 @@ version of the `hub`, `Motor`, and `DriveBase` lines:
 2. Add your two **drive motors** and set each **port** (match what's plugged in).
 3. If a motor makes the robot go backward, change that motor's **direction**.
 4. Turn the motors into a **robot / drive base** and enter the **wheel diameter** and
-   **axle track** — use the values you **calibrated in Session 1**, not fresh guesses.
+   **axle track** — use the values you **calibrated in Day 1**, not fresh guesses.
 
 This is the block equivalent of:
 

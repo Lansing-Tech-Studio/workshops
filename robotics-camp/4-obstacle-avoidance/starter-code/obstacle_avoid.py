@@ -5,7 +5,7 @@ from pybricks.robotics import DriveBase
 from pybricks.tools import wait
 
 hub = PrimeHub()
-# Same setup as Session 1 — use YOUR calibrated values and verified ports/Direction.
+# Same setup as Day 1 — use YOUR calibrated values and verified ports/Direction.
 left = Motor(Port.A, Direction.COUNTERCLOCKWISE)
 right = Motor(Port.B)
 robot = DriveBase(left, right, wheel_diameter=56, axle_track=112)

@@ -18,17 +18,17 @@ section: Resources
 
 ## Get Ready for Gyro Precision (Next Session)
 
-- Watch your turns carefully. Did every `turn_right()` land *exactly* 90 degrees? Over a
+- Watch your turns carefully. Did every `turn_right()` land _exactly_ 90 degrees? Over a
   long maze, small turn errors stack up and push the robot off course.
 - Tomorrow we add the **gyro** — a built-in compass that makes turns more accurate — so
   your named moves land where you mean them to.
 
 ## Explore More (If Curious)
 
-- Can you solve the *same* maze with fewer lines by spotting a repeated pattern and using
+- Can you solve the _same_ maze with fewer lines by spotting a repeated pattern and using
   a `for` loop with your functions?
 - Try giving a function a number, like `forward(cells)`, so one call can drive several
-  cells. (Peek at how `drive_square(side_mm)` worked in the Session 1 solution.)
+  cells. (Peek at how `drive_square(side_mm)` worked in the Day 1 solution.)
 - Look up [functions in the Pybricks docs](https://docs.pybricks.com) and see how the
   built-in ones (like `robot.straight`) are themselves just named moves.
 
@@ -36,5 +36,5 @@ section: Resources
 
 - Give the robot a clear maze and floor space — tape down loose corners.
 - The cell size is a starting guess, not a truth. Measure, adjust, repeat.
-- Momentum over perfection — a robot that *completes* the maze is the win, even if it
+- Momentum over perfection — a robot that _completes_ the maze is the win, even if it
   grazes a wall.

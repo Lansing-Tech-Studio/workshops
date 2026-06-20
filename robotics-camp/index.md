@@ -26,23 +26,23 @@ the week, so what you build on Day 1 you keep using on Day 5.
 
 ## The Missions
 
-| # | Session | Mission | New Skill |
-|---|---------|---------|-----------|
-| 1 | [First Drive]({{ site.baseurl }}/robotics-camp/1-first-drive/) | Make Techster drive a distance, turn an angle, and trace a square | Distance, angle, `for` loop, calibration |
-| 2 | [Maze Runner]({{ site.baseurl }}/robotics-camp/2-maze-runner/) | Get Techster through a taped maze without touching the walls | Sequencing, functions |
-| 3 | [Gyro Precision]({{ site.baseurl }}/robotics-camp/3-gyro-precision/) | Upgrade Techster's "inner compass" so turns stay accurate | The gyro, reading a heading |
-| 4 | [Obstacle Avoidance]({{ site.baseurl }}/robotics-camp/4-obstacle-avoidance/) | Give Techster eyes so it reacts to the world | Sensors, `if`/`else`, `while` loop |
-| 5 | [Line Following]({{ site.baseurl }}/robotics-camp/5-line-following/) | Teach Techster to follow a line, then demo the week | Reflection, threshold, proportional control |
+| #   | Session                                                                      | Mission                                                           | New Skill                                   |
+| --- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------- |
+| 1   | [First Drive]({{ site.baseurl }}/robotics-camp/1-first-drive/)               | Make Techster drive a distance, turn an angle, and trace a square | Distance, angle, `for` loop, calibration    |
+| 2   | [Maze Runner]({{ site.baseurl }}/robotics-camp/2-maze-runner/)               | Get Techster through a taped maze without touching the walls      | Sequencing, functions                       |
+| 3   | [Gyro Precision]({{ site.baseurl }}/robotics-camp/3-gyro-precision/)         | Upgrade Techster's "inner compass" so turns stay accurate         | The gyro, reading a heading                 |
+| 4   | [Obstacle Avoidance]({{ site.baseurl }}/robotics-camp/4-obstacle-avoidance/) | Give Techster eyes so it reacts to the world                      | Sensors, `if`/`else`, `while` loop          |
+| 5   | [Line Following]({{ site.baseurl }}/robotics-camp/5-line-following/)         | Teach Techster to follow a line, then demo the week               | Reflection, threshold, proportional control |
 
 ## Teams and Roles
 
 12 students share **3 SPIKE Prime kits** in **teams of 4**. Everyone codes — roles
 rotate about every 20 minutes so each person tries each job:
 
-* **Coder** — types the program and runs it
-* **Builder / Mechanic** — checks the robot, motors, and sensor mounting
-* **Navigator** — plans the moves as pseudocode on paper before they're typed
-* **Tester** — measures results, records numbers, and reports what actually happened
+- **Coder** — types the program and runs it
+- **Builder / Mechanic** — checks the robot, motors, and sensor mounting
+- **Navigator** — plans the moves as pseudocode on paper before they're typed
+- **Tester** — measures results, records numbers, and reports what actually happened
 
 Every robotics block also has an **off-robot task** so all four teammates stay busy
 even when it isn't their turn at the keyboard.
@@ -55,9 +55,9 @@ requirements worth checking ahead of time.
 
 ### Browser & device requirements
 
-* **Use Chrome, Edge, or Chromium** with **Web Bluetooth**. This works on
+- **Use Chrome, Edge, or Chromium** with **Web Bluetooth**. This works on
   **Windows laptops** and **Chromebooks (ChromeOS)** — our two main platforms.
-* **iPads and iPhones are NOT supported** (iOS Safari and Chrome-for-iOS don't
+- **iPads and iPhones are NOT supported** (iOS Safari and Chrome-for-iOS don't
   support Web Bluetooth). **Firefox is not supported on any platform.** If someone
   brings a tablet, it won't be able to connect.
 
@@ -70,7 +70,7 @@ first the latest official LEGO SPIKE firmware, then the **Pybricks firmware** fr
 [Setup & Firmware Guide]({{ site.baseurl }}/robotics-camp/instructor-notes/setup-and-firmware).
 
 > Robots are **pre-built before Day 1** using the standard two-motor driving base,
-> so Session 1 goes straight to connecting and driving.
+> so Day 1 goes straight to connecting and driving.
 
 ### Block coding or Python?
 
@@ -81,15 +81,15 @@ guide alongside the Python so both tracks stay together.
 
 ## Materials Checklist
 
-* 3 LEGO SPIKE Prime sets (the base set includes the color and distance sensors)
-* 3+ Windows laptops or Chromebooks with Chrome / Edge / Chromium
-* 1 micro-USB cable for the one-time firmware install
-* Painters' tape (mazes)
-* Black electrical tape + white poster board (line following)
-* Cardboard and blocks (obstacle course)
-* Whiteboards / paper (pseudocode and planning)
-* Rulers / measuring tape (calibration)
-* Hub name labels (animal or city names) so teams can find their hub in the
+- 3 LEGO SPIKE Prime sets (the base set includes the color and distance sensors)
+- 3+ Windows laptops or Chromebooks with Chrome / Edge / Chromium
+- 1 micro-USB cable for the one-time firmware install
+- Painters' tape (mazes)
+- Black electrical tape + white poster board (line following)
+- Cardboard and blocks (obstacle course)
+- Whiteboards / paper (pseudocode and planning)
+- Rulers / measuring tape (calibration)
+- Hub name labels (animal or city names) so teams can find their hub in the
   Bluetooth list
 
 ## Keep Learning
@@ -100,8 +100,8 @@ after camp.
 
 ## Robot's Journey
 
-* **After Session 1:** Techster drives a calibrated distance, turns an angle, and traces a square
-* **After Session 2:** Techster solves a maze using named, reusable moves (functions)
-* **After Session 3:** Techster uses its gyro for noticeably straighter, more accurate turns
-* **After Session 4:** Techster senses obstacles and changes what it does in response
-* **After Session 5:** Techster follows a line — and the team can explain how they tuned it
+- **After Day 1:** Techster drives a calibrated distance, turns an angle, and traces a square
+- **After Day 2:** Techster solves a maze using named, reusable moves (functions)
+- **After Day 3:** Techster uses its gyro for noticeably straighter, more accurate turns
+- **After Day 4:** Techster senses obstacles and changes what it does in response
+- **After Day 5:** Techster follows a line — and the team can explain how they tuned it
