@@ -223,6 +223,23 @@ navigation:
         items:
           - title: Learn More
             url: /ai-builder-series/resources/learn-more
+  - title: "SPIKE Prime Robotics Camp"
+    url: /robotics-camp/
+    subnav:
+      - title: "Session 1: First Drive"
+        url: /robotics-camp/1-first-drive/
+      - title: "Session 2: Maze Runner"
+        url: /robotics-camp/2-maze-runner/
+      - title: "Session 3: Gyro Precision"
+        url: /robotics-camp/3-gyro-precision/
+      - title: "Session 4: Obstacle Avoidance"
+        url: /robotics-camp/4-obstacle-avoidance/
+      - title: "Session 5: Line Following"
+        url: /robotics-camp/5-line-following/
+      - title: Resources
+        items:
+          - title: Learn More
+            url: /robotics-camp/resources/learn-more
   - title: Student Demo Day
     url: /demo-day/
     subnav:
@@ -297,3 +314,7 @@ defaults:
       path: "home-automation"
     values:
       workshop: "Home Automation with ESP32"
+  - scope:
+      path: "robotics-camp"
+    values:
+      workshop: "SPIKE Prime Robotics Camp"

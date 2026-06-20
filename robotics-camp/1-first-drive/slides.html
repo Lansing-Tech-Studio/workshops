@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>First Drive — SPIKE Prime Robotics Camp #1</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.bad {
+			color: #ff6b6b;
+		}
+
+		.good {
+			color: #51cf66;
+		}
+
+		.key {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">First Drive</h2>
+				<p class="outlined">SPIKE Prime Robotics Camp — Session 1</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">Teach Techster to move</p>
+			</section>
+
+			<section>
+				<h2>The Camp</h2>
+				<ol>
+					<li><strong>First Drive</strong> (today!)</li>
+					<li>Maze Runner</li>
+					<li>Gyro Precision</li>
+					<li>Obstacle Avoidance</li>
+					<li>Line Following + Showcase</li>
+				</ol>
+				<p>Each day upgrades our robot, Techster.</p>
+			</section>
+
+			<section>
+				<h2>Today's Mission</h2>
+				<p>Teach Techster to:</p>
+				<ul>
+					<li>Drive a set <span class="key">distance</span></li>
+					<li>Turn a set <span class="key">angle</span></li>
+					<li>Trace a <span class="key">square</span></li>
+				</ul>
+				<p><small>The robot does <em>exactly</em> what you tell it.</small></p>
+			</section>
+
+			<section>
+				<section>
+					<h2>Rule of the Week</h2>
+					<p class="key">Bugs are sensor data.</p>
+					<p>The robot did exactly what the code said.<br>
+						What did the code actually say?</p>
+				</section>
+				<section>
+					<h3>Human Robot</h3>
+					<p>Give a teammate <em>literal</em> step commands to reach a target.</p>
+					<p><small>"Forward 2 steps… turn right… forward 1 step."</small></p>
+					<p>If they end up in the wrong spot — that's sensor data!</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Connect to Your Robot</h2>
+					<ol>
+						<li>Open <code>code.pybricks.com</code> in <strong>Chrome or Edge</strong></li>
+						<li>Turn on your hub</li>
+						<li>Click <strong>Connect</strong> and pick <strong>your hub's name</strong></li>
+					</ol>
+					<p><small>iPads and Firefox won't connect — use a laptop or Chromebook.</small></p>
+				</section>
+				<section>
+					<h3>Blocks or Python?</h3>
+					<ul>
+						<li><strong>Blocks</strong> — drag and drop</li>
+						<li><strong>Python</strong> — type it out</li>
+					</ul>
+					<p>Same robot, same ideas. Pybricks shows the Python next to your blocks.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Two Commands</h2>
+				</section>
+				<section>
+					<h3>Drive Straight</h3>
+					<pre><code data-trim data-noescape>
+robot.straight(200)   # 200 millimeters forward
+					</code></pre>
+					<p>Distance is in <span class="key">millimeters</span>. 1000 mm = 1 meter.</p>
+				</section>
+				<section>
+					<h3>Turn</h3>
+					<pre><code data-trim data-noescape>
+robot.turn(90)    # positive = clockwise / right
+robot.turn(-90)   # negative = left
+					</code></pre>
+					<p>Turning is in <span class="key">degrees</span>.</p>
+				</section>
+				<section>
+					<h3>Backward? Wrong way?</h3>
+					<ul>
+						<li>Drives backward → flip a motor <code>Direction</code></li>
+						<li>Turns the wrong way → check the <em>sign</em> of your number</li>
+					</ul>
+					<p><small>This is normal setup, not a broken robot.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Repeat: The <code>for</code> Loop</h2>
+					<p>A square is the same two moves, four times.</p>
+				</section>
+				<section>
+					<h3>Drive a Square</h3>
+					<pre><code data-trim data-noescape>
+for i in range(4):
+    robot.straight(300)
+    robot.turn(90)
+					</code></pre>
+					<p>Predict it first, then run it!</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Calibration</h2>
+					<p>The numbers are <span class="key">guesses</span> — you measure and adjust.</p>
+				</section>
+				<section>
+					<h3>Fix the Distance</h3>
+					<ol>
+						<li>Run <code>robot.straight(1000)</code></li>
+						<li>Measure how far it <em>really</em> went</li>
+						<li>Too far → smaller <code>wheel_diameter</code><br>
+							Too short → bigger <code>wheel_diameter</code></li>
+					</ol>
+				</section>
+				<section>
+					<h3>Fix the Turn</h3>
+					<ol>
+						<li>Run <code>robot.turn(360)</code></li>
+						<li>Did it spin exactly once?</li>
+						<li>Adjust <code>axle_track</code> and try again</li>
+					</ol>
+					<p><small>Tune distance first, then turning.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Energizer + Snack</h2>
+					<p>Get up, move, refuel.</p>
+					<p><small>Keep food away from the kits and laptops!</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Build It</h2>
+					<p>Calibrate, then drive your square.</p>
+				</section>
+				<section>
+					<h3>The Loop That Matters</h3>
+					<ol>
+						<li>Predict</li>
+						<li>Run</li>
+						<li>Measure</li>
+						<li>Adjust</li>
+					</ol>
+					<p>"Pretty close" is a win today.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Demo + Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>Distance in mm, angles in degrees</li>
+						<li>Positive turn = clockwise / right</li>
+						<li><code>for</code> loops repeat moves</li>
+						<li>Calibrate: measure, then adjust</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>Maze Runner</strong></p>
+					<p>We'll give our moves <em>names</em> —<br>
+						like <code>forward_one_cell()</code> and <code>turn_right()</code> —<br>
+						and string them together to solve a maze.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Great driving!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

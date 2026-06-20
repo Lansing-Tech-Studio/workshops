@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Line Following — SPIKE Prime Robotics Camp #5</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.bad {
+			color: #ff6b6b;
+		}
+
+		.good {
+			color: #51cf66;
+		}
+
+		.key {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Line Following</h2>
+				<p class="outlined">SPIKE Prime Robotics Camp — Session 5</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">Teach Techster to follow a line</p>
+			</section>
+
+			<section>
+				<h2>The Camp</h2>
+				<ol>
+					<li>First Drive</li>
+					<li>Maze Runner</li>
+					<li>Gyro Precision</li>
+					<li>Obstacle Avoidance</li>
+					<li><strong>Line Following + Showcase</strong> (today!)</li>
+				</ol>
+				<p>The last day — and the big showcase.</p>
+			</section>
+
+			<section>
+				<h2>Today's Mission</h2>
+				<p>Teach Techster to:</p>
+				<ul>
+					<li>Read <span class="key">reflected light</span></li>
+					<li>Follow the <span class="key">edge</span> of a line</li>
+					<li>Steer by <span class="key">proportional control</span></li>
+				</ul>
+				<p><small>Then demo your best run of the week!</small></p>
+			</section>
+
+			<section>
+				<section>
+					<h2>Rule of the Week</h2>
+					<p class="key">Bugs are sensor data.</p>
+					<p>The robot did exactly what the code said.<br>
+						What did the code actually say?</p>
+				</section>
+				<section>
+					<h3>Debug the Dance</h3>
+					<p>A move sequence has <em>one</em> deliberate bug.</p>
+					<p><small>"Step left… clap… step left… spin." Wait — should that be step right?</small></p>
+					<p>Find it and fix it — that's reading the steps like the robot does.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Catch-Up: Sensors &amp; Decisions</h2>
+					<p>Yesterday Techster <span class="key">sensed</span> the world and <span class="key">decided</span> what to do.</p>
+					<pre><code data-trim data-noescape>
+if sensor.distance() &lt; 200:
+    robot.straight(-100)
+    robot.turn(90)
+					</code></pre>
+					<p>Today: turn a reading into <em>smooth</em> steering.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>The Color Sensor</h2>
+					<p>It can read how much light <span class="key">bounces back</span>.</p>
+				</section>
+				<section>
+					<h3>Reflection</h3>
+					<pre><code data-trim data-noescape>
+line_sensor = ColorSensor(Port.D)
+print(line_sensor.reflection())   # 0 to 100
+					</code></pre>
+					<p>Black tape reflects <span class="key">little</span>.<br>
+						White floor reflects <span class="key">a lot</span>.</p>
+				</section>
+				<section>
+					<h3>Needs Contrast</h3>
+					<p><span class="key">Black electrical tape</span> on <span class="key">white</span> poster board or a light floor.</p>
+					<p><small>No contrast → the robot can't tell line from floor.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Calibrate the Readings</h2>
+					<p>Measure on <em>your</em> tape and <em>your</em> floor.</p>
+				</section>
+				<section>
+					<h3>BLACK, WHITE, threshold</h3>
+					<pre><code data-trim data-noescape>
+BLACK = 10    # measured on the tape
+WHITE = 80    # measured on the floor
+threshold = (BLACK + WHITE) / 2
+					</code></pre>
+					<p>The <span class="key">threshold</span> is the midpoint between them.</p>
+				</section>
+				<section>
+					<h3>Follow the EDGE</h3>
+					<p>The robot rides the <span class="key">edge</span> of the line —<br>
+						half on black, half on white.</p>
+					<p><small>That's why a little wobble is normal.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Proportional Control</h2>
+					<p class="key">Steer in proportion to how far off you are.</p>
+					<p>A little off → steer a little.<br>
+						Way off → steer hard.</p>
+				</section>
+				<section>
+					<h3>Deviation</h3>
+					<pre><code data-trim data-noescape>
+deviation = line_sensor.reflection() - threshold
+					</code></pre>
+					<p>How far the reading is from the edge.<br>
+						Positive one way, negative the other.</p>
+				</section>
+				<section>
+					<h3>Steer By It</h3>
+					<pre><code data-trim data-noescape>
+while True:
+    deviation = line_sensor.reflection() - threshold
+    robot.drive(DRIVE_SPEED, GAIN * deviation)
+    wait(10)
+					</code></pre>
+					<p><code>drive(speed, turn_rate)</code> drives continuously.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Tune the GAIN</h2>
+					<p>GAIN decides how <em>hard</em> it steers per unit of deviation.</p>
+				</section>
+				<section>
+					<h3>Too Low vs. Too High</h3>
+					<ul>
+						<li><span class="bad">Too low</span> → sloppy, drifts off the line</li>
+						<li><span class="bad">Too high</span> → wobbles back and forth</li>
+						<li><span class="good">Just right</span> → smooth follow</li>
+					</ul>
+					<p>Change <span class="key">only GAIN</span> and watch. That's the lesson.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Energizer + Snack</h2>
+					<p>Get up, move, refuel.</p>
+					<p><small>Keep food away from the kits and laptops!</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Build It</h2>
+					<p>Calibrate, follow, then tune the gain.</p>
+				</section>
+				<section>
+					<h3>The Loop That Matters</h3>
+					<ol>
+						<li>Measure BLACK and WHITE</li>
+						<li>Set the threshold</li>
+						<li>Run and watch</li>
+						<li>Tune GAIN, repeat</li>
+					</ol>
+					<p>"Smooth-ish" is a win!</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Showcase!</h2>
+					<p class="key">This is the camp finale.</p>
+					<p>Each team demos their <strong>best run of the week</strong> —<br>
+						and explains one thing they tuned.</p>
+				</section>
+				<section>
+					<h3>What We Built This Week</h3>
+					<ol>
+						<li>First Drive — distance &amp; angle</li>
+						<li>Maze Runner — named moves (functions)</li>
+						<li>Gyro Precision — an inner compass</li>
+						<li>Obstacle Avoidance — sense &amp; decide</li>
+						<li>Line Following — proportional control</li>
+					</ol>
+				</section>
+				<section>
+					<h3>What We Learned Today</h3>
+					<ul>
+						<li>Reflection is light bounced back (0–100)</li>
+						<li>Threshold = midpoint of BLACK and WHITE</li>
+						<li>Deviation = how far off the edge</li>
+						<li>Proportional control: steer by the deviation</li>
+						<li>Tune GAIN: sloppy ↔ wobbly ↔ just right</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Amazing work this week!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

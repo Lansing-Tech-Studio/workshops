@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Gyro Precision — SPIKE Prime Robotics Camp #3</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.bad {
+			color: #ff6b6b;
+		}
+
+		.good {
+			color: #51cf66;
+		}
+
+		.key {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Gyro Precision</h2>
+				<p class="outlined">SPIKE Prime Robotics Camp — Session 3</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">Give Techster an inner compass</p>
+			</section>
+
+			<section>
+				<h2>The Camp</h2>
+				<ol>
+					<li>First Drive</li>
+					<li>Maze Runner</li>
+					<li><strong>Gyro Precision</strong> (today!)</li>
+					<li>Obstacle Avoidance</li>
+					<li>Line Following + Showcase</li>
+				</ol>
+				<p>Each day upgrades our robot, Techster.</p>
+			</section>
+
+			<section>
+				<h2>Today's Mission</h2>
+				<p>Upgrade Techster's inner compass:</p>
+				<ul>
+					<li>Turn on the <span class="key">gyro</span></li>
+					<li>Prove it makes turns more <span class="key">accurate</span></li>
+					<li>Read the robot's <span class="key">heading</span></li>
+				</ul>
+				<p><small>Honest truth: the gyro isn't magic. We'll tune it.</small></p>
+			</section>
+
+			<section>
+				<section>
+					<h2>Rule of the Week</h2>
+					<p class="key">Bugs are sensor data.</p>
+					<p>The robot did exactly what the code said.<br>
+						What did the code actually say?</p>
+				</section>
+				<section>
+					<h3>Debug the Drawing</h3>
+					<p>Here's a drawn sequence of robot moves.</p>
+					<p>One step is <em>wrong</em>. Find it.</p>
+					<p><small>A small early error throws off everything after it — that's sensor data!</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Catch-Up: Where We Are</h2>
+					<p>Techster can already:</p>
+					<ul>
+						<li>Drive a <code>straight()</code> distance</li>
+						<li><code>turn()</code> an angle</li>
+						<li>Run named moves to solve a maze</li>
+					</ul>
+					<p><small>Connect, drive, and turn — then we add the gyro.</small></p>
+				</section>
+				<section>
+					<h3>Blocks or Python?</h3>
+					<ul>
+						<li><strong>Blocks</strong> — drag and drop</li>
+						<li><strong>Python</strong> — type it out</li>
+					</ul>
+					<p>Same robot, same ideas. Pybricks shows the Python next to your blocks.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>What Is a Gyro?</h2>
+					<p>A <span class="key">gyroscope</span> senses how the robot is <em>turning</em>.</p>
+					<p>It lets Techster <em>feel</em> which way it's facing instead of just counting wheel-spins.</p>
+				</section>
+				<section>
+					<h3>Why Turns Drift Without It</h3>
+					<ul>
+						<li>Wheels slip a little</li>
+						<li>The floor isn't perfectly even</li>
+						<li>Small errors <span class="bad">add up</span> over many turns</li>
+					</ul>
+					<p>The gyro corrects as it goes.</p>
+				</section>
+				<section>
+					<h3>Turn It On</h3>
+					<pre><code data-trim data-noescape>
+robot.use_gyro(True)   # now turns/straights use the gyro
+					</code></pre>
+					<p>One line. Same <code>straight()</code> and <code>turn()</code> after that.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Off vs. On</h2>
+					<p>Run the <span class="key">same</span> moves twice — gyro off, then gyro on.</p>
+					<p>Measure how far off each one ends up.</p>
+				</section>
+				<section>
+					<h3>The Experiment</h3>
+					<ol>
+						<li>Run your square with the gyro <span class="bad">off</span></li>
+						<li>Mark where it really ended</li>
+						<li>Add <code>use_gyro(True)</code> and run again</li>
+						<li>Chart the error — off vs. <span class="good">on</span></li>
+					</ol>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Read the Heading</h2>
+					<p>The robot can tell you the direction it's facing.</p>
+				</section>
+				<section>
+					<h3>Print the Heading</h3>
+					<pre><code data-trim data-noescape>
+print(hub.imu.heading())   # degrees
+					</code></pre>
+					<ul>
+						<li>Starts at <span class="key">0</span></li>
+						<li>Positive = <span class="key">clockwise</span></li>
+						<li>Output shows in the Pybricks console</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Calibrate the Turn</h2>
+					<p>The gyro is better — but <span class="key">not perfect</span>.</p>
+				</section>
+				<section>
+					<h3>Tune a True 360°</h3>
+					<ol>
+						<li>Run <code>robot.turn(360)</code></li>
+						<li>Check <code>hub.imu.heading()</code> — back to 0?</li>
+						<li>Over-spun? Try <code>turn(357)</code>.<br>
+							Under-spun? Try <code>turn(362)</code>.</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Your Number Is Yours</h3>
+					<pre><code data-trim data-noescape>
+robot.turn(357)   # one hub's true full turn
+					</code></pre>
+					<p><small>Could be 355-363 on yours. It's calibration, not a bug.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Energizer + Snack</h2>
+					<p>Get up, move, refuel.</p>
+					<p><small>Keep food away from the kits and laptops!</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Build It</h2>
+					<p>Prove the gyro helps, then tune a true 360°.</p>
+				</section>
+				<section>
+					<h3>The Loop That Matters</h3>
+					<ol>
+						<li>Run gyro off</li>
+						<li>Run gyro on</li>
+						<li>Chart the error</li>
+						<li>Tune your true 360°</li>
+					</ol>
+					<p>The chart is the proof.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Demo + Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>A gyro senses turning</li>
+						<li><code>use_gyro(True)</code> makes turns more accurate</li>
+						<li><code>hub.imu.heading()</code> reads the heading (starts at 0)</li>
+						<li>A true 360° is a per-hub calibration</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>Obstacle Avoidance</strong></p>
+					<p>We'll give Techster <em>eyes</em> with the distance sensor —<br>
+						so it can react to the world and change<br>
+						what it does instead of running a fixed script.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Great driving!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

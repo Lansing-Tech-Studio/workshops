@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Maze Runner — SPIKE Prime Robotics Camp #2</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.bad {
+			color: #ff6b6b;
+		}
+
+		.good {
+			color: #51cf66;
+		}
+
+		.key {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Maze Runner</h2>
+				<p class="outlined">SPIKE Prime Robotics Camp — Session 2</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">Name your moves, then string them together</p>
+			</section>
+
+			<section>
+				<h2>The Camp</h2>
+				<ol>
+					<li>First Drive</li>
+					<li><strong>Maze Runner</strong> (today!)</li>
+					<li>Gyro Precision</li>
+					<li>Obstacle Avoidance</li>
+					<li>Line Following + Showcase</li>
+				</ol>
+				<p>Each day upgrades our robot, Techster.</p>
+			</section>
+
+			<section>
+				<h2>Today's Mission</h2>
+				<p>Get Techster through a maze by:</p>
+				<ul>
+					<li>Giving moves <span class="key">names</span> (functions)</li>
+					<li>Putting them in a <span class="key">sequence</span></li>
+					<li>Solving a <span class="key">maze</span> without hitting walls</li>
+				</ul>
+				<p><small>A solved maze is just a list of moves in order.</small></p>
+			</section>
+
+			<section>
+				<section>
+					<h2>Catch-Up</h2>
+					<p class="key">New today? Welcome!</p>
+					<p>Quick recap so everyone can drive:</p>
+					<ul>
+						<li>Open <code>code.pybricks.com</code>, <strong>connect</strong> to your hub by name</li>
+						<li><code>robot.straight(200)</code> drives forward</li>
+						<li><code>robot.turn(90)</code> turns right</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Rule of the Week</h3>
+					<p class="key">Bugs are sensor data.</p>
+					<p>The robot did exactly what the code said.<br>
+						What did the code actually say?</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Maze on Paper</h2>
+					<p>Draw a path through a grid, start to finish.</p>
+					<p><small>Write it as a list: "forward, turn right, forward, forward."</small></p>
+				</section>
+				<section>
+					<h3>That List Is a Sequence</h3>
+					<p>A program runs <span class="key">top to bottom</span>, one step at a time.</p>
+					<p>Solving a maze = writing the right steps in the right order.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Naming a Move</h2>
+					<p>Last time we typed <code>straight()</code> and <code>turn()</code> over and over.</p>
+					<p>Let's give those moves <span class="key">names</span>.</p>
+				</section>
+				<section>
+					<h3>Define a Function</h3>
+					<pre><code data-trim data-noescape>
+def forward_one_cell():
+    robot.straight(250)   # one maze cell
+
+def turn_right():
+    robot.turn(90)
+
+def turn_left():
+    robot.turn(-90)
+					</code></pre>
+					<p><code>def name():</code> <span class="key">defines</span> a function.</p>
+				</section>
+				<section>
+					<h3>Call a Function</h3>
+					<pre><code data-trim data-noescape>
+forward_one_cell()
+turn_right()
+					</code></pre>
+					<p>Writing the name with <code>()</code> <span class="key">calls</span> it — the robot runs that move.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Solve the Maze</h2>
+					<p>String your named moves into a readable sequence.</p>
+				</section>
+				<section>
+					<h3>A Readable Path</h3>
+					<pre><code data-trim data-noescape>
+forward_one_cell()
+turn_right()
+forward_one_cell()
+forward_one_cell()
+					</code></pre>
+					<p>Reads like instructions — that's the whole point.</p>
+				</section>
+				<section>
+					<h3>Bumped a Wall?</h3>
+					<ul>
+						<li>Find the step where it went wrong</li>
+						<li>Fix <em>that</em> step</li>
+						<li>Run again</li>
+					</ul>
+					<p><small>The robot did exactly what the sequence said.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Calibrate the Cell</h2>
+					<p>How far is <span class="key">one cell</span> in your maze?</p>
+				</section>
+				<section>
+					<h3>Measure, Then Set</h3>
+					<ol>
+						<li>Run <code>forward_one_cell()</code> once</li>
+						<li>Did it land in the next cell?</li>
+						<li>Adjust the mm inside the function and try again</li>
+					</ol>
+					<p><small>The cell size is a guess you measure — not a correct answer.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Energizer + Snack</h2>
+					<p>Get up, move, refuel.</p>
+					<p><small>Keep food away from the kits and laptops!</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Build It</h2>
+					<p>Tape a maze, then solve someone else's.</p>
+				</section>
+				<section>
+					<h3>The Loop That Matters</h3>
+					<ol>
+						<li>Plan the path on paper</li>
+						<li>Write the named moves in order</li>
+						<li>Run</li>
+						<li>Fix the step that bumped a wall</li>
+					</ol>
+					<p>A completed maze is the win.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Demo + Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>A program is a <code>sequence</code> — top to bottom</li>
+						<li><code>def name():</code> defines a function</li>
+						<li><code>name()</code> calls it</li>
+						<li>Named moves make a long path readable</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>Gyro Precision</strong></p>
+					<p>Your turns mostly landed —<br>
+						but tomorrow we'll give Techster an inner compass,<br>
+						the <em>gyro</em>, so its turns stay accurate.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Maze solved!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Obstacle Avoidance — SPIKE Prime Robotics Camp #4</title>
+
+	<link rel="stylesheet" href="../../assets/revealjs/reset.css">
+	<link rel="stylesheet" href="../../assets/revealjs/reveal.css">
+	<link rel="stylesheet" href="../../assets/revealjs/theme/black.css">
+
+	<link rel="stylesheet" href="../../assets/revealjs/plugin/highlight/monokai.css">
+	<style>
+		.outlined {
+			text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+		}
+
+		div.slide-background-content {
+			background-size: 900px 900px;
+			background-repeat: no-repeat;
+			background-position: center center;
+			opacity: 0.05;
+			background-image: url("../../assets/images/logo-transparent.png");
+		}
+
+		.bad {
+			color: #ff6b6b;
+		}
+
+		.good {
+			color: #51cf66;
+		}
+
+		.key {
+			color: #ffd43b;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="0.7" data-background-repeat="no-repeat"
+				data-background-position="center center">
+				<h2 class="outlined">Obstacle Avoidance</h2>
+				<p class="outlined">SPIKE Prime Robotics Camp — Session 4</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p class="outlined">Give Techster eyes</p>
+			</section>
+
+			<section>
+				<h2>The Camp</h2>
+				<ol>
+					<li>First Drive</li>
+					<li>Maze Runner</li>
+					<li>Gyro Precision</li>
+					<li><strong>Obstacle Avoidance</strong> (today!)</li>
+					<li>Line Following + Showcase</li>
+				</ol>
+				<p>Each day upgrades our robot, Techster.</p>
+			</section>
+
+			<section>
+				<h2>Today's Mission</h2>
+				<p>Give Techster <span class="key">eyes</span>:</p>
+				<ul>
+					<li><span class="key">Read</span> a distance sensor</li>
+					<li><span class="key">Decide</span> with if / else</li>
+					<li><span class="key">React</span> instead of following a script</li>
+				</ul>
+				<p><small>The robot reacts to the world, not just to your code.</small></p>
+			</section>
+
+			<section>
+				<section>
+					<h2>Rule of the Week</h2>
+					<p class="key">Bugs are sensor data.</p>
+					<p>The robot did exactly what the code said.<br>
+						What did the code actually say?</p>
+				</section>
+				<section>
+					<h3>Red Light / Green Light</h3>
+					<p>Keep watching the signal and <em>react</em>.</p>
+					<p><small>Green = move, red = freeze.</small></p>
+					<p>That's a sensor loop: check, decide, do — over and over.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Catch-Up First</h2>
+					<p>Make sure your robot still drives and turns.</p>
+					<p>Then plug in and mount the <span class="key">distance sensor</span>.</p>
+				</section>
+				<section>
+					<h3>Blocks or Python?</h3>
+					<ul>
+						<li><strong>Blocks</strong> — drag and drop</li>
+						<li><strong>Python</strong> — type it out</li>
+					</ul>
+					<p>Same robot, same ideas. Pybricks shows the Python next to your blocks.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>The Distance Sensor</h2>
+					<p>The ultrasonic sensor measures how far away things are.</p>
+				</section>
+				<section>
+					<h3>Add It in Setup</h3>
+					<pre><code data-trim data-noescape>
+from pybricks.pupdevices import UltrasonicSensor
+
+eyes = UltrasonicSensor(Port.C)   # use YOUR port
+					</code></pre>
+					<p>Plug it in and use the <span class="key">real port</span>.</p>
+				</section>
+				<section>
+					<h3>Read the Number</h3>
+					<pre><code data-trim data-noescape>
+print(eyes.distance())   # millimeters
+					</code></pre>
+					<p>Move your hand closer — watch the number drop.</p>
+					<p><small>Nothing in front? It reads <span class="key">2000 mm</span>.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Make a Decision</h2>
+					<p>If something's close, do one thing. Otherwise, do another.</p>
+				</section>
+				<section>
+					<h3>if / else</h3>
+					<pre><code data-trim data-noescape>
+if eyes.distance() &lt; 200:
+    robot.straight(-100)   # back up
+    robot.turn(90)         # turn away
+else:
+    robot.drive(150, 0)    # forward, no turn
+					</code></pre>
+					<p>200 mm is a <span class="key">guess</span> — measure and adjust.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Keep Checking: <code>while</code></h2>
+					<p>Check the sensor again and again, forever.</p>
+				</section>
+				<section>
+					<h3>The Forever Loop</h3>
+					<pre><code data-trim data-noescape>
+while True:
+    if eyes.distance() &lt; 200:
+        robot.straight(-100)
+        robot.turn(90)
+    else:
+        robot.drive(150, 0)
+    wait(10)
+					</code></pre>
+				</section>
+				<section>
+					<h3>Stopping It</h3>
+					<ul>
+						<li><code>while True:</code> runs <em>forever</em></li>
+						<li>Use the editor's <span class="key">Stop</span> button</li>
+					</ul>
+					<p><small>It won't stop on its own — that's expected.</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Energizer + Snack</h2>
+					<p>Get up, move, refuel.</p>
+					<p><small>Keep food away from the kits and laptops!</small></p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Build It</h2>
+					<p>React to obstacles on the course.</p>
+				</section>
+				<section>
+					<h3>Tune the Trigger</h3>
+					<ol>
+						<li>Start near 200 mm</li>
+						<li>Stops too early → smaller number</li>
+						<li>Bumps the wall → bigger number</li>
+					</ol>
+					<p>Measure on the <em>real</em> course.</p>
+				</section>
+				<section>
+					<h3>Challenge</h3>
+					<p class="key">Don't fall off the table!</p>
+					<p>Sense the edge (or wall) and back away in time.</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Demo + Wrap-Up</h2>
+				</section>
+				<section>
+					<h3>What We Learned</h3>
+					<ul>
+						<li>Read a sensor with <code>distance()</code> (mm)</li>
+						<li>2000 mm means nothing detected</li>
+						<li><code>if</code> / <code>else</code> makes decisions</li>
+						<li><code>while True:</code> keeps checking — Stop button ends it</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Coming Up Next</h3>
+					<p><strong>Line Following + Showcase</strong></p>
+					<p>We'll teach Techster to <em>follow a line</em> with the color sensor —<br>
+						steering in proportion to how far off it is —<br>
+						then show off everything from the week.</p>
+				</section>
+			</section>
+
+			<section>Questions?</section>
+			<section data-background-image="../../assets/images/logo-transparent.png" data-background-size="900px 900px"
+				data-background-opacity="1" data-background-repeat="no-repeat" data-background-position="center center">
+				<h2 class="outlined"><em>Great sensing!</em></h2>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="../../assets/revealjs/reveal.js"></script>
+	<script src="../../assets/revealjs/plugin/notes/notes.js"></script>
+	<script src="../../assets/revealjs/plugin/markdown/markdown.js"></script>
+	<script src="../../assets/revealjs/plugin/highlight/highlight.js"></script>
+	<script>
+		Reveal.initialize({
+			hash: true,
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
