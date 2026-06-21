@@ -28,10 +28,10 @@ comments: true
 
 ## The Mission
 
-> **Today's mission:** Upgrade Techster's "inner compass" so turns and straights
+> **Today's mission:** Upgrade your robot's "inner compass" so turns and straights
 > stay accurate.
 
-Techster has been driving by guesswork — counting wheel-spins and hoping. Today we
+The robot has been driving by guesswork — counting wheel-spins and hoping. Today we
 turn on the **gyro** so the robot can _feel_ which way it's facing, then prove with a
 chart that it makes turns more accurate. Heads up: the gyro isn't magic. A true full
 turn might need `turn(357)` or `turn(362)` on _your_ hub — finding that number is the
@@ -142,7 +142,7 @@ A student is successful if they can say:
 
 End with:
 
-> "Techster turns accurately now — but it still follows a fixed script. Tomorrow we'll
+> "The robot turns accurately now — but it still follows a fixed script. Tomorrow we'll
 > give it _eyes_ with the distance sensor, so it can react to the world and change what
 > it does instead of just running the same moves."
 

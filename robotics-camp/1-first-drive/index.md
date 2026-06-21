@@ -28,10 +28,10 @@ comments: true
 
 ## The Mission
 
-> **Today's mission:** Teach Techster to move on command — drive a set distance,
+> **Today's mission:** Teach your robot to move on command — drive a set distance,
 > turn a set angle, and trace a square.
 
-Techster does _exactly_ what your code says. Today you learn the two commands that
+The robot does _exactly_ what your code says. Today you learn the two commands that
 make it move — `straight()` and `turn()` — and discover that the robot needs your
 help to learn how big its own wheels are.
 
@@ -74,10 +74,10 @@ A student is successful if they can say:
 
 ### 9:15-9:25 — Mission Huddle
 
-> Meet Techster and today's mission
+> Meet your robot and today's mission
 
 - Meet the robot and name your hub
-- Today: make Techster drive a distance, turn an angle, and trace a square
+- Today: make your robot drive a distance, turn an angle, and trace a square
 - Mantra: "Bugs are sensor data — the robot did what the code said"
 
 ### 9:25-10:25 — Robotics Block 1: Connect & First Moves
@@ -142,7 +142,7 @@ A student is successful if they can say:
 
 End with:
 
-> "Techster can drive and turn now. Tomorrow we'll give those moves _names_ —
+> "The robot can drive and turn now. Tomorrow we'll give those moves _names_ —
 > like `forward_one_cell()` and `turn_right()` — and string them together to solve
 > a maze."
 

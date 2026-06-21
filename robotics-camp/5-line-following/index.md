@@ -28,10 +28,10 @@ comments: true
 
 ## The Mission
 
-> **Today's mission:** Teach Techster to follow a line — then demo everything you
+> **Today's mission:** Teach your robot to follow a line — then demo everything you
 > built this week at the showcase.
 
-Techster has a color sensor that can read how much light bounces back off the floor.
+The robot has a color sensor that can read how much light bounces back off the floor.
 Today you'll turn that one number into smooth steering: the farther the robot drifts
 off the edge of the line, the harder it steers back. That idea is called
 **proportional control**, and tuning it is the whole game. Then we celebrate the week.
@@ -83,7 +83,7 @@ A student is successful if they can say:
 
 - **Catch-up:** quick recap of sensors and decisions from Day 4 so every team can
   read a sensor and react before we add steering
-- Today: teach Techster to follow a line using its color sensor, then showcase the week
+- Today: teach the robot to follow a line using its color sensor, then showcase the week
 - Mantra: "Bugs are sensor data — the robot did what the code said"
 
 ### 9:25-10:25 — Robotics Block 1: Calibrate & First Follow
@@ -148,7 +148,7 @@ A student is successful if they can say:
 
 ## 7. Showcase & What Comes Next
 
-This is the finale. Take a minute to look back at everything Techster learned:
+This is the finale. Take a minute to look back at everything your robot learned:
 
 1. **First Drive** — drove a calibrated distance, turned an angle, traced a square
 2. **Maze Runner** — solved a maze with named, reusable moves (functions)
@@ -169,4 +169,4 @@ Keep going after camp with the
 - Turn one sensor reading into smooth, continuous control (proportional steering)
 - Cement the week's core habit: measure on the real surface, then tune — don't memorize
 - Give every student a confident "here's what I built and how I tuned it" showcase moment
-- End the week on a celebration of everything Techster — and the team — can do
+- End the week on a celebration of everything the robot — and the team — can do

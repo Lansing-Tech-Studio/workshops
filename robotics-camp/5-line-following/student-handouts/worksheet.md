@@ -50,7 +50,7 @@ Change **only GAIN**, run, and watch. Record what happens.
 
 ## 4) Week in Review
 
-This was the last day! Look back at everything Techster learned.
+This was the last day! Look back at everything your robot learned.
 
 - My favorite mission of the week was: <br>&nbsp;<br>
   <span class="blank-line-long"></span>

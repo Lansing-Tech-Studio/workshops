@@ -11,7 +11,7 @@ Want to keep going after the robotics camp? This is a collection of places to le
 more about the robot, the code, and what to build next. You don't need any of these
 to finish the camp — they're here for when you're curious and want to dig deeper.
 
-> **Lansing Techster says:** Pick _one_ link that sounds interesting and try it this
+> **The robot says:** Pick _one_ link that sounds interesting and try it this
 > week. You don't have to read everything — momentum over perfection!
 
 ## Pybricks (Our Robot's Brain)

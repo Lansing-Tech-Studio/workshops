@@ -10,7 +10,7 @@ section: Resources
 Quick definitions for the core terms used in this session.
 
 **gyro:** Short for **gyroscope** — a sensor inside the hub that detects how the robot
-is _turning_. It lets Techster feel which way it's facing instead of just counting
+is _turning_. It lets the robot feel which way it's facing instead of just counting
 wheel-spins.
 
 **gyroscope:** The full name for the gyro. It measures rotation, which the robot uses to

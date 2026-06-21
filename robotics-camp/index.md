@@ -14,13 +14,13 @@ comments: true
 
 ## Series Overview
 
-Over five mornings, teams program a LEGO SPIKE Prime robot we call **Techster**.
-Each day is a **mission** that upgrades what Techster can do — drive on command,
+Over five mornings, teams program a LEGO SPIKE Prime robot.
+Each day is a **mission** that upgrades what the robot can do — drive on command,
 solve a maze, turn accurately with a gyro, react to obstacles, and finally follow
 a line. The camp is **cumulative**: the same robot and the same code grow across
 the week, so what you build on Day 1 you keep using on Day 5.
 
-> **Lansing Techster says:** I do _exactly_ what your code says — no more, no less.
+> **The robot says:** I do _exactly_ what your code says — no more, no less.
 > When something looks wrong, that's not a failure, it's **sensor data**. Read what
 > the code actually told me to do, and you'll find the fix.
 
@@ -28,11 +28,11 @@ the week, so what you build on Day 1 you keep using on Day 5.
 
 | #   | Session                                                                      | Mission                                                           | New Skill                                   |
 | --- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------- |
-| 1   | [First Drive]({{ site.baseurl }}/robotics-camp/1-first-drive/)               | Make Techster drive a distance, turn an angle, and trace a square | Distance, angle, `for` loop, calibration    |
-| 2   | [Maze Runner]({{ site.baseurl }}/robotics-camp/2-maze-runner/)               | Get Techster through a taped maze without touching the walls      | Sequencing, functions                       |
-| 3   | [Gyro Precision]({{ site.baseurl }}/robotics-camp/3-gyro-precision/)         | Upgrade Techster's "inner compass" so turns stay accurate         | The gyro, reading a heading                 |
-| 4   | [Obstacle Avoidance]({{ site.baseurl }}/robotics-camp/4-obstacle-avoidance/) | Give Techster eyes so it reacts to the world                      | Sensors, `if`/`else`, `while` loop          |
-| 5   | [Line Following]({{ site.baseurl }}/robotics-camp/5-line-following/)         | Teach Techster to follow a line, then demo the week               | Reflection, threshold, proportional control |
+| 1   | [First Drive]({{ site.baseurl }}/robotics-camp/1-first-drive/)               | Make your robot drive a distance, turn an angle, and trace a square | Distance, angle, `for` loop, calibration    |
+| 2   | [Maze Runner]({{ site.baseurl }}/robotics-camp/2-maze-runner/)               | Get your robot through a taped maze without touching the walls      | Sequencing, functions                       |
+| 3   | [Gyro Precision]({{ site.baseurl }}/robotics-camp/3-gyro-precision/)         | Upgrade the robot's "inner compass" so turns stay accurate         | The gyro, reading a heading                 |
+| 4   | [Obstacle Avoidance]({{ site.baseurl }}/robotics-camp/4-obstacle-avoidance/) | Give your robot eyes so it reacts to the world                      | Sensors, `if`/`else`, `while` loop          |
+| 5   | [Line Following]({{ site.baseurl }}/robotics-camp/5-line-following/)         | Teach your robot to follow a line, then demo the week               | Reflection, threshold, proportional control |
 
 ## Teams and Roles
 
@@ -100,8 +100,8 @@ after camp.
 
 ## Robot's Journey
 
-- **After Day 1:** Techster drives a calibrated distance, turns an angle, and traces a square
-- **After Day 2:** Techster solves a maze using named, reusable moves (functions)
-- **After Day 3:** Techster uses its gyro for noticeably straighter, more accurate turns
-- **After Day 4:** Techster senses obstacles and changes what it does in response
-- **After Day 5:** Techster follows a line — and the team can explain how they tuned it
+- **After Day 1:** the robot drives a calibrated distance, turns an angle, and traces a square
+- **After Day 2:** the robot solves a maze using named, reusable moves (functions)
+- **After Day 3:** the robot uses its gyro for noticeably straighter, more accurate turns
+- **After Day 4:** the robot senses obstacles and changes what it does in response
+- **After Day 5:** the robot follows a line — and the team can explain how they tuned it

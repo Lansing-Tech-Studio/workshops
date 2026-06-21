@@ -28,10 +28,10 @@ comments: true
 
 ## The Mission
 
-> **Today's mission:** Give Techster eyes — react to the world instead of
+> **Today's mission:** Give your robot eyes — react to the world instead of
 > following a fixed script.
 
-Until now Techster did the same moves every time, no matter what was in front of
+Until now the robot did the same moves every time, no matter what was in front of
 it. Today you add a **distance sensor** and teach the robot to _decide_: if
 something's close, do one thing; otherwise, do another. The robot stops following
 your script and starts reacting to the room.
@@ -78,7 +78,7 @@ A student is successful if they can say:
 > Meet today's mission and get every robot sensing
 
 - **Catch-up warm-up:** recap driving; make sure the distance sensor is **mounted and reads values** so late arrivals are ready
-- Today: teach Techster to sense an obstacle and change what it does
+- Today: teach your robot to sense an obstacle and change what it does
 - Mantra: "Bugs are sensor data — the robot did what the code said"
 
 ### 9:25-10:25 — Robotics Block 1: Read the Sensor
@@ -143,7 +143,7 @@ A student is successful if they can say:
 
 End with:
 
-> "Techster can react to obstacles now. Tomorrow we'll teach it to _follow a line_
+> "The robot can react to obstacles now. Tomorrow we'll teach it to _follow a line_
 > using the color sensor — steering in proportion to how far off it is — and then
 > we'll show off everything we built all week."
 

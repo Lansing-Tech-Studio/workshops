@@ -28,10 +28,10 @@ comments: true
 
 ## The Mission
 
-> **Today's mission:** Get Techster through a taped-floor maze without touching the
+> **Today's mission:** Get your robot through a taped-floor maze without touching the
 > walls — by breaking the path into _named_ moves and stringing them together.
 
-Techster already drives and turns. Today you give those moves _names_ — like
+The robot already drives and turns. Today you give those moves _names_ — like
 `forward_one_cell()` and `turn_right()` — so a long path reads like a list of
 instructions. Naming a move once and reusing it is called writing a **function**.
 
@@ -145,7 +145,7 @@ A student is successful if they can say:
 End with:
 
 > "Your named moves solved the maze, but did every turn land _exactly_ right?
-> Tomorrow we'll give Techster an inner compass — the **gyro** — so its turns stay
+> Tomorrow we'll give the robot an inner compass — the **gyro** — so its turns stay
 > accurate even over a long path."
 
 ## 8. Overarching Goals

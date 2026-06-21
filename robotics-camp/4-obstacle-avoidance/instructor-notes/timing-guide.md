@@ -61,7 +61,7 @@ Frame the mission and confirm every robot drives and its distance sensor reads v
 - **Flow**:
   1. **Catch-up warm-up**: recap driving and turning; make sure each team's robot still
      drives and the **distance sensor is mounted and reads values**.
-  2. Today's mission: teach Techster to sense an obstacle and change what it does.
+  2. Today's mission: teach your robot to sense an obstacle and change what it does.
   3. Re-state the mantra: "Bugs are sensor data."
 - **Tip**: confirm the sensor's actual port on each robot now, so Block 1 isn't blocked.
 </div>
@@ -129,7 +129,7 @@ Teams demo through the course, reflect on trigger distance and surprises, then l
   - "What trigger distance worked best, and how did you find it?"
   - "When did the robot react in a way you didn't expect, and what did the code say?"
 - **Cleanup**: label and charge hubs; keep robots intact for tomorrow.
-- **Bridge**: "Tomorrow we'll teach Techster to _follow a line_ with the color sensor —
+- **Bridge**: "Tomorrow we'll teach the robot to _follow a line_ with the color sensor —
   and show off everything we built all week."
 </div>
 

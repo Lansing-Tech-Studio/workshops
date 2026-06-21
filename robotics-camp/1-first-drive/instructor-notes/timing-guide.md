@@ -58,7 +58,7 @@ Meet the robot, find labeled hubs, frame the mission (distance, turn, square), a
 <div class="detail" markdown="1">
 - **Objective**: meet the robot and frame today's mission.
 - **Flow**:
-  1. Introduce Techster and have each team find their **named, labeled** hub.
+  1. Introduce the robot and have each team find their **named, labeled** hub.
   2. Today's mission: drive a distance, turn an angle, trace a square.
   3. Introduce the mantra: "Bugs are sensor data."
 - **Tip**: assign the first set of roles (Coder, Builder, Navigator, Tester) now.

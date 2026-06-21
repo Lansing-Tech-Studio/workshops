@@ -131,7 +131,7 @@ Teams demo their maze runs, reflect on naming/debugging, charge hubs, peel tape,
   - "How did naming your moves make the maze code easier to read?"
   - "When did the robot bump a wall, and what did the sequence actually say?"
 - **Cleanup**: label and charge hubs; keep robots intact for tomorrow. Peel up the tape.
-- **Bridge**: "Your turns mostly landed — tomorrow we give Techster a gyro so they land
+- **Bridge**: "Your turns mostly landed — tomorrow we give the robot a gyro so they land
   _exactly_."
 </div>
 

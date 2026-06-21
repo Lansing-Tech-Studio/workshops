@@ -11,7 +11,7 @@ Keep answers short and friendly. Add detail only if students ask for more.
 
 ## "What does the gyro actually do?"
 
-It senses how the robot is _turning_, so Techster can feel which way it's facing instead
+It senses how the robot is _turning_, so the robot can feel which way it's facing instead
 of just counting wheel-spins. With it on, the same `turn()` and `straight()` hold a
 straighter, more accurate path.
 

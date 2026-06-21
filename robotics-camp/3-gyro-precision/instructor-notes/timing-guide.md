@@ -128,7 +128,7 @@ Teams demo the gyro-off vs. gyro-on difference, then label and charge hubs (keep
   - "How much more accurate was the gyro-on run?"
   - "What's your hub's true 360° number, and why isn't it just 360?"
 - **Cleanup**: label and charge hubs; keep robots intact for tomorrow.
-- **Bridge**: "Tomorrow we'll give Techster _eyes_ with the distance sensor so it can
+- **Bridge**: "Tomorrow we'll give your robot _eyes_ with the distance sensor so it can
   react to the world instead of running a fixed script."
 </div>
 

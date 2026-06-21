@@ -12,7 +12,7 @@ Pybricks shows the **matching Python next to your blocks (live preview)**, so th
 block track and the Python track end up at the same place — you can peek at the
 Python any time to see what your blocks turned into.
 
-> **Same robot, same ideas.** Blocks and Python are just two ways to give Techster
+> **Same robot, same ideas.** Blocks and Python are just two ways to give the robot
 > the same instructions.
 
 ## 1. Open your block program

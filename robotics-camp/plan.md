@@ -12,7 +12,7 @@ title: SPIKE Prime Robotics Camp — Camp Plan
 
 ## Camp Overview
 
-Teams program a LEGO SPIKE Prime robot ("Techster") across five mornings. Each day
+Teams program a LEGO SPIKE Prime robot across five mornings. Each day
 is a mission that upgrades the robot's abilities, and the camp is **cumulative** —
 the same robot and code grow all week. Because cumulative camps make it easy to
 fall behind, **Days 2–5 open with a short catch-up warm-up** that re-establishes
@@ -26,7 +26,7 @@ the shared robot/code state so a late arrival isn't lost.
 | 4       | Obstacle Avoidance | Sensors and decisions         | "React to the world instead of a fixed script"   |
 | 5       | Line Following     | Proportional control          | "Steer in proportion to how far off you are"     |
 
-## The Robot: Techster
+## The Robot
 
 A standard two-motor SPIKE Prime driving base with a color sensor and an
 ultrasonic (distance) sensor from the base set.
@@ -86,7 +86,7 @@ sequence with a deliberate bug to fix).
 ## Day 1: First Drive
 
 **Duration:** 3 hours
-**Mission:** Teach Techster to move on command — drive a set distance, turn a set
+**Mission:** Teach your robot to move on command — drive a set distance, turn a set
 angle, and trace a square.
 
 ### Success Definition
@@ -106,7 +106,7 @@ angle, and trace a square.
 | Time        | Activity                            | Details                                                                                               |
 | ----------- | ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | 9:00–9:15   | Arrival: _Human Robot_              | Give a teammate literal step commands to reach a target — pre-teaches "exact instructions"            |
-| 9:15–9:25   | Mission huddle                      | Meet Techster; today we make it drive and turn                                                        |
+| 9:15–9:25   | Mission huddle                      | Meet the robot; today we make it drive and turn                                                        |
 | 9:25–10:25  | Block 1: Connect & first moves      | Connect over Bluetooth; run `straight()` and `turn()`; off-robot: sketch and predict the square       |
 | 10:25–10:50 | Energizer + snack                   |                                                                                                       |
 | 10:50–11:45 | Block 2: Calibrate & drive a square | Drive `straight(1000)` and `turn(360)`, measure, adjust `wheel_diameter`/`axle_track`; run the square |
@@ -130,7 +130,7 @@ angle, and trace a square.
 ## Day 2: Maze Runner
 
 **Duration:** 3 hours
-**Mission:** Get Techster through a taped-floor maze without touching the walls.
+**Mission:** Get your robot through a taped-floor maze without touching the walls.
 
 ### Success Definition
 
@@ -171,7 +171,7 @@ angle, and trace a square.
 ## Day 3: Gyro Precision
 
 **Duration:** 3 hours
-**Mission:** Upgrade Techster's "inner compass" so turns and straights stay accurate.
+**Mission:** Upgrade the robot's "inner compass" so turns and straights stay accurate.
 
 ### Success Definition
 
@@ -211,7 +211,7 @@ angle, and trace a square.
 ## Day 4: Obstacle Avoidance
 
 **Duration:** 3 hours
-**Mission:** Give Techster eyes — react to the world instead of following a fixed script.
+**Mission:** Give your robot eyes — react to the world instead of following a fixed script.
 
 ### Success Definition
 
@@ -252,7 +252,7 @@ angle, and trace a square.
 ## Day 5: Line Following + Showcase
 
 **Duration:** 3 hours
-**Mission:** Teach Techster to follow a line, then demo everything to the group.
+**Mission:** Teach your robot to follow a line, then demo everything to the group.
 
 ### Success Definition
 

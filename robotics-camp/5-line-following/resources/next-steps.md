@@ -26,7 +26,7 @@ section: Resources
 
 ## Bring the Week Together
 
-- You taught Techster to drive, solve a maze, steer by the gyro, dodge obstacles, and
+- You taught your robot to drive, solve a maze, steer by the gyro, dodge obstacles, and
   follow a line. Pick two skills and **combine** them — like a line-follower that
   *stops* when the distance sensor sees something ahead.
 - Write down, in your own words, what **calibration** meant in each session (wheel
