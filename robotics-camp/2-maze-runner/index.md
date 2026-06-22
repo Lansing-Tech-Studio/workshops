@@ -98,6 +98,7 @@ A student is successful if they can say:
 > Get up and move
 
 - _Algorithm Relay_ or _Debug the Dance_
+  - _Algorithm Relay:_ teams line up; one student at a time runs to the board and adds the next move (`forward`, `turn left`, etc.) to a sequence that drives an imaginary robot to a target square, then tags the next runner. First team to a working sequence wins.
 
 ### 10:35-10:50 — Snack Break
 

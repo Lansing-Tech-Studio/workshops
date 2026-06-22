@@ -77,7 +77,10 @@ Every session follows the same skeleton. Per-session details are in each
 literal step commands to a target), _Robot Says_ (Simon Says with movement
 commands), _Speed Build_, _Maze on Paper_, _Debug the Drawing_.
 
-**Energizer menu:** _Algorithm Relay_, _Red Light / Green Light_ (a great lead-in to
+**Energizer menu:** _Algorithm Relay_ (teams line up; one student at a time runs to
+the board and adds the next move to a sequence — `forward`, `turn left`, etc. — that
+drives an imaginary robot to a target square, then tags the next runner; first team
+to a working sequence wins), _Red Light / Green Light_ (a great lead-in to
 the Day 4 distance-sensor stop), stretch-and-shake, _Debug the Dance_ (a movement
 sequence with a deliberate bug to fix).
 
