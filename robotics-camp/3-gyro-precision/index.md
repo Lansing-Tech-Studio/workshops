@@ -22,6 +22,7 @@ comments: true
 - Student Handouts:
   - [Vocabulary]({{ site.baseurl }}/robotics-camp/3-gyro-precision/student-handouts/vocabulary)
   - [Worksheet]({{ site.baseurl }}/robotics-camp/3-gyro-precision/student-handouts/worksheet)
+  - [Debug the Drawing]({{ site.baseurl }}/robotics-camp/3-gyro-precision/student-handouts/debug-the-drawing)
 - Instructor Notes:
   - [Common Questions]({{ site.baseurl }}/robotics-camp/3-gyro-precision/instructor-notes/common-questions)
   - [Timing Guide]({{ site.baseurl }}/robotics-camp/3-gyro-precision/instructor-notes/timing-guide)
@@ -132,6 +133,11 @@ A student is successful if they can say:
 - Gyro off-vs-on error chart
 - Tuned true-360° turn value record
 - Reflection
+
+### Handout 3: Debug the Drawing (Arrival Game)
+
+- Four "spot the wrong step" puzzle cards with grids to trace on
+- One small early error throws off everything after it — the bridge into the gyro
 
 ## 6. Instructor Guardrails
 
