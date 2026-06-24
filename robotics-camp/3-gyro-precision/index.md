@@ -25,6 +25,7 @@ comments: true
 - Instructor Notes:
   - [Common Questions]({{ site.baseurl }}/robotics-camp/3-gyro-precision/instructor-notes/common-questions)
   - [Timing Guide]({{ site.baseurl }}/robotics-camp/3-gyro-precision/instructor-notes/timing-guide)
+  - [Debug the Drawing]({{ site.baseurl }}/robotics-camp/3-gyro-precision/instructor-notes/debug-the-drawing)
 
 ## The Mission
 
