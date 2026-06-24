@@ -268,6 +268,10 @@ navigation:
         items:
           - title: Learn More
             url: /robotics-camp/resources/learn-more
+      - title: Instructor Notes
+        items:
+          - title: "Debug the Drawing (Day 3)"
+            url: /robotics-camp/3-gyro-precision/instructor-notes/debug-the-drawing
   - title: Learning Checks
     url: /learning-checks
 

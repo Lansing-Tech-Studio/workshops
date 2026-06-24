@@ -46,6 +46,7 @@ Arrivals spot the one wrong step in a drawn move sequence — a small early erro
   3. Name it: that's **sensor data** — the robot follows the drawing exactly.
 - **Watch for**: students fixing the _intent_ instead of reading what the drawing says.
 - **Tip**: keep a couple of these ready so early arrivals can do more than one.
+- **Ready-made cards + answer key**: [Debug the Drawing](debug-the-drawing.md).
 </div>
 
 ## 9:15-9:25 — Mission Huddle + Catch-Up
