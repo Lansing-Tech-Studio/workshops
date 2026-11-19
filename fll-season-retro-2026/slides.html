@@ -1,0 +1,1229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Our Journey and the 2026 FLL Season Retrospective</title>
+
+  <link rel="stylesheet" href="../assets/revealjs/reset.css">
+  <link rel="stylesheet" href="../assets/revealjs/reveal.css">
+  <link rel="stylesheet" href="../assets/revealjs/theme/black.css">
+  <link rel="stylesheet" href="../assets/revealjs/plugin/highlight/monokai.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@500;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --lts-navy: #0f2f57;
+      --lts-blue: #22b5f0;
+      --lts-green: #7ddf49;
+      --lts-slate: #e9f0ff;
+      --lts-gold: #ffd166;
+    }
+
+    .reveal {
+      font-family: "Nunito", sans-serif;
+      color: #f8fbff;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      font-family: "Bebas Neue", sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+
+    .reveal h1 {
+      font-size: 2.35em;
+    }
+
+    .reveal h2 {
+      font-size: 1.75em;
+      margin-bottom: 0.2em;
+    }
+
+    .reveal p,
+    .reveal li {
+      font-size: 0.86em;
+      line-height: 1.35;
+    }
+
+    .reveal strong {
+      color: var(--lts-green);
+    }
+
+    .slide-shell {
+      background: radial-gradient(circle at 12% 8%, rgba(125, 223, 73, 0.2), rgba(125, 223, 73, 0) 30%),
+        radial-gradient(circle at 85% 18%, rgba(34, 181, 240, 0.26), rgba(34, 181, 240, 0) 38%),
+        linear-gradient(130deg, #122a4f 0%, #091529 55%, #060d19 100%);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      padding: 34px 42px;
+    }
+
+    .hero-title {
+      font-size: 2.8em;
+      line-height: 0.9;
+      margin-bottom: 0.2em;
+    }
+
+    .hero-subtitle {
+      color: var(--lts-slate);
+      margin-bottom: 0.8em;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.8em 0 1.2em;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.47em;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      background: rgba(10, 18, 34, 0.36);
+    }
+
+    .accent {
+      color: var(--lts-blue);
+    }
+
+    .mini {
+      font-size: 0.53em;
+      color: #d7e8ff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      text-align: left;
+      margin-top: 0.55em;
+    }
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(7, 17, 35, 0.48);
+      padding: 16px 18px;
+    }
+
+    .r-stack .card {
+      background: #0b1929;
+      width: 100%;
+    }
+
+    .card h3 {
+      font-size: 1.06em;
+      margin: 0 0 8px;
+      color: var(--lts-gold);
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 1em;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      text-align: left;
+      margin-top: 0.35em;
+    }
+
+    .timeline .card li {
+      margin-bottom: 6px;
+    }
+
+    .date {
+      color: var(--lts-blue);
+      font-weight: 800;
+      margin-right: 6px;
+    }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 0.6em;
+      text-align: left;
+    }
+
+    .big-num {
+      display: block;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 2.2em;
+      color: var(--lts-green);
+      line-height: 0.8;
+      margin-bottom: 0.06em;
+    }
+
+    .prompt-list {
+      text-align: left;
+      margin: 0.4em 0 0;
+      padding-left: 1em;
+    }
+
+    .prompt-list li {
+      margin-bottom: 0.3em;
+    }
+
+    .qr-wrap {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 22px;
+      align-items: center;
+      text-align: left;
+      margin-top: 0.55em;
+    }
+
+    .qr-wrap img {
+      width: 200px;
+      height: 200px;
+      border-radius: 14px;
+      border: 3px solid rgba(255, 255, 255, 0.75);
+      background: #ffffff;
+      justify-self: center;
+    }
+
+    .thank-list {
+      columns: 2;
+      column-gap: 22px;
+      text-align: left;
+      margin-top: 0.4em;
+    }
+
+    .thank-list li {
+      break-inside: avoid;
+      margin-bottom: 0.45em;
+    }
+
+    .thank-name {
+      display: block;
+    }
+
+    .thank-role {
+      display: block;
+      font-size: 0.72em;
+      margin-left: 1.1em;
+      opacity: 0.8;
+    }
+
+    .hero-image-slide {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      padding: 0 !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-frame {
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
+      padding: 16px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 34px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(34, 181, 240, 0.34), rgba(34, 181, 240, 0) 42%),
+        radial-gradient(circle at 86% 20%, rgba(125, 223, 73, 0.28), rgba(125, 223, 73, 0) 45%),
+        radial-gradient(circle at 50% 92%, rgba(255, 209, 102, 0.18), rgba(255, 209, 102, 0) 46%),
+        linear-gradient(130deg, rgba(15, 47, 87, 0.7), rgba(6, 13, 25, 0.78));
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.42);
+    }
+
+    .hero-main-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain;
+      border-radius: 24px;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+      margin: 0 !important;
+      box-sizing: border-box;
+    }
+
+    .hero-qr-chip {
+      position: absolute;
+      right: 17px;
+      bottom: 17px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0px 10px;
+      border-radius: 24px;
+      background: rgba(8, 18, 33, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-qr-chip img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.88);
+    }
+
+    .hero-qr-chip span {
+      font-size: 0.45em;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 800;
+      color: var(--lts-slate);
+      text-align: left;
+      line-height: 1.2;
+      max-width: 11ch;
+    }
+
+    @media (max-width: 900px) {
+
+      .two-col,
+      .timeline,
+      .format-grid,
+      .qr-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .thank-list {
+        columns: 1;
+      }
+
+      .slide-shell {
+        padding: 26px;
+      }
+
+      .hero-image-frame {
+        border-radius: 24px;
+        padding: 12px;
+      }
+
+      .hero-main-image {
+        border-radius: 16px;
+      }
+
+      .hero-qr-chip {
+        right: 20px;
+        bottom: 20px;
+        padding: 7px 8px;
+        gap: 8px;
+      }
+
+      .hero-qr-chip img {
+        width: 58px;
+        height: 58px;
+      }
+
+      .hero-qr-chip span {
+        font-size: 0.39em;
+      }
+    }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Card 1 fades in automatically when the slide becomes active */
+    .reveal .slides section.present .card-auto {
+      animation: cardFadeIn 0.55s ease 0.2s both;
+    }
+
+    /* Card 1 fades out when any fragment on this slide becomes visible */
+    .reveal .slides section.present.has-visible-fragment .card-auto {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      animation: none;
+    }
+
+    .reveal .compact p,
+    .reveal .compact li {
+      font-size: 0.62em;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: left;
+      margin-top: 0.55em;
+    }
+
+    .team-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 0.5em;
+    }
+
+    .team-row figure {
+      margin: 0;
+    }
+
+    .reveal .team-row img {
+      display: block;
+      width: 100%;
+      margin: 0;
+      border-radius: 16px;
+      background: #ffffff;
+    }
+
+    .team-row figcaption {
+      font-size: 0.55em;
+      font-weight: 800;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .three-col {
+        grid-template-columns: 1fr;
+      }
+
+      .team-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div class="slide-shell">
+          <img src="../assets/images/logo-transparent.png" alt="Lansing Tech Studio logo" style="height: 120px; margin: 0;">
+          <h1 class="hero-title">From Backyard Bricks<br>to BIOGLOW</h1>
+          <p class="hero-subtitle">How Lansing Tech Studio has grown, and where we go from here</p>
+          <div class="pill-row">
+            <span class="pill">2021 to 2026</span>
+            <span class="pill">2026-2027 FLL Season</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Where We Started</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>2021</h3>
+              <p>A LEGO building club in backyards, for homeschool kids who wanted a STEM group.</p>
+            </div>
+            <div class="card fragment fade-up">
+              <h3>The Big Question</h3>
+              <p>How do kids learn about their passions and grow a sense of identity based on who they are?</p>
+            </div>
+          </div>
+          <p class="mini fragment">That club became the <strong>Lansing Homeschool Hackers</strong>, our first FIRST LEGO
+            League team.</p>
+        </div>
+      </section>
+
+      <!-- Year-by-year road-map slide (custom fragment handling), adapted from student-demo-day-2026 -->
+      <section id="road-slide" data-road-step="0">
+        <style>
+          #road-canvas-wrap {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+          }
+
+          #road-featured {
+            position: absolute;
+            z-index: 6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(16px) scale(0.96);
+            transition:
+              left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.3s ease,
+              transform 0.42s ease;
+          }
+
+          #road-featured.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+
+          #road-featured.hiding {
+            opacity: 0;
+            transform: none;
+          }
+
+          #road-featured.settling {
+            gap: 0;
+            transform: none;
+          }
+
+          #road-featured .road-tile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 120px;
+            font-size: 1.25em;
+            line-height: 1.15;
+            border-radius: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.82);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+            background: rgba(8, 17, 29, 0.95);
+            transition:
+              height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              font-size 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              border-radius 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+          }
+
+          #road-featured .road-feature-meta {
+            text-align: center;
+            transition: opacity 0.18s ease;
+          }
+
+          #road-featured .stop-date {
+            display: block;
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 1.1em;
+            line-height: 1;
+            color: var(--lts-blue);
+            font-weight: 800;
+            margin-bottom: 4px;
+          }
+
+          #road-featured .stop-label {
+            display: block;
+            font-size: 0.6em;
+            font-weight: 800;
+            line-height: 1.15;
+            color: #f8fbff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+          }
+
+          #road-featured .road-detail {
+            display: block;
+            font-size: 0.42em;
+            line-height: 1.35;
+            color: #d7e8ff;
+            margin-top: 6px;
+          }
+
+          #road-featured.settling .road-feature-meta {
+            opacity: 0;
+          }
+
+          #road-featured.settling .road-tile {
+            height: 100%;
+            font-size: 0.4em;
+            border-width: 2px;
+            border-radius: 10px;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.32);
+          }
+
+          #road-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          .road-stop {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.6);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+            width: 130px;
+          }
+
+          .road-stop.visible {
+            opacity: 1;
+            transform: scale(1);
+          }
+
+          .road-stop.settled {
+            transition: none;
+          }
+
+          .road-stop .road-tile {
+            width: 64px;
+            height: 64px;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            background: rgba(8, 17, 29, 0.95);
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-size: 0.4em;
+            line-height: 1.15;
+          }
+
+          .road-stop .stop-label {
+            font-size: 0.32em;
+            font-weight: 800;
+            color: #f8fbff;
+            text-align: center;
+            margin-top: 4px;
+            line-height: 1.2;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+            max-width: 130px;
+          }
+
+          .road-stop .stop-date {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 0.62em;
+            line-height: 1.1;
+            margin-top: 4px;
+            color: var(--lts-blue);
+            font-weight: 800;
+          }
+
+          #road-slide h2 {
+            margin-bottom: 0.2em;
+          }
+
+          #road-hint {
+            font-size: 0.38em;
+            color: #8ab0d8;
+            margin-top: 0.3em;
+          }
+        </style>
+
+        <div class="slide-shell" style="padding-bottom: 18px;">
+          <h2>Our Journey</h2>
+          <div id="road-canvas-wrap">
+            <svg id="road-svg" viewBox="0 0 900 480" preserveAspectRatio="none"></svg>
+            <div id="road-featured" aria-live="polite">
+              <div class="road-tile" aria-hidden="true"></div>
+              <div class="road-feature-meta">
+                <span class="stop-date"></span>
+                <span class="stop-label"></span>
+                <span class="road-detail"></span>
+              </div>
+            </div>
+            <!-- stops injected by JS -->
+          </div>
+        </div>
+
+        <script>
+          (function () {
+            const STOPS = [
+              { date: "2021", label: "LEGO Build Club", tile: "🧱", detail: ["A backyard club for homeschool kids", "who wanted a STEM group"] },
+              { date: "2022", label: "1 Challenge Team (non-competitive)", tile: "🤖", detail: ["The Lansing Homeschool Hackers take on", "FIRST LEGO League Challenge"] },
+              { date: "2023", label: "1 Challenge Team", tile: "🤖", detail: ["Our second FIRST LEGO League season"] },
+              { date: "2024", label: "2 Challenge Teams", tile: "🤖🤖", detail: ["A second team joins", "First INCH conference Hands-on Fair"] },
+              { date: "2025", label: "4 Challenge Teams", tile: "🤖🤖🤖🤖", detail: ["Doubled again to four teams", "Became a 501(c)(3) nonprofit", "CHESS Homeschool Expo · DemoCamp Lansing"] },
+              { date: "2026", label: "4 Challenge + 2 Explore", tile: "🤖🤖🤖🤖🧭🧭", detail: ["13 spring tech workshops · Student Demo Day", "Summer robotics camp · Lansing Tech Expo", "BIOGLOW: six FIRST LEGO League teams"] },
+            ];
+
+            // Layout: one row of stops along the bottom; the featured card sits above it
+            const COLS = 6;
+            const ROW_Y = [385]; // px in a 480-tall canvas
+            const MARGIN_X = 60;
+            const CANVAS_W = 900;
+            const CANVAS_H = 480;
+            const FEATURED_CARD_W = 460;
+            const FEATURED_CARD_H = 310;
+            const FEATURED_IMAGE_W = 64;
+            const FEATURED_IMAGE_H = 64;
+            const FEATURED_DELAY_MS = 180;
+            const FEATURED_SETTLE_MS = 700;
+
+            function stopPos(i) {
+              const row = Math.floor(i / COLS);
+              const col = i % COLS;
+              const slots = (i < COLS) ? COLS : (STOPS.length - COLS);
+              const stepW = (CANVAS_W - MARGIN_X * 2) / (slots - 1 || 1);
+              const x = (row % 2 === 0)
+                ? MARGIN_X + col * stepW
+                : CANVAS_W - MARGIN_X - col * stepW;
+              return { x, y: ROW_Y[row] };
+            }
+
+            // Path for a single segment connecting stop[from] to stop[to]
+            function segmentPath(from, to) {
+              const p = stopPos(from);
+              const q = stopPos(to);
+              const fromRow = Math.floor(from / COLS);
+              const toRow = Math.floor(to / COLS);
+              if (fromRow !== toRow) {
+                return `M ${p.x} ${p.y} Q ${p.x} ${(p.y + q.y) / 2} ${q.x} ${q.y}`;
+              }
+              return `M ${p.x} ${p.y} L ${q.x} ${q.y}`;
+            }
+
+            const NS = 'http://www.w3.org/2000/svg';
+
+            function makePath(attrs) {
+              const el = document.createElementNS(NS, 'path');
+              for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+              return el;
+            }
+
+            let initialized = false;
+            let currentStep = -1;
+            let stopEls = [];
+            // segments[i] = { casing, surface, dash } for the road from stop i → stop i+1
+            let segments = [];
+            let wrapEl = null;
+            let featuredEl = null;
+            let featuredTimer = null;
+            let settleTimer = null;
+            let featuredIndex = -1;
+
+            function init() {
+              if (initialized) return;
+              initialized = true;
+
+              const wrap = document.getElementById('road-canvas-wrap');
+              const svg = document.getElementById('road-svg');
+              featuredEl = document.getElementById('road-featured');
+              wrapEl = wrap;
+
+              svg.innerHTML = `
+              <defs>
+                <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#22b5f0"/>
+                  <stop offset="100%" stop-color="#7ddf49"/>
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+            `;
+
+              // Pre-create one set of path elements per segment, all hidden
+              for (let i = 0; i < STOPS.length - 1; i++) {
+                const d = segmentPath(i, i + 1);
+
+                const casing = makePath({ fill: 'none', stroke: 'rgba(0,0,0,0.45)', 'stroke-width': '18', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', d });
+                const surface = makePath({ fill: 'none', stroke: 'url(#roadGrad)', 'stroke-width': '10', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', filter: 'url(#glow)', d });
+                const dash = makePath({ fill: 'none', stroke: 'rgba(255,255,255,0.35)', 'stroke-width': '2', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-dasharray': '14 10', d });
+
+                casing.style.opacity = '0';
+                surface.style.opacity = '0';
+                dash.style.opacity = '0';
+
+                svg.appendChild(casing);
+                svg.appendChild(surface);
+                svg.appendChild(dash);
+
+                segments.push({ casing, surface, dash });
+              }
+
+              // Create stop DOM elements
+              STOPS.forEach((w, i) => {
+                const pos = stopPos(i);
+                const pct_x = (pos.x / CANVAS_W) * 100;
+                const pct_y = (pos.y / 480) * 100;
+
+                const el = document.createElement('div');
+                el.className = 'road-stop';
+                el.style.left = `calc(${pct_x}% - 65px)`;
+                el.style.top = `calc(${pct_y}% - 50px)`;
+
+                const lines = w.label.split('\n');
+                el.innerHTML = `
+                <div class="road-tile" aria-hidden="true">${w.tile}</div>
+                <span class="stop-date">${w.date}</span>
+                <span class="stop-label">${lines.join('<br>')}</span>
+              `;
+                wrap.appendChild(el);
+                stopEls.push(el);
+              });
+            }
+
+            function clearFeaturedTimer() {
+              if (featuredTimer) {
+                clearTimeout(featuredTimer);
+                featuredTimer = null;
+              }
+            }
+
+            function clearSettleTimer() {
+              if (settleTimer) {
+                clearTimeout(settleTimer);
+                settleTimer = null;
+              }
+            }
+
+            function setFeaturedContent(index) {
+              const stop = STOPS[index];
+              const lines = stop.label.split('\n');
+              featuredEl.querySelector('.road-tile').textContent = stop.tile;
+              featuredEl.querySelector('.road-detail').innerHTML = stop.detail.join('<br>');
+              featuredEl.querySelector('.stop-date').textContent = stop.date;
+              featuredEl.querySelector('.stop-label').innerHTML = lines.join('<br>');
+              featuredIndex = index;
+            }
+
+            function centerFeaturedCard() {
+              const left = (wrapEl.clientWidth - FEATURED_CARD_W) / 2;
+              const top = 8;
+
+              featuredEl.style.left = `${Math.max(0, left)}px`;
+              featuredEl.style.top = `${Math.max(8, top)}px`;
+              featuredEl.style.width = `${FEATURED_CARD_W}px`;
+              featuredEl.style.height = `${FEATURED_CARD_H}px`;
+            }
+
+            function hideFeatured() {
+              clearFeaturedTimer();
+              featuredEl.classList.remove('visible');
+              featuredEl.classList.add('hiding');
+              featuredIndex = -1;
+            }
+
+            function showFeatured(index, delay) {
+              clearFeaturedTimer();
+
+              if (index < 0 || index >= STOPS.length) {
+                hideFeatured();
+                return;
+              }
+
+              const reveal = () => {
+                setFeaturedContent(index);
+                featuredEl.classList.remove('visible', 'settling', 'hiding');
+                featuredEl.style.transition = 'none';
+                centerFeaturedCard();
+                void featuredEl.getBoundingClientRect();
+                featuredEl.style.transition = '';
+                featuredEl.classList.add('visible');
+              };
+
+              if (delay) {
+                hideFeatured();
+                featuredTimer = setTimeout(reveal, delay);
+                return;
+              }
+
+              reveal();
+            }
+
+            function setSegmentVisible(i, animate) {
+              const seg = segments[i];
+              if (!seg) return;
+
+              if (!animate) {
+                [seg.casing, seg.surface, seg.dash].forEach(el => {
+                  el.style.transition = 'none';
+                  el.style.opacity = '1';
+                  el.style.strokeDasharray = 'none';
+                  el.style.strokeDashoffset = '';
+                });
+                return;
+              }
+
+              const len = (seg.surface.getTotalLength ? seg.surface.getTotalLength() : 500) + 5;
+
+              [seg.casing, seg.surface].forEach(el => {
+                el.style.opacity = '1';
+                el.style.transition = 'none';
+                el.style.strokeDasharray = len;
+                el.style.strokeDashoffset = len;
+                void el.getBoundingClientRect();
+                el.style.transition = 'stroke-dashoffset 0.5s ease';
+                el.style.strokeDashoffset = '0';
+                setTimeout(() => {
+                  el.style.strokeDasharray = 'none';
+                  el.style.strokeDashoffset = '';
+                  el.style.transition = '';
+                }, 510);
+              });
+
+              setTimeout(() => {
+                seg.dash.style.transition = 'opacity 0.3s ease';
+                seg.dash.style.opacity = '1';
+              }, 300);
+            }
+
+            function showSegment(i) {
+              setSegmentVisible(i, true);
+            }
+
+            // Instantly hide segment i (used when going backward)
+            function hideSegment(i) {
+              const seg = segments[i];
+              [seg.casing, seg.surface, seg.dash].forEach(el => {
+                el.style.transition = 'none';
+                el.style.opacity = '0';
+                el.style.strokeDasharray = '';
+                el.style.strokeDashoffset = '';
+              });
+            }
+
+            function featuredTargetRect(index) {
+              const pos = stopPos(index);
+              return {
+                left: (pos.x / CANVAS_W) * wrapEl.clientWidth - (FEATURED_IMAGE_W / 2),
+                top: (pos.y / CANVAS_H) * wrapEl.clientHeight - 50,
+                width: FEATURED_IMAGE_W,
+                height: FEATURED_IMAGE_H,
+              };
+            }
+
+            function updateHint(step) {
+              const hint = document.getElementById('road-hint');
+              if (hint) hint.style.opacity = step >= STOPS.length ? '0' : '1';
+            }
+
+            function syncStaticState(step) {
+              init();
+              clearFeaturedTimer();
+              clearSettleTimer();
+              // stops 0..step-1 are settled in the roadmap; stop `step` is the featured preview
+              stopEls.forEach((el, i) => {
+                el.classList.remove('settled');
+                el.classList.toggle('visible', i < step);
+              });
+
+              // segments connect consecutive settled stops: show segments 0..step-2
+              segments.forEach((_, i) => {
+                if (i < step - 1) {
+                  setSegmentVisible(i, false);
+                } else {
+                  hideSegment(i);
+                }
+              });
+
+              currentStep = step;
+              updateHint(step);
+
+              // step N shows stop N featured; the last step (all settled) hides featured
+              if (step >= 0 && step < STOPS.length) {
+                showFeatured(step, 0);
+              } else {
+                hideFeatured();
+              }
+            }
+
+            function animateStepForward(step) {
+              init();
+              clearFeaturedTimer();
+              clearSettleTimer();
+
+              if (step !== currentStep + 1) {
+                syncStaticState(step - 1);
+              }
+
+              // step 0: first click — just show stop 0 featured, no settling yet
+              if (step === 0) {
+                if (featuredIndex !== 0) showFeatured(0, 0);
+                currentStep = 0;
+                updateHint(0);
+                return;
+              }
+
+              // step >= 1: settle stop (step-1), then preview stop step
+              const stopToSettle = step - 1;
+              if (featuredIndex !== stopToSettle) {
+                showFeatured(stopToSettle, 0);
+              }
+
+              const target = featuredTargetRect(stopToSettle);
+              featuredEl.classList.add('visible', 'settling');
+              featuredEl.style.left = `${target.left}px`;
+              featuredEl.style.top = `${target.top}px`;
+              featuredEl.style.width = `${target.width}px`;
+              featuredEl.style.height = `${target.height}px`;
+
+              settleTimer = window.setTimeout(() => {
+                settleTimer = null;
+                stopEls[stopToSettle].classList.add('settled');
+                stopEls[stopToSettle].classList.add('visible');
+                hideFeatured();
+                if (stopToSettle > 0) {
+                  showSegment(stopToSettle - 1);
+                }
+
+                currentStep = step;
+                updateHint(step);
+
+                if (step < STOPS.length) {
+                  showFeatured(step, FEATURED_DELAY_MS);
+                }
+              }, FEATURED_SETTLE_MS);
+            }
+
+            function renderStep(step) {
+              if (step < -1) {
+                return;
+              }
+
+              init();
+
+              if (step === -1) {
+                syncStaticState(-1);
+                return;
+              }
+
+              if (step > currentStep) {
+                animateStepForward(step);
+                return;
+              }
+
+              syncStaticState(step);
+            }
+
+            // Hook into Reveal.js fragment system
+            document.addEventListener('DOMContentLoaded', function () {
+              if (typeof Reveal === 'undefined') return;
+
+              Reveal.on('slidechanged', function (e) {
+                if (e.currentSlide && e.currentSlide.id === 'road-slide') {
+                  renderStep(-1);
+                }
+              });
+
+              Reveal.on('fragmentshown', function (e) {
+                const slide = e.fragment && e.fragment.closest('section');
+                if (slide && slide.id === 'road-slide') {
+                  const idx = parseInt(e.fragment.dataset.roadIdx);
+                  if (!isNaN(idx)) renderStep(idx);
+                }
+              });
+
+              Reveal.on('fragmenthidden', function (e) {
+                const slide = e.fragment && e.fragment.closest('section');
+                if (slide && slide.id === 'road-slide') {
+                  const idx = parseInt(e.fragment.dataset.roadIdx);
+                  if (!isNaN(idx)) renderStep(idx - 1);
+                }
+              });
+            });
+          })();
+        </script>
+
+        <!-- One invisible fragment per stop, plus one to settle the last stop, so Reveal tracks them -->
+        <div style="display:none">
+          <span class="fragment" data-road-idx="0"></span>
+          <span class="fragment" data-road-idx="1"></span>
+          <span class="fragment" data-road-idx="2"></span>
+          <span class="fragment" data-road-idx="3"></span>
+          <span class="fragment" data-road-idx="4"></span>
+          <span class="fragment" data-road-idx="5"></span>
+          <span class="fragment" data-road-idx="6"></span>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell compact">
+          <h2>Growth By The Numbers</h2>
+          <div class="format-grid">
+            <div class="card">
+              <span class="big-num" style="font-size: 1.9em;">1→2→4→6</span>
+              <p>FIRST LEGO League teams: one in 2022, two in 2024, four in 2025, six this season.</p>
+            </div>
+            <div class="card">
+              <span class="big-num">30+</span>
+              <p>Students served every semester.</p>
+            </div>
+            <div class="card">
+              <span class="big-num">25+</span>
+              <p>Community service projects completed.</p>
+            </div>
+            <div class="card">
+              <span class="big-num">50+</span>
+              <p>Summer campers taught, at our own camps and partner camps.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell compact">
+          <h2>How Our Programs Changed</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>Then: 2021</h3>
+              <ul>
+                <li>🧱 One club</li>
+                <li>🏡 Building LEGO together in backyards</li>
+              </ul>
+            </div>
+            <div class="card fragment fade-up">
+              <h3>Now: All Year Long</h3>
+              <ul>
+                <li>🍁 Fall: FIRST LEGO League, four Challenge and two Explore teams</li>
+                <li>🌱 Spring: tech workshops and Student Demo Day</li>
+                <li>🤝 Every month: Advent House meals and care packages</li>
+                <li>🌍 Every Earth Day: park cleanup</li>
+                <li>🛠️ Going forward: real community projects</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>This Season: BIOGLOW</h2>
+          <div class="team-row">
+            <figure><img src="https://lansingtechstudio.org/robotics/team-logos/RiptideSticker.png" alt="Riptide team logo">
+              <figcaption>Riptide</figcaption>
+            </figure>
+            <figure><img src="https://lansingtechstudio.org/robotics/team-logos/TerminatorsSticker.png" alt="Terminators team logo">
+              <figcaption>Terminators</figcaption>
+            </figure>
+            <figure><img src="https://lansingtechstudio.org/robotics/team-logos/AtomicAntsSticker.png" alt="Atomic Ants team logo">
+              <figcaption>Atomic Ants</figcaption>
+            </figure>
+            <figure><img src="https://lansingtechstudio.org/robotics/team-logos/CoolFireSharksSticker.png" alt="Cool Fire Sharks team logo">
+              <figcaption>Cool Fire Sharks</figcaption>
+            </figure>
+          </div>
+          <p>Four Challenge teams, plus <strong>two Explore teams</strong>.</p>
+          <p class="accent">Six teams: our biggest season yet.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Our Momentum</h2>
+          <ul class="prompt-list">
+            <li><span class="date">2026-2027</span>Six FIRST LEGO League teams, our most ever</li>
+            <li class="fragment"><span class="date">Spring 2027</span>Tech workshops and Student Demo Day. <em>Now with <code>infinity</code>% more real community projects</em></li>
+            <li class="fragment"><span class="date">Fall 2027</span>New robotics programs for all ages, in our own building</li>
+            <li class="fragment"><span class="date">Growing</span>Demo Day becomes a one-day student tech conference</li>
+          </ul>
+          <p class="mini fragment">What you tell us today shapes what comes next.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Thank You</h2>
+          <p>Without you, this wouldn't be possible:</p>
+          <ul class="thank-list">
+            <li><span class="thank-name">Students</span><span class="thank-role">for the work you put in all
+                season</span></li>
+            <li><span class="thank-name">Coaches and mentors</span><span class="thank-role">for guiding every
+                practice</span></li>
+            <li><span class="thank-name">Parents and families</span><span class="thank-role">for supporting students all
+                season</span></li>
+            <li><span class="thank-name">Our partners</span><span class="thank-role">RMC, TechSmith, Lansing Codes, and
+                Parallel Technologies</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Why A Retrospective?</h2>
+          <p><em>Real engineering teams look back after every project. So do we.</em></p>
+          <div class="card" style="text-align: left; margin-top: 0.55em;">
+            <h3>Ground Rules</h3>
+            <ul>
+              <li>Be specific: name what actually happened</li>
+              <li>Be kind and blameless: talk about <em>what</em> happened, not <em>who</em> did it</li>
+              <li>Every voice counts</li>
+              <li>Wins and misses both teach us something</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Think Back Over The Whole Season</h2>
+          <ul class="prompt-list">
+            <li>🤖 Robot design and attachments</li>
+            <li>💻 Coding and testing</li>
+            <li>🔬 Innovation Project</li>
+            <li>🤝 Core Values and teamwork</li>
+            <li>📅 Thursday practices</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-shell">
+          <h2>Season Retrospective</h2>
+          <div class="three-col">
+            <div class="card">
+              <h3>👍 Likes</h3>
+              <p>What went well? What should we keep doing?</p>
+            </div>
+            <div class="card fragment fade-up">
+              <h3>👎 Dislikes</h3>
+              <p>What was frustrating or got in our way?</p>
+            </div>
+            <div class="card fragment fade-up">
+              <h3>💡 Improvements</h3>
+              <p>What should we try as we keep going?</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="../assets/revealjs/reveal.js"></script>
+  <script src="../assets/revealjs/plugin/notes/notes.js"></script>
+  <script src="../assets/revealjs/plugin/markdown/markdown.js"></script>
+  <script src="../assets/revealjs/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: "slide",
+      backgroundTransition: "fade",
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+  </script>
+</body>
+
+</html>
